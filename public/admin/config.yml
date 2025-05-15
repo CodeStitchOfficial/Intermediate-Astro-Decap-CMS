@@ -1,10 +1,22 @@
 # See full Decap documentation for further configuration: https://decapcms.org/docs/intro/
+# Use DecapBridge auth (required)
 backend:
   name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
+  repo: CodeStitchOfficial/Intermediate-Astro-Decap-CMS
+  branch: main
+  identity_url: https://auth.decapbridge.com/sites/1ea1e8dd-3c54-40d7-bbe1-74af6c8f16f6
+  gateway_url: https://gateway.decapbridge.com
+  # Quickly see who did what (optional)
+  commit_messages:
+    create: Create {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    update: Update {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    delete: Delete {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    uploadMedia: Upload “{{path}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    deleteMedia: Delete “{{path}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge
 local_backend: true
 media_folder: src/assets/images/blog # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
-public_folder: src/assets/images/blog  # Ensure that this path is the same as the media_folder path above.
+public_folder: src/assets/images/blog # Ensure that this path is the same as the media_folder path above.
 site_url: https://intermediate-astro-kit-decap-cms.netlify.app/ # Displays a link to home page in the top-right corner of the CMS dashboard
 logo_url: https://codestitch.app/frontend/images/logo.png # change url to a link to the image you want to use, no file paths, must be a URL
 collections:
