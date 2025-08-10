@@ -13,9 +13,9 @@
 		"@astrojs/check": "^0.9.4",
 		"@astrojs/sitemap": "^3.4.2",
 		"astro": "^5.12.9",
-		"astro-icon": "^1.1.1",
-		"autoprefixer": "^10.4.20",
-		"less": "^4.2.0",
+		"astro-icon": "^1.1.5",
+		"autoprefixer": "^10.4.21",
+		"less": "^4.2.2",
 		"typescript": "^5.6.3"
 	}
 }
