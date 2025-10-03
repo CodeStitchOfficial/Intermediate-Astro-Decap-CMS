@@ -50,12 +50,30 @@ vanilla component library</a>. This kit aims to get any project off the ground i
 
 ## Getting Started
 
-1. At the top right of the GitHub Repository, click the green _Use this template_ button,
-   then click _Create a new repository_.
-2. Follow the instructions to create a new repository, using this repo as a template.
-3. When created, clone the repository to your local machine.
-4. Run `npm install` to install all dependencies.
-5. Run `npm run dev` to start the project and spin up a development server on `localhost:4321`
+1. Run one of these commands to initialize a new project from this template:
+
+```sh
+npm create astro@latest -- --template CodeStitchOfficial/Intermediate-Astro-Decap-CMS
+```
+
+```sh
+yarn create astro@latest --template CodeStitchOfficial/Intermediate-Astro-Decap-CMS
+```
+
+```sh
+pnpm create astro@latest --template CodeStitchOfficial/Intermediate-Astro-Decap-CMS
+```
+2. Choose a name for your project.
+3. Change into the newly created project directory.
+4. Install dependencies:
+```sh
+npm install
+```
+5. Start the development server:
+```sh
+npm run dev
+```
+This will spin up the project on <a href="http://localhost:4321">http://localhost:4321</a>
 
 Next, it is recommended to update `data/client.json` with some new information about this project. Through the power of templating, the
 project's `<head>` and contact information will automatically be filled out, providing a first peek into some of the benefits of SSGs.
