@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import Landing from "@components/Landing.astro";
+import { Icon } from 'astro-icon/components';
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
@@ -31,15 +32,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
     <div class="container">
       <div class="review">
         <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
+          <Icon name="profile" class="profile" width="99" height="99" />
         </picture>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
@@ -49,29 +42,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
         <div class="star-group">
           <span class="name">B Miller<span class="desc">Homeowner</span></span>
           <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
+            <Icon name="stars" width="91" height="15" aria-hidden="true" />
           </picture>
         </div>
       </div>
       <div class="review">
         <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
+          <Icon name="profile" class="profile" width="99" height="99" />
         </picture>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
@@ -82,29 +59,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
           <span class="name">Vincent M.<span class="desc">Homeowner</span></span
           >
           <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
+            <Icon name="stars" width="91" height="15" aria-hidden="true" />
           </picture>
         </div>
       </div>
       <div class="review">
         <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
+          <Icon name="profile" class="profile" width="99" height="99" />
         </picture>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
@@ -114,29 +75,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
         <div class="star-group">
           <span class="name">Alex L.<span class="desc">Homeowner</span></span>
           <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
+            <Icon name="stars" width="91" height="15" aria-hidden="true" />
           </picture>
         </div>
       </div>
       <div class="review">
         <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile-woman.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
+          <Icon name="profile-woman" class="profile" width="99" height="99" />
         </picture>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
@@ -148,29 +93,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
             >Arrieana M.<span class="desc">Homeowner</span></span
           >
           <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
+            <Icon name="stars" width="91" height="15" aria-hidden="true" />
           </picture>
         </div>
       </div>
       <div class="review">
         <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
+          <Icon name="profile" class="profile" width="99" height="99" />
         </picture>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
@@ -180,29 +109,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
         <div class="star-group">
           <span class="name">Leo N.<span class="desc">Homeowner</span></span>
           <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
+            <Icon name="stars" width="91" height="15" aria-hidden="true" />
           </picture>
         </div>
       </div>
       <div class="review">
         <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
+          <Icon name="profile" class="profile" width="99" height="99" />
         </picture>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
@@ -212,15 +125,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'});
         <div class="star-group">
           <span class="name">Brian A.<span class="desc">Homeowner</span></span>
           <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
+            <Icon name="stars" width="91" height="15" aria-hidden="true" />
           </picture>
         </div>
       </div>

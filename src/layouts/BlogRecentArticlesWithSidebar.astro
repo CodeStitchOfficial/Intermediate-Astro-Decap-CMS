@@ -5,6 +5,7 @@
 import FeaturedPost from "@components/FeaturedPost.astro";
 import { formatDate } from "@js/utils";
 import { Picture } from "astro:assets";
+import { Icon } from 'astro-icon/components';
 
 const { posts } = Astro.props;
 ---
@@ -32,7 +33,7 @@ const { posts } = Astro.props;
 						<div class="blog-header">
 							<div class="blog-authorGroup">
 								<picture class="blog-author-img">
-									<img src="/assets/svgs/profile.svg" alt="house" width="32" height="32" decoding="async" />
+									<Icon name="profile" width="32" height="32" />
 								</picture>
 								<span class="blog-author">{post.data.author}</span>
 								<span aria-hidden="true" class="blog-dot" />

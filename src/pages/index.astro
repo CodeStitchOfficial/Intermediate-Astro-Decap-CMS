@@ -2,11 +2,27 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
+import { Picture } from "astro:assets";
+import { Icon } from 'astro-icon/components';
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+// Import hero image for preloading
+import landingImage from "@assets/images/landing.jpg";
+import heroImage from "@assets/images/hero/hero.jpg";
 import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+const optimizedImage = await getImage({src: heroImage, format: 'avif'});
+
+// Import service/gallery images
+import cabinets2 from "@assets/images/services/cabinets2.jpg";
+import construction from "@assets/images/services/construction.jpg";
+import port1 from "@assets/images/projects/port1.jpg";
+import port2 from "@assets/images/projects/port2.jpg";
+import port3 from "@assets/images/projects/port3.jpg";
+import port4 from "@assets/images/projects/port4.jpg";
+import port5 from "@assets/images/projects/port5.jpg";
+import port6 from "@assets/images/projects/port6.jpg";
+import port7 from "@assets/images/projects/port7.jpg";
+import port8 from "@assets/images/projects/port8.jpg";
+import port9 from "@assets/images/projects/port9.jpg";
 ---
 
 <BaseLayout
@@ -44,23 +60,15 @@ allows for repeated components, centralized data and greater room to scale as yo
     </div>
 
     <!-- Background Image -->
-    <!-- We can't use Astro <Picture /> as it does not support multiple sources -->
-    <picture class="cs-picture">
-      <source
-        media="(max-width: 600px)"
-        srcset="/assets/images/hero-m.webp"
-      />
-      <source media="(min-width: 601px)" srcset="/assets/images/hero.jpg" />
-      <img
-        aria-hidden="true"
-        decoding="async"
-        src={optimizedImage.src}
-        alt="new home"
-        width="2500"
-        height="1667"
-        loading="eager"
-      />
-    </picture>
+    <Picture
+      src={heroImage}
+      alt="new home"
+      width={2500}
+      height={1667}
+      formats={['avif', 'webp']}
+      priority
+      pictureAttributes={{ class: "cs-picture" }}
+    />
 
   </section>
 
@@ -71,14 +79,7 @@ allows for repeated components, centralized data and greater room to scale as yo
   <section id="services" class="services">
     <div class="card">
       <picture>
-        <img
-          aria-hidden="true"
-          decoding="async"
-          src="/assets/svgs/service1.svg"
-          alt="appliance"
-          width="48"
-          height="48"
-        />
+        <Icon name="service1" width="48" height="48" aria-hidden="true" />
       </picture>
       <h2>Service 1</h2>
       <p>
@@ -88,14 +89,7 @@ allows for repeated components, centralized data and greater room to scale as yo
     </div>
     <div class="card">
       <picture>
-        <img
-          aria-hidden="true"
-          decoding="async"
-          src="/assets/svgs/service2.svg"
-          alt="appliance"
-          width="48"
-          height="48"
-        />
+        <Icon name="service2" width="48" height="48" aria-hidden="true" />
       </picture>
       <h2>Service 2</h2>
       <p>
@@ -105,14 +99,7 @@ allows for repeated components, centralized data and greater room to scale as yo
     </div>
     <div class="card">
       <picture>
-        <img
-          aria-hidden="true"
-          decoding="async"
-          src="/assets/svgs/service3.svg"
-          alt="appliance"
-          width="48"
-          height="48"
-        />
+        <Icon name="service3" width="48" height="48" aria-hidden="true" />
       </picture>
       <h2>Service 3</h2>
       <p>
@@ -130,44 +117,22 @@ allows for repeated components, centralized data and greater room to scale as yo
     <div class="cs-container">
       <!-- Left Image Section -->
       <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/cabinets2-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/cabinets2.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/cabinets2.jpg"
-            alt="cabinets"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
-        <picture class="cs-picture cs-picture2">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/construction-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/construction.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/construction.jpg"
-            alt="house"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
+        <Picture
+          src={cabinets2}
+          alt="cabinets"
+          width={400}
+          height={563}
+          formats={['avif', 'webp']}
+          pictureAttributes={{ class: "cs-picture cs-picture1" }}
+        />
+        <Picture
+          src={construction}
+          alt="house"
+          width={400}
+          height={563}
+          formats={['avif', 'webp']}
+          pictureAttributes={{ class: "cs-picture cs-picture2" }}
+        />
       </div>
       <!-- Right Content Section-->
       <div class="cs-right">
@@ -215,44 +180,22 @@ allows for repeated components, centralized data and greater room to scale as yo
     <div class="cs-container">
       <!-- Left Image Section -->
       <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/construction-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/construction.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/construction.jpg"
-            alt="house"
-            loading="lazy"
-            width="400"
-            height="560"
-          />
-        </picture>
-        <picture class="cs-picture cs-picture2">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/cabinets2-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/cabinets2.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/cabinets2.jpg"
-            alt="cabinets"
-            loading="lazy"
-            width="400"
-            height="560"
-          />
-        </picture>
+        <Picture
+          src={construction}
+          alt="house"
+          width={400}
+          height={560}
+          formats={['avif', 'webp']}
+          pictureAttributes={{ class: "cs-picture cs-picture1" }}
+        />
+        <Picture
+          src={cabinets2}
+          alt="cabinets"
+          width={400}
+          height={560}
+          formats={['avif', 'webp']}
+          pictureAttributes={{ class: "cs-picture cs-picture2" }}
+        />
       </div>
       <!-- Right Content Section-->
       <div class="cs-right">
@@ -291,185 +234,86 @@ allows for repeated components, centralized data and greater room to scale as yo
         <!-- Row 1-->
         <div class="cs-row cs-row-1">
           <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-          <picture class="cs-picture cs-picture1">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port1-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port1.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port1.jpg"
-              alt="new hallway"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture2">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port4-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port4.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port4.jpg"
-              alt="new home construction"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture3">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port7-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port7.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port7.jpg"
-              alt="building a new wall"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
+          <Picture
+            src={port1}
+            alt="new hallway"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture1" }}
+          />
+          <Picture
+            src={port4}
+            alt="new home construction"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture2" }}
+          />
+          <Picture
+            src={port7}
+            alt="building a new wall"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture3" }}
+          />
         </div>
         <!-- Row 2 -->
         <div class="cs-row cs-row-2">
           <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-          <picture class="cs-picture cs-picture1">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port2-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port2.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port2.jpg"
-              alt="new kitchen"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture2">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port5-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port5.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port5.jpg"
-              alt="apartment addition"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture3">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port8-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port8.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port8.jpg"
-              alt="kew kitchen cabinets"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
+          <Picture
+            src={port2}
+            alt="new kitchen"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture1" }}
+          />
+          <Picture
+            src={port5}
+            alt="apartment addition"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture2" }}
+          />
+          <Picture
+            src={port8}
+            alt="new kitchen cabinets"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture3" }}
+          />
         </div>
         <!-- Row 3 -->
         <div class="cs-row cs-row-3">
           <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-          <picture class="cs-picture cs-picture1">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port3-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port3.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port3.jpg"
-              alt="new kitchen"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture2">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port6-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port6.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port6.jpg"
-              alt="apartment addition"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture3">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port9-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port9.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port9.jpg"
-              alt="kew kitchen cabinets"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
+          <Picture
+            src={port3}
+            alt="new kitchen"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture1" }}
+          />
+          <Picture
+            src={port6}
+            alt="apartment addition"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture2" }}
+          />
+          <Picture
+            src={port9}
+            alt="new kitchen cabinets"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture3" }}
+          />
         </div>
       </div>
       <a href="/projects" class="cs-button-solid">View all projects</a>
@@ -796,14 +640,10 @@ allows for repeated components, centralized data and greater room to scale as yo
   }
 
   /* Desktop Parallax Effect - 1300px */
+  /* Note: Parallax effect removed as Picture component handles responsive images */
   @media only screen and (min-width: 81.25em) {
     #hero {
-      background: url("/assets/images/hero.jpg");
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      /* creates parallax effect on background image */
-      background-attachment: fixed;
+      /* Picture component provides optimized images */
     }
   }
 

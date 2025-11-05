@@ -2,11 +2,15 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import client from "@data/client.json";
 import Landing from "@components/Landing.astro";
+import { Picture } from "astro:assets";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import { getImage } from "astro:assets";
 const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+
+// Import contact page images
+import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
 ---
 
 <BaseLayout
@@ -112,21 +116,14 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         </a>
 
         <!-- Background Image-->
-        <picture class="cs-bg-picture">
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/skyscraper.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/skyscraper.jpg"
-            alt="building"
-            loading="lazy"
-            width="2500"
-            height="1667"
-          />
-        </picture>
+        <Picture
+          src={skyscraperImage}
+          alt="building"
+          width={2500}
+          height={1667}
+          formats={['avif', 'webp']}
+          pictureAttributes={{ class: "cs-bg-picture" }}
+        />
       </div>
     </div>
   </section>

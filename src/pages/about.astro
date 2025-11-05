@@ -3,11 +3,16 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
 import Landing from "@components/Landing.astro";
 import FAQ from "@components/FAQ.astro";
+import { Picture } from "astro:assets";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import { getImage } from "astro:assets";
 const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+
+// Import section images
+import cabinets2 from "@assets/images/services/cabinets2.jpg";
+import construction from "@assets/images/services/construction.jpg";
 ---
 
 <BaseLayout
@@ -32,44 +37,22 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
     <div class="cs-container">
       <!-- Left Image Section -->
       <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/cabinets2-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/cabinets2.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/cabinets2.jpg"
-            alt="cabinets"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
-        <picture class="cs-picture cs-picture2">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/construction-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/construction.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/construction.jpg"
-            alt="house"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
+        <Picture
+          src={cabinets2}
+          alt="cabinets"
+          width={400}
+          height={563}
+          formats={['avif', 'webp']}
+          pictureAttributes={{ class: "cs-picture cs-picture1" }}
+        />
+        <Picture
+          src={construction}
+          alt="house"
+          width={400}
+          height={563}
+          formats={['avif', 'webp']}
+          pictureAttributes={{ class: "cs-picture cs-picture2" }}
+        />
       </div>
       <!-- Right Content Section-->
       <div class="cs-right">

@@ -2,6 +2,7 @@
 import client from "@data/client.json";
 import navData from "@data/navData.json";
 import { getCurrentYear } from "@js/utils"
+import { Icon } from 'astro-icon/components';
 
 const currentYear = getCurrentYear()
 ---
@@ -11,14 +12,7 @@ const currentYear = getCurrentYear()
   <div class="container">
     <div class="left-section">
       <a class="logo" href="/"
-        ><img
-          loading="lazy"
-          decoding="async"
-          src="/assets/svgs/logo-white.svg"
-          alt="logo"
-          width="264"
-          height="78"
-        /></a
+        ><Icon name="logo-white" width="264" height="78" /></a
       >
       <p>
         Extra content if you need it, if not you can delete this whole p tag. I
