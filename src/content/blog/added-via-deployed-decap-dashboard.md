@@ -3,7 +3,7 @@ title: This kit now uses decapbridge for auth
 description: Say goodbye to deprecated Netlify Identity and hello to decapbridge
 author: Geoffrey
 date: 2025-05-17T16:10:00.000Z
-image: src/assets/images/blog/blog-cover.jpg
+image: "@assets/images/blog/blog-cover.jpg"
 imageAlt: This post was added via deployed Decap dashboard
 isFeatured: true
 ---
