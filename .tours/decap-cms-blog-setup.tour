@@ -23,7 +23,7 @@
       "line": 21
     },
     {
-      "file": "src/pages/blog/[...post].astro",
+      "file": "src/pages/blog/[post].astro",
       "description": "This is a dynamic route that generates individual blog post pages. The **getStaticPaths()** function creates a route for each blog post in the collection. The **render()** method converts the markdown content to HTML. Each post gets its own URL like /blog/post-title/.",
       "line": 13
     },
