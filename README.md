@@ -32,6 +32,7 @@
   - [Astro Content Collections](#AstroContentCollections)
   - [Preloading images](#preloadingimages)
   - [Sitemap Configuration](#sitemapConfiguration)
+- [Removing Decap CMS](#removingDecapCms)
 - [Deployment](#deployment)
 - [Acknowledgments](#acknowledgments)
 - [Conclusion](#conclusion)
@@ -688,6 +689,63 @@ export default defineConfig({
 > Note: Make sure to replace `https://yourwebsite.com` with your actual site URL in `astro.config.mjs` and `robots.txt`.
 
 Fore more configuration options, read the [full Astro Sitemap documentation](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
+
+<a name="removingDecapCms"></a>
+
+## Removing Decap CMS
+
+If you don't need a CMS for your project, you can easily remove Decap CMS using the included removal script.
+
+### When to Remove Decap CMS
+
+- Building a static site with no content management needs
+- Want to use local Content Collections without Decap
+- Prefer a different CMS solution
+- Simplifying the project for a specific use case
+
+### How to Remove
+
+Run the removal script:
+
+```bash
+npm run remove-decap
+```
+
+The script will:
+1. Ask for confirmation before proceeding
+2. Ask if you want to remove blog content and configuration
+   - Choose **yes** to completely remove blog functionality
+   - Choose **no** to keep blog files for local Content Collections (without Decap)
+
+### What Gets Removed
+
+When you run the script, it will move (not delete) the following to `scripts/deleted/`:
+
+**Always removed:**
+- CMS admin dashboard (`public/admin/` folder)
+- Admin page (`src/pages/admin.astro`)
+- Sitemap filter for `/admin` route in `astro.config.mjs`
+
+**Optionally removed (if you choose yes to remove blog content):**
+- Blog content collection (`src/content/blog/`)
+- Blog layout files (`src/layouts/Blog*.astro`)
+- Blog pages (`src/pages/blog/`)
+- Blog components (`src/components/FeaturedPost/`, `src/components/TableOfContents/`)
+- Blog navigation link from `src/data/navData.json`
+- Blog collection from `src/content.config.ts` (preserves other collections like projects)
+
+### Safety & Recovery
+
+- **Files are moved, not deleted** - Everything goes to `scripts/deleted/`
+- **Easy to restore** - Copy files back from `scripts/deleted/` if needed
+- **Commit first** - Always commit changes before running the script
+- **Other collections preserved** - If you have other Content Collections (like projects), they will be kept
+
+### After Running the Script
+
+1. Run `npm run build` to ensure everything works
+2. Check for any remaining references the script reports
+3. If you kept blog files (chose "no"), you can use Content Collections locally without Decap CMS
 
 <a name="deployment"></a>
 
