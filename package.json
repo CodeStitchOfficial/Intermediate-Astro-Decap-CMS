@@ -16,5 +16,8 @@
 		"astro-icon": "^1.1.5",
 		"autoprefixer": "^10.4.21",
 		"less": "^4.4.1"
+	},
+	"devDependencies": {
+		"netlify-plugin-cache": "^1.0.3"
 	}
 }

@@ -864,6 +864,28 @@ site_url: https://testing-decapbridge.netlify.app
 2. Push changes to the repo and test the authentication system. As the admin of the site, your login credentials to access the Decap dashboard are the same as your decapbridge.com credentials.
 3. Invite your client from your decapbridge dashboard. This will create a decapbridge collaborator account for them. From there, they will be able to access their Decap dashboard, reset their password etc.
 
+### Netlify Build Cache Optimization
+
+This project is optimized for Netlify deployment with build caching enabled via `netlify-plugin-cache`.
+
+**Important Notes:**
+- **First deployment** will be slower as it establishes the cache
+- **Subsequent deployments** will be significantly faster
+
+**Cache Management:**
+
+If you need to clear the cache (e.g., after major dependency updates or content collection errors):
+1. Go to Netlify Dashboard → Site Settings → Build & deploy
+2. Click "Clear cache and retry deploy"
+3. Or add `[skip cache]` to your commit message
+
+**When to clear the cache:**
+- After major dependency updates
+- If you encounter "Cannot find module" errors with content collections
+- After restructuring content files or renaming content collections
+
+The cache configuration is already set up in `netlify.toml` at the project root.
+
 <a name="acknowledgments"></a>
 
 ## Acknowledgments
