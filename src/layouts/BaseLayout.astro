@@ -1,11 +1,16 @@
 ---
+// Utils
 import { ClientRouter } from "astro:transitions";
 import type { GetImageResult } from 'astro';
-import client from "@data/client.json";
-import Header from "@components/Header/Header.astro";
-import Footer from "@components/Footer/Footer.astro";
 import "@styles/root.less";
 import "@styles/dark.less";
+
+// Components
+import Header from "@components/Header/Header.astro";
+import Footer from "@components/Footer/Footer.astro";
+
+// Data
+import client from "@data/client.json";
 
 // Define a type for images from the content collection
 type ContentImage = {

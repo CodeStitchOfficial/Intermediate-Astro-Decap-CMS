@@ -1,9 +1,11 @@
 ---
+// Utils
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { formatDate } from "@js/utils";
 import "@styles/sidebar.less";
 
+// Data
 const posts = await getCollection("blog");
 const featuredPosts = posts.filter((post) => post.data.isFeatured === true);
 ---

@@ -1,13 +1,16 @@
 ---
+// Utils
+import { getImage } from "astro:assets";
+
+// Components
 import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA/CTASimple.astro";
 import Banner from "@components/Banner/Banner.astro";
 import FAQ from "@components/FAQ/FAQ.astro";
 import SideBySide from "@components/SideBySide/SideBySide.astro";
+import CTA from "@components/CTA/CTASimple.astro";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+// Images
 import landingImage from "@assets/images/landing.jpg";
-import { getImage } from "astro:assets";
 const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 

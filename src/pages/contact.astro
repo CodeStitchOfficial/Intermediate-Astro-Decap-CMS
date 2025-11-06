@@ -1,16 +1,18 @@
 ---
+// Utils
+import { Picture, getImage } from "astro:assets";
+
+// Components
 import BaseLayout from "@layouts/BaseLayout.astro";
-import client from "@data/client.json";
 import Banner from "@components/Banner/Banner.astro";
-import { Picture } from "astro:assets";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+// Data
+import client from "@data/client.json";
+
+// Images
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: landingImage, format: 'avif'})
-
-// Import contact page images
 import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
+const optimizedImage = await getImage({src: landingImage, format: 'avif'})
 ---
 
 <BaseLayout

@@ -2,10 +2,14 @@
 /**
  * * This custom layout displays blog posts and a sidebar
  **/
-import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
-import { formatDate } from "@js/utils";
+
+// Utils
 import { Picture } from "astro:assets";
 import { Icon } from 'astro-icon/components';
+import { formatDate } from "@js/utils";
+
+// Components
+import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
 
 const { posts } = Astro.props;
 ---

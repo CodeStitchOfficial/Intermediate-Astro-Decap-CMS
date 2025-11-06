@@ -1,4 +1,8 @@
 ---
+// Utils
+import { getImage } from "astro:assets";
+
+// Components
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Hero from "@components/Hero/Hero.astro";
 import Services from "@components/Services/Services.astro";
@@ -10,24 +14,19 @@ import FAQ from "@components/FAQ/FAQ.astro";
 import CTASimple from "@components/CTA/CTASimple.astro";
 import CTAArtDirection from "@components/CTA/CTAArtDirection.astro";
 
-// Import hero image for preloading
+// Images
 import heroImage from "@assets/images/hero/hero.jpg";
-import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: heroImage, format: 'avif'});
+const optimizedImage = await getImage({ src: heroImage, format: "avif" });
 ---
 
-<BaseLayout
-  title="Pixel Perfect Websites"
-  description="Meta description for the page"
-  preloadedImage={optimizedImage}
->
-  <Hero />
-  <Services />
-  <SideBySide />
-  <SideBySideReverse />
-  <Gallery />
-  <Testimonials />
-  <FAQ />
-  <CTASimple />
-  <!-- <CTAArtDirection /> -->
+<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" preloadedImage={optimizedImage}>
+	<Hero />
+	<Services />
+	<SideBySide />
+	<SideBySideReverse />
+	<Gallery />
+	<Testimonials />
+	<FAQ />
+	<CTASimple />
+	<CTAArtDirection />
 </BaseLayout>

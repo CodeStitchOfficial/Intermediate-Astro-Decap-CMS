@@ -1,15 +1,14 @@
 ---
+// Utils
+import { Picture, getImage } from "astro:assets";
+
+// Components
 import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA/CTASimple.astro";
 import Banner from "@components/Banner/Banner.astro";
-import { Picture } from "astro:assets";
+import CTA from "@components/CTA/CTASimple.astro";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+// Images
 import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import { getImage } from "astro:assets";
-const optimizedImage = await getImage({ src: landingImage, format: "avif" });
-
-// Import portfolio images
 import port1 from "@assets/images/projects/port1.jpg";
 import port2 from "@assets/images/projects/port2.jpg";
 import port3 from "@assets/images/projects/port3.jpg";
@@ -19,6 +18,7 @@ import port6 from "@assets/images/projects/port6.jpg";
 import port7 from "@assets/images/projects/port7.jpg";
 import port8 from "@assets/images/projects/port8.jpg";
 import port9 from "@assets/images/projects/port9.jpg";
+const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 
 <BaseLayout title="Projects" description="Meta description for the page" preloadedImage={optimizedImage}>
