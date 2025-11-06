@@ -1,0 +1,29 @@
+{
+	"$schema": "https://aka.ms/codetour-schema",
+	"title": "Image Optimization Patterns",
+	"steps": [
+		{
+			"file": "src/pages/index.astro",
+			"description": "This shows the image optimization pattern for hero/landing images. First, import the image from **@assets/images/**. Then use **getImage()** to convert it to AVIF format. This optimized image is passed to BaseLayout's **preloadedImage** prop to preload it and use it for Open Graph tags.",
+			"line": 18
+		},
+		{
+			"file": "src/components/Hero/Hero.astro",
+			"description": "Here we use Astro's built-in **<Picture />** component for responsive images. It imports the image from @assets/, then renders it with multiple formats (**avif**, **webp**). The **priority** attribute tells the browser to load this image immediately (important for above-the-fold images). The **pictureAttributes** prop adds CSS classes.",
+			"line": 35
+		},
+		{
+			"file": "src/components/CSPicture/CSPicture.astro",
+			"description": "This is a custom component for **art-directed responsive images** - when you want different images for mobile vs desktop. It uses **getImage()** to optimize both sources separately, then outputs a <picture> element with <source> tags for different screen sizes. Use this when you need more control than the standard Picture component provides.",
+			"line": 16
+		},
+		{
+			"file": "src/assets/images",
+			"description": "All images should be stored in **src/assets/images/** (not public/assets/). You may organize images into subfolders like hero/, services/, gallery/, blog/ for better organization."
+		},
+		{
+			"file": "src/icons",
+			"description": "SVG assets used by the **<Icon />** component must be placed in the **src/icons/** folder. The Icon component (from astro-icon) allows you to use SVGs as reusable icon components. Example usage: `<Icon name=\"icon-name\" />` where icon-name.svg lives in this folder."
+		}
+	]
+}

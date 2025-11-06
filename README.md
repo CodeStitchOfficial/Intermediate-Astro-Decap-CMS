@@ -15,6 +15,7 @@
 
 - [Overview](#overview)
 - [Getting Started](#gettingStarted)
+- [Exploring the Codebase with CodeTour](#exploringWithCodeTour)
 - [Prerequisites](#prerequisites)
 - [Features](#features)
 - [Project Structure](#projectStructure)
@@ -62,6 +63,32 @@ Next, it is recommended to update `data/client.json` with some new information a
 project's `<head>` and contact information will automatically be filled out, providing a first peek into some of the benefits of SSGs.
 
 You can find all of CodeStitches `:root` variables, as well as .cs-topper, .cs-title and .cs-text, within the `root` stylesheet. Feel free to adjust these, or use our Content Flair micro-stitches, to update site-wide styles quickly.
+
+<a name="exploringWithCodeTour"></a>
+
+## Exploring the Codebase with CodeTour
+
+This template includes 8 interactive CodeTour walkthroughs to help you quickly understand the codebase architecture and start customizing your site. These tours guide you through key concepts, file locations, and best practices.
+
+### Available Tours
+
+1. **Getting Started - Initial Configuration** - Site configuration, client info, navigation setup, and deployment preparation
+2. **Component Composition** - How to use and swap CodeStitch components
+3. **Decap CMS & Blog System** - Complete walkthrough of the CMS and blog functionality
+4. **Image Optimization Patterns** - Image optimization techniques and best practices
+5. **Navigation System & Dropdowns** - Data-driven navigation with dropdown menus
+6. **Styling System & Dark Mode** - LESS variables, global styles, and dark mode implementation
+7. **Content Collections Deep Dive** - Working with Astro's Content Collections API
+8. **Deployment Checklist** - Pre-deployment configuration checklist including favicons
+
+### How to Use
+
+1. **Install the CodeTour extension** in VS Code from the [marketplace](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
+2. **View all tours**: Open Command Palette (Ctrl/Cmd+Shift+P) → "CodeTour: View Tours"
+3. **Start a tour**: Click on any tour from the list
+4. **Navigate**: Use arrow buttons or keyboard shortcuts to move through steps
+
+Tours are independent and can be taken in any order. Each tour includes precise file locations, line numbers, and clear explanations to help you understand how everything works together.
 
 <a name="prerequisites"></a>
 
@@ -113,6 +140,15 @@ Astro leverages an opinionated folder layout for your project. Every Astro proje
 
 ```
 .
+├── .tours/
+│   ├── getting-started.json
+│   ├── component-composition.json
+│   ├── decap-cms-blog-setup.json
+│   ├── image-optimization.json
+│   ├── navigation-system.json
+│   ├── styling-dark-mode.json
+│   ├── content-collections.json
+│   └── deployment-checklist.json
 ├── public/
 │   ├── admin/
 |   |   └── config.yml

@@ -1,0 +1,26 @@
+{
+	"$schema": "https://aka.ms/codetour-schema",
+	"title": "Navigation System & Dropdowns",
+	"steps": [
+		{
+			"file": "src/data/navData.json",
+			"description": "This file controls your site's navigation. Each entry has a **key** (display text), **url** (path), and optional **children** array for dropdown menus. The Header component automatically generates the navigation from this data. Add, remove, or modify entries here to change your site's navigation structure, **or** delete this file and manage your navigation directly in the Header component.",
+			"line": 2
+		},
+		{
+			"file": "src/data/navData.json",
+			"description": "Here's an example of a dropdown menu. The 'Projects' entry has a **children** array with two sub-items. Each child also has a key and url. The Header component will render this as a dropdown with hover/click functionality on desktop and expandable menus on mobile.",
+			"line": 15
+		},
+		{
+			"file": "src/components/Header/Header.astro",
+			"description": "The Header component imports navData.json and loops through each nav item. It checks if an item has children - if yes, it renders as a dropdown (li.cs-li.cs-dropdown). If no children, it renders as a regular link. The current page gets the **.cs-active** class automatically based on URL matching.",
+			"line": 32
+		},
+		{
+			"file": "src/js/nav.js",
+			"description": "This script adds interactivity to the navigation: **Mobile menu toggle** (hamburger button), **Dropdown accessibility** (keyboard navigation with Enter/Escape), and **Focus management**. It's wrapped in 'astro:page-load' event to work with Astro's View Transitions. The script handles both mobile and desktop dropdown behaviors.",
+			"line": 28
+		}
+	]
+}

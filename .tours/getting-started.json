@@ -1,0 +1,31 @@
+{
+	"$schema": "https://aka.ms/codetour-schema",
+	"title": "Getting Started - Initial Configuration",
+	"steps": [
+		{
+			"file": "src/data/client.json",
+			"description": "Start here! This file contains your site's core information. Update the **name**, **email**, **phoneDisplay** (shown on site), and **address** fields with your own details. The **domain** field is used throughout the site for canonical URLs and meta tags.",
+			"line": 2
+		},
+		{
+			"file": "astro.config.mjs",
+			"description": "Update the **site** URL to your actual domain before deployment. This is used for generating the sitemap and canonical URLs. For local development, you can leave it as-is, but change it before going live.",
+			"line": 6
+		},
+		{
+			"file": "src/layouts/BaseLayout.astro",
+			"description": "This is your master layout that wraps all pages. It accepts **title**, **description**, and optional **preloadedImage** props. The layout automatically generates meta tags, Open Graph tags, and includes your Header, Footer, and View Transitions. All pages in src/pages/ should use this layout with `<BaseLayout>`.",
+			"line": 42
+		},
+		{
+			"file": "src/styles/root.less",
+			"description": "Want to change colors, fonts, or spacing? The CSS variables defined here control the look across all components. Change **--primary**, **--secondary**, **--headerColor**, etc. to customize your site's appearance. These variables are used throughout all CodeStitch components.",
+			"line": 11
+		},
+		{
+			"file": "package.json",
+			"description": "Available commands: **npm run dev** starts the development server on localhost:4321, **npm run build** creates a production build, **npm preview** previews the production build locally, and **npm run remove-decap** removes Decap CMS if you don't need it.",
+			"line": 5
+		}
+	]
+}

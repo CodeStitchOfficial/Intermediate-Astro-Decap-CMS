@@ -1,0 +1,21 @@
+{
+	"$schema": "https://aka.ms/codetour-schema",
+	"title": "Component Composition - Using & Swapping Components",
+	"steps": [
+		{
+			"file": "src/pages/index.astro",
+			"description": "This is the homepage showing clean component composition. Notice how the page is just a series of component imports. Each component is self-contained with its own content and styling. You can also paste the stitches directly into any .astro file if you prefer not to use imports.",
+			"line": 11
+		},
+		{
+			"file": "src/components/Hero/Hero.astro",
+			"description": "This is a **CodeStitch component** - a complete UI section with no props. The content, images, and styling are all hard-coded in this file. To customize this hero section, edit the HTML, text, and images directly here. To use a different hero design, you could create Hero2.astro with a different CodeStitch design and import that instead.",
+			"line": 1
+		},
+		{
+			"file": "src/pages/index.astro",
+			"description": "See how components are imported using the path alias **@components/** which points to src/components/. The component-per-folder structure means each component lives in its own folder: Hero/Hero.astro, Services/Services.astro, etc. This makes them easy to find and organize.",
+			"line": 4
+		}
+	]
+}
