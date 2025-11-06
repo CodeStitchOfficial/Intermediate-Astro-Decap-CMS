@@ -1,3 +1,7 @@
+---
+// No utils nor props for this component
+---
+
 <section id="faq-1741">
 	<div class="cs-container">
 		<div class="cs-content">
@@ -43,19 +47,6 @@
 		</div>
 	</div>
 </section>
-
-<script>
-	// Paste the JS inside Astro:page-load wrapper for View Transitions purposes
-	document.addEventListener("astro:page-load", () => {
-		const faqItems = Array.from(document.querySelectorAll(".cs-faq-item"));
-		for (const item of faqItems) {
-			const onClick = () => {
-				item.classList.toggle("active");
-			};
-			item.addEventListener("click", onClick);
-		}
-	});
-</script>
 
 <style lang="less">
 	/* Mobile - 360px */
@@ -288,3 +279,16 @@
 		}
 	}
 </style>
+
+<script>
+	// Paste the JS inside Astro:page-load wrapper for View Transitions purposes
+	document.addEventListener("astro:page-load", () => {
+		const faqItems = Array.from(document.querySelectorAll(".cs-faq-item"));
+		for (const item of faqItems) {
+			const onClick = () => {
+				item.classList.toggle("active");
+			};
+			item.addEventListener("click", onClick);
+		}
+	});
+</script>
