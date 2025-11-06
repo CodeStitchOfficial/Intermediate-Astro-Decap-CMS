@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import client from "@data/client.json";
-import Landing from "@components/Landing.astro";
+import Banner from "@components/Banner/Banner.astro";
 import { Picture } from "astro:assets";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
@@ -22,7 +22,7 @@ import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
   <!--                    LANDING                   -->
   <!-- ============================================ -->
 
-  <Landing 
+  <Banner
     title="Contact"
     image={optimizedImage}
   />
