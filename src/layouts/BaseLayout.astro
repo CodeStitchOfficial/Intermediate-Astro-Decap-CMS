@@ -6,7 +6,7 @@ import "@styles/root.less";
 import "@styles/dark.less";
 
 // Components
-import Header from "@components/Header/Header.astro";
+import DynamicHeader from "@components/Header/DynamicHeader.astro";
 import Footer from "@components/Footer/Footer.astro";
 
 // Data
@@ -96,7 +96,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <!-- Screen reader skip main nav -->
             <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
     
-            <Header />
+            <DynamicHeader />
             <main id="main">
                 <slot/>
             </main>

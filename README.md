@@ -402,36 +402,81 @@ To add sub-pages, you will first need to create a new folder under `src/pages/` 
 
 <a name="navigationViaFrontMatter"></a>
 
-### Navigation via navData.json
+### Navigation System
 
-The header navigation in the project is powered by the `navData.json` file. Each page in the navigation should be included as an item with a `key` property (page title to be displayed) and a `url` property (include a trailing slash).
+This template provides **two Header component options** to suit different workflows:
 
-To add subpages, populate the `children` array with page objects (i.e., object containing a `key` and `url` property.) If a page has a populated `children` array, a dropdown will be created, provided that a Navigation + Dropdown Stitch is being used (see below). Navigation links will render in the order they're declared.
+#### 1. DynamicHeader (Default) - `src/components/Header/DynamicHeader.astro`
 
-If you wish to use an alternative Navigation stitch, you are welcome to swap out the `.cs-ul-wrapper` div in the Stitch for the one used in this starter kit.
-This will allow you to continue to reap the benefits of navigation vi navData.json. If you want to include dropdown menus in your navigation, you can use the `.cs-ul-wrapper` div below
+The header navigation is powered by the `navData.json` file, making it easy to manage navigation without editing component code.
 
-> Note: we have customised this navigation wrapper to include better accessibility features, which you will not find in navigation stitches.
+**How it works:**
+- Each page in the navigation is an item with a `key` property (page title to be displayed) and a `url` property (include a trailing slash)
+- To add subpages, populate the `children` array with page objects (containing a `key` and `url` property)
+- If a page has a populated `children` array, a dropdown menu will be automatically created
+- Uses helper functions from `src/js/utils.js` (`isCurrentPage()`, `getDropdownId()`) for cleaner code
+- Navigation links render in the order they're declared
+
+#### 2. StaticHeader - `src/components/Header/StaticHeader.astro`
+
+A hardcoded navigation option that's copy/paste friendly from CodeStitch.
+
+**How it works:**
+- No `navData.json` dependency - edit the markup directly in the component
+- Simple to understand and customize for those who prefer working directly with HTML
+- Includes all the same accessibility features and mobile responsiveness
+
+#### Switching Between Headers
+
+To switch which header is used, edit the import in `src/layouts/BaseLayout.astro`:
+
+```javascript
+// Option 1: Dynamic (default)
+import Header from "@components/Header/DynamicHeader.astro";
+
+// Option 2: Static
+import Header from "@components/Header/StaticHeader.astro";
+```
+
+#### Using a New CodeStitch Header
+
+If you want to use a different header design from the CodeStitch library, here's the process:
+
+1. **Browse and select** a header stitch from [codestitch.app](https://codestitch.app/)
+2. **Create a new component** file in `src/components/Header/` (e.g., `CustomHeader.astro`)
+3. **Copy the HTML** from CodeStitch and paste it into your component between the `---` frontmatter and the `<style>` tag
+4. **Copy the LESS/CSS** from CodeStitch and paste it into the component's `<style lang="less">` tag
+5. **Copy the JavaScript** from CodeStitch and paste it into `src/js/nav.js`, wrapped with `document.addEventListener('astro:page-load', () => {})` for View Transitions compatibility
+6. **Update imports and paths:**
+   - Replace image paths with Icon components where appropriate
+   - Import and add `<DarkModeToggle />` if your design includes dark mode
+   - Update any hardcoded URLs to use your actual routes
+7. **Update BaseLayout.astro** to import your new header component
+8. **Optional:** To make your custom header work with `navData.json`, replace the static navigation list with the `.cs-ul-wrapper` pattern shown below
+
+#### Making a CodeStitch Header Work with navData.json
+
+If you want your custom CodeStitch header to use data-driven navigation, replace the navigation list in your stitch with this wrapper:
+
 
 ```JSX
-<div class="cs-ul-wrapper">
-  <ul id="cs-expanded-ul" class="cs-ul">
+<div class="cs-ul-wrapper" id="cs-ul-wrapper">
+  <ul id="cs-expanded" class="cs-ul">
     {navData.map((entry) => (
       <li
         class:list={[
           "cs-li",
           { "cs-dropdown": entry.children?.length > 0 },
         ]}
-
       >
         {entry.children?.length > 0 ? (
           // If entry has children in navData.json, create a button and a dropdown icon
           <button
-          aria-expanded="false"
-          aria-controls={`submenu-${entry.key}`}
-          aria-label="dropdown-label"
+            id={getDropdownId(entry.key)}
+            aria-expanded="false"
+            aria-haspopup="menu"
             class:list={[
-              "cs-li-link cs-dropdown-button",
+              "cs-li-link cs-dropdown-toggle",
               { "cs-active": Astro.url.pathname.includes(entry.url)},
             ]}
           >
@@ -446,7 +491,7 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
               "cs-li-link",
               { "cs-active": Astro.url.pathname === entry.url },
             ]}
-            aria-current={Astro.url.pathname === entry.url ? "page" : undefined}
+            aria-current={isCurrentPage(Astro.url.pathname, entry.url)}
           >
             {entry.key}
           </a>
@@ -454,14 +499,13 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
 
         {entry.children?.length > 0 && (
           // If entry has children in navData.json, create a drop down menu
-          <ul id={`submenu-${entry.key}`} class="cs-drop-ul">
+          <ul class="cs-drop-ul" aria-labelledby={getDropdownId(entry.key)}>
             {entry.children.map((child) => (
               <li class="cs-drop-li">
                 <a
                   href={child.url}
                   class="cs-li-link cs-drop-link"
-                  aria-current={Astro.url.pathname === child.url ? "page" : undefined}
-                  aria-label={child.key}
+                  aria-current={isCurrentPage(Astro.url.pathname, child.url)}
                 >
                   {child.key}
                 </a>
@@ -475,16 +519,26 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
 </div>
 ```
 
-> Should you wish to use your own method of rendering the navigation, you can still take advantage of applying the "active" class styles by using a smaller amount of code within the class attribute of the link:
+Don't forget to import the helper functions in your component's frontmatter:
+
+```javascript
+import { isCurrentPage, getDropdownId } from "@js/utils.js";
+import navData from "@data/navData.json";
+```
+
+#### Manual Active State Management
+
+If you prefer to manage active states manually without `navData.json`, you can use this approach:
 
 ```JSX
 <li class="cs-li">
-  <a href="/about" class:list={["cs-li-link, {"cs-active": "/about/" === Astro.url.pathname }]}>About</a>
+  <a href="/about/" class:list={["cs-li-link", {"cs-active": "/about/" === Astro.url.pathname }]}>About</a>
 </li>
 ```
 
-> In this case, if the page slug is "about", the .cs-active class will be applied. You're welcome to adjust the page slug value to whatever you require ("blog", "/", "services", etc)
-> For dropdowns, you can use a similar philosophy on the parent dropdown's class attribute, checking to see if any of the child pages are active before applying the styles. An example of this is shown below:
+In this case, if the page slug is "about", the `.cs-active` class will be applied. You can adjust the page slug value to whatever you require ("blog", "/", "services", etc).
+
+For dropdowns, use a similar approach on the parent dropdown's class attribute, checking if any of the child pages are active:
 
 ```JSX
 <li class="nav-link cs-li cs-dropdown">
@@ -499,32 +553,22 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
   </span>
   <ul class="cs-drop-ul">
     <li class="cs-drop-li">
-      <a href="/annapolis-custom-closets" class="cs-drop-link">Annapolis</a>
+      <a href="/annapolis-custom-closets/" class="cs-drop-link">Annapolis</a>
     </li>
     <li class="cs-drop-li">
-      <a href="/bowie-custom-closets" class="cs-drop-link">Bowie</a>
+      <a href="/bowie-custom-closets/" class="cs-drop-link">Bowie</a>
     </li>
     <li class="cs-drop-li">
-      <a href="/severna-park-custom-closets" class="cs-drop-link">Severna Park</a>
+      <a href="/severna-park-custom-closets/" class="cs-drop-link">Severna Park</a>
     </li>
     <li class="cs-drop-li">
-      <a href="/odenton-custom-closets" class="cs-drop-link">Odenton</a>
+      <a href="/odenton-custom-closets/" class="cs-drop-link">Odenton</a>
     </li>
   </ul>
 </li>
 ```
 
-> In the above example, we're checking to see if the active page slug matches any of the four that are listed (annapolis, bowie, severna or odenton) and applying the .cs-active style to the parent if it does.
-
-Below the front matter is the page content. Any code that should be sent to a layout should be enclosed in the layout's component:
-
-```JSX
-<BaseLayout>
-  <!-- Your html/jsx code here -->
-</BaseLayout>
-```
-
-This code will be inserted into the `<slot />` component in BaseLayout.astro.
+In the above example, we're checking if the active page slug matches any of the listed options and applying the `.cs-active` style to the parent if it does.
 
 <a name="builtinastrocomponents"></a>
 
