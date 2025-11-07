@@ -191,13 +191,28 @@
 		}
 	}
 
-	// Hidden Screen reader skip nav button
+	// Skip to main content link - accessible to keyboard users and screen readers
 	.skip {
-		opacity: 0;
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: -1111111;
+		transform: translateY(-100%);
+		z-index: 10001; // Above header (10000)
+		opacity: 0;
+		overflow: hidden;
+		transition: transform 0.3s, opacity 0.3s;
+
+		&:focus {
+			transform: translateY(0);
+			opacity: 1;
+			padding: 1rem 1.5rem;
+			background-color: var(--primary);
+			color: var(--headerColor);
+			text-decoration: none;
+			font-weight: 700;
+			outline: 2px solid var(--primary);
+			outline-offset: 2px;
+		}
 	}
 }
 
