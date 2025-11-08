@@ -1,0 +1,33 @@
+---
+/**
+ * TEMPLATE PAGE
+ * =============
+ */
+
+// Utils
+import { getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+// Data
+
+// Images
+import placeholderImage from "@assets/images/placeholder.jpg";
+const optimizedPlaceholderImage = await getImage({ src: placeholderImage, format: "avif" });
+---
+
+<BaseLayout title="Placeholder Page" description="Meta description for the page" preloadedImage={optimizedPlaceholderImage}>
+	<!-- Paste your HTML code here -->
+</BaseLayout>
+
+<style lang="less">
+	/* Paste your LESS code here */
+</style>
+
+<script>
+	// Use this Astro:page-load wrapper if your project uses <ClientRouter /> (by default, it does) for View Transitions purposes
+	document.addEventListener("astro:page-load", () => {
+		// Paste your JS code here
+	});
+</script>
