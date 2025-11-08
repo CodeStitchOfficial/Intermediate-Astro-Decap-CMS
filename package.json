@@ -8,7 +8,8 @@
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"remove-decap": "node scripts/remove-decap.js"
+		"remove-decap": "node scripts/remove-decap.js",
+		"remove-demo": "node scripts/remove-demo.js"
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.5.1",

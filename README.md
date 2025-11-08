@@ -15,6 +15,8 @@
 
 - [Overview](#overview)
 - [Getting Started](#gettingStarted)
+  - [Removing Demo Content](#removingDemoContent)
+  - [Removing Decap CMS](#removingDecapCms)
 - [Exploring the Codebase with CodeTour](#exploringWithCodeTour)
 - [Prerequisites](#prerequisites)
 - [Features](#features)
@@ -63,6 +65,52 @@ Next, it is recommended to update `data/client.json` with some new information a
 project's `<head>` and contact information will automatically be filled out, providing a first peek into some of the benefits of SSGs.
 
 You can find all of CodeStitches `:root` variables, as well as .cs-topper, .cs-title and .cs-text, within the `root` stylesheet. Feel free to adjust these, or use our Content Flair micro-stitches, to update site-wide styles quickly.
+
+<a name="removingDemoContent"></a>
+
+### Removing Demo Content
+
+If you want a clean slate to build your own site from scratch, you can remove all showcase/demo UI content while keeping the blog and Decap CMS functionality intact.
+
+**Run the script:**
+
+```bash
+npm run remove-demo
+```
+
+**What gets removed:**
+- Demo pages (about, contact, projects, reviews)
+- Demo components (Hero, Services, Gallery, CTA, etc.)
+- Demo images (keeps placeholder.jpg)
+
+**What stays:**
+- Blog system and Decap CMS
+- Core infrastructure (BaseLayout, Header, Footer, navigation)
+- All functionality and utilities
+
+Files are moved to `scripts/deleted/` for backup.
+
+<a name="removingDecapCms"></a>
+
+### Removing Decap CMS
+
+If you don't need a CMS for your project, you can easily remove Decap CMS using the included removal script.
+
+**Run the script:**
+
+```bash
+npm run remove-decap
+```
+
+The script will ask for confirmation and whether you want to remove blog content too:
+- Choose **yes** to completely remove blog functionality
+- Choose **no** to keep blog files for local Content Collections (without Decap)
+
+**What gets removed:**
+- CMS admin dashboard (`public/admin/`, `src/pages/admin.astro`)
+- Optionally: Blog content, layouts, pages, and components
+
+Files are moved to `scripts/deleted/` for backup.
 
 <a name="exploringWithCodeTour"></a>
 
