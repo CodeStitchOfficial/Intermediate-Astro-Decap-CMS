@@ -16,15 +16,15 @@ import BlogRecentArticlesWithSidebar from "@layouts/BlogRecentArticlesWithSideba
 import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
-import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import placeholderImage from "@assets/images/placeholder.jpg";
+const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "avif" });
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
-const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 
-<BaseLayout title="Blog" description="Meta description for the page" preloadedImage={optimizedImage}>
-	<Banner title="Blog" image={optimizedImage} />
+<BaseLayout title="Blog" description="Meta description for the page" preloadedImage={placeholderOptimizedImage}>
+	<Banner title="Blog" image={placeholderOptimizedImage} />
 
 	<!-- Use the BlogRecentArticles layout to display the recent articles in a standard grid -->
 	<!-- <BlogRecentArticles posts={posts} /> -->

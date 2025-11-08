@@ -15,11 +15,11 @@ import CTASimple from "@components/CTA/CTASimple.astro";
 import CTAArtDirection from "@components/CTA/CTAArtDirection.astro";
 
 // Images
-import heroImage from "@assets/images/placeholder.jpg";
-const optimizedImage = await getImage({ src: heroImage, format: "avif" });
+import placeholderImage from "@assets/images/placeholder.jpg";
+const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "avif" });
 ---
 
-<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" preloadedImage={optimizedImage}>
+<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" preloadedImage={placeholderOptimizedImage}>
 	<Hero />
 	<Services />
 	<SideBySide />
