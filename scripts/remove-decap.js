@@ -25,6 +25,11 @@ const blogComponentsDestination = join(destinationDir, "components");
 // Blog-related component folders to remove
 const blogComponents = ["FeaturedPost", "TableOfContents"];
 
+// Blog-related icon files to remove
+const iconsPath = join("src", "icons");
+const blogIcons = ["profile.svg"];
+const iconsDestination = join(destinationDir, "icons-blog");
+
 /**
  * Move blog layout files (Blog*.astro)
  */
@@ -110,6 +115,51 @@ async function moveBlogComponents() {
 		return movedCount;
 	} catch (error) {
 		console.error(`Error moving blog components: ${error.message}`);
+		return 0;
+	}
+}
+
+/**
+ * Move blog-related icon files to deleted folder
+ */
+async function moveBlogIcons() {
+	try {
+		// Create destination directory
+		await fs.mkdir(iconsDestination, { recursive: true });
+
+		let movedCount = 0;
+		for (const icon of blogIcons) {
+			const sourcePath = join(iconsPath, icon);
+			const destPath = join(iconsDestination, icon);
+
+			try {
+				// Check if icon exists
+				await fs.access(sourcePath);
+
+				// Check if destination already exists and remove it
+				try {
+					await fs.access(destPath);
+					await fs.rm(destPath, { force: true });
+				} catch {
+					// Destination doesn't exist, which is fine
+				}
+
+				// Move the icon file
+				await fs.rename(sourcePath, destPath);
+				console.log(`Moved ${sourcePath} to ${destPath}`);
+				movedCount++;
+			} catch (error) {
+				if (error.code === "ENOENT") {
+					// Icon doesn't exist, skip silently
+					continue;
+				}
+				console.error(`Error moving ${sourcePath}: ${error.message}`);
+			}
+		}
+
+		return movedCount;
+	} catch (error) {
+		console.error(`Error moving blog icons: ${error.message}`);
 		return 0;
 	}
 }
@@ -419,6 +469,14 @@ async function removeDecapCMS() {
 				console.log(`Moved ${movedComponentsCount} blog component folder(s)`);
 			} else {
 				console.log(`No blog component folders found, skipping...`);
+			}
+
+			// Move blog icon files
+			const movedIconsCount = await moveBlogIcons();
+			if (movedIconsCount > 0) {
+				console.log(`Moved ${movedIconsCount} blog icon file(s)`);
+			} else {
+				console.log(`No blog icon files found, skipping...`);
 			}
 
 			// Move blog pages folder
