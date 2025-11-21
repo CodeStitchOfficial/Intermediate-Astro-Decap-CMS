@@ -12,15 +12,14 @@ import Gallery from "@components/Gallery/Gallery.astro";
 import Testimonials from "@components/Testimonials/Testimonials.astro";
 import FAQ from "@components/FAQ/FAQ.astro";
 import CTASimple from "@components/CTA/CTASimple.astro";
-import CTAArtDirection from "@components/CTA/CTAArtDirection.astro";
 
-// Images
-import placeholderImage from "@assets/images/placeholder.jpg";
-const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "avif" });
+// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Banner (for rendering)
+import heroImage from "@assets/images/hero/hero.jpg";
+const optimizedHeroImage = await getImage({ src: heroImage, format: "avif" });
 ---
 
-<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" preloadedImage={placeholderOptimizedImage}>
-	<Hero />
+<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" preloadedImage={optimizedHeroImage}>
+	<Hero image={optimizedHeroImage} />
 	<Services />
 	<SideBySide />
 	<SideBySideReverse />
@@ -28,5 +27,4 @@ const placeholderOptimizedImage = await getImage({ src: placeholderImage, format
 	<Testimonials />
 	<FAQ />
 	<CTASimple />
-	<!-- <CTAArtDirection /> -->
 </BaseLayout>

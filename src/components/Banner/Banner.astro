@@ -1,6 +1,17 @@
 ---
+/**
+ * * A simple banner used on every page except the homepage
+ * * Takes a title and an image as props
+ */
+
 // Utils
 import { Picture } from "astro:assets";
+import type { GetImageResult } from "astro";
+
+interface Props {
+	title: string; // heading text
+	image: GetImageResult; // pre-optimized image from getImage()
+}
 
 const { title, image } = Astro.props;
 ---
@@ -8,9 +19,7 @@ const { title, image } = Astro.props;
 <section id="int-hero">
 	<h1 id="home-h">{title}</h1>
 
-	<!-- standard <picture> attributes are supported. Set loading to lazy for assets below the fold -->
-	<!-- Note: because we use the getImage function to generate an optimized image, we need to use special properties. More info on [the getImage() page](https://docs.astro.build/en/guides/images/#generating-images-with-getimage) -->
-	<Picture src={image.src} width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} alt="" aria-hidden="true" decoding="async" alt="kitchen cabinets" loading="eager" />
+	<Picture src={image.src} width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} alt="" priority />
 </section>
 
 <style lang="less">
