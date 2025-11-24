@@ -1,3 +1,13 @@
+---
+// Utils
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+// Data
+import profile5 from "@assets/images/testimonials/profile5.png";
+import profile4 from "@assets/images/testimonials/profile-4.png";
+---
+
 <section id="reviews">
 	<div class="cs-container">
 		<span class="cs-topper">Our Reviews</span>
@@ -8,7 +18,7 @@
 		<ul class="cs-card-group">
 			<!-- Review 1 -->
 			<li class="cs-item">
-				<img class="cs-item-img" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile5.png" alt="profile picture" width="80" height="80" />
+				<Image src={profile5} class="cs-item-img" alt="Jon Doe" width="80" height="80" />
 				<p class="cs-item-p">
 					Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci
 					imperdiet eget eget.
@@ -17,11 +27,12 @@
 					Jon Doe
 					<span class="cs-desc">Homeowner</span>
 				</span>
-				<img class="cs-item-stars" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg" alt="stars" width="96" height="16" />
+				<Icon name="stars-yellow" class="cs-item-stars" />
 			</li>
 			<!-- Review 2 -->
 			<li class="cs-item">
-				<img class="cs-item-img" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/profile-4.png" alt="profile picture" width="80" height="80" />
+				<Image src={profile4} class="cs-item-img" alt="Jon Doe" width="80" height="80" />
+
 				<p class="cs-item-p">
 					Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci
 					imperdiet eget eget.
@@ -30,7 +41,7 @@
 					Jane Doe
 					<span class="cs-desc">Homeowner</span>
 				</span>
-				<img class="cs-item-stars" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg" alt="stars" width="96" height="16" />
+				<Icon name="stars-yellow" class="cs-item-stars" />
 			</li>
 		</ul>
 		<a aria-label="read more reviews" href="/reviews/" class="cs-button-solid">Our Reviews</a>
