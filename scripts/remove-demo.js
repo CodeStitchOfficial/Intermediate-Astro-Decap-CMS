@@ -346,7 +346,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 // Images
 import placeholderImg from "@assets/images/placeholder.jpg";
 
-const optimizedPlaceholder = await getImage({ src: placeholderImg, format: "avif" });
+const optimizedPlaceholder = await getImage({ src: placeholderImg, format: "webp" });
 ---
 
 <BaseLayout

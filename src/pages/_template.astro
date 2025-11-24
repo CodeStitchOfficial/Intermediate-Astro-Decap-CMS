@@ -14,7 +14,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 // Images
 import placeholderImage from "@assets/images/placeholder.jpg";
-const optimizedPlaceholderImage = await getImage({ src: placeholderImage, format: "avif" });
+const optimizedPlaceholderImage = await getImage({ src: placeholderImage, format: "webp" });
 ---
 
 <BaseLayout title="Placeholder Page" description="Meta description for the page" preloadedImage={optimizedPlaceholderImage}>

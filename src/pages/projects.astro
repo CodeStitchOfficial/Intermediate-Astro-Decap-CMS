@@ -10,7 +10,7 @@ import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
 import landingImage from "@assets/images/landing.jpg";
-const optimizedImage = await getImage({ src: landingImage, format: "avif" });
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
 <BaseLayout title="Projects" description="Meta description for the page" preloadedImage={optimizedImage}>

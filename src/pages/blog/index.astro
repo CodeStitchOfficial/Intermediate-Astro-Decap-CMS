@@ -17,7 +17,7 @@ import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
 import placeholderImage from "@assets/images/placeholder.jpg";
-const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "avif" });
+const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
