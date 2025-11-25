@@ -7,10 +7,10 @@
 // Utils
 import { Icon } from "astro-icon/components";
 import { Picture } from "astro:assets";
-import type { ImageMetadata } from "astro";
+import type { GetImageResult } from "astro";
 
 interface Props {
-	image: ImageMetadata;
+	image: GetImageResult; // pre-optimized image from getImage()
 }
 
 const { image } = Astro.props;
@@ -30,8 +30,8 @@ const { image } = Astro.props;
 		</div>
 	</div>
 
-	<!-- Background Image -->
-	<Picture src={image} alt="new home" formats={["avif", "webp"]} priority pictureAttributes={{ class: "cs-picture" }} />
+	<!-- Using the preloaded image from the props -->
+	<Picture src={image.src} alt="new home" width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} priority pictureAttributes={{ class: "cs-picture" }} />
 </section>
 
 <style lang="less">
