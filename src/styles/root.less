@@ -1,15 +1,93 @@
-/* CODESTITCH STYLES, RESET, HEADER/NAVIGATION AND FOOTER */
-
 /*-- -------------------------- -->
-<---        Core Styles         -->
+<---         CSS Reset          -->
 <--- -------------------------- -*/
 
-/* CodeStitch Root and Helpers */
+/* Modern CSS Reset - Based on Josh Comeau's reset */
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+	margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		interpolate-size: allow-keywords;
+	}
+}
+
+body {
+	/* 4. Add accessible line-height */
+	line-height: 1.5;
+	/* 5. Improve text rendering */
+	-webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+	text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+	isolation: isolate;
+}
+
+/*-- -------------------------- -->
+<---       CSS Variables        -->
+<--- -------------------------- -*/
+
 @media only screen and (min-width: 0em) {
-	// Website colors
 	:root {
-		--primary: hsl(80, 90%, 55%);
-		--primaryLight: hsl(80, 60%, 40%);
+		// Website colors
+		--primary: #aff425;
+		--primaryLight: #7aa329;
 		--secondary: #001f3f;
 		--secondaryLight: #001f3f;
 		--headerColor: #1a1a1a;
@@ -25,35 +103,119 @@
 		/* 60px - 100px top and bottom */
 		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
 	}
+}
 
-	// Text styles - can be replaced using CodeStitch's "Content Flair" Stitches
-	.cs-topper {
-		font-size: var(--topperFontSize);
-		font-weight: 700;
-		line-height: 1.2em;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--secondary);
-		display: block;
+/*-- -------------------------- -->
+<---       Font Faces           -->
+<--- -------------------------- -*/
+
+// Grab your fonts to locally host from https://google-webfonts-helper.herokuapp.com/fonts
+
+/* roboto-regular - latin */
+@font-face {
+	font-style: normal;
+	font-family: "Roboto";
+	font-weight: 400;
+	font-display: swap;
+	src: local(""), url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-700 - latin */
+@font-face {
+	font-style: normal;
+	font-family: "Roboto";
+	font-weight: 700;
+	font-display: swap;
+	src: local(""), url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-900 - latin */
+@font-face {
+	font-style: normal;
+	font-family: "Roboto";
+	font-weight: 900;
+	font-display: swap;
+	src: local(""), url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/*-- -------------------------- -->
+<---     Base Element Styles    -->
+<--- -------------------------- -*/
+
+body,
+html {
+	font-family: "Roboto", Arial, sans-serif;
+	font-size: 100%;
+	color: var(--bodyTextColor);
+}
+
+body {
+	transition: background-color 0.3s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--headerColor);
+}
+
+p,
+li,
+a {
+	font-size: (16/16rem);
+	line-height: 1.5em;
+}
+
+p,
+li {
+	color: var(--bodyTextColor);
+}
+
+a,
+button {
+	&:hover {
+		cursor: pointer;
 	}
+}
 
-	.cs-title {
-		font-size: var(--headerFontSize);
-		font-weight: 900;
-		line-height: 1.2em;
-		margin: 0 auto (16/16rem);
-		color: var(--headerColor);
-		position: relative;
-	}
+/*-- -------------------------- -->
+<---   Typography Helpers       -->
+<--- -------------------------- -*/
 
-	.cs-text {
-		font-size: var(--bodyFontSize);
-		line-height: 1.5em;
-		width: 100%;
-		margin: 0 auto;
-		color: var(--bodyTextColor);
-	}
+// Text styles - can be replaced using CodeStitch's "Content Flair" Stitches
+.cs-topper {
+	font-size: var(--topperFontSize);
+	font-weight: 700;
+	line-height: 1.2em;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--secondary);
+	display: block;
+}
 
+.cs-title {
+	font-size: var(--headerFontSize);
+	font-weight: 900;
+	line-height: 1.2em;
+	margin: 0 auto (16/16rem);
+	color: var(--headerColor);
+	position: relative;
+}
+
+.cs-text {
+	font-size: var(--bodyFontSize);
+	line-height: 1.5em;
+	width: 100%;
+	margin: 0 auto;
+	color: var(--bodyTextColor);
+}
+
+/*-- -------------------------- -->
+<---    Component Classes       -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0em) {
 	// Button - can be replaced using CodeStitch's "Button" Stitches
 	.cs-button-solid {
 		font-size: (16/16rem);
@@ -98,92 +260,11 @@
 			transition: width 0.3s;
 		}
 	}
-}
-
-/* Fonts and general styles */
-@media only screen and (min-width: 0em) {
-	// Grab your fonts to locally host from https://google-webfonts-helper.herokuapp.com/fonts
-
-	/* roboto-regular - latin */
-	@font-face {
-		font-style: normal;
-		font-family: "Roboto";
-		font-weight: 400;
-		font-display: swap;
-		src: local(""), url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-	}
-	/* roboto-700 - latin */
-	@font-face {
-		font-style: normal;
-		font-family: "Roboto";
-		font-weight: 700;
-		font-display: swap;
-		src: local(""), url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-	}
-	/* roboto-900 - latin */
-	@font-face {
-		font-style: normal;
-		font-family: "Roboto";
-		font-weight: 900;
-		font-display: swap;
-		src: local(""), url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-	}
-
-	body,
-	html {
-		font-family: "Roboto", Arial, sans-serif;
-		font-size: 100%;
-		margin: 0;
-		padding: 0;
-		color: var(--bodyTextColor);
-	}
-
-	*,
-	*:before,
-	*:after {
-		margin: 0;
-		box-sizing: border-box;
-		padding: 0;
-	}
-
-	body {
-		transition: background-color 0.3s;
-	}
 
 	.container {
 		width: 92%;
 		margin: auto;
 		position: relative;
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		margin: 0;
-		color: var(--headerColor);
-	}
-
-	p,
-	li,
-	a {
-		font-size: (16/16rem);
-		line-height: 1.5em;
-		margin: 0;
-	}
-
-	p,
-	li {
-		color: #353535;
-	}
-
-	a,
-	button {
-		&:hover {
-			cursor: pointer;
-		}
 	}
 
 	// Skip to main content link - accessible to keyboard users and screen readers
@@ -211,39 +292,27 @@
 	}
 }
 
-/* Reset Margins */
-@media only screen and (min-width: 1024px) {
-	body,
-	html {
-		margin: 0;
-		padding: 0;
-	}
-}
-
-/* Scale full website with the viewport width */
-@media only screen and (min-width: 2000px) {
-	body,
-	html {
-		font-size: 0.85vw;
-	}
-}
-
-/* Utility classes */
+/*-- -------------------------- -->
+<---      Utility Classes       -->
+<--- -------------------------- -*/
 
 // prevents icons from shrinking in flex containers
 [data-icon] {
 	flex-shrink: 0;
 }
 
-@media only screen and (min-width: 0rem) {
-	.cs-hide-on-mobile {
-		display: none;
-	}
-
-	.cs-hide-on-desktop {
-		display: block;
-	}
+.cs-hide-on-mobile {
+	display: none;
 }
+
+.cs-hide-on-desktop {
+	display: block;
+}
+
+/*-- -------------------------- -->
+<---   Responsive Adjustments   -->
+<--- -------------------------- -*/
+
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
 	.cs-hide-on-mobile {
@@ -252,5 +321,13 @@
 
 	.cs-hide-on-desktop {
 		display: none;
+	}
+}
+
+/* Scale full website with the viewport width */
+@media only screen and (min-width: 2000px) {
+	body,
+	html {
+		font-size: 0.85vw;
 	}
 }
