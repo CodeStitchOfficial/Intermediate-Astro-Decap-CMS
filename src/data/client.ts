@@ -3,7 +3,7 @@ export const SITE = {
 	title: "Code Stitch Web Designs",
 	tagline: "Professional Web Design Services",
 	description: "Code Stitch Web Designs offers top-tier web design and development services to meet all your project needs. Start exploring and contact our team for superior quality and reliability.",
-	url: "https://www.codestitch.app",
+	url: "https://www.yourwebsite.com",
 	author: "Code Stitch Team",
 	locale: "en",
 };
@@ -38,9 +38,5 @@ export const SEO = {
 // ===== OPEN GRAPH DEFAULTS =====
 export const OG = {
 	locale: "en_US",
-	type: "website",
-	url: SITE.url,
-	title: `${SITE.title}: Professional Web Design Services`,
-	description: SITE.description,
-	image: "/assets/social.jpg", // Default OG image (existing file)
+	image: "/assets/social.jpg", // Default fallback social image located in public/
 };
