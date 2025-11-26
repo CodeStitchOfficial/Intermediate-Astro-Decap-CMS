@@ -19,7 +19,7 @@ import CTAArtDirection from "@components/CTA/CTAArtDirection.astro";
 const optimizedHeroImage = await getImage({ src: heroImage, format: "webp" });
 ---
 
-<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" preloadedImage={optimizedHeroImage}>
+<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" heroImage={optimizedHeroImage}>
 	<Hero image={optimizedHeroImage} />
 	<Services />
 	<SideBySide />

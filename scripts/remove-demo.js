@@ -352,7 +352,7 @@ const optimizedPlaceholder = await getImage({ src: placeholderImg, format: "webp
 <BaseLayout
 	title="Welcome"
 	description="Your new Astro site"
-	preloadedImage={optimizedPlaceholder}
+	heroImage={optimizedPlaceholder}
 >
 	<main id="main">
 		<section id="welcome">

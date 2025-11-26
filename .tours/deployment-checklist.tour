@@ -8,8 +8,8 @@
 			"line": 6
 		},
 		{
-			"file": "src/data/client.json",
-			"description": "Verify your **domain** field matches your production domain. This is used throughout the site for meta tags and Open Graph URLs. Also double-check that all your contact information (email, phone, address) is correct.",
+			"file": "src/data/client.ts",
+			"description": "Verify your **SITE.url** field matches your production domain. This is used throughout the site for meta tags and Open Graph URLs. Also double-check that all your contact information in the **BUSINESS** object (email, phone, address) is correct.",
 			"line": 14
 		},
 		{

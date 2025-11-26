@@ -4,7 +4,7 @@
 	"steps": [
 		{
 			"file": "src/pages/index.astro",
-			"description": "This shows the image optimization pattern for hero/landing images. First, import the image from **@assets/images/**. Then use **getImage()** to convert it to AVIF format. This optimized image is passed to BaseLayout's **preloadedImage** prop to preload it and use it for Open Graph tags.",
+			"description": "This shows the image optimization pattern for hero/landing images. First, import the image from **@assets/images/**. Then use **getImage()** to optimize it (typically to webp format). This optimized image is passed to BaseLayout's **heroImage** prop to preload it and use it for Open Graph tags.",
 			"line": 18
 		},
 		{

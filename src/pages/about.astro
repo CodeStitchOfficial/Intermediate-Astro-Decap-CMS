@@ -14,7 +14,7 @@ import landingImage from "@assets/images/landing.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="About" description="Meta description for the page" preloadedImage={optimizedImage}>
+<BaseLayout title="About" description="Meta description for the page" heroImage={optimizedImage}>
 	<Banner title="About Us" image={optimizedImage} />
 	<SideBySide />
 	<FAQ />

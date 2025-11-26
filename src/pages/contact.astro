@@ -7,7 +7,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner/Banner.astro";
 
 // Data
-import client from "@data/client.json";
+import { BUSINESS } from "@data/client";
 
 // Images
 import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
@@ -15,7 +15,7 @@ import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Contact" description="Meta description for the page" preloadedImage={optimizedImage}>
+<BaseLayout title="Contact" description="Meta description for the page" heroImage={optimizedImage}>
 	<!-- ============================================ -->
 	<!--                    LANDING                   -->
 	<!-- ============================================ -->
@@ -59,21 +59,21 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 			<div class="cs-right-section">
 				<!--Email-->
 				<span class="cs-header">Email</span>
-				<a class="cs-link" href={`mailto:${client.email}`}>{client.email}</a>
+				<a class="cs-link" href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
 				<!--Phone-->
 				<span class="cs-header">Phone</span>
-				<a class="cs-link" href={`tel:${client.phoneForTel}`}>{client.phoneFormatted}</a>
+				<a class="cs-link" href={`tel:${BUSINESS.phoneForTel}`}>{BUSINESS.phoneFormatted}</a>
 				<!--Address-->
 				<span class="cs-header">Address</span>
-				<a class="cs-link" href={client.address.mapLink}>
-					{client.address.lineOne},
+				<a class="cs-link" href={BUSINESS.address.mapLink}>
+					{BUSINESS.address.lineOne},
 					<br />
-					{client.address.lineTwo},
+					{BUSINESS.address.lineTwo},
 					<br />
 					<span class="cs-block">
-						{client.address.city}
-						{client.address.state}
-						{client.address.zip}
+						{BUSINESS.address.city}
+						{BUSINESS.address.state}
+						{BUSINESS.address.zip}
 					</span>
 				</a>
 

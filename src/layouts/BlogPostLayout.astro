@@ -17,7 +17,7 @@ const { title, date, description, image, imageAlt, author } = post.data;
 const { Content, headings } = await render(post);
 ---
 
-<BaseLayout title={title} description={description} preloadedImage={image}>
+<BaseLayout title={title} description={description} heroImage={image}>
 	<!-- ============================================ -->
 	<!--         Blog Article + Sidebar layout        -->
 	<!-- ============================================ -->

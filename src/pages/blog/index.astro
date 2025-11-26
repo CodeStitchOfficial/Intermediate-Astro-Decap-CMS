@@ -23,7 +23,7 @@ const posts = await getCollection("blog");
 posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 ---
 
-<BaseLayout title="Blog" description="Meta description for the page" preloadedImage={placeholderOptimizedImage}>
+<BaseLayout title="Blog" description="Meta description for the page" heroImage={placeholderOptimizedImage}>
 	<Banner title="Blog" image={placeholderOptimizedImage} />
 
 	<!-- Use the BlogRecentArticles layout to display the recent articles in a standard grid -->

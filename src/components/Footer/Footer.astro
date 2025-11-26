@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import { getCurrentYear } from "@js/utils";
 
 // Data
-import client from "@data/client.json";
+import { BUSINESS } from "@data/client";
 import navData from "@data/navData.json";
 
 const currentYear = getCurrentYear();
@@ -47,21 +47,21 @@ const currentYear = getCurrentYear();
 					</li>
 					<li>
 						<a href="/contact/">
-							{client.address.lineOne}<br />
-							{client.address.lineTwo}<br />
-							{client.address.city}
-							{client.address.state}
-							{client.address.zip}
+							{BUSINESS.address.lineOne}<br />
+							{BUSINESS.address.lineTwo}<br />
+							{BUSINESS.address.city}
+							{BUSINESS.address.state}
+							{BUSINESS.address.zip}
 						</a>
 					</li>
 					<li>
-						<a href={`tel:${client.phoneForTel}`}>
+						<a href={`tel:${BUSINESS.phoneForTel}`}>
 							T:
-							{client.phoneFormatted}
+							{BUSINESS.phoneFormatted}
 						</a>
 					</li>
 					<li>
-						<a href={`mailto:${client.email}`}>Click to Email</a>
+						<a href={`mailto:${BUSINESS.email}`}>Click to Email</a>
 					</li>
 				</ul>
 			</div>
