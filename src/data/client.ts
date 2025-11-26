@@ -5,6 +5,7 @@ export const SITE = {
 	description: "Code Stitch Web Designs offers top-tier web design and development services to meet all your project needs. Start exploring and contact our team for superior quality and reliability.",
 	url: "https://www.codestitch.app",
 	author: "Code Stitch Team",
+	locale: "en",
 };
 
 // ===== BUSINESS INFO =====
@@ -13,6 +14,7 @@ export const BUSINESS = {
 	email: "help@codestitch.app",
 	phoneForTel: "555-779-4407",
 	phoneFormatted: "(555) 779-4407",
+	logo: "/assets/favicons/favicon.svg",
 	address: {
 		lineOne: "First Address Line",
 		lineTwo: "Second Address Line",
@@ -31,22 +33,6 @@ export const BUSINESS = {
 export const SEO = {
 	title: SITE.title,
 	description: SITE.description,
-	// Hardcoded structured data
-	structuredData: {
-		"@context": "https://schema.org",
-		"@type": "WebPage",
-		"@id": SITE.url,
-		url: SITE.url,
-		name: SITE.title,
-		description: SITE.description,
-		isPartOf: {
-			"@type": "WebSite",
-			url: SITE.url,
-			name: SITE.title,
-			description: SITE.description,
-		},
-		inLanguage: "en-US",
-	},
 };
 
 // ===== OPEN GRAPH DEFAULTS =====

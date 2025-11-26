@@ -4,6 +4,7 @@ import { render } from "astro:content";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { formatDate } from "@js/utils";
+import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
 import "@styles/markdown.less";
 
 // Components
@@ -15,9 +16,29 @@ import CTA from "@components/CTA/CTASimple.astro";
 const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author } = post.data;
 const { Content, headings } = await render(post);
+
+// Generate BlogPosting schema
+const imageUrl = image.src.startsWith("http") ? image.src : Astro.url.origin + image.src;
+
+const blogPostingSchema = getBlogPostingSchema(
+	{
+		title,
+		description,
+		url: Astro.url.href,
+		imageUrl,
+		imageAlt,
+		publishedTime: date.toISOString(),
+		modifiedTime: date.toISOString(),
+		author,
+	},
+	Astro.url.origin
+);
 ---
 
 <BaseLayout title={title} description={description} heroImage={image}>
+	<!-- Insert BlogPosting Schema via named slot -->
+	<script slot="schema" is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+
 	<!-- ============================================ -->
 	<!--         Blog Article + Sidebar layout        -->
 	<!-- ============================================ -->

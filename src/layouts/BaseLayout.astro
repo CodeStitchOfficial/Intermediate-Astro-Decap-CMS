@@ -11,7 +11,7 @@ import Footer from "@components/Footer/Footer.astro";
 import Meta from "@components/Meta/Meta.astro";
 
 // Data
-import { BUSINESS } from "@data/client";
+import { SITE, BUSINESS } from "@data/client";
 
 // Create a union type for heroImage
 type HeroImage = GetImageResult | ImageMetadata;
@@ -25,13 +25,15 @@ interface Props {
 const { description, title, heroImage } = Astro.props as Props;
 ---
 
-<html lang="en">
+<html lang={SITE.locale}>
 	<head>
 		<!-- View Transitions support -->
 		<ClientRouter />
 
-		<!-- SEO Meta Tags -->
-		<Meta meta={description} heroImage={heroImage} />
+		<!-- SEO Meta Tags (includes LocalBusiness schema + schema slot) -->
+		<Meta meta={description} heroImage={heroImage}>
+			<slot name="schema" slot="schema" />
+		</Meta>
 
 		<!-- If present, preloads the image passed as a prop -->
 		{heroImage && <link rel="preload" href={heroImage.src} as="image" />}

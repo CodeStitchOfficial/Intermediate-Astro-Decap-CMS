@@ -1,8 +1,10 @@
 ---
 import { getImage } from "astro:assets";
 import type { GetImageResult } from "astro";
-import { OG, SEO, SITE } from "@data/client";
+import { OG, SITE } from "@data/client";
+import { getLocalBusinessSchema } from "@js/localBusinessSchema.js";
 
+// Props and Types
 type HeroImage = GetImageResult | ImageMetadata;
 
 interface Props {
@@ -12,11 +14,13 @@ interface Props {
 
 const { meta = SITE.description, heroImage } = Astro.props;
 
-// ===== URL & CANONICAL =====
+// Data
+const localBusinessSchema = getLocalBusinessSchema(Astro.url.origin);
 const canonical = Astro.url.href;
+const ogTitle = OG.title;
+const ogDescription = OG.description;
 
-// ===== SOCIAL IMAGE LOGIC =====
-// Priority: 1) Provided heroImage, 2) Default /assets/social.jpg
+// Social image logic - Priority: 1) Provided heroImage, 2) Default /assets/social.jpg
 let socialImage: string;
 
 if (heroImage) {
@@ -38,15 +42,14 @@ if (heroImage) {
 	// Default social image (static file in public/)
 	socialImage = Astro.url.origin + OG.image;
 }
-
-// ===== OPEN GRAPH =====
-const ogTitle = OG.title;
-const ogDescription = OG.description;
 ---
 
-<!-- Inject structured data into the page if provided. This data is formatted as JSON-LD, a method recommended by Google for structured data pass:
+<!-- LocalBusiness Schema (on ALL pages) - customize your JSON-LD structured data:
      https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data  -->
-<script is:inline type="application/ld+json" set:html={JSON.stringify(SEO.structuredData)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+<!-- Allow additional schemas from child layouts (e.g., BlogPosting for blog posts) -->
+<slot name="schema" />
 
 <!-- Standard Meta Tags -->
 <meta charset="utf-8" />
