@@ -1,6 +1,9 @@
 ---
 /**
  * * This custom layout displays blog posts and a sidebar
+ * * It uses a loop so be careful when swapping out the HTML and CSS with the stitch of your choice
+ * * Usage, in src/pages/blog/index.astro:
+ * * <BlogRecentArticlesWithSidebar posts={posts} />
  **/
 
 // Utils
@@ -27,10 +30,8 @@ const { posts } = Astro.props;
 							}}
 							src={post.data.image}
 							quality={"mid"}
-							formats={["avif", "webp", "jpg"]}
+							formats={["avif", "webp"]}
 							alt={post.data.imageAlt}
-							loading="lazy"
-							decoding="async"
 							aria-hidden="true"
 						/>
 
