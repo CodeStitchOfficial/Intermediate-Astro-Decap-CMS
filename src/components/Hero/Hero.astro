@@ -13,7 +13,7 @@ interface Props {
 	image: GetImageResult; // pre-optimized image from getImage()
 }
 
-const { image } = Astro.props;
+const { image } = Astro.props as Props;
 ---
 
 <section id="hero">

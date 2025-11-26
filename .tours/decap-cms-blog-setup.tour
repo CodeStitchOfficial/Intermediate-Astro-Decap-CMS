@@ -29,7 +29,7 @@
     },
     {
       "file": "src/layouts/BlogPostLayout.astro",
-      "description": "This layout wraps blog posts with a sidebar containing the Table of Contents and Featured Posts. It receives the post data as props and renders the markdown content with the **<Content />** component. The sidebar shows recent articles and automatically generates a table of contents from the post's headings.",
+      "description": "This layout wraps blog posts with a sidebar containing the Table of Contents and Featured Posts. It receives the post data as props and renders the markdown content with the `<Content />` component. The sidebar shows recent articles and automatically generates a table of contents from the post's headings.",
       "line": 1
     },
     {

@@ -11,7 +11,7 @@ import Footer from "@components/Footer/Footer.astro";
 import Meta from "@components/Meta/Meta.astro";
 
 // Data
-import { SITE, BUSINESS } from "@data/client";
+import { SITE } from "@data/client";
 
 // Create a union type for heroImage
 type HeroImage = GetImageResult | ImageMetadata;
@@ -30,35 +30,13 @@ const { description, title, heroImage } = Astro.props as Props;
 		<!-- View Transitions support -->
 		<ClientRouter />
 
-		<!-- SEO Meta Tags (includes LocalBusiness schema + schema slot) -->
-		<Meta meta={description} heroImage={heroImage}>
+		<!-- SEO Meta Tags -->
+		<Meta title={title} description={description} heroImage={heroImage}>
 			<slot name="schema" slot="schema" />
 		</Meta>
 
 		<!-- If present, preloads the image passed as a prop -->
 		{heroImage && <link rel="preload" href={heroImage.src} as="image" />}
-
-		<!-- For home page, use service keywords for the title, including location for SEO.
-            Other pages should just include the page name.
-
-            EXAMPLE:
-            Home page - House Painting Contractors | Painters and Co. | TestCity, WA
-            About Page - About us | Painters and Co.
-            -->
-		<title>
-			{
-				Astro.url.pathname === "/"
-					? `${title}
-                |
-                ${BUSINESS.name}
-                |
-                ${BUSINESS.address.city},
-                ${BUSINESS.address.state}`
-					: `${title}
-                    |
-                    ${BUSINESS.name}`
-			}
-		</title>
 
 		<!-- Sitewide Scripts -->
 		<script src="@js/nav.js"></script>
