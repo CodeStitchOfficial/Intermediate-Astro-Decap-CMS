@@ -17,7 +17,7 @@ const projectsPath = join("src", "pages", "projects");
 
 // Demo component paths
 const componentsPath = join("src", "components");
-const demoComponents = ["Hero", "Services", "Gallery", "SideBySide", "SideBySideReverse", "Testimonials", "FAQ", "Reviews", "CTA", "Banner"];
+const demoComponents = ["Footer", "Hero", "Services", "Gallery", "SideBySide", "SideBySideReverse", "Testimonials", "FAQ", "Reviews", "CTA", "Banner"];
 
 // Image paths
 const imagesPath = join("src", "assets", "images");
