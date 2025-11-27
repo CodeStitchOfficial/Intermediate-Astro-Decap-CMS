@@ -5,7 +5,6 @@
  */
 
 // Utils
-import { getImage } from "astro:assets";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -13,11 +12,9 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 // Data
 
 // Images
-import placeholderImage from "@assets/images/placeholder.jpg";
-const optimizedPlaceholderImage = await getImage({ src: placeholderImage, format: "webp" });
 ---
 
-<BaseLayout title="Placeholder Page" description="Meta description for the page" heroImage={optimizedPlaceholderImage}>
+<BaseLayout title="Placeholder Page" description="Meta description for the page">
 	<!-- Paste your HTML code here -->
 </BaseLayout>
 

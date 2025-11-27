@@ -16,15 +16,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
 <BaseLayout title="Contact" description="Meta description for the page" heroImage={optimizedImage}>
-	<!-- ============================================ -->
-	<!--                    LANDING                   -->
-	<!-- ============================================ -->
-
 	<Banner title="Contact" image={optimizedImage} />
-
-	<!-- ============================================ -->
-	<!--                Contact Form                  -->
-	<!-- ============================================ -->
 
 	<section id="cs-contact">
 		<div class="cs-container">
@@ -93,19 +85,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
-		:root {
-			/* 13px - 16px */
-			--topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-			/* 31px - 49px */
-			--headerFontSize: clamp(1.9375rem, 4.5vw, 3.0625rem);
-			--bodyFontSize: 1rem;
-
-			/* 60px - 100px top and bottom */
-			--sectionPadding: clamp(3.75em, 7.82vw, 6.25em) 1rem;
-		}
-
 		#cs-contact {
-			font-family: "Roboto", "Arial", sans-serif;
 			padding: var(--sectionPadding);
 
 			.cs-container {
