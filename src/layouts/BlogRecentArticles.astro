@@ -1,55 +1,56 @@
 ---
 /**
  * * This layout uses a Recent Articles stitch to display blog posts
- * * This layout uses a loop so be careful when swapping out the HTML and CSS with the stitch of your choice
-**/
+ * * It uses a loop so be careful when swapping out the HTML and CSS with the stitch of your choice
+ * * Usage, in src/pages/blog/index.astro:
+ * * <BlogRecentArticles posts={posts} />
+ **/
 
-import { formatDate } from "@js/utils";
+// Utils
 import { Picture } from "astro:assets";
+import { formatDate } from "@js/utils";
 
 const { posts } = Astro.props;
 ---
 
 <section id="blog-1144">
-    <div class="cs-container">
-        <div class="cs-content">
-            <div class="cs-content-flex">
-                <span class="cs-topper">News And Articles</span>
-                <h2 class="cs-title">Directly from The Latest News and Articles</h2>
-            </div>
-        </div>
-        <ul class="cs-card-group">
-            {posts.length === 0 && <h1>No Recent Posts</h1>}
-            {
-                posts.length >= 1 &&
-                    posts.map((post) => (
-                        <li class="cs-item">
-                            <Picture
-                                pictureAttributes={{
-                                    class: "cs-picture",
-                                }}
-                                src={post.data.image}
-                                quality={"mid"}
-                                formats={["avif", "webp", "jpg"]}
-                                alt={post.data.imageAlt}
-                                loading="lazy"
-                                decoding="async"
-                                aria-hidden="true"
-                            />
-                            <div class="cs-flex">
-                                <span class="cs-date">{formatDate(post.data.date)}</span>
-                                <h3 class="cs-h3">{post.data.title}</h3>
-                                <p class="cs-item-text">{post.data.description}</p>
-                                <a href={post.id} class="cs-link">
-                                    Read More
-                                    <img class="cs-arrow" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/event-chevron.svg" alt="icon" width="20" height="20" aria-hidden="true" />
-                                </a>
-                            </div>
-                        </li>
-                    ))
-            }
-        </ul>
-    </div>
+	<div class="cs-container">
+		<div class="cs-content">
+			<div class="cs-content-flex">
+				<span class="cs-topper">News And Articles</span>
+				<h2 class="cs-title">Directly from The Latest News and Articles</h2>
+			</div>
+		</div>
+		<ul class="cs-card-group">
+			{posts.length === 0 && <h1>No Recent Posts</h1>}
+			{
+				posts.length >= 1 &&
+					posts.map((post) => (
+						<li class="cs-item">
+							<Picture
+								pictureAttributes={{
+									class: "cs-picture",
+								}}
+								src={post.data.image}
+								quality={"mid"}
+								formats={["avif", "webp"]}
+								alt={post.data.imageAlt}
+								aria-hidden="true"
+							/>
+							<div class="cs-flex">
+								<span class="cs-date">{formatDate(post.data.date)}</span>
+								<h3 class="cs-h3">{post.data.title}</h3>
+								<p class="cs-item-text">{post.data.description}</p>
+								<a href={post.id} class="cs-link">
+									Read More
+									<img class="cs-arrow" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/event-chevron.svg" alt="icon" width="20" height="20" aria-hidden="true" />
+								</a>
+							</div>
+						</li>
+					))
+			}
+		</ul>
+	</div>
 </section>
 
 <style lang="less">

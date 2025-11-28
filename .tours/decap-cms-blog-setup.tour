@@ -1,0 +1,41 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Decap CMS & Blog System",
+  "steps": [
+    {
+      "file": "public/admin/config.yml",
+      "description": "This is the Decap CMS configuration file. It defines the **backend** (git-gateway with DecapBridge authentication), **media_folder** (where uploaded images are stored: src/assets/images/blog/), and **collections** (blog posts). The blog collection schema here defines what fields editors can fill out when creating posts.",
+      "line": 2
+    },
+    {
+      "file": "src/content.config.ts",
+      "description": "**CRITICAL:** This Content Collections schema MUST match the Decap CMS config.yml schema exactly. When you add or modify fields in config.yml, update this schema to match. The blog collection here defines: title, description, author, date, image (optimized by Astro), imageAlt, and isFeatured (optional).",
+      "line": 8
+    },
+    {
+      "file": "src/content/blog/added-via-deployed-decap-dashboard.md",
+      "description": "This is an example blog post created via Decap CMS. Notice the frontmatter at the top matches the schema from content.config.ts. Images referenced here are stored in src/assets/images/blog/ and automatically optimized by Astro's image pipeline. The markdown body is rendered as HTML on the blog post page.",
+      "line": 1
+    },
+    {
+      "file": "src/pages/blog/index.astro",
+      "description": "The blog listing page uses **getCollection('blog')** to fetch all blog posts, then sorts them by date (newest first). The posts are filtered and mapped to display as cards. This demonstrates how to query Content Collections and display them dynamically.",
+      "line": 21
+    },
+    {
+      "file": "src/pages/blog/[post].astro",
+      "description": "This is a dynamic route that generates individual blog post pages. The **getStaticPaths()** function creates a route for each blog post in the collection. The **render()** method converts the markdown content to HTML. Each post gets its own URL like /blog/post-title/.",
+      "line": 13
+    },
+    {
+      "file": "src/layouts/BlogPostLayout.astro",
+      "description": "This layout wraps blog posts with a sidebar containing the Table of Contents and Featured Posts. It receives the post data as props and renders the markdown content with the `<Content />` component. The sidebar shows recent articles and automatically generates a table of contents from the post's headings.",
+      "line": 1
+    },
+    {
+      "file": "src/pages/admin.astro",
+      "description": "This page sets up the Decap CMS admin dashboard at /admin. It includes the Decap CMS scripts and registers custom preview templates. Visit /admin (after authentication setup) to create and edit blog posts through a visual interface.",
+      "line": 1
+    }
+  ]
+}

@@ -1,10 +1,18 @@
 ---
 /**
  * * This custom layout displays blog posts and a sidebar
+ * * It uses a loop so be careful when swapping out the HTML and CSS with the stitch of your choice
+ * * Usage, in src/pages/blog/index.astro:
+ * * <BlogRecentArticlesWithSidebar posts={posts} />
  **/
-import FeaturedPost from "@components/FeaturedPost.astro";
-import { formatDate } from "@js/utils";
+
+// Utils
 import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { formatDate } from "@js/utils";
+
+// Components
+import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
 
 const { posts } = Astro.props;
 ---
@@ -22,17 +30,15 @@ const { posts } = Astro.props;
 							}}
 							src={post.data.image}
 							quality={"mid"}
-							formats={["avif", "webp", "jpg"]}
+							formats={["avif", "webp"]}
 							alt={post.data.imageAlt}
-							loading="lazy"
-							decoding="async"
 							aria-hidden="true"
 						/>
 
 						<div class="blog-header">
 							<div class="blog-authorGroup">
 								<picture class="blog-author-img">
-									<img src="/assets/svgs/profile.svg" alt="house" width="32" height="32" decoding="async" />
+									<Icon name="profile" width="32" height="32" />
 								</picture>
 								<span class="blog-author">{post.data.author}</span>
 								<span aria-hidden="true" class="blog-dot" />

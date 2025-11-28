@@ -1,332 +1,174 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
-import Landing from "@components/Landing.astro";
+// Utils
+import { Picture, getImage } from "astro:assets";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import port1 from "@assets/images/projects/port1.jpg";
+import port2 from "@assets/images/projects/port2.jpg";
+import port3 from "@assets/images/projects/port3.jpg";
+import port4 from "@assets/images/projects/port4.jpg";
+import port5 from "@assets/images/projects/port5.jpg";
+import port6 from "@assets/images/projects/port6.jpg";
+import port7 from "@assets/images/projects/port7.jpg";
+import port8 from "@assets/images/projects/port8.jpg";
+import port9 from "@assets/images/projects/port9.jpg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout
-  title="Projects"
-  description="Meta description for the page"
-  preloadedImage = {optimizedImage}
->
-  <!-- ============================================ -->
-  <!--                    LANDING                   -->
-  <!-- ============================================ -->
+<BaseLayout title="Projects" description="Meta description for the page" heroImage={optimizedImage}>
+	<!-- ============================================ -->
+	<!--                    BANNER                   -->
+	<!-- ============================================ -->
 
-  <Landing 
-    title="Project 1"
-    image={optimizedImage}
-  />
+	<Banner title="Project 1" image={optimizedImage} />
 
-  <!-- ============================================ -->
-  <!--                   Gallery                    -->
-  <!-- ============================================ -->
+	<!-- ============================================ -->
+	<!--                   Gallery                    -->
+	<!-- ============================================ -->
 
-  <section id="gallery">
-    <div class="cs-container">
-      <div class="cs-image-group">
-        <!-- Row 1-->
-        <div class="cs-row cs-row-1">
-          <picture class="cs-picture cs-picture1">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port1-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port1.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port1.jpg"
-              alt="new hallway"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture2">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port4-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port4.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port4.jpg"
-              alt="new home construction"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture3">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port7-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port7.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port7.jpg"
-              alt="building a new wall"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-        </div>
-        <!-- Row 2 -->
-        <div class="cs-row cs-row-2">
-          <picture class="cs-picture cs-picture1">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port2-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port2.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port2.jpg"
-              alt="new kitchen"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture2">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port5-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port5.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port5.jpg"
-              alt="apartment addition"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture3">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port8-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port8.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port8.jpg"
-              alt="kew kitchen cabinets"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-        </div>
-        <!-- Row 3 -->
-        <div class="cs-row cs-row-3">
-          <picture class="cs-picture cs-picture1">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port3-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port3.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port3.jpg"
-              alt="new kitchen"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture2">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port6-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port6.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port6.jpg"
-              alt="apartment addition"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-          <picture class="cs-picture cs-picture3">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/portfolio/port9-m.jpg"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/portfolio/port9.jpg"
-            />
-            <img
-              aria-hidden="true"
-              decoding="async"
-              src="/assets/images/portfolio/port9.jpg"
-              alt="kew kitchen cabinets"
-              loading="lazy"
-              width="400"
-              height="560"
-            />
-          </picture>
-
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-        </div>
-      </div>
-      <a href="/contact" class="cs-button-solid">Get Free Quote</a>
-    </div>
-  </section>
-  <CTA />
+	<section id="gallery">
+		<div class="cs-container">
+			<div class="cs-image-group">
+				<!-- Row 1-->
+				<div class="cs-row cs-row-1">
+					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+					<Picture src={port1} alt="new hallway" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
+					<Picture src={port4} alt="new home construction" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
+					<Picture src={port7} alt="building a new wall" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
+				</div>
+				<!-- Row 2 -->
+				<div class="cs-row cs-row-2">
+					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+					<Picture src={port2} alt="new kitchen" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
+					<Picture src={port5} alt="apartment addition" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
+					<Picture src={port8} alt="new kitchen cabinets" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
+				</div>
+				<!-- Row 3 -->
+				<div class="cs-row cs-row-3">
+					<!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+					<Picture src={port3} alt="new kitchen" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} />
+					<Picture src={port6} alt="apartment addition" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} />
+					<Picture src={port9} alt="new kitchen cabinets" width={400} height={560} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture3" }} />
+				</div>
+			</div>
+			<a href="/contact/" class="cs-button-solid">Get Free Quote</a>
+		</div>
+	</section>
+	<CTA />
 </BaseLayout>
 
 <style lang="less">
-  /* PAGE-SPECIFIC STYLES FOR THE PROJECTS PAGE */
+	/* PAGE-SPECIFIC STYLES FOR THE PROJECTS PAGE */
 
-  /*-- -------------------------- -->
+	/*-- -------------------------- -->
 <---          Gallery           -->
 <--- -------------------------- -*/
 
-  /* Mobile - 360px - Contains hover animation */
-  @media only screen and (min-width: 0em) {
-    #gallery {
-      /* Centers button */
-      text-align: center;
-      padding: var(--sectionPadding);
-      position: relative;
-      /* Prevents overflow from the image going off screen */
-      overflow: hidden;
-      .cs-container {
-        width: 100%;
-        max-width: (1322/16em);
-        margin: auto;
-      }
+	/* Mobile - 360px - Contains hover animation */
+	@media only screen and (min-width: 0em) {
+		#gallery {
+			/* Centers button */
+			text-align: center;
+			padding: var(--sectionPadding);
+			position: relative;
+			/* Prevents overflow from the image going off screen */
+			overflow: hidden;
+			.cs-container {
+				width: 100%;
+				max-width: (1322/16em);
+				margin: auto;
+			}
 
-      .cs-image-group {
-        /* used rem so it doesn't scale with the font size of on parent */
-        font-size: ~"min(1.1vw, 1em)";
-        width: 100%;
-        max-width: (1322/16em);
-        margin: 0 auto (60/16rem);
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: (30/16em);
-      }
+			.cs-image-group {
+				/* used rem so it doesn't scale with the font size of on parent */
+				font-size: ~"min(1.1vw, 1em)";
+				width: 100%;
+				max-width: (1322/16em);
+				margin: 0 auto (60/16rem);
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				gap: (30/16em);
+			}
 
-      .cs-row {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        gap: (30/16em);
-      }
+			.cs-row {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center;
+				gap: (30/16em);
+			}
 
-      .cs-picture {
-        display: block;
-        position: relative;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-      }
+			.cs-picture {
+				display: block;
+				position: relative;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
 
-      .cs-row-1 {
-        .cs-picture1 {
-          width: (420/16em);
-          height: (567/16em);
-        }
+			.cs-row-1 {
+				.cs-picture1 {
+					width: (420/16em);
+					height: (567/16em);
+				}
 
-        .cs-picture2 {
-          width: (420/16em);
-          height: (629/16em);
-        }
+				.cs-picture2 {
+					width: (420/16em);
+					height: (629/16em);
+				}
 
-        .cs-picture3 {
-          width: (420/16em);
-          height: (512/16em);
-        }
-      }
+				.cs-picture3 {
+					width: (420/16em);
+					height: (512/16em);
+				}
+			}
 
-      .cs-row-2 {
-        .cs-picture1 {
-          width: (420/16em);
-          height: (492/16em);
-        }
+			.cs-row-2 {
+				.cs-picture1 {
+					width: (420/16em);
+					height: (492/16em);
+				}
 
-        .cs-picture2 {
-          width: (420/16em);
-          height: (517/16em);
-        }
+				.cs-picture2 {
+					width: (420/16em);
+					height: (517/16em);
+				}
 
-        .cs-picture3 {
-          width: (420/16em);
-          height: (629/16em);
-        }
-      }
+				.cs-picture3 {
+					width: (420/16em);
+					height: (629/16em);
+				}
+			}
 
-      .cs-row-3 {
-        .cs-picture1 {
-          width: (420/16em);
-          height: (625/16em);
-        }
+			.cs-row-3 {
+				.cs-picture1 {
+					width: (420/16em);
+					height: (625/16em);
+				}
 
-        .cs-picture2 {
-          width: (420/16em);
-          height: (452/16em);
-        }
+				.cs-picture2 {
+					width: (420/16em);
+					height: (452/16em);
+				}
 
-        .cs-picture3 {
-          width: (420/16em);
-          height: (629/16em);
-        }
-      }
-    }
-  }
+				.cs-picture3 {
+					width: (420/16em);
+					height: (629/16em);
+				}
+			}
+		}
+	}
 </style>

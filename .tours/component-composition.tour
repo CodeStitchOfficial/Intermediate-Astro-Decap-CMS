@@ -1,0 +1,41 @@
+{
+	"$schema": "https://aka.ms/codetour-schema",
+	"title": "Component Composition - Using & Swapping Components",
+	"steps": [
+		{
+			"file": "src/pages/index.astro",
+			"description": "This is the homepage showing clean component composition. Notice how the page is just a series of component imports. Each component is self-contained with its own content and styling. You can also paste the stitches directly into any .astro file if you prefer not to use components.",
+			"line": 22
+		},
+		{
+			"file": "src/components/FAQ/FAQ.astro",
+			"description": "This is a **CodeStitch component** - a complete UI section with no props. The content, images, and styling are all hard-coded in this file. To customize this hero section, edit the HTML, text, and images directly here, or paste another stitch of your choice!",
+			"line": 1
+		},
+		{
+			"file": "src/components/FAQ/FAQ.astro",
+			"description": "## Astro File Structure: Frontmatter\n\nThe **frontmatter** is the section between the `---` fences at the top. This is where you:\n- Import components, utilities, and assets\n- Write server-side code (runs at build time)\n- Define variables and process data\n- Organize imports by category (Utils → Components → Data → Images)",
+			"line": 1
+		},
+		{
+			"file": "src/components/FAQ/FAQ.astro",
+			"description": "## Astro File Structure: HTML Template\n\nAfter the frontmatter comes the **HTML section**. This is where you paste the HTML from the stitch. Astro files support JSX-like syntax, meaning you can:\n- Use JavaScript expressions in curly braces `{variable}`\n- Reference imported images: `src={heroImage}`\n- Use self-closing tags like `<Picture />`\n- Mix HTML with component tags",
+			"line": 5
+		},
+		{
+			"file": "src/components/FAQ/FAQ.astro",
+			"description": "## Astro File Structure: Styles\n\nThe **`<style lang=\"less\">`** section is where you paste the LESS styles from your stitch. Key points:\n- Styles are scoped to this component by default\n- Use `lang=\"less\"` to enable LESS syntax (nesting, variables, etc.)\n- Paste the stitch styles directly without modification\n- LESS features like `&` for parent selector work perfectly here",
+			"line": 51
+		},
+		{
+			"file": "src/components/FAQ/FAQ.astro",
+			"description": "## Astro File Structure: Scripts\n\nFor interactive components, you can add a **`<script>`** section after the styles. When pasting JavaScript from a CodeStitch:\n\n```astro\n<script>\n    // Your JS code here\n</script>\n```\n\n⚠️ **Important:** If using View Transitions (enabled in BaseLayout), always wrap your code in the `'astro:page-load'` event listener. This ensures scripts re-run when navigating between pages, preventing broken interactivity.\n\n```astro\n<script>\n  document.addEventListener('astro:page-load', () => {\n    // Your JS code here\n  });\n</script>\n```",
+			"line": 283
+		},
+		{
+			"file": "src/pages/index.astro",
+			"description": "See how components are imported using the path alias **@components/** which points to src/components/. All these aliases are set up in `tsconfig.json`.",
+			"line": 15
+		}
+	]
+}

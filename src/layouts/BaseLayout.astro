@@ -1,137 +1,88 @@
 ---
+// Utils
 import { ClientRouter } from "astro:transitions";
-import type { GetImageResult } from 'astro';
-import client from "@data/client.json";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
+import type { GetImageResult } from "astro";
 import "@styles/root.less";
 import "@styles/dark.less";
 
-// Define a type for images from the content collection
-type ContentImage = {
-  src: string;
-  width: number;
-  height: number;
-  format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
-};
+// Components
+import DynamicHeader from "@components/Header/DynamicHeader.astro";
+import Footer from "@components/Footer/Footer.astro";
+import Meta from "@components/Meta/Meta.astro";
 
-// Create a union type for preloadedImage
-type PreloadedImage = GetImageResult | ContentImage;
+// Data
+import { SITE } from "@data/client";
+
+// Create a union type for heroImage
+type HeroImage = GetImageResult | ImageMetadata;
 
 interface Props {
-  title: string;
-  description: string;
-  preloadedImage?: PreloadedImage; // optional - passing a preloadedImage to BaseLayout will 1. preload the image and 2. use the image for og socials tags in the <head>
+	title: string;
+	description: string;
+	heroImage?: HeroImage; // optional - passing a heroImage to BaseLayout will 1. preload the image and 2. use the image for og socials tags in the <head>
 }
 
-const { description, title, preloadedImage } = Astro.props as Props;
-
+const { description, title, heroImage } = Astro.props as Props;
 ---
-<!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
-<html lang="en">
-        <head>
-            <!-- View Transitions support -->
-            <ClientRouter />
 
-            <!-- Standard meta tags -->
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content={description}>
-            <meta name="keywords" content="">
-            <link rel="canonical" href={`https://${client.domain}${Astro.url.pathname}`}>
+<html lang={SITE.locale}>
+	<head>
+		<!-- View Transitions support -->
+		<ClientRouter />
 
-            <!-- If present, preloads the image passed as a prop -->
-            {preloadedImage && <link rel="preload" href={preloadedImage.src} as="image" />}
+		<!-- SEO Meta Tags -->
+		<Meta title={title} description={description} heroImage={heroImage}>
+			<slot name="schema" slot="schema" />
+		</Meta>
 
-            <!-- Social Media Display - generated automatically with the props passd to BaseLayout -->
-            <meta property="og:title" content={title} />
-            <meta property="og:description" content={description} />
-            <meta property="og:type" content="website" />
-            <meta property="og:url" content={`https://${client.domain}${Astro.url.pathname}`} />
-            {
-              preloadedImage && 
-                <meta property="og:image" content={preloadedImage.src} /> 
-                <meta property="og:image:secure_url" content={preloadedImage.src} />
-            }
-                
-            <!-- Favicons -->
-            <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-            <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png?v1">
-            <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-            <link rel="manifest" href="/assets/favicons/site.webmanifest">
-            <meta name="msapplication-TileColor" content="#da532c">
-            <meta name="theme-color" content="#ffffff">
-         
-            <!-- For home page, use service keywords for the title, including location for SEO.
-            Other pages should just include the page name.
-            
-            EXAMPLE:
-            Home page - House Painting Contractors | Painters and Co. | TestCity, WA
-            About Page - About us | Painters and Co.
-            -->
-            <title>
-                {Astro.url.pathname === "/" ?  (`${ title }
-                |
-                ${ client.name }
-                |
-                ${ client.address.city },
-                ${ client.address.state }`) :
-                (`${ title }
-                    |
-                    ${ client.name }`)
-            }
-            </title>
+		<!-- If present, preloads the image passed as a prop -->
+		{heroImage && <link rel="preload" href={heroImage.src} as="image" />}
 
-            <!-- Sitewide Scripts -->
-            <script src="@js/nav.js"></script>
-        </head>
-        <body>
-            <!-- Screen reader skip main nav -->
-            <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
-    
-            <Header />
-            <main id="main">
-                <slot/>
-            </main>
-            <Footer />
-    
-        </body>
+		<!-- Sitewide Scripts -->
+		<script src="@js/nav.js"></script>
+	</head>
+	<body>
+		<!-- Screen reader skip main nav -->
+		<a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
+
+		<DynamicHeader />
+		<main id="main">
+			<slot />
+		</main>
+		<Footer />
+	</body>
 </html>
 
 <script is:inline>
-    // helper functions to toggle dark mode
-    function enableDarkMode() {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    }
-  
-    function disableDarkMode() {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  
-    function setTheme() {
-      // default to the light theme
-      let theme = "light";
-  
-      // check localStorage for a saved 'theme' variable. if it's there, the user has visited before, so apply the necessary theme choices
-      if (localStorage.getItem("theme")) {
-        theme = localStorage.getItem("theme");
-      }
-      // if it's not there, check to see if the user has applied dark mode preferences themselves in the browser
-      else if (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
-        theme = "dark";
-      }
-  
-      // if there is no preference set, the default of light will be used. apply accordingly
-      theme === "dark" ? enableDarkMode() : disableDarkMode();
-    }
-  
-    setTheme();
-  
-    document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
-  </script>
+	// helper functions to toggle dark mode
+	function enableDarkMode() {
+		document.body.classList.add("dark-mode");
+		localStorage.setItem("theme", "dark");
+	}
+
+	function disableDarkMode() {
+		document.body.classList.remove("dark-mode");
+		localStorage.setItem("theme", "light");
+	}
+
+	function setTheme() {
+		// default to the light theme
+		let theme = "light";
+
+		// check localStorage for a saved 'theme' variable. if it's there, the user has visited before, so apply the necessary theme choices
+		if (localStorage.getItem("theme")) {
+			theme = localStorage.getItem("theme");
+		}
+		// if it's not there, check to see if the user has applied dark mode preferences themselves in the browser
+		else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+			theme = "dark";
+		}
+
+		// if there is no preference set, the default of light will be used. apply accordingly
+		theme === "dark" ? enableDarkMode() : disableDarkMode();
+	}
+
+	setTheme();
+
+	document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
+</script>

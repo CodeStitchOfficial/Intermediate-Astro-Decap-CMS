@@ -1,465 +1,393 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import client from "@data/client.json";
-import Landing from "@components/Landing.astro";
+// Utils
+import { Picture, getImage } from "astro:assets";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+
+// Data
+import { BUSINESS } from "@data/client";
+
+// Images
+import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout
-  title="Contact"
-  description="Meta description for the page"
-  preloadedImage = {optimizedImage}
->
-  <!-- ============================================ -->
-  <!--                    LANDING                   -->
-  <!-- ============================================ -->
+<BaseLayout title="Contact" description="Meta description for the page" heroImage={optimizedImage}>
+	<Banner title="Contact" image={optimizedImage} />
 
-  <Landing 
-    title="Contact"
-    image={optimizedImage}
-  />
+	<section id="cs-contact">
+		<div class="cs-container">
+			<form id="cs-form" name="Contact Form" method="post">
+				<div class="cs-content">
+					<span class="cs-topper">Contact</span>
+					<h2 class="cs-title">Get in Touch</h2>
+					<p class="cs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus elementum ullamcorper ipsum porttitor aliquam. Id magna urna ultrices odio pulvinar. Sed ut.</p>
+				</div>
+				<label>
+					Name
+					<input required type="text" id="name" name="name" placeholder="Name" />
+				</label>
+				<label>
+					Email
+					<input required type="text" id="email" name="email" placeholder="Email" />
+				</label>
+				<label>
+					Phone
+					<input required type="text" id="phone" name="phone" placeholder="Phone" />
+				</label>
+				<label>
+					How Did You Find Us
+					<input type="text" id="find" name="find-us" placeholder="How did you find us?" />
+				</label>
+				<label class="cs-label-message">
+					Message
+					<textarea required name="Message" id="message" placeholder="Write message..."></textarea>
+				</label>
+				<button class="cs-button-solid" type="submit">Submit Message</button>
+			</form>
+			<div class="cs-right-section">
+				<!--Email-->
+				<span class="cs-header">Email</span>
+				<a class="cs-link" href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+				<!--Phone-->
+				<span class="cs-header">Phone</span>
+				<a class="cs-link" href={`tel:${BUSINESS.phoneForTel}`}>{BUSINESS.phoneFormatted}</a>
+				<!--Address-->
+				<span class="cs-header">Address</span>
+				<a class="cs-link" href={BUSINESS.address.mapLink}>
+					{BUSINESS.address.lineOne},
+					<br />
+					{BUSINESS.address.lineTwo},
+					<br />
+					<span class="cs-block">
+						{BUSINESS.address.city}
+						{BUSINESS.address.state}
+						{BUSINESS.address.zip}
+					</span>
+				</a>
 
-  <!-- ============================================ -->
-  <!--                Contact Form                  -->
-  <!-- ============================================ -->
-
-  <section id="cs-contact">
-    <div class="cs-container">
-      <form id="cs-form" name="Contact Form" method="post">
-        <div class="cs-content">
-          <span class="cs-topper">Contact</span>
-          <h2 class="cs-title">Get in Touch</h2>
-          <p class="cs-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus
-            elementum ullamcorper ipsum porttitor aliquam. Id magna urna
-            ultrices odio pulvinar. Sed ut.
-          </p>
-        </div>
-        <label>
-          Name
-          <input
-            required
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Name"
-          />
-        </label>
-        <label>
-          Email
-          <input
-            required
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
-          />
-        </label>
-        <label>
-          Phone
-          <input
-            required
-            type="text"
-            id="phone"
-            name="phone"
-            placeholder="Phone"
-          />
-        </label>
-        <label>
-          How Did You Find Us
-          <input
-            type="text"
-            id="find"
-            name="find-us"
-            placeholder="How did you find us?"
-          />
-        </label>
-        <label class="cs-label-message">
-          Message
-          <textarea
-            required
-            name="Message"
-            id="message"
-            placeholder="Write message..."></textarea>
-        </label>
-        <button class="cs-button-solid" type="submit">Submit Message</button>
-      </form>
-      <div class="cs-right-section">
-        <!--Email-->
-        <span class="cs-header">Email</span>
-        <a class="cs-link" href={`mailto:${client.email}`}>{client.email}</a>
-        <!--Phone-->
-        <span class="cs-header">Phone</span>
-        <a class="cs-link" href={`tel:${client.phoneForTel}`}
-          >{client.phoneFormatted}</a
-        >
-        <!--Address-->
-        <span class="cs-header">Address</span>
-        <a class="cs-link" href={client.address.mapLink}>
-          {client.address.lineOne},
-          <br />
-          {client.address.lineTwo},
-          <br />
-          <span class="cs-block">
-            {client.address.city}
-            {client.address.state}
-            {client.address.zip}
-          </span>
-        </a>
-
-        <!-- Background Image-->
-        <picture class="cs-bg-picture">
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/skyscraper.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/skyscraper.jpg"
-            alt="building"
-            loading="lazy"
-            width="2500"
-            height="1667"
-          />
-        </picture>
-      </div>
-    </div>
-  </section>
+				<!-- Background Image-->
+				<Picture src={skyscraperImage} alt="building" width={2500} height={1667} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-bg-picture" }} />
+			</div>
+		</div>
+	</section>
 </BaseLayout>
 
 <style lang="less">
-  /* PAGE-SPECIFIC STYLES FOR THE CONTACT PAGE */
+	/* PAGE-SPECIFIC STYLES FOR THE CONTACT PAGE */
 
-  /*-- -------------------------- -->
+	/*-- -------------------------- -->
 <---          Contact           -->
 <--- -------------------------- -*/
 
-  /* Mobile - 360px */
-  @media only screen and (min-width: 0em) {
-    :root {
-      /* 13px - 16px */
-      --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-      /* 31px - 49px */
-      --headerFontSize: clamp(1.9375rem, 4.5vw, 3.0625rem);
-      --bodyFontSize: 1rem;
+	/* Mobile - 360px */
+	@media only screen and (min-width: 0em) {
+		#cs-contact {
+			padding: var(--sectionPadding);
 
-      /* 60px - 100px top and bottom */
-      --sectionPadding: clamp(3.75em, 7.82vw, 6.25em) 1rem;
-    }
+			.cs-container {
+				width: 100%;
+				/* changes to 1280px at desktop */
+				max-width: (800/16rem);
+				margin: auto;
+			}
 
-    #cs-contact {
-      font-family: "Roboto", "Arial", sans-serif;
-      padding: var(--sectionPadding);
+			.cs-content {
+				width: 100%;
+			}
 
-      .cs-container {
-        width: 100%;
-        /* changes to 1280px at desktop */
-        max-width: (800/16rem);
-        margin: auto;
-      }
+			.cs-topper {
+				text-align: left;
+				/* 8px - 12px */
+				margin-bottom: clamp(0.5rem, 1.4vw, 0.75rem);
+			}
 
-      .cs-content {
-        width: 100%;
-      }
+			.cs-title {
+				text-align: left;
+				max-width: (800/16rem);
+			}
 
-      .cs-topper {
-        text-align: left;
-        /* 8px - 12px */
-        margin-bottom: clamp(0.5rem, 1.4vw, 0.75rem);
-      }
+			.cs-text {
+				text-align: left;
+				/* 404px - 522px */
+				max-width: clamp(25.25rem, 30vw, 32.625rem);
+				margin: 0 auto 0 0;
+				/* 40px - 48px */
+				margin-bottom: clamp(2.5rem, 6.3vw, 3rem);
+			}
 
-      .cs-title {
-        text-align: left;
-        max-width: (800/16rem);
-      }
+			#cs-form {
+				margin-bottom: (40/16rem);
+				label {
+					font-size: (16/16rem);
+					font-weight: 700;
+					line-height: 1.5em;
+					/* 12px - 20px */
+					margin-bottom: clamp(0.75rem, 1.3em, 1.25rem);
+					color: var(--headerColor);
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: flex-start;
+				}
 
-      .cs-text {
-        text-align: left;
-        /* 404px - 522px */
-        max-width: clamp(25.25rem, 30vw, 32.625rem);
-        margin: 0 auto 0 0;
-        /* 40px - 48px */
-        margin-bottom: clamp(2.5rem, 6.3vw, 3rem);
-      }
+				.cs-label-message {
+					/* 32px - 48px */
+					margin-bottom: clamp(2rem, 6.3vw, 3rem);
+				}
 
-      #cs-form {
-        margin-bottom: (40/16rem);
-        label {
-          font-size: (16/16rem);
-          font-weight: 700;
-          line-height: 1.5em;
-          /* 12px - 20px */
-          margin-bottom: clamp(0.75rem, 1.3em, 1.25rem);
-          color: var(--headerColor);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-start;
-        }
+				input,
+				textarea {
+					font-size: (16/16rem);
+					width: 100%;
+					height: (64/16rem);
+					margin-top: (4/16rem);
+					/* prevents border & padding from affecting height */
+					box-sizing: border-box;
+					padding-left: (20/16rem);
+					border: 1px solid #b4b2c7;
+					border-radius: (8/16rem);
+					transition: border 0.3s;
 
-        .cs-label-message {
-          /* 32px - 48px */
-          margin-bottom: clamp(2rem, 6.3vw, 3rem);
-        }
+					&:hover {
+						border: 1px solid var(--primary);
+					}
+				}
 
-        input,
-        textarea {
-          font-size: (16/16rem);
-          width: 100%;
-          height: (64/16rem);
-          margin-top: (4/16rem);
-          /* prevents border & padding from affecting height */
-          box-sizing: border-box;
-          padding-left: (20/16rem);
-          border: 1px solid #b4b2c7;
-          border-radius: (8/16rem);
-          transition: border 0.3s;
+				textarea {
+					font-family: inherit;
+					min-height: (120/16rem);
+					padding-top: (20/16rem);
+				}
 
-          &:hover {
-            border: 1px solid var(--primary);
-          }
-        }
+				.cs-button-solid {
+					width: 100%;
+					border: none;
+				}
+			}
 
-        textarea {
-          font-family: inherit;
-          min-height: (120/16rem);
-          padding-top: (20/16rem);
-        }
+			.cs-right-section {
+				height: (320/16rem);
+				/* 24px - 40px top & bottom */
+				/* 20px - 40px left & right */
+				padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
+				border-radius: (8/16rem);
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				align-items: flex-start;
+				position: relative;
+				/* cuts off corners on img tag */
+				overflow: hidden;
+			}
 
-        .cs-button-solid {
-          width: 100%;
-          border: none;
-        }
-      }
+			.cs-header {
+				/* 16px - 20px */
+				font-size: clamp(1rem, 3vw, 1.25rem);
+				font-weight: 700;
+				line-height: 1.2em;
+				margin-bottom: (8/16rem);
+				color: var(--bodyTextColorWhite);
+				display: block;
+			}
 
-      .cs-right-section {
-        height: (320/16rem);
-        /* 24px - 40px top & bottom */
-        /* 20px - 40px left & right */
-        padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
-        border-radius: (8/16rem);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-        position: relative;
-        /* cuts off corners on img tag */
-        overflow: hidden;
-      }
+			.cs-link {
+				/* 16px - 20px */
+				font-size: clamp(1rem, 3vw, 1.25rem);
+				line-height: 1.2em;
+				text-decoration: none;
+				margin-bottom: (20/16rem);
+				color: var(--bodyTextColorWhite);
+				display: block;
+				position: relative;
 
-      .cs-header {
-        /* 16px - 20px */
-        font-size: clamp(1rem, 3vw, 1.25rem);
-        font-weight: 700;
-        line-height: 1.2em;
-        margin-bottom: (8/16rem);
-        color: var(--bodyTextColorWhite);
-        display: block;
-      }
+				&:before {
+					/* Animated underline */
+					content: "";
+					width: 0%;
+					height: 2px;
+					/* current color of the parent */
+					background: currentColor;
+					opacity: 1;
+					display: block;
+					position: absolute;
+					bottom: (-2/16rem);
+					left: 0;
+					transition: width 0.3s;
+				}
 
-      .cs-link {
-        /* 16px - 20px */
-        font-size: clamp(1rem, 3vw, 1.25rem);
-        line-height: 1.2em;
-        text-decoration: none;
-        margin-bottom: (20/16rem);
-        color: var(--bodyTextColorWhite);
-        display: block;
-        position: relative;
+				&:hover {
+					&:before {
+						width: 100%;
+					}
+				}
 
-        &:before {
-          /* Animated underline */
-          content: "";
-          width: 0%;
-          height: 2px;
-          /* current color of the parent */
-          background: currentColor;
-          opacity: 1;
-          display: block;
-          position: absolute;
-          bottom: (-2/16rem);
-          left: 0;
-          transition: width 0.3s;
-        }
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
 
-        &:hover {
-          &:before {
-            width: 100%;
-          }
-        }
+			.cs-block {
+				/* sends second address line to the bottom on its own line */
+				display: block;
+			}
 
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-      }
+			.cs-bg-picture {
+				width: 100%;
+				height: 100%;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+				transition: transform 0.6s;
 
-      .cs-block {
-        /* sends second address line to the bottom on its own line */
-        display: block;
-      }
+				&:before {
+					/* background color overlay */
+					content: "";
+					width: 100%;
+					height: 100%;
+					background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 1;
+				}
 
-      .cs-bg-picture {
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: transform 0.6s;
+				img {
+					width: 100%;
+					height: 100%;
+					/* Makes img tag act as a background image */
+					object-fit: cover;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+		}
+	}
 
-        &:before {
-          /* background color overlay */
-          content: "";
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.8) 100%
-          );
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 1;
-        }
+	/* Tablet - 700px */
+	@media only screen and (min-width: 43.75em) {
+		#cs-contact {
+			#cs-form {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				flex-wrap: wrap;
 
-        img {
-          width: 100%;
-          height: 100%;
-          /* Makes img tag act as a background image */
-          object-fit: cover;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-      }
-    }
-  }
+				label {
+					width: 48%;
+				}
 
-  /* Tablet - 700px */
-  @media only screen and (min-width: 43.75em) {
-    #cs-contact {
-      #cs-form {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
+				.cs-label-message {
+					width: 100%;
+				}
+			}
+		}
+	}
 
-        label {
-          width: 48%;
-        }
+	/* Small Desktop - 1024px */
+	@media only screen and (min-width: 64em) {
+		#cs-contact {
+			.cs-container {
+				max-width: (1280/16rem);
+				display: flex;
+				justify-content: flex-end;
+				align-items: flex-start;
+				gap: (80/16rem);
+			}
 
-        .cs-label-message {
-          width: 100%;
-        }
-      }
-    }
-  }
+			#cs-form {
+				max-width: (630/16rem);
+				label {
+					width: 100%;
+				}
+			}
 
-  /* Small Desktop - 1024px */
-  @media only screen and (min-width: 64em) {
-    #cs-contact {
-      .cs-container {
-        max-width: (1280/16rem);
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
-        gap: (80/16rem);
-      }
+			.cs-right-section {
+				width: 40%;
+				max-width: (542/16rem);
+				/* changes to 578px at 1300px wide */
+				height: (686/16rem);
+				/* prevents flexbox from squishing it */
+				flex: none;
 
-      #cs-form {
-        max-width: (630/16rem);
-        label {
-          width: 100%;
-        }
-      }
+				&:hover {
+					.cs-bg-picture {
+						transform: scale(1.1);
+					}
+				}
+			}
 
-      .cs-right-section {
-        width: 40%;
-        max-width: (542/16rem);
-        /* changes to 578px at 1300px wide */
-        height: (686/16rem);
-        /* prevents flexbox from squishing it */
-        flex: none;
+			.cs-block {
+				/* goes back to inline so it stays "in line" with the rest of the text */
+				display: inline-block;
+			}
+		}
+	}
 
-        &:hover {
-          .cs-bg-picture {
-            transform: scale(1.1);
-          }
-        }
-      }
+	/* Small Desktop - 1300px */
+	@media only screen and (min-width: 81.25em) {
+		#cs-contact {
+			#cs-form {
+				column-gap: (0/16rem);
+				label {
+					width: 48%;
+					max-width: (305/16rem);
+				}
 
-      .cs-block {
-        /* goes back to inline so it stays "in line" with the rest of the text */
-        display: inline-block;
-      }
-    }
-  }
+				.cs-label-message {
+					max-width: 100%;
+				}
+			}
 
-  /* Small Desktop - 1300px */
-  @media only screen and (min-width: 81.25em) {
-    #cs-contact {
-      #cs-form {
-        column-gap: (0/16rem);
-        label {
-          width: 48%;
-          max-width: (305/16rem);
-        }
+			.cs-right-section {
+				height: (578/16rem);
+			}
+		}
+	}
 
-        .cs-label-message {
-          max-width: 100%;
-        }
-      }
+	/* Dark Mode */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			#cs-contact {
+				.cs-text,
+				.cs-title {
+					color: var(--bodyTextColorWhite);
+				}
 
-      .cs-right-section {
-        height: (578/16rem);
-      }
-    }
-  }
+				.cs-topper {
+					color: var(--primaryLight);
+				}
 
-  /* Dark Mode */
-  @media only screen and (min-width: 0em) {
-    body.dark-mode {
-      #cs-contact {
-        .cs-text,
-        .cs-title {
-          color: var(--bodyTextColorWhite);
-        }
+				#cs-form {
+					label,
+					input,
+					textarea {
+						color: var(--bodyTextColorWhite);
+						background-color: transparent;
 
-        .cs-topper {
-          color: var(--primaryLight);
-        }
+						&::placeholder {
+							/* lighten up the color of the text by 40%*/
+							filter: brightness(1.4);
+						}
+					}
+				}
 
-        #cs-form {
-          label,
-          input,
-          textarea {
-            color: var(--bodyTextColorWhite);
-            background-color: transparent;
+				.cs-bg-picture {
+					background-color: #000;
 
-            &::placeholder {
-              /* lighten up the color of the text by 40%*/
-              filter: brightness(1.4);
-            }
-          }
-        }
-
-        .cs-bg-picture {
-          background-color: #000;
-
-          img {
-            /* lets parent background-color bleed through and darken it */
-            opacity: 0.5;
-          }
-        }
-      }
-    }
-  }
+					img {
+						/* lets parent background-color bleed through and darken it */
+						opacity: 0.5;
+					}
+				}
+			}
+		}
+	}
 </style>

@@ -1,0 +1,155 @@
+---
+/**
+ * * Simplified CTA component using Astro's built-in Picture component
+ **/
+
+// Utils
+import { Picture } from "astro:assets";
+
+// Images
+import ctaImage from "@assets/images/CTA/cabinets2.jpg";
+---
+
+<section id="cta">
+	<div class="container">
+		<h2 class="title">
+			Get It Done
+			<br />
+			With Us Today
+		</h2>
+		<p>Say something catchy, informative, and encouraging to click the button to go to the contact page. I like to add these to the bottom of all pages.</p>
+		<a href="/contact/" class="cs-button-solid">Get an Estimate Now</a>
+	</div>
+	<Picture src={ctaImage} alt="" layout="full-width" formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture" }} />
+</section>
+
+<style lang="less">
+	/* Mobile */
+	@media only screen and (min-width: 0em) {
+		#cta {
+			padding: (50/16rem) 0;
+			position: relative;
+
+			&:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				background: #000;
+				opacity: 0.7;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+			}
+
+			.container {
+				text-align: center;
+			}
+
+			.title {
+				font-size: ~"min(9vw, 3rem)";
+				font-weight: 900;
+				line-height: 58/48;
+				text-align: center;
+				margin-bottom: (36/16rem);
+				color: #fff;
+				position: relative;
+			}
+
+			p {
+				text-align: center;
+				width: 96%;
+				max-width: (598/16rem);
+				margin: auto;
+				margin-bottom: (36/16rem);
+				color: #fff;
+				opacity: 1;
+			}
+
+			.cs-picture {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -2;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+
+	/* Small Desktop */
+	@media only screen and (min-width: 64em) {
+		#cta {
+			padding: (168/16rem) 0;
+		}
+	}
+
+	/* Large Desktop */
+	@media only screen and (min-width: 1300px) {
+		#cta {
+			margin-top: (100/16rem);
+			position: relative;
+			&:before {
+				display: none;
+			}
+			&:after {
+				content: "";
+				// width: (2000/16rem);
+				width: 100%; /* a fixed width causes overflow on desktop */
+				height: (1108/16rem);
+				background: url("/src/icons/cta-squares.svg");
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				opacity: 1;
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				z-index: -3;
+				transform: translateX(-50%);
+			}
+			.container {
+				width: 90.0625%;
+				margin: auto;
+			}
+
+			.cs-picture {
+				width: 90.0625%;
+				left: 50%;
+				transform: translateX(-50%);
+				&:before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					background: #000;
+					opacity: 0.7;
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 1;
+				}
+			}
+		}
+	}
+
+	/* Dark Mode */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			#cta {
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+</style>

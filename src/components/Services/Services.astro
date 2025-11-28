@@ -1,0 +1,147 @@
+---
+// Utils
+import { Icon } from 'astro-icon/components';
+---
+
+<section id="services" class="services">
+  <div class="card">
+    <picture>
+      <Icon name="service1" width="48" height="48" aria-hidden="true" />
+    </picture>
+    <h2>Service 1</h2>
+    <p>
+      Talk about the service with keywords people will be searching for it by.
+      Keep it 1-2 sentences.
+    </p>
+  </div>
+  <div class="card">
+    <picture>
+      <Icon name="service2" width="48" height="48" aria-hidden="true" />
+    </picture>
+    <h2>Service 2</h2>
+    <p>
+      Talk about the service with keywords people will be searching for it by.
+      Keep it 1-2 sentences.
+    </p>
+  </div>
+  <div class="card">
+    <picture>
+      <Icon name="service3" width="48" height="48" aria-hidden="true" />
+    </picture>
+    <h2>Service 3</h2>
+    <p>
+      Talk about the service with keywords people will be searching for it by.
+      Keep it 1-2 sentences.
+    </p>
+  </div>
+</section>
+
+<style lang="less">
+  /*-- -------------------------- -->
+<---          Services          -->
+<--- -------------------------- -*/
+
+  /* Mobile */
+  @media only screen and (min-width: 0em) {
+    .services {
+      width: 90%;
+      max-width: (1320/16em);
+      margin: auto;
+      margin-top: (-167/16em);
+      margin-bottom: (50/16em);
+      padding: (50/16em) (20/16em);
+      background: #fff;
+      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+      border-top: (6/16em) solid var(--primary);
+      border-radius: (5/16em);
+      position: relative;
+      z-index: 100;
+      .card {
+        width: 100%;
+        max-width: (357/16em);
+        margin: auto;
+        margin-bottom: (50/16em);
+        display: block;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        picture {
+          width: (88/16em);
+          height: (88/16em);
+          margin: auto;
+          margin-bottom: (23/16em);
+          background: var(--primary);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: (48/16em);
+            height: (48/16em);
+          }
+        }
+        h2 {
+          font-size: (32/16em);
+          font-weight: 700;
+          line-height: 27/20em;
+          text-align: center;
+          margin-bottom: 13/20em;
+          color: #1a1a1a;
+        }
+        p {
+          line-height: 24/18em;
+          text-align: center;
+          width: 100%;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  /* Inbetween */
+  @media only screen and (min-width: 768px) {
+    .services {
+      font-size: ~"min(1.8vw, 1em)";
+      width: 98%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .card {
+        max-width: (325/16em);
+        margin: 0;
+      }
+    }
+  }
+
+  /* Large Desktop */
+  @media only screen and (min-width: 1300px) {
+    .services {
+      padding: (50/16em) (80/16em);
+
+      .card {
+        max-width: (357/16em);
+      }
+    }
+  }
+
+  /* Dark mode */
+  @media only screen and (min-width: 0em) {
+    body.dark-mode {
+      #services {
+        background: var(--medium);
+
+        picture {
+          background: var(--primaryDark);
+        }
+
+        h2 {
+          font-weight: bold;
+          color: #fff;
+        }
+      }
+    }
+  }
+</style>

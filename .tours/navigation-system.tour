@@ -1,0 +1,21 @@
+{
+	"$schema": "https://aka.ms/codetour-schema",
+	"title": "Navigation System & Dropdowns",
+	"steps": [
+		{
+			"file": "src/data/navData.json",
+			"description": "`navData.json` controls your site's navigation. Each entry has a **key** (display text), **url** (path), and optional **children** array for dropdown menus. The `<DynamicHeader />` component automatically generates the navigation from this data. Add, remove, or modify entries here to change your site's navigation structure, **or** delete this file and manage your navigation directly in the `<StaticHeader />` Header component.",
+			"line": 2
+		},
+		{
+			"file": "src/components/Header/DynamicHeader.astro",
+			"description": "The `<DynamicHeader />` component imports navData.json and loops through each nav item. It checks if an item has children - if yes, it renders as a dropdown (li.cs-li.cs-dropdown). If no children, it renders as a regular link. The current page gets the **.cs-active** class automatically based on URL matching.",
+			"line": 45
+		},
+		{
+			"file": "src/js/nav.js",
+			"description": "`nav.js` holds the script that adds interactivity to the navigation: **Mobile menu toggle** (hamburger button), **Dropdown accessibility** (keyboard navigation with Enter/Escape), and **Focus management**. It's wrapped in 'astro:page-load' event to work with Astro's View Transitions. Copy and paste your JS stitch in here.",
+			"line": 1
+		}
+	]
+}

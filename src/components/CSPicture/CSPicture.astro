@@ -1,0 +1,82 @@
+---
+import { getImage } from "astro:assets";
+
+// TS types
+interface Props {
+	mobileImgUrl: string | ImageMetadata;
+	mobileMediaWidth?: string;
+	desktopImgUrl: string | ImageMetadata;
+	desktopMediaWidth?: string;
+	fallbackImgUrl: string | ImageMetadata;
+	alt: string;
+}
+
+const { mobileImgUrl, mobileMediaWidth = "600px", desktopImgUrl, desktopMediaWidth = "601px", fallbackImgUrl, alt } = Astro.props;
+
+const mobileImg = await getImage({
+	src: mobileImgUrl,
+	format: "webp",
+	width: 640,
+});
+
+const desktopImg = await getImage({
+	src: desktopImgUrl,
+	format: "webp",
+	width: 1240,
+});
+
+const fallbackImg = await getImage({
+	src: fallbackImgUrl,
+	format: "jpg",
+	width: 1240,
+});
+---
+
+<!-- Adjust the width and height attributes sizes based on the stitch you're using -->
+<picture>
+	<source media=`(max-width: ${mobileMediaWidth})` srcset={mobileImg.src} />
+	<source media=`(min-width: ${desktopMediaWidth})` srcset={desktopImg.src} />
+	<img aria-hidden="true" decoding="async" src={fallbackImg.src} alt={alt} loading="lazy" />
+</picture>
+
+<!-- Adjust the styles based on the stitch you're using -->
+<style lang="less">
+	picture {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -2;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	@media only screen and (min-width: 1300px) {
+		picture {
+			width: 90.0625%;
+			left: 50%;
+			transform: translateX(-50%);
+
+			&:before {
+				content: "";
+				width: 100%;
+				height: 100%;
+				background: #000;
+				opacity: 0.7;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+		}
+	}
+</style>

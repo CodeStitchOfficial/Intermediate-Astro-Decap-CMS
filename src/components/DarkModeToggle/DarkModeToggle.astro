@@ -1,0 +1,121 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button id="dark-mode-toggle" aria-label="dark mode toggle" aria-pressed="false">
+	<svg class="cs-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480" xml:space="preserve"
+		><path
+			d="M459.782 347.328c-4.288-5.28-11.488-7.232-17.824-4.96-17.76 6.368-37.024 9.632-57.312 9.632-97.056 0-176-78.976-176-176 0-58.4 28.832-112.768 77.12-145.472 5.472-3.712 8.096-10.4 6.624-16.832S285.638 2.4 279.078 1.44C271.59.352 264.134 0 256.646 0c-132.352 0-240 107.648-240 240s107.648 240 240 240c84 0 160.416-42.688 204.352-114.176 3.552-5.792 3.04-13.184-1.216-18.496z"
+		></path></svg
+	>
+	<Icon name="sun" class="cs-sun" />
+</button>
+
+<script>
+	// helper function to toggle aria-pressed
+	function ariaPressed(element) {
+		const isPressed = element.getAttribute("aria-pressed");
+		element.setAttribute("aria-pressed", isPressed === "false" ? "true" : "false");
+	}
+	// Creates the dark mode toggle event listener
+	const setToggleListener = () => {
+		const darkModeToggleButton = document.getElementById("dark-mode-toggle");
+		const handleToggleClick = () => {
+			document.body.classList.toggle("dark-mode");
+			ariaPressed(darkModeToggleButton);
+			const isDark = document.body.classList.contains("dark-mode");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
+		};
+
+		darkModeToggleButton?.addEventListener("click", handleToggleClick);
+	};
+
+	setToggleListener();
+
+	document.addEventListener("astro:after-swap", setToggleListener); // For View Transitions purposes - astro:after-swap ensures that the listener is re-attached after navigating to a new page.
+</script>
+
+<style lang="less">
+	/*-- -------------------------- -->
+<---      Dark Mode Toggle      -->
+<--- -------------------------- -*/
+
+	/* Mobile - 360px */
+	@media only screen and (min-width: 0rem) {
+		body.dark-mode {
+			#dark-mode-toggle {
+				.cs-sun {
+					opacity: 1;
+					transform: translate(-50%, -50%);
+				}
+
+				.cs-moon {
+					opacity: 0;
+					transform: translate(-50%, -150%);
+					fill: #fff;
+				}
+			}
+		}
+
+		#dark-mode-toggle {
+			width: (48/16rem);
+			height: (48/16rem);
+			padding: 0;
+			background: transparent;
+			border: none;
+			display: block;
+			position: absolute;
+			top: (10/16rem);
+			right: (70/16rem);
+			z-index: 1000;
+			overflow: hidden;
+
+			img,
+			svg {
+				width: (20/16rem);
+				height: (20/16rem);
+				//center image inside button
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				pointer-events: none;
+			}
+
+			.cs-moon {
+				z-index: 2;
+				// Transition properties
+				transition:
+					transform 0.3s,
+					opacity 0.3s;
+
+				// fill: yellow; --> uncomment to change the color of the moon if needed
+			}
+
+			.cs-sun {
+				opacity: 0;
+				z-index: 1;
+				// Transition property
+				transform: translate(-50%, 100%);
+				transition:
+					transform 0.3s,
+					opacity 0.3s;
+			}
+		}
+	}
+
+	/* Desktop - 1024px */
+	@media only screen and (min-width: 64rem) {
+		#dark-mode-toggle {
+			margin: 0;
+			position: relative;
+			top: auto;
+			right: auto;
+			transform: none;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+</style>

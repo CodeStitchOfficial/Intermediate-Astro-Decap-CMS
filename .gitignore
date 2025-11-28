@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# remove-* script outputs
+scripts/deleted/
+.demo-removed

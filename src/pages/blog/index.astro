@@ -1,30 +1,29 @@
 ---
 /**
  * * This page is the blog index and displays all the articles in a grid
-**/
+ **/
 
-import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
+// Utils
 import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
 import "@styles/sidebar.less";
 
-import Landing from "@components/Landing.astro";
-
-import BlogRecentArticles from "@layouts/BlogRecentArticles.astro";
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
 import BlogRecentArticlesWithSidebar from "@layouts/BlogRecentArticlesWithSidebar.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import placeholderImage from "@assets/images/placeholder.jpg";
+const placeholderOptimizedImage = await getImage({ src: placeholderImage, format: "webp" });
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
-
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-const optimizedImage = await getImage({ src: landingImage, format: "avif" });
-
 ---
 
-<BaseLayout title="Blog" description="Meta description for the page" preloadedImage={optimizedImage}>
-	<Landing title="Blog" image={optimizedImage} />
+<BaseLayout title="Blog" description="Meta description for the page" heroImage={placeholderOptimizedImage}>
+	<Banner title="Blog" image={placeholderOptimizedImage} />
 
 	<!-- Use the BlogRecentArticles layout to display the recent articles in a standard grid -->
 	<!-- <BlogRecentArticles posts={posts} /> -->
@@ -32,7 +31,4 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 	<!-- Use the BlogRecentArticlesWithSidebar layout to display the recent articles in a custom sidebar layout-->
 	<BlogRecentArticlesWithSidebar posts={posts} />
 	<CTA />
-
 </BaseLayout>
-
-

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Content Collections Deep Dive",
+  "steps": [
+    {
+      "file": "src/content.config.ts",
+      "description": "Content Collections are defined here using Astro v5's loader API. This file uses **defineCollection()** with a **glob loader** to find markdown files, and a **zod schema** to validate frontmatter. You can define a collection from a set of data that is structurally similar. This can be a directory of blog posts, a JSON file of product items, or any data that represents multiple items of the same shape.",
+      "line": 8
+    },
+    {
+      "file": "src/content/blog/images-in-markdown-posts.md",
+      "description": "This is an example blog post showing the required frontmatter structure. Notice the frontmatter matches the schema from content.config.ts exactly. The **image** field points to a file in src/assets/images/blog/ which Astro will automatically optimize. The markdown body below the frontmatter becomes the post content.",
+      "line": 1
+    },
+    {
+      "file": "src/pages/blog/index.astro",
+      "description": "To query a content collection, use **getCollection('blog')**. This returns all blog posts as an array of entry objects. Here we sort posts by date (newest first), and pass them to a blog layout that will map them to render as cards. Each post entry has a **data** property (the frontmatter) and **id** property (the filename).",
+      "line": 22
+    },
+    {
+      "file": "src/pages/blog/[post].astro",
+      "description": "If you want Astro to automatically generate pages for your collection, we can use **Dynamic routing** with a `[post].astro` file. Dynamic routes use **getStaticPaths()** to generate pages. We call getCollection() to get all posts, then return an array of objects with **params** (the URL slug) and **props** (the post data). Astro generates a static page for each post at build time.",
+      "line": 13
+    },
+    {
+      "file": "src/pages/blog/[post].astro",
+      "description": "To render the markdown content, call **await render(post)**. This returns a **Content** component and **headings** array. The Content component renders the markdown as HTML. The headings can be passed to components like TableOfContents for navigation.",
+      "line": 22
+    }
+  ]
+}

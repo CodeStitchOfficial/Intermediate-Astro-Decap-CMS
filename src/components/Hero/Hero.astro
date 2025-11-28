@@ -1,0 +1,262 @@
+---
+/**
+ * * The hero component used on the homepage
+ * * Takes an image as a prop
+ */
+
+// Utils
+import { Icon } from "astro-icon/components";
+import { Picture } from "astro:assets";
+import type { GetImageResult } from "astro";
+
+interface Props {
+	image: GetImageResult; // pre-optimized image from getImage()
+}
+
+const { image } = Astro.props as Props;
+---
+
+<section id="hero">
+	<div class="cs-container">
+		<div class="cs-flex-group">
+			<span class="cs-topper">Intermediate Kit</span>
+			<h1 class="cs-title">Intermediate Astro v5 <br /> Decap CMS</h1>
+			<p class="cs-text">This intermediate kit includes a pre-configured Astro environment, which allows for repeated components, centralized data and greater room to scale as your clients grow. Decap CMS has been integrated to run a blog.</p>
+			<a href="/about/" class="cs-button-solid">Explore More</a>
+			<a href="/contact/" class="cs-button-transparent">
+				<Icon name="play" class="cs-img" />
+				Get in Touch
+			</a>
+		</div>
+	</div>
+
+	<!-- Using the preloaded image from the props -->
+	<Picture src={image.src} alt="new home" width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} priority pictureAttributes={{ class: "cs-picture" }} />
+</section>
+
+<style lang="less">
+	/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
+
+	/* Mobile - 360px */
+	@media only screen and (min-width: 0em) {
+		#hero {
+			font-family: "Roboto", "Arial", sans-serif;
+			/* Centers button */
+			text-align: center;
+			/* changes on tablet */
+			padding: 0 (16/16rem);
+			padding-bottom: (100/16rem);
+			position: relative;
+			z-index: 1;
+			/* prevents overflow from the lines extending past the screen width */
+			overflow: hidden;
+
+			.cs-picture {
+				/* Background Image */
+				width: 100%;
+				height: 100%;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -2;
+
+				&:before {
+					/* Black Color Overlay */
+					content: "";
+					width: 100%;
+					height: 100%;
+					background: #000;
+					opacity: 0.7;
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 1;
+					/* prevents the cursor from interacting with it */
+					pointer-events: none;
+				}
+
+				img {
+					width: 100%;
+					height: 100%;
+					/* Makes image act like a background-image */
+					object-fit: cover;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+
+			.cs-container {
+				width: 100%;
+				max-width: (1280/16em);
+				margin: auto;
+				/* we put the padding top and bottom on the container instead of #Hero so the pseudo element lines go to the top and bottom of the section */
+				/* 144px - 280px - leaving extra space for the navigation */
+				/* changes on tablet */
+				padding: clamp(9em, 25.95vw, 17.5em) 0;
+				position: relative;
+
+				&:before {
+					/* Left Line */
+					content: "";
+					width: 1px;
+					height: 100%;
+					background: -moz-linear-gradient(top, rgba(250, 251, 252, 0.5) 0%, rgba(250, 251, 252, 0) 100%); /* FF3.6-15 */
+					background: -webkit-linear-gradient(top, rgba(250, 251, 252, 0.5) 0%, rgba(250, 251, 252, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+					opacity: 1;
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+
+			.cs-flex-group {
+				width: 80vw;
+				/* 464px - 562px */
+				max-width: clamp(29em, 60vw, 35.125em);
+				margin: auto;
+				/* 60px - 220px */
+				margin-bottom: clamp(3.75em, 15.5vw, 13.75em);
+				box-sizing: border-box;
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				flex-wrap: wrap;
+			}
+
+			.cs-topper {
+				text-align: center;
+				margin-bottom: (16/16rem);
+				color: var(--primary);
+			}
+
+			.cs-title {
+				text-align: center;
+				width: 100%;
+				color: var(--bodyTextColorWhite);
+			}
+
+			.cs-text {
+				text-align: center;
+				/* 32px - 40px */
+				margin: 0 auto clamp(2rem, 4vw, 2.5rem) 0;
+				/* 40px - 48px */
+				margin-bottom: clamp(2.5rem, 4vw, 3rem);
+				color: var(--bodyTextColorWhite);
+			}
+
+			.cs-button-solid {
+				line-height: clamp(2.875em, 5.5vw, 3.5em);
+				height: initial;
+				margin-bottom: calc(16 / 16 * 1rem);
+			}
+
+			.cs-button-transparent {
+				font-size: (16/16rem);
+				font-weight: 700;
+				/* 46px - 56px */
+				line-height: clamp(2.875em, 5.5vw, 3.5em);
+				text-decoration: none;
+				width: (180/16rem);
+				/* 46px - 56px */
+				height: clamp(2.875em, 5.5vw, 3.5em);
+				margin: 0 (8/16rem);
+				box-sizing: border-box;
+				padding: 0;
+				color: #fff;
+				background-color: transparent;
+				border: 1px solid var(--bodyTextColorWhite);
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				z-index: 1;
+
+				&:before {
+					content: "";
+					background: #000;
+					opacity: 1;
+					display: block;
+					position: absolute;
+					/* so it sits on top of the border */
+					top: -1px;
+					right: -1px;
+					bottom: -1px;
+					left: -1px;
+					z-index: -1;
+					/* this is what creates the grow affect on hover */
+					transform: scaleX(0);
+					transition: transform 0.3s;
+					transform-origin: left;
+				}
+
+				&:hover {
+					&:before {
+						transform: scaleX(1);
+					}
+				}
+
+				.cs-img {
+					margin-right: (12/16rem);
+					display: block;
+				}
+			}
+		}
+	}
+
+	/* Tablet - 768px */
+	@media only screen and (min-width: 48em) {
+		#hero {
+			/* 32px - 40px */
+			padding: 0 clamp(2em, 5vw, 2.5em);
+
+			.cs-container {
+				padding: clamp(7em, 27.95vw, 17.5em) 0 clamp(9em, 30.95vw, 23.5em) 0;
+				&:after {
+					/* Right Line */
+					content: "";
+					width: 1px;
+					height: 100%;
+					background: -moz-linear-gradient(top, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.5) 100%); /* FF3.6-15 */
+					background: -webkit-linear-gradient(top, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+					opacity: 1;
+					display: block;
+					position: absolute;
+					top: 0;
+					right: 0;
+				}
+			}
+
+			.cs-button-solid {
+				margin-right: (20/16rem);
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	/* Desktop Parallax Effect - 1300px */
+	/* Note: Parallax effect removed as Picture component handles responsive images */
+	@media only screen and (min-width: 81.25em) {
+		#hero {
+			/* Picture component provides optimized images */
+		}
+	}
+
+	/* Dark Mode */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			#hero {
+				.cs-background {
+					&:before {
+						opacity: 0.8;
+					}
+				}
+			}
+		}
+	}
+</style>

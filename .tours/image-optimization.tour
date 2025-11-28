@@ -1,0 +1,46 @@
+{
+	"$schema": "https://aka.ms/codetour-schema",
+	"title": "Image Optimization Patterns",
+	"steps": [
+		{
+			"file": "src/components/Gallery/Gallery.astro",
+			"description": "This shows a typical image optimization flow using Astro's <Picture /> component. First, import the component, and the image from **@assets/images/**. Then use `<Picture>` to render the image with multiple formats (avif, webp, jpeg). The `width` and `height` attributes are optional, and can be used to resize the image.",
+			"line": 36
+		},
+		{
+			"file": "src/components/Gallery/Gallery.astro",
+			"description": "If you want your images to be optimized by Astro, they should be stored in **src**. You may organize images into subfolders like hero/, services/, gallery/, blog/ for better organization.",
+			"line": 5
+		},
+		{
+			"file": "astro.config.mjs",
+			"description": "Here, we set the default layout for responsive images to `constrained` Mor details in [the responsive image properties docs](https://docs.astro.build/en/reference/modules/astro-assets/#responsive-image-properties)",
+			"line": 16
+		},
+		{
+			"file": "src/components/CTA/CTASimple.astro",
+			"description": "For this CTA image, we use `layout='full-width'`, overriding the default layout. Use this layout for hero images or other images that should take up the full width of the page.",
+			"line": 23
+		},
+		{
+			"file": "src/pages/index.astro",
+			"description": "This shows a special image optimization pattern for hero/landing images used for preloading and SEO purposes. First, import the image from **@assets/images/**. Then use **getImage()** to optimize it (typically to webp format). This optimized image is passed to BaseLayout's **heroImage** prop to preload it and use it for Open Graph tags.",
+			"line": 18
+		},
+		{
+			"file": "src/components/Hero/Hero.astro",
+			"description": "Here, the `<Picture />` component attributes will use slightly different syntax. Notice the `src={image.src}`; that's because we're using an **image optmized with getImage()**. ",
+			"line": 35
+		},
+		{
+			"file": "src/components/CSPicture/CSPicture.astro",
+			"description": "This is a custom component for **art-directed responsive images** - when you want different images for mobile vs desktop. It uses **getImage()** to optimize both sources separately, then outputs a <picture> element with <source> tags for different screen sizes. Use this when you need more control than the standard Picture component provides.",
+			"line": 16
+		},
+		{
+			"file": "src/components/Services/Services.astro",
+			"description": "SVG assets used by the **<Icon />** component must be placed in the **src/icons/** folder. Example usage: `<Icon name=\"icon-name\" />` where icon-name.svg lives in this folder.",
+			"line": 9
+		}
+	]
+}

@@ -6,39 +6,47 @@
 
 /* Mobile */
 @media only screen and (min-width: 0em) {
-    // Dark Mode Color Scheme
-    :root {
-        --dark: hsl(163, 96%, 5%);
-        --medium: hsl(163, 95%, 8%);
-        --accent: #334756;
-    }
+	// Dark Mode Color Scheme
+	:root {
+		--dark: #011912;
+		--medium: #01281d;
+		--accent: #334756;
+	}
 
-    body.dark-mode {
-        background-color: var(--dark);
+	body.dark-mode {
+		background-color: var(--dark);
 
-        p,
-        li,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: #fff;
-        }
+		p,
+		li,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: var(--bodyTextColorWhite);
+		}
 
-        // hide all light classes
-        .light {
-            display: none;
-        }
+		// Blog content dark mode styles
+		#blog-content {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: var(--bodyTextColorWhite);
+			}
 
-        // show all dark classes
-        .dark {
-            display: block !important;
-        }
-    }
+			p,
+			li {
+				color: var(--bodyTextColorWhite);
+				opacity: 0.8;
+			}
 
-    .dark {
-        display: none;
-    }
+			a {
+				color: var(--primary);
+			}
+		}
+	}
 }

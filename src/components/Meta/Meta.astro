@@ -1,0 +1,104 @@
+---
+import { getImage } from "astro:assets";
+import type { GetImageResult } from "astro";
+import { BUSINESS, OG, SITE } from "@data/client";
+import { getLocalBusinessSchema } from "@js/localBusinessSchema.js";
+
+// Props and Types
+type HeroImage = GetImageResult | ImageMetadata;
+
+interface Props {
+	title?: string; // Override default title
+	description?: string; // Override default description
+	heroImage?: HeroImage | ImageMetadata; // Can be optimized hero OR raw ImageMetadata
+}
+
+const { title = SITE.title, description = SITE.description, heroImage } = Astro.props;
+
+// Data
+const localBusinessSchema = getLocalBusinessSchema(Astro.url.origin);
+const canonical = Astro.url.href;
+
+// Detect home page for special title formatting
+const isHomePage = Astro.url.pathname === "/";
+
+// Format page title with business name (and location if home page)
+const pageTitle = isHomePage ? `${title} | ${BUSINESS.name} | ${BUSINESS.address.city}, ${BUSINESS.address.state}` : `${title} | ${BUSINESS.name}`;
+
+// OG type is hardcoded since it rarely changes
+const ogType = "website";
+
+// Use page-specific values for OG tags
+const ogTitle = pageTitle;
+const ogDescription = description;
+
+// Social image logic - Priority: 1) Provided heroImage, 2) Default /assets/social.jpg
+let socialImage: string;
+
+if (heroImage) {
+	// Check if it's already optimized (has .src property) or needs optimization
+	if ("src" in heroImage && typeof heroImage.src === "string") {
+		// Already optimized by page (GetImageResult or ContentImage)
+		socialImage = Astro.url.origin + heroImage.src;
+	} else {
+		// Raw ImageMetadata - optimize it for OG
+		const optimizedImage = await getImage({
+			src: heroImage as ImageMetadata,
+			width: 1200,
+			height: 600,
+			format: "webp",
+		});
+		socialImage = Astro.url.origin + optimizedImage.src;
+	}
+} else {
+	// Default social image (static file in public/)
+	socialImage = Astro.url.origin + OG.image;
+}
+---
+
+<!-- LocalBusiness Schema (on ALL pages) - customize your JSON-LD structured data:
+     https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data  -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+<!-- Allow additional schemas from child layouts (e.g., BlogPosting for blog posts) -->
+<slot name="schema" />
+
+<!-- Page Title -->
+<title>{pageTitle}</title>
+
+<!-- Standard Meta Tags -->
+<meta charset="utf-8" />
+<meta name="description" content={description} />
+<meta name="web_author" content={SITE.author} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:locale" content={OG.locale} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={ogTitle} />
+<meta property="og:site_name" content={SITE.title} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:image" content={socialImage} />
+<meta content="1200" property="og:image:width" />
+<meta content="600" property="og:image:height" />
+<meta content="image/jpeg" property="og:image:type" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:domain" content={SITE.url.replace("https://", "")} />
+<meta property="twitter:url" content={canonical} />
+<meta name="twitter:title" content={ogTitle} />
+<meta name="twitter:description" content={ogDescription} />
+<meta name="twitter:image" content={socialImage} />
+
+<!-- Favicons -->
+<!-- Use [RealFaviconGenerator.net](https://realfavicongenerator.net/) -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png?v1" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+<link rel="manifest" href="/assets/favicons/site.webmanifest" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />

@@ -1,0 +1,36 @@
+{
+	"$schema": "https://aka.ms/codetour-schema",
+	"title": "Deployment Checklist",
+	"steps": [
+		{
+			"file": "astro.config.mjs",
+			"description": "Update the **site** URL to your actual production domain (e.g., 'https://yourdomain.com'). This is critical for generating correct sitemaps and canonical URLs.",
+			"line": 6
+		},
+		{
+			"file": "src/data/client.ts",
+			"description": "Verify your **SITE.url** field matches your production domain. This is used throughout the site for meta tags and Open Graph URLs. Also double-check that all the other information is correct.",
+			"line": 6
+		},
+		{
+			"file": "public/robots.txt",
+			"description": "Update the sitemap URL to match your production domain. Change the URL to 'https://yourdomain.com/sitemap-index.xml'. This helps search engines discover and index all your pages.",
+			"line": 5
+		},
+		{
+			"file": "public/admin/config.yml",
+			"description": "(if using Decap CMS): Verify the **repo** field points to your actual GitHub repository and the **branch** is set correctly (usually 'main' or 'master'). Also ensure DecapBridge authentication is properly configured if you're using it.",
+			"line": 8
+		},
+		{
+			"file": "src/components/Meta/Meta.astro",
+			"description": "Replace the default favicons with your own. Use [RealFaviconGenerator.net](https://realfavicongenerator.net/) to generate all necessary favicon files and sizes. Upload your logo, download the generated package, and replace the files in /public/assets/favicons/.",
+			"line": 82
+		},
+		{
+			"file": "package.json",
+			"description": "Run **npm run build** locally to verify your site builds without errors. Check the dist/ folder output. If you don't need the blog/CMS, you can run **npm run remove-decap** to clean up those files first.",
+			"line": 7
+		}
+	]
+}

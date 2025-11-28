@@ -1,0 +1,327 @@
+---
+// Utils
+import { Icon } from "astro-icon/components";
+import { getCurrentYear } from "@js/utils";
+
+// Data
+import { BUSINESS } from "@data/client";
+import navData from "@data/navData.json";
+
+const currentYear = getCurrentYear();
+---
+
+<footer id="footer">
+	<div class="container">
+		<div class="left-section">
+			<a class="logo" href="/" aria-label="Return to [Company Name] Home page">
+				<Icon name="logo-white" width="264" height="78" />
+			</a>
+			<p>Extra content if you need it, if not you can delete this whole p tag. I usually do.</p>
+		</div>
+		<div class="right-section">
+			<div class="lists">
+				<ul>
+					<li>
+						<h2>Information</h2>
+					</li>
+					{
+						navData.map((entry) => (
+							<li class="cs-li">
+								<a href={entry.url}>{entry.key}</a>
+							</li>
+						))
+					}
+				</ul>
+				<ul>
+					<li>
+						<h2>Services</h2>
+					</li>
+					<li>Service1</li>
+					<li>Service2</li>
+					<li>Service4</li>
+					<li>Service5</li>
+				</ul>
+				<ul>
+					<li>
+						<h2>Contact</h2>
+					</li>
+					<li>
+						<a href="/contact/">
+							{BUSINESS.address.lineOne}<br />
+							{BUSINESS.address.lineTwo}<br />
+							{BUSINESS.address.city}
+							{BUSINESS.address.state}
+							{BUSINESS.address.zip}
+						</a>
+					</li>
+					<li>
+						<a href={`tel:${BUSINESS.phoneForTel}`}>
+							T:
+							{BUSINESS.phoneFormatted}
+						</a>
+					</li>
+					<li>
+						<a href={`mailto:${BUSINESS.email}`}>Click to Email</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="credit">
+		<span>Designed and Hand Coded by</span>
+		<a href="/" target="_blank" rel="noopener">Your Company Name</a>
+		<span class="copyright"> Copyright {currentYear} - Present</span>
+	</div>
+</footer>
+
+<style lang="less">
+	/* Mobile */
+	@media only screen and (min-width: 0em) {
+		#footer {
+			font-size: ~"min(4vw, 1.2em)";
+			padding: (84/16rem) 0 (20/16rem);
+			background: #1c1c1c;
+
+			.left-section {
+				text-align: center;
+				margin: auto;
+				margin-bottom: (50/16rem);
+				.logo {
+					text-align: center;
+					width: auto;
+					height: (32/16em);
+					margin: auto;
+					margin-bottom: (30/16em);
+					display: inline-block;
+
+					img {
+						width: auto;
+						height: 100%;
+						display: block;
+					}
+				}
+
+				p {
+					font-size: (14/16rem);
+					line-height: 27/14;
+					text-align: center;
+					width: 100%;
+					width: 307/14rem;
+					margin: auto;
+					color: #fff;
+					opacity: 0.9;
+				}
+			}
+
+			.right-section {
+				width: 96%;
+				max-width: (407/16rem);
+				margin: auto;
+				.lists {
+					width: 96%;
+					max-width: (307/16rem);
+					margin: auto;
+					display: flex;
+					justify-content: space-between;
+					flex-wrap: wrap;
+					ul {
+						margin-top: 0;
+						margin-bottom: 0;
+						padding: 0;
+
+						&:nth-of-type(3) {
+							margin-top: (50/16rem);
+							li {
+								margin-bottom: (16/16rem);
+								display: flex;
+								justify-content: flex-start;
+								align-items: center;
+
+								&:last-of-type {
+									margin-bottom: 0;
+								}
+							}
+						}
+
+						li {
+							font-size: (18/16rem);
+							list-style: none;
+							margin-bottom: (12/16rem);
+							color: #fff;
+							opacity: 0.9;
+
+							a {
+								line-height: 21/18em;
+								text-decoration: none;
+								color: #fff;
+								transition: color 0.3s;
+								&:hover {
+									color: var(--primary);
+								}
+							}
+						}
+						h2 {
+							font-size: (18/16rem);
+							font-weight: bold;
+							line-height: 21/18em;
+							text-transform: uppercase;
+							margin-bottom: (37/16rem);
+							color: #fff;
+							position: relative;
+
+							&:before {
+								content: "";
+								width: (97/16rem);
+								height: (2/16rem);
+								background: var(--primary);
+								opacity: 1;
+								display: block;
+								position: absolute;
+								bottom: (-16/16rem);
+								left: 0;
+							}
+						}
+					}
+				}
+
+				.buttons {
+					display: flex;
+					justify-content: center;
+				}
+
+				.cs-button-solid {
+					width: (250/16rem);
+					height: (53/16rem);
+					margin: 0;
+					padding-top: (3/16rem);
+				}
+			}
+
+			.credit {
+				font-size: (16/16rem);
+				line-height: (36/16rem);
+				text-align: center;
+				width: 96%;
+				margin: auto;
+				margin-top: (100/16rem);
+				color: #fff;
+
+				a {
+					font-size: (16/16rem);
+					text-decoration: none;
+					color: var(--primary);
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+
+				.copyright {
+					font-size: (16/16rem);
+					display: block;
+				}
+			}
+		}
+	}
+
+	/* Small Desktop */
+	@media only screen and (min-width: 64em) {
+		#footer {
+			font-size: ~"min(1.2vw, 1em)";
+			.container {
+				width: 96%;
+				max-width: (1320/16rem);
+				margin: auto;
+				padding: 0;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				flex-wrap: nowrap;
+			}
+
+			.left-section {
+				text-align: left;
+				width: (409/16rem);
+				margin: 0;
+
+				.logo {
+					text-align: left;
+					height: (40/16rem);
+					margin-left: 0;
+				}
+
+				p {
+					text-align: left;
+					margin-left: 0;
+				}
+			}
+
+			.right-section {
+				width: (609/16rem);
+				max-width: none;
+				margin: 0;
+				.lists {
+					width: 96%;
+					max-width: (769/16rem);
+					max-width: initial;
+					margin: 0;
+
+					ul {
+						&:nth-of-type(3) {
+							margin-top: 0;
+
+							li:first-of-type {
+								margin-bottom: 0;
+							}
+						}
+
+						li {
+							a {
+								position: relative;
+
+								&:before {
+									content: "";
+									width: 0%;
+									height: (2/16rem);
+									background: var(--primary);
+									opacity: 1;
+									display: block;
+									position: absolute;
+									bottom: (-3/16rem);
+									left: 0;
+									transition: width 0.3s;
+								}
+
+								&:hover {
+									&:before {
+										width: 100%;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				.buttons {
+					justify-content: flex-start;
+				}
+			}
+
+			.credit {
+				.copyright {
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+	/* Dark Mode */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			#footer {
+				background: #061623;
+			}
+		}
+	}
+</style>

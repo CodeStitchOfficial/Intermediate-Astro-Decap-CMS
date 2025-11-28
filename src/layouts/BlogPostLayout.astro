@@ -1,19 +1,44 @@
 ---
+// Utils
 import { render } from "astro:content";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import { formatDate } from "@js/utils";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import FeaturedPost from "@components/FeaturedPost.astro";
-import TableOfContents from "@components/TemplateComponents/TableOfContents.astro";
-import CTA from "@components/CTA.astro";
+import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
 import "@styles/markdown.less";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FeaturedPost from "@components/FeaturedPost/FeaturedPost.astro";
+import TableOfContents from "@components/TableOfContents/TableOfContents.astro";
+import CTA from "@components/CTA/CTASimple.astro";
 
 const { post } = Astro.props;
 const { title, date, description, image, imageAlt, author } = post.data;
 const { Content, headings } = await render(post);
+
+// Generate BlogPosting schema
+const imageUrl = image.src.startsWith("http") ? image.src : Astro.url.origin + image.src;
+
+const blogPostingSchema = getBlogPostingSchema(
+	{
+		title,
+		description,
+		url: Astro.url.href,
+		imageUrl,
+		imageAlt,
+		publishedTime: date.toISOString(),
+		modifiedTime: date.toISOString(),
+		author,
+	},
+	Astro.url.origin
+);
 ---
 
-<BaseLayout title={title} description={description} preloadedImage={image}>
+<BaseLayout title={title} description={description} heroImage={image}>
+	<!-- Insert BlogPosting Schema via named slot -->
+	<script slot="schema" is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+
 	<!-- ============================================ -->
 	<!--         Blog Article + Sidebar layout        -->
 	<!-- ============================================ -->
@@ -28,7 +53,7 @@ const { Content, headings } = await render(post);
 					<div class="blog-authorGroup">
 						<!--Author Image-->
 						<picture class="blog-author-img">
-							<img src="/assets/svgs/profile.svg" alt="house" width="32" height="32" decoding="async" />
+							<Icon name="profile" width="32" height="32" />
 						</picture>
 						<span class="blog-author">{author}</span>
 						<span aria-hidden="true" class="blog-dot"></span>
@@ -66,138 +91,137 @@ const { Content, headings } = await render(post);
 	</div>
 
 	<CTA />
-
 </BaseLayout>
 
 <style lang="less">
-/* Mobile - 360px */
-@media only screen and (min-width: 0em) {
-	.blog-container {
-		width: 94%;
-		max-width: (1120/16em);
-		margin: auto;
-		padding: clamp(60px, 7vw, 100px) 0;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		row-gap: (50/16em);
-		position: relative;
-	}
-
-	.main-content {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		row-gap: (50/16em);
-	}
-
-	.blog-article {
-		width: 100%;
-		max-width: (795/16em);
-		display: block;
-
-		.blog-header {
-			margin-block: clamp(30px, 5vw, 50px);
-		}
-		
-		.blog-mainImage {
-			width: 100%;
-			height: clamp(200px, 30vw, 400px);
-			margin-bottom: (50/16em);
-			border-radius: (8/16em);
-			display: block;
-			position: relative;
-			overflow: hidden;
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				position: absolute;
-				top: 0;
-				left: 0;
-			}
-		}
-
-		.blog-author-img {
-			width: (32/16em);
-			height: (32/16em);
-			border-radius: 50%;
-			display: block;
-			position: relative;
-			overflow: hidden;
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				position: absolute;
-				top: 0;
-				left: 0;
-			}
-		}
-
-		.blog-authorGroup {
+	/* Mobile - 360px */
+	@media only screen and (min-width: 0em) {
+		.blog-container {
+			width: 94%;
+			max-width: (1120/16em);
+			margin: auto;
+			padding: clamp(60px, 7vw, 100px) 0;
 			display: flex;
-			justify-content: flex-start;
+			flex-direction: column;
+			justify-content: center;
 			align-items: center;
-			gap: (12/16rem);
+			row-gap: (50/16em);
+			position: relative;
 		}
 
-		.blog-author,
-		.blog-date {
-			font-size: (14/16rem);
-			line-height: 1.5em;
-			color: var(--bodyTextColor);
+		.main-content {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			row-gap: (50/16em);
 		}
 
-		.blog-dot {
-			width: 3px;
-			height: 3px;
-			background-color: #fe4f70;
-			border-radius: 50%;
-			display: block;
-		}
-
-		.blog-h1 {
-			font-size: clamp(20px, 5vw, 39px);
-			font-weight: 700;
-			line-height: 1.4em;
-			max-width: (550/16rem);
-			margin: (16/16rem) 0;
-			color: var(--headerColor);
-		}
-
-		#blog-content {
-			margin-top: (16/16em);
-			padding-top: (25/16em);
-			border-top: 1px solid #a2a0a0;
-		}
-	}
-}
-
-/* Tablet - 1024px */
-@media only screen and (min-width: 64em) {
-	.blog-container{
-		flex-direction: row;
-		align-items: flex-start;
-		column-gap: (48/16em);
-	}
-}
-
-/* Dark Mode */
-@media only screen and (min-width: 0em) {
-	body.dark-mode {
 		.blog-article {
-			.blog-h1,
+			width: 100%;
+			max-width: (795/16em);
+			display: block;
+
+			.blog-header {
+				margin-block: clamp(30px, 5vw, 50px);
+			}
+
+			.blog-mainImage {
+				width: 100%;
+				height: clamp(200px, 30vw, 400px);
+				margin-bottom: (50/16em);
+				border-radius: (8/16em);
+				display: block;
+				position: relative;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+
+			.blog-author-img {
+				width: (32/16em);
+				height: (32/16em);
+				border-radius: 50%;
+				display: block;
+				position: relative;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+
+			.blog-authorGroup {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				gap: (12/16rem);
+			}
+
 			.blog-author,
 			.blog-date {
-				color: #f7f7f7;
+				font-size: (14/16rem);
+				line-height: 1.5em;
+				color: var(--bodyTextColor);
+			}
+
+			.blog-dot {
+				width: 3px;
+				height: 3px;
+				background-color: #fe4f70;
+				border-radius: 50%;
+				display: block;
+			}
+
+			.blog-h1 {
+				font-size: clamp(20px, 5vw, 39px);
+				font-weight: 700;
+				line-height: 1.4em;
+				max-width: (550/16rem);
+				margin: (16/16rem) 0;
+				color: var(--headerColor);
+			}
+
+			#blog-content {
+				margin-top: (16/16em);
+				padding-top: (25/16em);
+				border-top: 1px solid #a2a0a0;
 			}
 		}
 	}
-}
+
+	/* Tablet - 1024px */
+	@media only screen and (min-width: 64em) {
+		.blog-container {
+			flex-direction: row;
+			align-items: flex-start;
+			column-gap: (48/16em);
+		}
+	}
+
+	/* Dark Mode */
+	@media only screen and (min-width: 0em) {
+		body.dark-mode {
+			.blog-article {
+				.blog-h1,
+				.blog-author,
+				.blog-date {
+					color: #f7f7f7;
+				}
+			}
+		}
+	}
 </style>
