@@ -1,4 +1,4 @@
-  <h3 align="center">Intermediate Astro kit - Decap CMS</h3>
+<h3 align="center">Intermediate Astro kit - Decap CMS</h3>
 
   <p align="center">
     This intermediate kit includes a pre-configured Astro setup, along with five pages filled with CodeStitch components. Everything is ready to go right from the start, offering a fantastic introduction to the advantages of a Static Site Generator, complete with LESS preprocessing and a blog powered by Decap CMS. This kit also leverages the power of a few Astro tools such as, but not limited to, Content Collections, View Transitions, Astro components, scoped styling and scripting etc.
@@ -17,26 +17,23 @@
 - [Getting Started](#gettingStarted)
   - [Removing Demo Content](#removingDemoContent)
   - [Removing Decap CMS](#removingDecapCms)
-- [Exploring the Codebase with CodeTour](#exploringWithCodeTour)
+  - [Exploring the Codebase with CodeTour](#exploringWithCodeTour)
 - [Prerequisites](#prerequisites)
 - [Features](#features)
-- [Project Structure](#projectStructure)
-  - [Project Tree](#projectTree)
+- [Project Tree](#projectTree)
   - [Root Files and Folders](#rootFilesAndFolders)
-- [Expanding the Project](#expandingTheProject)
-  - [Reusing Code](#reusingCode)
-  - [Scripts and Event Handling](#scripts)
-  - [Adding More Pages](#addingMorePages)
-  - [Navigation via navData.json](#navigationViaFrontMatter)
-  - [Built-in Astro components](#builtinastrocomponents)
-  - [Custom Picture component](#Custompicturecomponent)
-  - [Configuring the CMS](#configuringTheCms)
-  - [Styling Decap preview pane](#stylingdecappreview)
-  - [Astro Content Collections](#AstroContentCollections)
-  - [Preloading images](#preloadingimages)
+- [Customizing Your Site](#customizingYourSite)
+  - [Working with Components](#workingWithComponents)
+  - [Adding & Customizing Pages](#addingCustomizingPages)
+  - [Navigation System](#navigationSystem)
+  - [Styling Your Site](#stylingYourSite)
+  - [SEO & Metadata](#seoMetadata)
+  - [Images Optimization](#imagesOptimization)
+  - [Content Management & Blog](#contentManagement)
+  - [Scripts & Event Handling](#scriptsEventHandling)
   - [Sitemap Configuration](#sitemapConfiguration)
-- [Removing Decap CMS](#removingDecapCms)
 - [Deployment](#deployment)
+- [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
 - [Conclusion](#conclusion)
 
@@ -45,14 +42,45 @@
 ## Overview
 
 This intermediate kit includes a pre-configured <a href="https://www.astro.build">Astro</a> environment, which
-allows for repeated components, centralized data and greater room to scale as your clients grow. The kit runs the latest major Astro version, v5. On top of this, a blog has been provided through [Decap CMS](https://decapcms.org/) to allow your clients to manage their content on their own. This can easily be adapted to anything which requires changing content, such as menus, job listing boards, portfolios and much more.
+allows for repeated components, centralized data and greater room to scale as your clients grow. The kit runs the latest major Astro version, v5. On top of this, a blog has been provided through [Decap CMS](https://decapcms.org/) to allow your clients to manage their content on their own.
 
-An example website has also been provided, with easy substitution of website sections possible through the use of <a href="https://codestitch.app/">CodeStitch's
-vanilla component library</a>. This kit aims to get any project off the ground in as little time as possible, with deployment being possible in as little as two minutes. We recommend Netlify as a host.
+### TL;DR - Quick Start
+
+1. Create from template
+
+```bash
+npm create astro@latest -- --template CodeStitchOfficial/Intermediate-Astro-Decap-CMS
+```
+
+2. Install and run
+
+```bash
+npm install && npm run dev
+```
+
+3. Configure your site
+   Edit src/data/client.ts with your business info
+   Edit public/admin/config.yml for CMS settings
+
+4. Deploy
+   Push to GitHub → Deploy on Netlify → Configure DecapBridge
+
+### Key Files to Know:
+
+- `src/data/client.ts` - Site configuration
+- `src/data/navData.json` - Navigation structure
+- `src/styles/root.less` - Design tokens
+- `public/admin/config.yml` - CMS configuration
+
+[Read full documentation below](#gettingStarted) or explore with [CodeTour](#exploringWithCodeTour).
 
 <a name="gettingStarted"></a>
 
 ## Getting Started
+
+There are two ways you can bootstrap your starter kit:
+
+### Using the Github template
 
 1. At the top right of the GitHub Repository, click the green _Use this template_ button,
    then click _Create a new repository_.
@@ -61,10 +89,18 @@ vanilla component library</a>. This kit aims to get any project off the ground i
 4. Run `npm install` to install all dependencies.
 5. Run `npm run dev` to start the project and spin up a development server on `localhost:4321`
 
-Next, it is recommended to update `data/client.json` with some new information about this project. Through the power of templating, the
-project's `<head>` and contact information will automatically be filled out, providing a first peek into some of the benefits of SSGs.
+### Using the CLI
 
-You can find all of CodeStitches `:root` variables, as well as .cs-topper, .cs-title and .cs-text, within the `root` stylesheet. Feel free to adjust these, or use our Content Flair micro-stitches, to update site-wide styles quickly.
+1. Run this to initialize a new project from this template:
+
+```sh
+npm create astro@latest -- --template CodeStitchOfficial/Intermediate-Astro-Decap-CMS
+```
+
+2. Choose a name for your project.
+3. Change into the newly created project directory.
+4. Run `npm install` to install all dependencies.
+5. Run `npm run dev` to start the project and spin up a development server on `localhost:4321`
 
 <a name="removingDemoContent"></a>
 
@@ -79,11 +115,13 @@ npm run remove-demo
 ```
 
 **What gets removed:**
+
 - Demo pages (about, contact, projects, reviews)
 - Demo components (Hero, Services, Gallery, CTA, etc.)
 - Demo images (keeps placeholder.jpg)
 
 **What stays:**
+
 - Blog system and Decap CMS
 - Core infrastructure (BaseLayout, Header, Footer, navigation)
 - All functionality and utilities
@@ -103,10 +141,12 @@ npm run remove-decap
 ```
 
 The script will ask for confirmation and whether you want to remove blog content too:
+
 - Choose **yes** to completely remove blog functionality
 - Choose **no** to keep blog files for local Content Collections (without Decap)
 
 **What gets removed:**
+
 - CMS admin dashboard (`public/admin/`, `src/pages/admin.astro`)
 - Optionally: Blog content, layouts, pages, and components
 
@@ -114,25 +154,14 @@ Files are moved to `scripts/deleted/` for backup.
 
 <a name="exploringWithCodeTour"></a>
 
-## Exploring the Codebase with CodeTour
+### Exploring the Codebase with CodeTour
 
 This template includes 8 interactive CodeTour walkthroughs to help you quickly understand the codebase architecture and start customizing your site. These tours guide you through key concepts, file locations, and best practices.
 
-### Available Tours
-
-1. **Getting Started - Initial Configuration** - Site configuration, client info, navigation setup, and deployment preparation
-2. **Component Composition** - How to use and swap CodeStitch components
-3. **Decap CMS & Blog System** - Complete walkthrough of the CMS and blog functionality
-4. **Image Optimization Patterns** - Image optimization techniques and best practices
-5. **Navigation System & Dropdowns** - Data-driven navigation with dropdown menus
-6. **Styling System & Dark Mode** - LESS variables, global styles, and dark mode implementation
-7. **Content Collections Deep Dive** - Working with Astro's Content Collections API
-8. **Deployment Checklist** - Pre-deployment configuration checklist including favicons
-
-### How to Use
+#### How to Use
 
 1. **Install the CodeTour extension** in VS Code from the [marketplace](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
-2. **View all tours**: Open Command Palette (Ctrl/Cmd+Shift+P) → "CodeTour: View Tours"
+2. **View all tours**: Find the CODETOUR tab in your Explorer, or Open Command Palette (Ctrl/Cmd+Shift+P) → "CodeTour: View Tours"
 3. **Start a tour**: Click on any tour from the list
 4. **Navigate**: Use arrow buttons or keyboard shortcuts to move through steps
 
@@ -153,16 +182,15 @@ Only the vanilla web technologies are _required_ before using this kit, with som
 ## Features
 
 - Runs on Astro v5
-- Decap CMS integration with a blog ready to go. Give access to your client to allow them to write blog posts. Their edits will be pushed to the repository, triggering a re-build automatically.
-- Astro's View Transitions integration
-- Components, props and scoped styles, as demonstrated in `/src/components/Landing.astro` for example
-- Astro's built-in components such as `<Picture />`, as demonstrated in `/src/components/Landing.astro` for example
-- Astro's content collections, leveraging image validation. This allows the use of Astro components on user-uploaded images via the CMS, automatically converting your images to modern `.webp` or `.avif` format.
-- Accessible dropdown menus on desktop navigation and nested pages
-- [CodeStitch](https://codestitch.app/) HTML and CSS blocks to build the UI.
-- Perfect Lighthouse scores
-
-![Lighthouse perfect score](public/assets/readme-images/100-score.png)
+- Decap CMS integration with blog
+- SEO-ready with Open Graph, Twitter Cards, and JSON-LD structured data
+- Astro's View Transitions
+- Components, props, and scoped styles
+- Astro's built-in `<Picture />` component for image optimization
+- Content Collections with image validation
+- Accessible dropdown menus and navigation
+- Dark mode
+- [CodeStitch](https://codestitch.app/) HTML and CSS blocks
 
 This kit ships the following packages:
 
@@ -170,25 +198,13 @@ This kit ships the following packages:
 - [Autoprefixer](https://www.npmjs.com/package/autoprefixer) - PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use. It is recommended by Google and used in Twitter and Alibaba.
 - [LESS](https://www.npmjs.com/package/less) - Less makes a few convenient additions to the CSS language, but you can also simply write standard CSS if you wish.
 
-<a name="projectStructure"></a>
-
-## Project Structure
-
-Astro leverages an opinionated folder layout for your project. Every Astro project root should include the following directories and files:
-
-- `src/*` - Your project source code (components, pages, styles, etc.)
-- `public/*` - Your non-code, unprocessed assets (fonts, icons, etc.)
-- `package.json` - A project manifest.
-- `astro.config.mjs` - An Astro configuration file. (recommended)
-- `tsconfig.json` - A TypeScript configuration file. (recommended)
-
 <a name="projectTree"></a>
 
-### Project Tree
+## Project Tree
 
 ```
 .
-├── .tours/
+├── .tours/                     # Interactive CodeTour guides
 │   ├── getting-started.json
 │   ├── component-composition.json
 │   ├── decap-cms-blog-setup.json
@@ -197,40 +213,57 @@ Astro leverages an opinionated folder layout for your project. Every Astro proje
 │   ├── styling-dark-mode.json
 │   ├── content-collections.json
 │   └── deployment-checklist.json
-├── public/
+├── public/                     # Static assets (unprocessed)
 │   ├── admin/
-|   |   └── config.yml
-|   |—— assets/
-|   |   |—— favicons/
-|   |   |—— fonts/
-|   |   |—— images/
-|   |   └── svgs/
-|   |—— _redirects
-|   |—— robots.txt
+│   │   └── config.yml          # Decap CMS configuration
+│   ├── assets/
+│   │   ├── favicons/
+│   │   ├── fonts/
+│   │   └── images/             # Static images (unoptimized)
+│   ├── _redirects
+│   └── robots.txt
 ├── src/
-|   ├── assets/
-|   |   └—— images/
-|   |       └── blog/
-|   ├── components/
-|   ├── content/
-|   |   |—— config.ts
-|   |   └── blog/
-│   ├── _data/
-│   │   ├── client.json
-│   │   └── navData.json
-│   ├── icons/
-│   ├── layouts/
-│   │   └── BaseLayout.astro
-|   ├── js/
+│   ├── assets/
+│   │   └── images/             # Optimized by Astro
+│   │       └── blog/
+│   ├── components/             # Component-per-folder pattern
+│   │   ├── Banner/
+│   │   │   └── Banner.astro
+│   │   ├── CTA/
+│   │   │   ├── CTASimple.astro
+│   │   │   └── CTAArtDirection.astro
+│   │   ├── Header/             # Dual header system
+│   │   │   ├── DynamicHeader.astro  # Default (data-driven)
+│   │   │   └── StaticHeader.astro   # Alternative (hardcoded)
+│   │   ├── Hero/
+│   │   │   └── Hero.astro
+│   │   ├── Meta/               # SEO component
+│   │   │   └── Meta.astro
+│   │   └── ...
+│   ├── content/
+│   │   └── blog/
+│   ├── content.config.ts
+│   ├── data/                   # Site configuration
+│   │   ├── client.ts           # Business & site data
+│   │   └── navData.json        # Navigation structure
+│   ├── icons/                  # SVGs for Icon component
+│   ├── js/
+│   │   ├── blogPostingSchema.js   # BlogPosting JSON-LD
+│   │   ├── localBusinessSchema.js # LocalBusiness JSON-LD
 │   │   ├── nav.js
-|   |   └── utils.js
+│   │   └── utils.js
+│   ├── layouts/
+│   │   ├── BaseLayout.astro
+│   │   ├── BlogPostLayout.astro
+│   │   └── ...
 │   ├── pages/
-|   |   └── blog/
-|   |   └── projects/
-|   └── styles/
+│   │   ├── blog/
+│   │   ├── projects/
+│   │   └── ...
+│   └── styles/
+│       ├── root.less           # Base styles
+│   │   └── ...
 ├── astro.config.mjs
-├── postcss.config.cjs
-├── package-lock.json
 ├── package.json
 └── tsconfig.json
 ```
@@ -241,7 +274,7 @@ Astro leverages an opinionated folder layout for your project. Every Astro proje
 
 #### `public/*`
 
-The `public/` directory is for files and assets in your project that do not need to be processed during Astro’s build process. The files in this folder will be copied into the build folder untouched, and then your site will be built.
+The `public/` directory is for files and assets in your project that do not need to be processed during Astro's build process. The files in this folder will be copied into the build folder untouched, and then your site will be built.
 
 This behavior makes `public/` ideal for common assets like images and fonts, or special files such as`_redirects` and `robots.txt`.
 
@@ -263,16 +296,14 @@ The `src/` folder is where most of your project source code lives. This includes
 - Layouts
 - Astro components
 - UI framework components (React, etc.)
-- Styles (CSS, Sass)
+- Styles (CSS, LESS)
 - Markdown
-
-Astro processes, optimizes, and bundles your src/ files to create the final website that is shipped to the browser. Unlike the static public/ directory, your src/ files are built and handled for you by Astro.
 
 ##### `src/assets`
 
-Contains all assets you want optimized by Astro (such as assets used in `<Picture />` components for example) must be placed in `src`.
+Contains all assets you want optimized by Astro (such as assets used in `<Picture />` components for example).
 
-`public/assets/images/blog` is where the images uploaded on the CMS will be stored.
+Images uploaded on the CMS will be stored in `src/assets/images/blog`
 
 ##### `src/components`
 
@@ -286,9 +317,9 @@ The src/content/ directory is reserved to store content collections organised in
 
 This directory contains data files that are accessible within any template throughout the project.
 
-- `client.js` holds some information you may wish to define for a client. It's important to fill this file out with the correct information for your client, as many HTML meta tags, the sitemap, and robots.txt all use data from this file.
+**`client.ts`** - Site configuration.
 
-- `navData.json` holds data to create the navigation of your site. See more information in the [navigation via navData.json section](#navigationViaFrontMatter)
+**`navData.json`** - Navigation structure. See more in the [Navigation System section](#navigationViaNavData)
 
 ##### `src/icons`
 
@@ -328,127 +359,112 @@ An Astro configuration file. It's already set up for you, but you can extend it 
 
 #### `tsconfig.json`
 
-A TypeScript configuration file. Optional. Includes TypeScript configuration options for your Astro project. Some features (like npm package imports) aren’t fully supported in the editor without a tsconfig.json file.
+A TypeScript configuration file. Optional. Includes TypeScript configuration options for your Astro project. Some features (like imports aliases `@assets/`) aren't fully supported in the editor without a tsconfig.json file.
 
-<a name="expandingTheProject"></a>
+<a name="customizingYourSite"></a>
 
-## Expanding the Project
+## Customizing Your Site
 
-Aimed towards freelancers, this kit was made with scalability and flexibility in mind, suiting a range of websites and client needs. As such, it is your choice whether you'd rather make small tweaks to the existing site, or clear all the page content and build a site all over again. Outlined below are some best
-practices for when it comes to building on top of this kit:
+This section covers everything you need to make this template your own. Whether you're making small tweaks or completely rebuilding the site, you'll find guidance on customizing components, pages, styling, SEO, images, and content management.
 
-<a name="reusingCode"></a>
+<a name="workingWithComponents"></a>
 
-### Reusing Code
+### Component Architecture
 
-The main advantage to using an SSG is it brings components, popularized by JavaScript-heavy frameworks like React or Vue, to vanilla HTML. As Astro is being
-used, componentization can be achieved through JSX-like syntax within .astro files.
+This template is opinionated and uses a **component-per-folder** pattern.
 
-For example, there is a call to action at the bottom of most pages. As the text content or styles don't need to change, `<CTA />` was
-used. If this wasn't the case, and we wanted the CTA text to change, we'd start to think about passing props to `<CTA />`.
+#### Folder Structure
 
-An example of passing props to components is `Landing />`.
+Each component lives in its own folder:
 
-In `about.astro`:
+```
+src/components/
+├── Hero/
+│   └── Hero.astro
+├── Services/
+│   └── Services.astro
+├── CTA/
+│   └── CTASimple.astro
+│   └── CTAComplex.astro
+└── Footer/
+    └── Subscribe.astro
+    └── Footer.astro
+```
 
-```JS
+Components sharing a common theme or use can be grouped together.
+
+#### Using Components
+
+Components are used throughout your pages by importing and including them:
+
+```astro
 ---
-// import the component
-import Landing from "@components/Landing.astro";
+import Hero from '@components/Hero/Hero.astro';
+import Services from '@components/Services/Services.astro';
+---
+
+<Hero />
+<Services />
+```
+
+#### Customizing Components
+
+To customize a component, open the component file and edit the HTML, content, or styles directly. For example, to change the Hero text, edit `src/components/Hero/Hero.astro`.
+
+#### Replacing with CodeStitch Sections
+
+To replace a component with a different CodeStitch section:
+
+1. Browse [codestitch.app](https://codestitch.app/) and select a stitch
+2. Copy the HTML, CSS, and any JavaScript
+3. Paste into the existing component file (or create a new one)
+4. Update any image paths and component references
+5. Add the component to your page
+
+This keeps components organized and easy to find.
+
+<a name="addingCustomizingPages"></a>
+
+### Adding & Customizing Pages
+
+Adding new pages is straightforward:
+
+1. **Use the template** - Copy `src/pages/_template.astro` as a starting point
+2. **Create your page** - Add a new file to `src/pages/` (e.g., `services.astro`)
+3. **Add to navigation** - Include it in `src/data/navData.json` (if using the DynamicHeader component)
+
+**Basic page structure:**
+
+```astro
+---
+// Import components you need
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero/Hero.astro';
 ---
 
 <BaseLayout
-  title="About"
-  description="Meta description for the page"
-  preloadImg="/assets/images/cabinets2.jpg"
+  title="Page Title"
+  description="Page description for meta tags"
 >
-  // Use the <Landing /> component
-  <Landing
-    title="About Us" // pass a `title` prop to the component
-  />
-```
-
-In `Landing.astro`
-
-```JS
----
-const { title } = Astro.props // Destructure the incoming props. Note the `Astrop.props` syntax
----
-
-<h1 id="home-h">{title}</h1> // Consumme the title prop in the JSX markup
-
-```
-
-<a name="scripts"></a>
-
-### Scripts and Event Handling
-
-You can add interactivity to your Astro components using standard HTML `<script>` tags. This allows you to send JavaScript to run in the browser and add functionality to your Astro components.
-
-#### Using `<script>` in Astro
-
-This kit uses scripts in two different ways:
-
-1. Imported from `src/`
-
-Astro will build, optimize, and add these scripts to the page for you.
-
-> `async` and `defer` attributes are unnecessary. Indeed, the processed script will be injected into your page’s <head> with `type="module"` and module scripts are always deferred automatically.
-
-For example, `nav.js` lives in `src/` and is used in `Baselayout.astro` like so:
-
-`<script src="@js/nav.js"></script>`
-
-2. Scoped to the component
-
-Another way to use scripts in Astro is to use them directly in the component. For example, the `FAQ.astro` component uses a `<script>` tag to toggle the FAQ elements on and off. This script doesn't need to be executed on every page, so it is best scoped to its component.
-
-This being said, this particular script could also well be imported from `src/` as seen above, and it would work too.
-
-#### Using scripts with `<ViewTransitions />` enabled
-
-When you add view transitions to an existing Astro project, some of your scripts may no longer re-run after page navigation like they did with full-page browser refreshes.
-
-The <ViewTransition /> router fires a number of events on the document during navigation. These events provide hooks into the lifecycle of navigation, allowing you to do things like show indicators that a new page is loading, override default behavior, and restore state as navigation is completing.
-
-In this kit, both the nav and FAQ scripts use the `astro:page-load` wrapper. You can use this event to run code on every page navigation, for example to set up event listeners that would otherwise be lost during navigation.
-
-```js
-<script>
-  document.addEventListener('astro:page-load', () => {
-    // This runs on first page load and after every navigation.
-    setupStuff(); // e.g. add event listeners
-  });
-</script>
-```
-
-For an in-depth explanation, please refer <a href="https://docs.astro.build/en/guides/view-transitions/#script-behavior-with-view-transitions">to the documentation.
-
-<a name="addingMorePages"></a>
-
-### Adding More Pages
-
-Thanks to Astro Navigation, adding new pages is as simple as adding a file to src/pages/ and including it in the `data/navData.json` file:
-
-```JSX
----
-// optional JavaScript frontmatter
----
-
-<BaseLayout
-  title="Page title for <title> and OG tags"
-  description="Description for <meta> and OG tags"
->
-    <!-- Page HTML goes here, without a <main> wrapper -->
+  <Hero />
+  <!-- Add more components -->
 </BaseLayout>
 ```
 
-Starting from the top, you can see some data enclosed in --- tags. This is known as the page's front matter, which provides additional data to when it comes to
-rendering your pages.
+**Creating sub-pages:**
 
-To add sub-pages, you will first need to create a new folder under `src/pages/` and populate it with `.astro` pages. Look at the `src/pages/projects` forlder for an example. Don't forget to edit `navData.json` to handle the navigation. The navigation bar is already set up to create drop-down menus.
+Create a folder under `src/pages/` and add `.astro` files inside:
 
-<a name="navigationViaFrontMatter"></a>
+```
+src/pages/
+├── services/
+│   ├── consulting.astro
+│   └── development.astro
+```
+
+Update `navData.json` to add the parent page with a `children` array - the navigation will automatically create a dropdown menu. See `src/pages/projects/` for an example.
+
+<a name="navigationSystem"></a>
 
 ### Navigation System
 
@@ -459,6 +475,7 @@ This template provides **two Header component options** to suit different workfl
 The header navigation is powered by the `navData.json` file, making it easy to manage navigation without editing component code.
 
 **How it works:**
+
 - Each page in the navigation is an item with a `key` property (page title to be displayed) and a `url` property (include a trailing slash)
 - To add subpages, populate the `children` array with page objects (containing a `key` and `url` property)
 - If a page has a populated `children` array, a dropdown menu will be automatically created
@@ -468,23 +485,6 @@ The header navigation is powered by the `navData.json` file, making it easy to m
 #### 2. StaticHeader - `src/components/Header/StaticHeader.astro`
 
 A hardcoded navigation option that's copy/paste friendly from CodeStitch.
-
-**How it works:**
-- No `navData.json` dependency - edit the markup directly in the component
-- Simple to understand and customize for those who prefer working directly with HTML
-- Includes all the same accessibility features and mobile responsiveness
-
-#### Switching Between Headers
-
-To switch which header is used, edit the import in `src/layouts/BaseLayout.astro`:
-
-```javascript
-// Option 1: Dynamic (default)
-import Header from "@components/Header/DynamicHeader.astro";
-
-// Option 2: Static
-import Header from "@components/Header/StaticHeader.astro";
-```
 
 #### Using a New CodeStitch Header
 
@@ -505,7 +505,6 @@ If you want to use a different header design from the CodeStitch library, here's
 #### Making a CodeStitch Header Work with navData.json
 
 If you want your custom CodeStitch header to use data-driven navigation, replace the navigation list in your stitch with this wrapper:
-
 
 ```JSX
 <div class="cs-ul-wrapper" id="cs-ul-wrapper">
@@ -618,18 +617,343 @@ For dropdowns, use a similar approach on the parent dropdown's class attribute, 
 
 In the above example, we're checking if the active page slug matches any of the listed options and applying the `.cs-active` style to the parent if it does.
 
-<a name="builtinastrocomponents"></a>
+<a name="stylingYourSite"></a>
 
-### Built-in Astro components: `<Image />` and `<Picture />`
+### Styling Your Site
+
+#### CSS Variables
+
+Customize site-wide colors, fonts and other properties in `src/styles/root.less`:
+
+```less
+:root {
+	--primary: #aff425;
+	--primaryLight: #7aa329;
+	--secondary: #ffba43;
+	--bodyTextColor: #4e4b66;
+	--bodyTextColorWhite: #fafbfc;
+	// ... more variables
+}
+```
+
+#### Dark Mode
+
+All dark mode styles are consolidated in `src/styles/dark.less` for easy maintenance.
+
+Dark mode is managed by DarkModeToggle.astro and persisted in BaseLayout.
+
+#### Scoped Component Styles
+
+Components use scoped `<style>` tags:
+
+```astro
+<section id="hero">
+  <h1>Welcome</h1>
+</section>
+
+<style lang="less">
+  #hero {
+    padding: 4rem 1rem;
+    h1 {
+      font-size: 3rem;
+    }
+  }
+</style>
+```
+
+You can also create an external stylesheet and import it in the frontmatter, or in BaseLayout for a global stylesheet.
+
+<a name="seoMetadata"></a>
+
+### SEO & Metadata
+
+#### Centralized SEO Configuration
+
+SEO data is centralized in `src/data/client.ts`, providing a single source of truth for all metadata, structured data, and social sharing settings across your site.
+
+#### Meta Component (`src/components/Meta/Meta.astro`)
+
+The template uses a dedicated Meta component for comprehensive SEO coverage, automatically included in BaseLayout.
+
+**Features:**
+
+- Open Graph tags (title, description, image, locale, site name)
+- Twitter Cards (summary_large_image)
+- JSON-LD structured data (LocalBusiness for all pages)
+- Automatic social image handling with fallback
+- Enhanced meta tags for articles (author, published/modified dates)
+
+**Social Image Strategy:**
+
+- Pages with heroImage: Uses provided image (optimized to 1200x600 webp)
+- Pages without heroImage: Falls back to `/assets/social.jpg`
+- Blog posts: Automatically uses post's featured image
+
+#### BaseLayout Props
+
+BaseLayout accepts simple props with sensible defaults from `client.ts`:
+
+```typescript
+interface Props {
+	title?: string; // Page title (defaults to SITE.title)
+	description?: string; // Meta description (defaults to SITE.description)
+	heroImage?: HeroImage; // Optional social sharing image
+}
+```
+
+**Basic page (uses defaults from client.ts):**
+
+```astro
+<BaseLayout
+  title="About Us"
+  description="Learn about our company"
+>
+  <!-- Page content -->
+</BaseLayout>
+```
+
+**Page with social image:**
+
+```astro
+---
+import heroImage from "@assets/images/hero.jpg";
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({ src: heroImage, format: "webp" });
+---
+
+<BaseLayout
+  title="Projects"
+  description="Our portfolio"
+  heroImage={optimizedImage}
+>
+  <!-- Page content -->
+</BaseLayout>
+```
+
+#### Extending SEO Metadata
+
+##### Adding Custom Open Graph Tags
+
+Edit `src/components/Meta/Meta.astro` to add properties like article publish dates, Twitter-specific metadata, or additional schema.org types.
+
+##### Adding Custom JSON-LD Structured Data
+
+The template automatically generates LocalBusiness (all pages) and BlogPosting (blog posts) schemas. To add custom JSON-LD on specific pages, use the **schema slot** - no component modifications needed!
+
+**Approach 1: Inline Schema**
+
+Add custom JSON-LD directly in any page:
+
+```astro
+<BaseLayout title="FAQ" description="Frequently asked questions">
+  <script slot="schema" is:inline type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What services do you offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer consulting and development services."
+        }
+      }]
+    }
+  </script>
+
+  <!-- Page content -->
+</BaseLayout>
+```
+
+**Approach 2: Reusable Schema Functions**
+
+For schemas used across multiple pages, create helper functions following the existing pattern (`localBusinessSchema.js`, `blogPostingSchema.js`):
+
+```javascript
+// src/js/faqSchema.js
+import { SITE } from "@data/client";
+
+export function getFAQSchema(faqs) {
+	return {
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		mainEntity: faqs.map((item) => ({
+			"@type": "Question",
+			name: item.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: item.answer,
+			},
+		})),
+	};
+}
+```
+
+Usage in page:
+
+```astro
+---
+import { getFAQSchema } from "@js/faqSchema";
+const faqSchema = getFAQSchema(faqData);
+---
+
+<BaseLayout title="FAQ" description="Frequently asked questions">
+  <script slot="schema" is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Page content -->
+</BaseLayout>
+```
+
+**Multiple Schemas:** You can add multiple `<script slot="schema">` tags - each will be rendered in the `<head>`.
+
+See [schema.org](https://schema.org) for available types and properties.
+
+#### Configuring Social Images
+
+Create a default social sharing image at `public/assets/social.jpg` (1200x600px recommended). This will be used for pages without a specific heroImage.
+
+For page-specific social images, pass a heroImage to BaseLayout as shown above.
+
+#### JSON-LD Structured Data
+
+This template automatically generates JSON-LD structured data for SEO:
+
+**LocalBusiness Schema** (on all pages):
+
+- Automatically uses data from `src/data/client.ts`
+- Includes business name, address, phone, email, social media
+- Generated by `src/js/localBusinessSchema.js`
+- Included via Meta component in BaseLayout
+
+**BlogPosting Schema** (on blog posts):
+
+- Automatically generated for blog articles
+- Includes title, author, published date, image
+- Generated by `src/js/blogPostingSchema.js`
+- Included via schema slot in BlogPostLayout
+- Improves search engine rich results
+
+**Customizing Your Schema:**
+
+Edit `src/data/client.ts` to configure your business information. All schema data pulls from this centralized configuration file.
+
+<a name="imagesOptimization"></a>
+
+### Images Optimization
+
+This kit uses Astro's built-in image optimization. **Images must be stored in `src/assets/` and used with `<Picture />` or `<Image />` components** to be optimized.
+
+#### Responsive Images by Default
+
+This template is configured in `astro.config.mjs` with `layout: 'constrained'` as the default. This means:
+
+- `srcset` and `sizes` attributes are automatically generated based on image dimensions
+- Images are responsive without manual configuration
+- `width` and `height` are optional for images in `src/` as they are automatically inferred, but can be used to resize the images.
+
+#### Using the Picture component
+
+```astro
+---
+import { Picture } from "astro:assets";
+import heroImage from "@assets/images/hero.jpg";
+---
+
+<Picture
+  src={heroImage}
+  alt="Description"
+  width={400}
+  formats={['avif', 'webp']}
+  priority
+  pictureAttributes={{ class: "cs-picture" }}
+/>
+```
+
+#### Image component properties
+
+- `formats` - Output formats (e.g., `['avif', 'webp']`)
+- `priority` - Automatically sets optimal `loading`, `decoding`, and `fetchpriority` for above-the-fold images
+- `width` / `height` - Define the dimensions to use for the image.
+- `layout` - Defaults to `'constrained'` (responsive). Other options: `'fixed'`, `'full-width'`
+
+#### Social Sharing Images
+
+When you pass a `heroImage` to BaseLayout, it's automatically:
+
+- Optimized for social sharing (1200x600)
+- Used in Open Graph tags
+- Preloaded for performance
+
+```astro
+---
+import heroImage from "@assets/images/hero.jpg";
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({ src: heroImage, format: "webp" });
+---
+
+<BaseLayout
+  title="Projects"
+  description="Our portfolio"
+  heroImage={optimizedImage}
+>
+  <!-- content -->
+</BaseLayout>
+```
+
+#### Image Preloading
+
+This template automatically preloads hero images for optimal performance.
+
+**How it works:**
+
+When you pass a `heroImage` to BaseLayout, the Meta component automatically:
+
+1. Generates a preload `<link>` tag in the `<head>`
+2. Sets `fetchpriority="high"` for above-the-fold images
+3. Ensures the hero image loads before other resources
+
+**Example:**
+
+In your page:
+
+```astro
+---
+import heroImage from "@assets/images/hero.jpg";
+import { getImage } from "astro:assets";
+const optimizedImage = await getImage({ src: heroImage, format: "webp" });
+---
+
+<BaseLayout heroImage={optimizedImage}>
+  <Hero />
+</BaseLayout>
+```
+
+In the rendered HTML `<head>`:
+
+```html
+<link rel="preload" as="image" href="/optimized-hero.webp" fetchpriority="high" />
+```
+
+**When to use preloading:**
+
+- Hero/banner images visible immediately on page load
+- Critical brand assets (logos, etc.)
+- Above-the-fold content
+
+**When NOT to preload:**
+
+- Below-the-fold images (use lazy loading instead)
+- Multiple images (preload only 1-2 critical resources per page)
+- Small icons or decorative images
+
+#### Built-in Astro components: `<Image />` and `<Picture />`
 
 This kit demonstrates the use of the built-in `<Picture />` component, [for which you can read the documentation here](https://docs.astro.build/en/guides/images/#picture-). However, not all native HTML `<picture>` elements from CodeStitch blocks have been replaced with Astro's `<Picture />` components. CodeStich users will have to decide which one they want to use:
 
 - CodeStich blocks already have fully-functionning `<picture>` elements that perform very well. However, the developper will have to do a time-consumming job with resizing and reformatting assets.
 - Astro's `<Picture />` components must be manually written to replace stitches. On the other hand, they automatically process and optimize assets, which allows the developper to skip the resizing and reformatting preparation work.
 
-<a name="Custom Picture component"></a>
-
-### Custompicturecomponent
+#### Custom Picture component
 
 Astro provides two built-in components that you can use to display and optimize your images.
 
@@ -669,9 +993,11 @@ It is currently set up to
 
 You can of course adjust the sizes of attributes baased on your customization's needs directly in the component.
 
-<a name="configuringTheCms"></a>
+<a name="contentManagement"></a>
 
-### Configuring the CMS
+### Content Management & Blog
+
+#### Configuring the CMS
 
 In `public/admin/`, you'll find a `config.yml` file which contains the configuration for the blog. While this project is set up to work with a blog out of the box, you are welcome to make changes using
 <a href="https://decapcms.org/docs/add-to-your-site/#configuration">Decap CMS'</a> documentation.
@@ -684,9 +1010,7 @@ You can access the blog via navigating to the `/admin` path on the deployed site
 
 Everything on the blog should be fairly intuitive, but feel free to experiment with using this panel first. With this kit, you can add _featured_ to the comma-separated list of tags to have them show up as so in the frontend.
 
-<a name="configuringTheCms"></a>
-
-### Styling the Decap preview pane
+#### Styling the Decap preview pane
 
 This template includes custom styles for the Decap CMS preview pane, so that blog posts in the admin dashboard look similar to the live site.
 
@@ -708,7 +1032,7 @@ This template includes custom styles for the Decap CMS preview pane, so that blo
 - The style sheet must be a CSS file
 - The style sheet does not support nested CSS.
 
-#### Adding local backend
+##### Adding local backend
 
 If you want to be able to access the Decap dashboard in order to make content changes, you need to enable some local backend settings.
 
@@ -738,9 +1062,7 @@ b. update the scripts
 
 Now, when `npm run dev` is run, a proxy server for the CMS is spun up on `localhost:8081`. That can often mean you run into errors if `localhost:8080` is already taken, so look out for that. You can locally access the blog via navigating to the `/admin` path (e.g. `http://localhost:4321/admin`). While running the local dev server, you won't need to login to access the admin dashboard.
 
-<a name="astroContentCollections"></a>
-
-### Astro content collections
+#### Astro Content Collections
 
 In `/src/content`, you will see a `config.ts` file. This is where you can configure [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/). This step is **not necessary** to run the blog with Decap CMS, but it will supercharge your Astro pages and content. Collections help to
 
@@ -753,49 +1075,64 @@ This template already has Content Collections configured for immediate use of th
 
 Content Collections can also be used on content that is not created via the CMS.
 
-<a name="preloadingimages"></a>
+<a name="scriptsEventHandling"></a>
 
-### Preloading images
+### Scripts & Event Handling
 
-This kit takes advantage of the [preload attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload) to fetch images above the fold with higher priority, resulting in improved performances and reducing flashes of unstyled content. Preloaded images are used on the index page for the hero image as well as on all other pages in the Landing component.
+You can add interactivity to your Astro components using standard HTML `<script>` tags. This allows you to send JavaScript to run in the browser and add functionality to your Astro components.
 
-You will notice this snippet at the top of every `.astro` page:
+#### Using `<script>` in Astro
 
-```jsx
----
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: landingImage, format: 'avif'})
----
+This kit uses scripts in two different ways:
+
+1. Imported from `src/`
+
+Astro will build, optimize, and add these scripts to the page for you.
+
+> `async` and `defer` attributes are unnecessary. Indeed, the processed script will be injected into your page's <head> with `type="module"` and module scripts are always deferred automatically.
+
+For example, `nav.js` lives in `src/` and is used in `Baselayout.astro` like so:
+
+`<script src="@js/nav.js"></script>`
+
+2. Scoped to the component
+
+Another way to use scripts in Astro is to use them directly in the component. For example, the `FAQ.astro` component uses a `<script>` tag to toggle the FAQ elements on and off. This script doesn't need to be executed on every page, so it is best scoped to its component.
+
+This being said, this particular script could also well be imported from `src/` as seen above, and it would work too.
+
+#### Using scripts with `<ViewTransitions />` enabled
+
+When you add view transitions to an existing Astro project, some of your scripts may no longer re-run after page navigation like they did with full-page browser refreshes.
+
+The <ViewTransition /> router fires a number of events on the document during navigation. These events provide hooks into the lifecycle of navigation, allowing you to do things like show indicators that a new page is loading, override default behavior, and restore state as navigation is completing.
+
+In this kit, both the nav and FAQ scripts use the `astro:page-load` wrapper. You can use this event to run code on every page navigation, for example to set up event listeners that would otherwise be lost during navigation.
+
+```js
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // This runs on first page load and after every navigation.
+    setupStuff(); // e.g. add event listeners
+  });
+</script>
 ```
 
-You only need to change the path of the asset you want to preload. The rest is managed behind the scenes when the `optimizedImage` ispassed to `BaseLayout` as a prop
-
-```diff
-<BaseLayout
-  title="Projects"
-  description="Meta description for the page"
-+ preloadedImage = {optimizedImage}
->
-```
-
-> [!TIP]
-> This image, if passed to BaseLayout as a prop, will also be used by the `<meta property="og:image"` tags for social sharing.
+For an in-depth explanation, please refer <a href="https://docs.astro.build/en/guides/view-transitions/#script-behavior-with-view-transitions">to the documentation.
 
 <a name="sitemapConfiguration"></a>
 
-## Sitemap Configuration
+### Sitemap Configuration
 
 This template includes automatic sitemap generation using <a href="https://docs.astro.build/en/guides/integrations-guide/sitemap/">`@astrojs/sitemap`</a>. The sitemap helps search engines better crawl and index your site.
 
-### Features
+#### Features
 
 - Automatically generates `sitemap-index.xml` and `sitemap-0.xml`
 - Excludes admin routes from indexing
 - No manual XML creation needed
 
-### Configuration
+#### Configuration
 
 The sitemap is pre-configured in `astro.config.mjs`. Here's what's included:
 
@@ -818,71 +1155,57 @@ export default defineConfig({
 
 Fore more configuration options, read the [full Astro Sitemap documentation](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
 
-<a name="removingDecapCms"></a>
-
-## Removing Decap CMS
-
-If you don't need a CMS for your project, you can easily remove Decap CMS using the included removal script.
-
-### When to Remove Decap CMS
-
-- Building a static site with no content management needs
-- Want to use local Content Collections without Decap
-- Prefer a different CMS solution
-- Simplifying the project for a specific use case
-
-### How to Remove
-
-Run the removal script:
-
-```bash
-npm run remove-decap
-```
-
-The script will:
-1. Ask for confirmation before proceeding
-2. Ask if you want to remove blog content and configuration
-   - Choose **yes** to completely remove blog functionality
-   - Choose **no** to keep blog files for local Content Collections (without Decap)
-
-### What Gets Removed
-
-When you run the script, it will move (not delete) the following to `scripts/deleted/`:
-
-**Always removed:**
-- CMS admin dashboard (`public/admin/` folder)
-- Admin page (`src/pages/admin.astro`)
-- Sitemap filter for `/admin` route in `astro.config.mjs`
-
-**Optionally removed (if you choose yes to remove blog content):**
-- Blog content collection (`src/content/blog/`)
-- Blog layout files (`src/layouts/Blog*.astro`)
-- Blog pages (`src/pages/blog/`)
-- Blog components (`src/components/FeaturedPost/`, `src/components/TableOfContents/`)
-- Blog navigation link from `src/data/navData.json`
-- Blog collection from `src/content.config.ts` (preserves other collections like projects)
-
-### Safety & Recovery
-
-- **Files are moved, not deleted** - Everything goes to `scripts/deleted/`
-- **Easy to restore** - Copy files back from `scripts/deleted/` if needed
-- **Commit first** - Always commit changes before running the script
-- **Other collections preserved** - If you have other Content Collections (like projects), they will be kept
-
-### After Running the Script
-
-1. Run `npm run build` to ensure everything works
-2. Check for any remaining references the script reports
-3. If you kept blog files (chose "no"), you can use Content Collections locally without Decap CMS
-
 <a name="deployment"></a>
 
 ## Deployment
 
 > [!IMPORTANT]
-> This kit now uses decapbridge.com for its authentication solution. If you still use Netlify Identity, please refer to [the Netlify Identity branch](https://github.com/CodeStitchOfficial/Intermediate-Astro-Decap-CMS/tree/deprecated---using-Netlify-Identity)
+> This kit now uses decapbridge.com for its authentication solution. If you still use Netlify Identity, please refer to [the unmaintained Netlify Identity branch](https://github.com/CodeStitchOfficial/Intermediate-Astro-Decap-CMS/tree/deprecated---using-Netlify-Identity)
 
-0. **Before** you deploy, ensure the astro.config.mjs, client.json, robots.txt, \_redirects have been filled out, and that any kit placeholders have been swapped out.
+### Pre-Deployment Checklist
+
+Before deploying, ensure you've configured:
+
+1. **Site URLs** - Update in:
+
+   - `astro.config.mjs` - `site` property
+   - `src/data/client.ts` - `SITE.url`
+   - `public/robots.txt` - Sitemap URL
+
+2. **Business Information** - Update `src/data/client.ts`:
+
+   - Company name, address, phone
+   - Email and opening hours
+   - Social media links
+
+3. **Favicons** - Replace default favicons in `public/assets/favicons/`
+
+   - Use https://realfavicongenerator.net/
+
+4. **Default Social Image** - Create `public/assets/social.jpg` (1200x600px recommended)
+
+5. **Decap CMS Configuration** - Update `public/admin/config.yml`:
+
+   - Repository name
+   - Site URL
+   - DecapBridge settings
+
+6. **Test JSON-LD and Social Sharing** - Validate before deploying:
+
+**JSON-LD Validation:**
+
+1. Build locally: `npm run build && npm run preview`
+2. View page source and copy the JSON-LD script (inside `<script type="application/ld+json">`)
+3. Validate at https://validator.schema.org/
+4. Test with Google Rich Results: https://search.google.com/test/rich-results
+
+**Social Sharing:**
+
+- Facebook: https://developers.facebook.com/tools/debug/
+- Twitter: https://cards-dev.twitter.com/validator
+- LinkedIn: https://www.linkedin.com/post-inspector/
+
+### Setting Up Decap CMS with DecapBridge
 
 > [!TIP]
 > If you are updating your kit from Netlify Identity to decapbridge.com:
@@ -892,10 +1215,10 @@ When you run the script, it will move (not delete) the following to `scripts/del
 > 3. Navigate to Project Configuration/Identity and delete the Netlify Identity instance. This will delete your users as well. They will have to be re-created in decapbridge later.
 > 4. In /src/pages/admin.astro, delete the Netlify Identity script
 
-### On decapbridge.com:
+#### On decapbridge.com:
 
-1. Make sure that your repo is on Github and your site is deployed (doesn’t have to be Netlify) before moving on to the next step.
-2. Navigate to https://decapbridge.com/ and create an account. It’s free.
+1. Make sure that your repo is on Github and your site is deployed (doesn't have to be Netlify) before moving on to the next step.
+2. Navigate to https://decapbridge.com/ and create an account. It's free.
 3. Navigate to the dashboard and Create New Site. You see this screen:
 
 ![decapbridge.com dashboard](public/assets/readme-images/decapbridge-dashboard.png)
@@ -907,15 +1230,15 @@ Fill in the 3 input fields:
   To create a personal access token in GitHub, follow these steps:
 
   1. Log into your Github account.
-  2. Click on your profile picture (top right) (not the repository profile), and click the “Settings” link.
-  3. Scroll down and click the “Developer Settings” link.
-  4. Click the GitHub “Personal access tokens” link and choose `fine-grained tokens`
-  5. Click the “Generate new token” button and provide your password again if required.
-  6. Provide a name for the GitHub personal access token in the “Note” field.
-  7. Set the access token’s “expiration” timeout to “No expiration.”
-  8. Set the “Repository access” to the desired repository only.
-  9. Set the “Permissions / Repository permissions” to **read-write access** for this repository's **Contents** and **Pull requests. (**This is needed by DecapCMS to read your markdown, and write new content via Pull Requests.)
-  10. Click “Generate token.”, double check the permissions and click the Generate Token button
+  2. Click on your profile picture (top right) (not the repository profile), and click the "Settings" link.
+  3. Scroll down and click the "Developer Settings" link.
+  4. Click the GitHub "Personal access tokens" link and choose `fine-grained tokens`
+  5. Click the "Generate new token" button and provide your password again if required.
+  6. Provide a name for the GitHub personal access token in the "Note" field.
+  7. Set the access token's "expiration" timeout to "No expiration."
+  8. Set the "Repository access" to the desired repository only.
+  9. Set the "Permissions / Repository permissions" to **read-write access** for this repository's **Contents** and **Pull requests. (**This is needed by DecapCMS to read your markdown, and write new content via Pull Requests.)
+  10. Click "Generate token.", double check the permissions and click the Generate Token button
   11. **Make sure to copy your GitHub Personal Access Token now as you will not be able to see this again.**
 
       ![The Permissions settings](public/assets/readme-images/github-permissions.png)
@@ -924,7 +1247,7 @@ Fill in the 3 input fields:
 
 - Decap CMS URL: provide the (deployed) URL of the Decap CMS dashboard. e.g [`https://testing-decapbridge.netlify.app/admin/#/`](https://testing-decapbridge.netlify.app/admin/#/)
 
-### On your CS Decap kit:
+#### In your project:
 
 1. In `/public/admin/config.yml`, edit the `backend` Decap config to paste in the snippet provided by the [DecapBridge.com](http://DecapBridge.com) dashboard. It should look something like this:
 
@@ -939,11 +1262,11 @@ backend:
 
   # Quickly see who did what (optional)
   commit_messages:
-    create: Create {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
-    update: Update {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
-    delete: Delete {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
-    uploadMedia: Upload “{{path}}” - {{author-name}} <{{author-login}}> via DecapBridge
-    deleteMedia: Delete “{{path}}” - {{author-name}} <{{author-login}}> via DecapBridge
+    create: Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    update: Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    delete: Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    uploadMedia: Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    deleteMedia: Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge
     openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge
 
 # Better Decap + Bridge logo (optional)
@@ -961,22 +1284,37 @@ site_url: https://testing-decapbridge.netlify.app
 This project is optimized for Netlify deployment with build caching enabled via `netlify-plugin-cache`.
 
 **Important Notes:**
+
 - **First deployment** will be slower as it establishes the cache
 - **Subsequent deployments** will be significantly faster
 
 **Cache Management:**
 
 If you need to clear the cache (e.g., after major dependency updates or content collection errors):
+
 1. Go to Netlify Dashboard → Site Settings → Build & deploy
 2. Click "Clear cache and retry deploy"
 3. Or add `[skip cache]` to your commit message
 
 **When to clear the cache:**
+
 - After major dependency updates
 - If you encounter "Cannot find module" errors with content collections
 - After restructuring content files or renaming content collections
 
 The cache configuration is already set up in `netlify.toml` at the project root.
+
+<a name="contributing"></a>
+
+## Contributing
+
+If you're interested in helping, you can contribute in several ways:
+
+1. Reporting and Fixing Issues: Feel free to use the issue tracker to report bugs or request features.
+2. Submitting Pull Requests: If you've fixed a bug or added a new feature, submit a pull request with a clear description of your changes.
+3. Providing Feedback: Share your thoughts on the project's current features and suggest improvements.
+
+Check [open issues](https://github.com/CodeStitchOfficial/Intermediate-Astro-Decap-CMS/issues) and submit PRs.
 
 <a name="acknowledgments"></a>
 
@@ -988,7 +1326,7 @@ The author would like to acknowledge:
 - [CodeStitch](https://codestitch.app/) - Some of their free stitches were used in this template.
 - [Decapbridge.com] - Powers the interactions between Decap and the Github repo. Visit [Decapbridge Discord](<(https://discord.com/channels/1257728522361901219/1257728681380417600)>) and their [open-sources repos](https://github.com/decapbridge) for more information and support.
 
-<a name="Conclusion"></a>
+<a name="conclusion"></a>
 
 ## Conclusion
 
