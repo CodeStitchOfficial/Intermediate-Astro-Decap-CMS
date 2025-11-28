@@ -22,7 +22,7 @@ logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 site_url: https://intermediate-astro-kit-decap-cms.netlify.app
 
 media_folder: src/assets/images/blog # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
-public_folder: "@assets/images/blog" # testing this out for Astro aliasing
+public_folder: "@assets/images/blog" # Same folder as above, but using a path alias for easier referencing in the markdown files.
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
