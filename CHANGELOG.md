@@ -1,5 +1,55 @@
 # Changelog
 
+## 3.0.0 - Major Architecture Update
+
+### Astro Best Practices Implementation
+
+- Split large monolithic pages using modular, componentized UI sections
+- Components follow the frontmatter / template / script / style pattern
+- Component-per-folder organization for better maintainability
+- Added reusable components: Banner, CSPicture, Hero, Reviews, Services, SideBySide, Testimonials
+
+### Asset & Image Optimization
+
+- Optimized images using Astro's `<Picture />` component with WebP support and art direction
+- SVG icons now use `astro-icon` with `<Icon />` component for better performance
+- Restructured assets with dedicated folders (blog, gallery, projects, services, testimonials)
+- Moved all relevant assets from public to src for optimal bundling
+
+### SEO Improvements
+
+- New Meta component and updated client.ts for centralized SEO management
+- Dynamic JSON-LD schema generation
+- Added social sharing image
+
+### Navigation & Accessibility
+
+- Accessible navigation with WCAG-compliant keyboard support
+- Fixed skip link functionality
+- Two Header components to choose from, whether you like dynamic or static syntax.
+
+### Developer Experience
+
+- Added 8 VS Code tours for onboarding (getting started, component composition, content collections, Decap CMS, deployment, image optimization, navigation)
+- New cleanup scripts for starting fresh:
+  - `npm run remove-decap` - Removes Decap CMS, blog layouts, content collections, and related components
+  - `npm run remove-demo` - Removes demo pages (about, contact, reviews, projects) and demo components
+- Added `_template.astro` page for easier scaffolding
+- Better organized frontmatter across pages
+
+### Build & Deployment
+
+- Added Netlify cache plugin for faster builds
+- Updated Astro to v5.16.2
+
+### Breaking Changes
+
+- Component import paths changed due to folder restructuring
+- Asset paths updated (moved to src/assets organization)
+- Meta tags logic moved to Meta, from BaseLayout
+
+---
+
 ## 2.2.4
 
 ### Minor changes
