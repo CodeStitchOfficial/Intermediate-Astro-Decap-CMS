@@ -1,7 +1,7 @@
 {
-	"name": "intermediate-astro-v5-less-decap",
+	"name": "intermediate-astro-decap-cms-starter-kit",
 	"type": "module",
-	"version": "2.2.5",
+	"version": "3.0.0",
 	"scripts": {
 		"astro": "astro dev",
 		"dev": "astro dev",
@@ -12,8 +12,8 @@
 		"remove-demo": "node scripts/remove-demo.js"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.5.1",
-		"astro": "^5.13.7",
+		"@astrojs/sitemap": "^3.6.0",
+		"astro": "^5.16.2",
 		"astro-icon": "^1.1.5",
 		"autoprefixer": "^10.4.21",
 		"less": "^4.4.1"
