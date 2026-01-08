@@ -13,10 +13,17 @@ const currentYear = getCurrentYear();
 <footer id="footer">
 	<div class="container">
 		<div class="left-section">
-			<a class="logo" href="/" aria-label="Return to [Company Name] Home page">
+			<a
+				class="logo"
+				href="/"
+				aria-label="Return to [Company Name] Home page"
+			>
 				<Icon name="logo-white" width="264" height="78" />
 			</a>
-			<p>Extra content if you need it, if not you can delete this whole p tag. I usually do.</p>
+			<p>
+				Extra content if you need it, if not you can delete this whole p
+				tag. I usually do.
+			</p>
 		</div>
 		<div class="right-section">
 			<div class="lists">
@@ -76,23 +83,25 @@ const currentYear = getCurrentYear();
 </footer>
 
 <style lang="scss">
+	@use "sass:math";
 	/* Mobile */
 	@media only screen and (min-width: 0em) {
 		#footer {
 			font-size: min(4vw, 1.2em);
-			padding: calc(84 / 16 * 1rem) 0 calc(20 / 16 * 1rem);
+			padding: calc(math.div(84, 16) * 1rem) 0
+				calc(math.div(20, 16) * 1rem);
 			background: #1c1c1c;
 
 			.left-section {
 				text-align: center;
 				margin: auto;
-				margin-bottom: calc(50 / 16 * 1rem);
+				margin-bottom: calc(math.div(50, 16) * 1rem);
 				.logo {
 					text-align: center;
 					width: auto;
-					height: calc(32 / 16 * 1em);
+					height: calc(math.div(32, 16) * 1em);
 					margin: auto;
-					margin-bottom: calc(30 / 16 * 1em);
+					margin-bottom: calc(math.div(30, 16) * 1em);
 					display: inline-block;
 
 					img {
@@ -103,11 +112,11 @@ const currentYear = getCurrentYear();
 				}
 
 				p {
-					font-size: calc(14 / 16 * 1rem);
-					line-height: calc(27 / 14);
+					font-size: calc(math.div(14, 16) * 1rem);
+					line-height: calc(math.div(27, 14));
 					text-align: center;
 					width: 100%;
-					width: calc(307 / 14 * 1rem);
+					width: calc(math.div(307, 14) * 1rem);
 					margin: auto;
 					color: #fff;
 					opacity: 0.9;
@@ -116,11 +125,11 @@ const currentYear = getCurrentYear();
 
 			.right-section {
 				width: 96%;
-				max-width: calc(407 / 16 * 1rem);
+				max-width: calc(math.div(407, 16) * 1rem);
 				margin: auto;
 				.lists {
 					width: 96%;
-					max-width: calc(307 / 16 * 1rem);
+					max-width: calc(math.div(307, 16) * 1rem);
 					margin: auto;
 					display: flex;
 					justify-content: space-between;
@@ -131,9 +140,9 @@ const currentYear = getCurrentYear();
 						padding: 0;
 
 						&:nth-of-type(3) {
-							margin-top: calc(50 / 16 * 1rem);
+							margin-top: calc(math.div(50, 16) * 1rem);
 							li {
-								margin-bottom: calc(16 / 16 * 1rem);
+								margin-bottom: calc(math.div(16, 16) * 1rem);
 								display: flex;
 								justify-content: flex-start;
 								align-items: center;
@@ -145,14 +154,14 @@ const currentYear = getCurrentYear();
 						}
 
 						li {
-							font-size: calc(18 / 16 * 1rem);
+							font-size: calc(math.div(18, 16) * 1rem);
 							list-style: none;
-							margin-bottom: calc(12 / 16 * 1rem);
+							margin-bottom: calc(math.div(12, 16) * 1rem);
 							color: #fff;
 							opacity: 0.9;
 
 							a {
-								line-height: calc(21 / 18 * 1em);
+								line-height: calc(math.div(21, 18) * 1em);
 								text-decoration: none;
 								color: #fff;
 								transition: color 0.3s;
@@ -162,23 +171,23 @@ const currentYear = getCurrentYear();
 							}
 						}
 						h2 {
-							font-size: calc(18 / 16 * 1rem);
+							font-size: calc(math.div(18, 16) * 1rem);
 							font-weight: bold;
-							line-height: calc(21 / 18 * 1em);
+							line-height: calc(math.div(21, 18) * 1em);
 							text-transform: uppercase;
-							margin-bottom: calc(37 / 16 * 1rem);
+							margin-bottom: calc(math.div(37, 16) * 1rem);
 							color: #fff;
 							position: relative;
 
 							&:before {
 								content: "";
-								width: calc(97 / 16 * 1rem);
-								height: calc(2 / 16 * 1rem);
+								width: calc(math.div(97, 16) * 1rem);
+								height: calc(math.div(2, 16) * 1rem);
 								background: var(--primary);
 								opacity: 1;
 								display: block;
 								position: absolute;
-								bottom: calc(-16 / 16 * 1rem);
+								bottom: calc(math.div(-16, 16) * 1rem);
 								left: 0;
 							}
 						}
@@ -191,24 +200,24 @@ const currentYear = getCurrentYear();
 				}
 
 				.cs-button-solid {
-					width: calc(250 / 16 * 1rem);
-					height: calc(53 / 16 * 1rem);
+					width: calc(math.div(250, 16) * 1rem);
+					height: calc(math.div(53, 16) * 1rem);
 					margin: 0;
-					padding-top: calc(3 / 16 * 1rem);
+					padding-top: calc(math.div(3, 16) * 1rem);
 				}
 			}
 
 			.credit {
-				font-size: calc(16 / 16 * 1rem);
-				line-height: calc(36 / 16 * 1rem);
+				font-size: calc(math.div(16, 16) * 1rem);
+				line-height: calc(math.div(36, 16) * 1rem);
 				text-align: center;
 				width: 96%;
 				margin: auto;
-				margin-top: calc(100 / 16 * 1rem);
+				margin-top: calc(math.div(100, 16) * 1rem);
 				color: #fff;
 
 				a {
-					font-size: calc(16 / 16 * 1rem);
+					font-size: calc(math.div(16, 16) * 1rem);
 					text-decoration: none;
 					color: var(--primary);
 
@@ -218,7 +227,7 @@ const currentYear = getCurrentYear();
 				}
 
 				.copyright {
-					font-size: calc(16 / 16 * 1rem);
+					font-size: calc(math.div(16, 16) * 1rem);
 					display: block;
 				}
 			}
@@ -231,7 +240,7 @@ const currentYear = getCurrentYear();
 			font-size: min(1.2vw, 1em);
 			.container {
 				width: 96%;
-				max-width: calc(1320 / 16 * 1rem);
+				max-width: calc(math.div(1320, 16) * 1rem);
 				margin: auto;
 				padding: 0;
 				display: flex;
@@ -242,12 +251,12 @@ const currentYear = getCurrentYear();
 
 			.left-section {
 				text-align: left;
-				width: calc(409 / 16 * 1rem);
+				width: calc(math.div(409, 16) * 1rem);
 				margin: 0;
 
 				.logo {
 					text-align: left;
-					height: calc(40 / 16 * 1rem);
+					height: calc(math.div(40, 16) * 1rem);
 					margin-left: 0;
 				}
 
@@ -258,12 +267,12 @@ const currentYear = getCurrentYear();
 			}
 
 			.right-section {
-				width: calc(609 / 16 * 1rem);
+				width: calc(math.div(609, 16) * 1rem);
 				max-width: none;
 				margin: 0;
 				.lists {
 					width: 96%;
-					max-width: calc(769 / 16 * 1rem);
+					max-width: calc(math.div(769, 16) * 1rem);
 					max-width: initial;
 					margin: 0;
 
@@ -283,12 +292,12 @@ const currentYear = getCurrentYear();
 								&:before {
 									content: "";
 									width: 0%;
-									height: calc(2 / 16 * 1rem);
+									height: calc(math.div(2, 16) * 1rem);
 									background: var(--primary);
 									opacity: 1;
 									display: block;
 									position: absolute;
-									bottom: calc(-3 / 16 * 1rem);
+									bottom: calc(math.div(-3, 16) * 1rem);
 									left: 0;
 									transition: width 0.3s;
 								}

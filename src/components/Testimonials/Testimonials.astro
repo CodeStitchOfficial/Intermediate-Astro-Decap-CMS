@@ -13,15 +13,27 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 		<span class="cs-topper">Our Reviews</span>
 		<h2 class="cs-title">Words From Our Customers</h2>
 		<p class="cs-text">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor
+			volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque
+			gravida viverra. Leo ut sed euismod tortor risus et. Ornare non
+			neque, leo, ornare. Lorem ipsum dolor sit amet.
 		</p>
 		<ul class="cs-card-group">
 			<!-- Review 1 -->
 			<li class="cs-item">
-				<Image src={profile5} class="cs-item-img" alt="Jon Doe" width="80" height="80" />
+				<Image
+					src={profile5}
+					class="cs-item-img"
+					alt="Jon Doe"
+					width="80"
+					height="80"
+				/>
 				<p class="cs-item-p">
-					Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci
-					imperdiet eget eget.
+					Dictum dolor, nullam morbi sem in auctor proin. Consequat
+					dolor habitasse nam sed tempor. Viverra magna pharetra
+					rhoncus, nec sed ullamcorper lectus et. Auctor velit diam
+					fermentum consequat. Feugiat viverra massa urna, volutpat
+					orci imperdiet eget eget.
 				</p>
 				<span class="cs-reviewer">
 					Jon Doe
@@ -31,11 +43,20 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 			</li>
 			<!-- Review 2 -->
 			<li class="cs-item">
-				<Image src={profile4} class="cs-item-img" alt="Jon Doe" width="80" height="80" />
+				<Image
+					src={profile4}
+					class="cs-item-img"
+					alt="Jon Doe"
+					width="80"
+					height="80"
+				/>
 
 				<p class="cs-item-p">
-					Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci
-					imperdiet eget eget.
+					Dictum dolor, nullam morbi sem in auctor proin. Consequat
+					dolor habitasse nam sed tempor. Viverra magna pharetra
+					rhoncus, nec sed ullamcorper lectus et. Auctor velit diam
+					fermentum consequat. Feugiat viverra massa urna, volutpat
+					orci imperdiet eget eget.
 				</p>
 				<span class="cs-reviewer">
 					Jane Doe
@@ -44,11 +65,16 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 				<Icon name="stars-yellow" class="cs-item-stars" />
 			</li>
 		</ul>
-		<a aria-label="read more reviews" href="/reviews/" class="cs-button-solid">Our Reviews</a>
+		<a
+			aria-label="read more reviews"
+			href="/reviews/"
+			class="cs-button-solid">Our Reviews</a
+		>
 	</div>
 </section>
 
 <style lang="scss">
+	@use "sass:math";
 	/*-- -------------------------- -->
 <---          Reviews           -->
 <--- -------------------------- -*/
@@ -62,23 +88,23 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 
 			.cs-container {
 				width: 100%;
-				max-width: calc(1104 / 16 * 1rem);
+				max-width: calc(math.div(1104, 16) * 1rem);
 				margin: auto;
 			}
 
 			.cs-topper {
 				text-align: center;
-				margin-bottom: calc(16 / 16 * 1rem);
+				margin-bottom: calc(math.div(16, 16) * 1rem);
 			}
 
 			.cs-title {
 				text-align: center;
-				max-width: calc(700 / 16 * 1rem);
+				max-width: calc(math.div(700, 16) * 1rem);
 			}
 
 			.cs-text {
 				text-align: center;
-				max-width: calc(650 / 16 * 1rem);
+				max-width: calc(math.div(650, 16) * 1rem);
 				/* 88px - 104px */
 				margin-bottom: clamp(5.5em, 10.2vw, 6.5em);
 			}
@@ -93,17 +119,18 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 				text-align: left;
 				list-style: none;
 				width: 100%;
-				max-width: calc(542 / 16 * 1rem);
-				margin: 0 auto calc(64 / 16 * 1rem);
+				max-width: calc(math.div(542, 16) * 1rem);
+				margin: 0 auto calc(math.div(64, 16) * 1rem);
 				/* Prevents padding from affecting height & width */
 				box-sizing: border-box;
 				/* Padding L & R - 16px - 32px */
-				padding: calc(60 / 16 * 1rem) clamp(1rem, 3.2vw, 2rem) 0;
+				padding: calc(math.div(60, 16) * 1rem) clamp(1rem, 3.2vw, 2rem)
+					0;
 				/* 32px - 40px */
 				padding-bottom: clamp(2rem, 5.4vw, 2.5rem);
 				background: #fff;
 				box-shadow: 0px 20px 39px 0px rgba(0, 0, 0, 0.05);
-				border-radius: calc(4 / 16 * 1rem);
+				border-radius: calc(math.div(4, 16) * 1rem);
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
@@ -116,23 +143,23 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 			}
 
 			.cs-item-img {
-				width: calc(80 / 16 * 1rem);
-				height: calc(80 / 16 * 1rem);
+				width: calc(math.div(80, 16) * 1rem);
+				height: calc(math.div(80, 16) * 1rem);
 				position: absolute;
-				top: calc(-40 / 16 * 1rem);
+				top: calc(math.div(-40, 16) * 1rem);
 			}
 
 			.cs-item-p {
-				font-size: calc(16 / 16 * 1rem);
+				font-size: calc(math.div(16, 16) * 1rem);
 				line-height: 1.5em;
-				margin: 0 0 calc(20 / 16 * 1rem);
-				padding-bottom: calc(20 / 16 * 1rem);
+				margin: 0 0 calc(math.div(20, 16) * 1rem);
+				padding-bottom: calc(math.div(20, 16) * 1rem);
 				color: var(--bodyTextColor);
 				border-bottom: 1px solid #e8e9ec;
 			}
 
 			.cs-reviewer {
-				font-size: calc(16 / 16 * 1rem);
+				font-size: calc(math.div(16, 16) * 1rem);
 				font-weight: 700;
 				line-height: 1.5em;
 				width: 40%;
@@ -142,15 +169,15 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 			}
 
 			.cs-desc {
-				font-size: calc(14 / 16 * 1rem);
+				font-size: calc(math.div(14, 16) * 1rem);
 				font-weight: 400;
 				color: var(#353535);
 				display: block;
 			}
 
 			.cs-item-stars {
-				width: calc(96 / 16 * 1rem);
-				height: calc(16 / 16 * 1rem);
+				width: calc(math.div(96, 16) * 1rem);
+				height: calc(math.div(16, 16) * 1rem);
 			}
 		}
 	}
@@ -162,7 +189,7 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				gap: calc(16 / 16 * 1rem);
+				gap: calc(math.div(16, 16) * 1rem);
 			}
 
 			.cs-item {

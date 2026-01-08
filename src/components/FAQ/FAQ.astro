@@ -49,6 +49,7 @@
 </section>
 
 <style lang="scss">
+	@use "sass:math";
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0rem) {
 		#faq-1741 {
@@ -58,7 +59,7 @@
 			.cs-container {
 				width: 100%;
 				/* changes to 1280px at desktop */
-				max-width: calc(584 / 16 * 1rem);
+				max-width: calc(math.div(584, 16) * 1rem);
 				margin: 2em auto;
 				display: flex;
 				flex-direction: column;
@@ -79,7 +80,7 @@
 
 			.cs-title {
 				max-width: 15ch;
-				margin: 0 0 calc(32 / 16 * 1rem);
+				margin: 0 0 calc(math.div(32, 16) * 1rem);
 			}
 
 			.cs-faq-group {
@@ -90,7 +91,7 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				gap: calc(12 / 16 * 1rem);
+				gap: calc(math.div(12, 16) * 1rem);
 			}
 
 			.cs-faq-item {
@@ -119,7 +120,7 @@
 					.cs-item-text {
 						height: auto;
 						/* 16px - 24px */
-						padding: calc(16 / 16 * 1rem) clamp(1rem, 2vw, 1.5rem);
+						padding: calc(math.div(16, 16) * 1rem) clamp(1rem, 2vw, 1.5rem);
 						opacity: 1;
 						border: 1px solid #e8e8e8;
 					}
@@ -133,8 +134,8 @@
 				line-height: 1.2em;
 				text-align: left;
 				width: 100%;
-				padding: calc(16 / 16 * 1rem);
-				padding-left: calc(52 / 16 * 1rem);
+				padding: calc(math.div(16, 16) * 1rem);
+				padding-left: calc(math.div(52, 16) * 1rem);
 				background-color: transparent;
 				color: var(--headerColor);
 				border: 1px solid #e8e8e8;
@@ -151,14 +152,14 @@
 				&:before {
 					/* left line */
 					content: "";
-					width: calc(8 / 16 * 1rem);
-					height: calc(2 / 16 * 1rem);
+					width: calc(math.div(8, 16) * 1rem);
+					height: calc(math.div(2, 16) * 1rem);
 					background-color: var(--headerColor);
 					opacity: 1;
 					display: block;
 					position: absolute;
 					top: 45%;
-					left: calc(18 / 16 * 1rem);
+					left: calc(math.div(18, 16) * 1rem);
 					transform: rotate(45deg);
 					transition: transform 0.5s;
 					/* animate the transform from the left side of the x axis, and the center of the y */
@@ -168,14 +169,14 @@
 				&:after {
 					/* right line */
 					content: "";
-					width: calc(8 / 16 * 1rem);
-					height: calc(2 / 16 * 1rem);
+					width: calc(math.div(8, 16) * 1rem);
+					height: calc(math.div(2, 16) * 1rem);
 					background-color: var(--headerColor);
 					opacity: 1;
 					display: block;
 					position: absolute;
 					top: 45%;
-					left: calc(21 / 16 * 1rem);
+					left: calc(math.div(21, 16) * 1rem);
 					transform: rotate(-45deg);
 					transition: transform 0.5s;
 					/* animate the transform from the right side of the x axis, and the center of the y */
@@ -204,7 +205,7 @@
 	@media only screen and (min-width: 48rem) {
 		#faq-1741 {
 			.cs-gallery {
-				max-width: calc(1720 / 16 * 1rem);
+				max-width: calc(math.div(1720, 16) * 1rem);
 			}
 
 			.cs-picture {
@@ -217,7 +218,7 @@
 	@media only screen and (min-width: 64rem) {
 		#faq-1741 {
 			.cs-container {
-				max-width: calc(1280 / 16 * 1rem);
+				max-width: calc(math.div(1280, 16) * 1rem);
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: stretch;
@@ -277,8 +278,7 @@
 				}
 			}
 		}
-	}
-</style>
+	}</style>
 
 <script>
 	// Paste the JS inside Astro:page-load wrapper for View Transitions purposes

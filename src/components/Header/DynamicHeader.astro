@@ -25,13 +25,24 @@ import navData from "@data/navData.json";
 <header id="cs-navigation">
 	<div class="cs-container">
 		<!--Nav Logo-->
-		<a href="/" class="cs-logo" aria-label="Return to [Company Name] Home page">
+		<a
+			href="/"
+			class="cs-logo"
+			aria-label="Return to [Company Name] Home page"
+		>
 			<Icon name="logo-black" />
 		</a>
 		<!--Navigation List-->
 		<nav class="cs-nav" aria-label="main navigation">
 			<!--Mobile Nav Toggle-->
-			<button class="cs-toggle" id="cs-toggle" aria-expanded="false" aria-controls="cs-ul-wrapper" aria-haspopup="menu" aria-label="mobile menu toggle">
+			<button
+				class="cs-toggle"
+				id="cs-toggle"
+				aria-expanded="false"
+				aria-controls="cs-ul-wrapper"
+				aria-haspopup="menu"
+				aria-label="mobile menu toggle"
+			>
 				<span class="cs-box" aria-hidden="true">
 					<span class="cs-line cs-line1" aria-hidden="true"></span>
 					<span class="cs-line cs-line2" aria-hidden="true"></span>
@@ -43,26 +54,76 @@ import navData from "@data/navData.json";
 				<ul id="cs-expanded" class="cs-ul">
 					{
 						navData.map((entry) => (
-							<li class:list={["cs-li", { "cs-dropdown": entry.children?.length > 0 }]}>
+							<li
+								class:list={[
+									"cs-li",
+									{
+										"cs-dropdown":
+											entry.children?.length > 0,
+									},
+								]}
+							>
 								{entry.children?.length > 0 ? (
 									// If entry has children in navData.json, create a button and a dropdown icon
-									<button id={getDropdownId(entry.key)} aria-expanded="false" aria-haspopup="menu" class:list={["cs-li-link cs-dropdown-toggle", { "cs-active": Astro.url.pathname.includes(entry.url) }]}>
+									<button
+										id={getDropdownId(entry.key)}
+										aria-expanded="false"
+										aria-haspopup="menu"
+										class:list={[
+											"cs-li-link cs-dropdown-toggle",
+											{
+												"cs-active":
+													Astro.url.pathname.includes(
+														entry.url,
+													),
+											},
+										]}
+									>
 										{entry.key}
-										<Icon name="mdi--caret" class="cs-drop-icon" />
+										<Icon
+											name="mdi--caret"
+											class="cs-drop-icon"
+										/>
 									</button>
 								) : (
 									// If entry does not have children in navData.json, create an anchor
-									<a href={entry.url} class:list={["cs-li-link", { "cs-active": Astro.url.pathname === entry.url }]} aria-current={isCurrentPage(Astro.url.pathname, entry.url)}>
+									<a
+										href={entry.url}
+										class:list={[
+											"cs-li-link",
+											{
+												"cs-active":
+													Astro.url.pathname ===
+													entry.url,
+											},
+										]}
+										aria-current={isCurrentPage(
+											Astro.url.pathname,
+											entry.url,
+										)}
+									>
 										{entry.key}
 									</a>
 								)}
 
 								{entry.children?.length > 0 && (
 									// If entry has children in navData.json, create a drop down menu
-									<ul class="cs-drop-ul" aria-labelledby={getDropdownId(entry.key)}>
+									<ul
+										class="cs-drop-ul"
+										aria-labelledby={getDropdownId(
+											entry.key,
+										)}
+									>
 										{entry.children.map((child) => (
 											<li class="cs-drop-li">
-												<a href={child.url} class="cs-li-link cs-drop-link" aria-current={isCurrentPage(Astro.url.pathname, child.url)}>
+												<a
+													href={child.url}
+													class="cs-li-link cs-drop-link"
+													aria-current={isCurrentPage(
+														Astro.url.pathname,
+														child.url,
+													)}
+												>
 													{child.key}
 												</a>
 											</li>
@@ -73,7 +134,22 @@ import navData from "@data/navData.json";
 						))
 					}
 					<li class="cs-li cs-hide-on-desktop">
-						<a href="/contact/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/contact/" }]} aria-current={isCurrentPage(Astro.url.pathname, "/contact/")}> Contact </a>
+						<a
+							href="/contact/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/contact/",
+								},
+							]}
+							aria-current={isCurrentPage(
+								Astro.url.pathname,
+								"/contact/",
+							)}
+						>
+							Contact
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -85,7 +161,8 @@ import navData from "@data/navData.json";
 </header>
 
 <style lang="scss">
-	/*-- -------------------------- -->
+	@use "sass:math";
+/*-- -------------------------- -->
 <---     Mobile Navigation      -->
 <--- -------------------------- -*/
 
@@ -103,7 +180,7 @@ import navData from "@data/navData.json";
 			width: 100%;
 			/* prevents padding from affecting height and width */
 			box-sizing: border-box;
-			padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+			padding: calc(math.div(12, 16) * 1rem) calc(math.div(16, 16) * 1rem);
 			background-color: #fff;
 			box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 			position: fixed;
@@ -156,7 +233,7 @@ import navData from "@data/navData.json";
 
 			.cs-logo {
 				width: 40%;
-				max-width: calc(146 / 16 * 1rem);
+				max-width: calc(math.div(146, 16) * 1rem);
 				height: 100%;
 				margin: 0 auto 0 0;
 				/* prevents padding from affecting height and width */
@@ -184,7 +261,7 @@ import navData from "@data/navData.json";
 				margin: 0 0 0 auto;
 				background-color: transparent;
 				border: none;
-				border-radius: calc(4 / 16 * 1rem);
+				border-radius: calc(math.div(4, 16) * 1rem);
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -198,7 +275,8 @@ import navData from "@data/navData.json";
 
 				.cs-line2 {
 					top: 50%;
-					transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
+					transform: translate(-50%, -50%) translateY(0)
+						rotate(-225deg);
 					transform-origin: center;
 				}
 
@@ -284,12 +362,14 @@ import navData from "@data/navData.json";
 				height: 65vh;
 				margin: 0;
 				/* 28px - 40px */
-				padding: calc(48 / 16 * 1rem) clamp(1.75rem, 3vw, 2.5rem) calc(32 / 16 * 1rem) calc(70 / 16 * 1rem);
+				padding: calc(math.div(48, 16) * 1rem)
+					clamp(1.75rem, 3vw, 2.5rem) calc(math.div(32, 16) * 1rem)
+					calc(math.div(70, 16) * 1rem);
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-start;
 				align-items: flex-end;
-				gap: calc(20 / 16 * 1rem);
+				gap: calc(math.div(20, 16) * 1rem);
 				overflow: scroll;
 			}
 
@@ -300,7 +380,7 @@ import navData from "@data/navData.json";
 				margin-right: 0;
 				opacity: 0;
 				/* transition from these values */
-				transform: translateXcalc(-40 / 16 * 1rem);
+				transform: translateX(calc(math.div(-40, 16) * 1rem));
 				transition:
 					transform 0.6s,
 					opacity 0.9s;
@@ -353,7 +433,7 @@ import navData from "@data/navData.json";
 					opacity: 1;
 					display: none;
 					position: absolute;
-					bottom: calc(-2 / 16 * 1rem);
+					bottom: calc(math.div(-2, 16) * 1rem);
 					left: 0;
 				}
 
@@ -412,8 +492,8 @@ import navData from "@data/navData.json";
 				&.cs-active {
 					.cs-drop-ul {
 						height: auto;
-						margin: calc(12 / 16 * 1rem) 0 0 0;
-						padding: calc(24 / 16 * 1rem);
+						margin: calc(math.div(12, 16) * 1rem) 0 0 0;
+						padding: calc(math.div(24, 16) * 1rem);
 						opacity: 1;
 						visibility: visible;
 						transform: scale(1);
@@ -435,7 +515,7 @@ import navData from "@data/navData.json";
 			}
 
 			.cs-drop-icon {
-				width: calc(15 / 16 * 1rem);
+				width: calc(math.div(15, 16) * 1rem);
 				height: auto;
 				display: inline-block;
 				color: inherit;
@@ -448,7 +528,8 @@ import navData from "@data/navData.json";
 				height: 0;
 				margin: 0;
 				box-sizing: border-box;
-				padding: 0 calc(24 / 16 * 1rem) 0 calc(24 / 16 * 1rem);
+				padding: 0 calc(math.div(24, 16) * 1rem) 0
+					calc(math.div(24, 16) * 1rem);
 				background-color: var(--primary);
 				opacity: 0;
 				display: flex;
@@ -456,7 +537,7 @@ import navData from "@data/navData.json";
 				flex-direction: column;
 				justify-content: flex-start;
 				align-items: flex-end;
-				gap: calc(12 / 16 * 1rem);
+				gap: calc(math.div(12, 16) * 1rem);
 				overflow: hidden;
 				transform: scale(0);
 				transition:
@@ -522,7 +603,7 @@ import navData from "@data/navData.json";
 			}
 
 			.cs-drop-icon {
-				width: calc(15 / 16 * 1rem);
+				width: calc(math.div(15, 16) * 1rem);
 				height: auto;
 				display: inline-block;
 				color: inherit;
@@ -531,7 +612,7 @@ import navData from "@data/navData.json";
 			}
 
 			.cs-drop-ul {
-				min-width: calc(200 / 16 * 1rem);
+				min-width: calc(math.div(200, 16) * 1rem);
 				margin: 0;
 				padding: 0;
 				background-color: #fff;
@@ -554,7 +635,7 @@ import navData from "@data/navData.json";
 			}
 
 			.cs-drop-li {
-				font-size: calc(16 / 16 * 1rem);
+				font-size: calc(math.div(16, 16) * 1rem);
 				text-decoration: none;
 				list-style: none;
 				width: 100%;
@@ -562,7 +643,7 @@ import navData from "@data/navData.json";
 				color: var(--bodyTextColor);
 				opacity: 0;
 				display: block;
-				transform: translateYcalc(-10 / 16 * 1rem);
+				transform: translateY(calc(math.div(-10, 16) * 1rem));
 				transition:
 					opacity 0.6s,
 					transform 0.6s;
@@ -610,14 +691,14 @@ import navData from "@data/navData.json";
 
 			.cs-li-link {
 				&.cs-drop-link {
-					font-size: calc(16 / 16 * 1rem);
+					font-size: calc(math.div(16, 16) * 1rem);
 					line-height: 1.5em;
 					text-decoration: none;
 					white-space: nowrap;
 					width: 100%;
 					/* prevents padding from affecting height and width */
 					box-sizing: border-box;
-					padding: calc(12 / 16 * 1rem);
+					padding: calc(math.div(12, 16) * 1rem);
 					color: var(--bodyTextColor);
 					display: block;
 					transition:
@@ -683,7 +764,7 @@ import navData from "@data/navData.json";
 			width: 100%;
 			/* prevents padding from affecting height and width */
 			box-sizing: border-box;
-			padding: 0 calc(16 / 16 * 1rem);
+			padding: 0 calc(math.div(16, 16) * 1rem);
 			background-color: #fff;
 			box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 			position: fixed;
@@ -691,12 +772,12 @@ import navData from "@data/navData.json";
 
 			.cs-container {
 				width: 100%;
-				max-width: calc(1280 / 16 * 1rem);
+				max-width: calc(math.div(1280, 16) * 1rem);
 				margin: auto;
 				display: flex;
 				justify-content: flex-end;
 				align-items: center;
-				gap: calc(24 / 16 * 1rem);
+				gap: calc(math.div(24, 16) * 1rem);
 			}
 
 			.cs-toggle {
@@ -705,8 +786,8 @@ import navData from "@data/navData.json";
 
 			.cs-logo {
 				width: 18.4%;
-				max-width: calc(350 / 16 * 1rem);
-				height: calc(65 / 16 * 1rem);
+				max-width: calc(math.div(350, 16) * 1rem);
+				height: calc(math.div(65, 16) * 1rem);
 				/* margin-right auto pushes everything away from it to the right */
 				margin: 0 auto 0 0;
 				padding: 0;
@@ -736,7 +817,8 @@ import navData from "@data/navData.json";
 
 			.cs-li {
 				list-style: none;
-				padding: calc(32 / 16 * 1rem) calc(16 / 16 * 1rem);
+				padding: calc(math.div(32, 16) * 1rem)
+					calc(math.div(16, 16) * 1rem);
 				/* prevent flexbox from squishing it */
 				flex: none;
 			}
@@ -771,7 +853,7 @@ import navData from "@data/navData.json";
 					opacity: 1;
 					display: block;
 					position: absolute;
-					bottom: calc(0 / 16 * 1rem);
+					bottom: calc(math.div(0, 16) * 1rem);
 					left: 0;
 					transition: width 0.3s;
 				}

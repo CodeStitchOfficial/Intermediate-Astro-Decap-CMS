@@ -54,6 +54,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
 </section>
 
 <style lang="scss">
+	@use "sass:math";
   /*-- -------------------------- -->
 <---       Side By Side         -->
 <--- -------------------------- -*/
@@ -65,26 +66,26 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
 
       .cs-container {
         width: 100%;
-        max-width: calc(1280 / 16 * 1rem);
+        max-width: calc(math.div(1280, 16) * 1rem);
         margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        row-gap: calc(40 / 16 * 1rem);
+        row-gap: calc(math.div(40, 16) * 1rem);
       }
 
       .cs-left {
         /* scaling the font size with the view width */
         font-size: min(2.31vw, .7em);
         /* using ems so we can use font size to scale the whole section */
-        width: calc(631 / 16 * 1em);
-        height: calc(636 / 16 * 1em);
+        width: calc(math.div(631, 16) * 1em);
+        height: calc(math.div(636, 16) * 1em);
         position: relative;
       }
 
       .cs-picture {
-        border-radius: calc(24 / 16 * 1em);
+        border-radius: calc(math.div(24, 16) * 1em);
         display: block;
         position: absolute;
         /* clips img tag corners */
@@ -101,15 +102,15 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
       }
 
       .cs-picture1 {
-        width: calc(522 / 16 * 1em);
-        height: calc(581 / 16 * 1em);
+        width: calc(math.div(522, 16) * 1em);
+        height: calc(math.div(581, 16) * 1em);
         top: 0;
         right: 0;
       }
 
       .cs-picture2 {
-        width: calc(414 / 16 * 1em);
-        height: calc(400 / 16 * 1em);
+        width: calc(math.div(414, 16) * 1em);
+        height: calc(math.div(400, 16) * 1em);
         background-color: #fff;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
         /* 6px - 12px */
@@ -119,26 +120,26 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
       }
 
       .cs-right {
-        max-width: calc(542 / 16 * 1rem);
+        max-width: calc(math.div(542, 16) * 1rem);
         margin: auto;
       }
 
       .cs-topper {
         text-align: left;
-        margin-bottom: calc(4 / 16 * 1rem);
+        margin-bottom: calc(math.div(4, 16) * 1rem);
       }
 
       .cs-title {
         text-align: left;
-        max-width: calc(800 / 16 * 1rem);
+        max-width: calc(math.div(800, 16) * 1rem);
       }
 
       .cs-text {
         text-align: left;
-        max-width: calc(750 / 16 * 1rem);
-        margin-bottom: calc(16 / 16 * 1rem);
+        max-width: calc(math.div(750, 16) * 1rem);
+        margin-bottom: calc(math.div(16, 16) * 1rem);
         &:last-of-type {
-          margin-bottom: calc(32 / 16 * 1rem);
+          margin-bottom: calc(math.div(32, 16) * 1rem);
         }
       }
 
@@ -146,7 +147,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         /* 16px - 32px */
         padding: clamp(1rem, 3vw, 2rem);
         background-color: #f7f7f7;
-        border-radius: calc(16 / 16 * 1rem);
+        border-radius: calc(math.div(16, 16) * 1rem);
         position: relative;
       }
 
@@ -154,22 +155,22 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         /* 14px - 16px */
         font-size: clamp(0.875rem, 1.5vw, 1rem);
         line-height: 1.5em;
-        margin: 0 0 calc(16 / 16 * 1rem);
+        margin: 0 0 calc(math.div(16, 16) * 1rem);
         color: #353535;
       }
 
       .cs-name {
-        font-size: calc(16 / 16 * 1rem);
+        font-size: calc(math.div(16, 16) * 1rem);
         font-weight: bold;
         line-height: 1.2em;
         text-transform: uppercase;
-        margin: 0 0 calc(4 / 16 * 1rem);
+        margin: 0 0 calc(math.div(4, 16) * 1rem);
         color: var(--headerColor);
         display: block;
       }
 
       .cs-job {
-        font-size: calc(14 / 16 * 1rem);
+        font-size: calc(math.div(14, 16) * 1rem);
         line-height: 1.5em;
         color: #353535;
         display: block;
@@ -182,7 +183,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         position: absolute;
         /* 16px - 32px */
         right: clamp(1rem, 4vw, 2rem);
-        bottom: calc(0 / 16 * 1rem);
+        bottom: calc(math.div(0, 16) * 1rem);
       }
     }
   }
@@ -193,7 +194,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
       .cs-container {
         flex-flow: row;
         justify-content: space-between;
-        gap: calc(52 / 16 * 1rem);
+        gap: calc(math.div(52, 16) * 1rem);
       }
 
       .cs-left {
@@ -252,5 +253,4 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         }
       }
     }
-  }
-</style>
+  }</style>

@@ -33,6 +33,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 	</ul>
 
 <style lang="scss">
+	@use "sass:math";
 	.cs-toc-container {
 		border-radius: 0.5em;
 		border: 1px solid #ebebeb;
@@ -95,8 +96,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 			}
         }
     }
-}
-</style>
+}</style>
 
 <script>
 	// Wrapper for Blog post content
