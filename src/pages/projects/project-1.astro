@@ -63,7 +63,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 	<CTA />
 </BaseLayout>
 
-<style lang="less">
+<style lang="scss">
 	/* PAGE-SPECIFIC STYLES FOR THE PROJECTS PAGE */
 
 	/*-- -------------------------- -->
@@ -87,10 +87,10 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 			.cs-image-group {
 				/* used rem so it doesn't scale with the font size of on parent */
-				font-size: ~"min(1.1vw, 1em)";
+				font-size: min(1.1vw, 1em);
 				width: 100%;
 				max-width: (1322/16em);
-				margin: 0 auto (60/16rem);
+				margin: 0 auto calc(60 / 16 * 1rem);
 				padding: 0;
 				display: flex;
 				justify-content: center;

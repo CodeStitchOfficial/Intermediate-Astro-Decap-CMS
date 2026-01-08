@@ -75,24 +75,24 @@ const currentYear = getCurrentYear();
 	</div>
 </footer>
 
-<style lang="less">
+<style lang="scss">
 	/* Mobile */
 	@media only screen and (min-width: 0em) {
 		#footer {
-			font-size: ~"min(4vw, 1.2em)";
-			padding: (84/16rem) 0 (20/16rem);
+			font-size: min(4vw, 1.2em);
+			padding: calc(84 / 16 * 1rem) 0 calc(20 / 16 * 1rem);
 			background: #1c1c1c;
 
 			.left-section {
 				text-align: center;
 				margin: auto;
-				margin-bottom: (50/16rem);
+				margin-bottom: calc(50 / 16 * 1rem);
 				.logo {
 					text-align: center;
 					width: auto;
-					height: (32/16em);
+					height: calc(32 / 16 * 1em);
 					margin: auto;
-					margin-bottom: (30/16em);
+					margin-bottom: calc(30 / 16 * 1em);
 					display: inline-block;
 
 					img {
@@ -103,11 +103,11 @@ const currentYear = getCurrentYear();
 				}
 
 				p {
-					font-size: (14/16rem);
-					line-height: 27/14;
+					font-size: calc(14 / 16 * 1rem);
+					line-height: calc(27 / 14);
 					text-align: center;
 					width: 100%;
-					width: 307/14rem;
+					width: calc(307 / 14 * 1rem);
 					margin: auto;
 					color: #fff;
 					opacity: 0.9;
@@ -116,11 +116,11 @@ const currentYear = getCurrentYear();
 
 			.right-section {
 				width: 96%;
-				max-width: (407/16rem);
+				max-width: calc(407 / 16 * 1rem);
 				margin: auto;
 				.lists {
 					width: 96%;
-					max-width: (307/16rem);
+					max-width: calc(307 / 16 * 1rem);
 					margin: auto;
 					display: flex;
 					justify-content: space-between;
@@ -131,9 +131,9 @@ const currentYear = getCurrentYear();
 						padding: 0;
 
 						&:nth-of-type(3) {
-							margin-top: (50/16rem);
+							margin-top: calc(50 / 16 * 1rem);
 							li {
-								margin-bottom: (16/16rem);
+								margin-bottom: calc(16 / 16 * 1rem);
 								display: flex;
 								justify-content: flex-start;
 								align-items: center;
@@ -145,14 +145,14 @@ const currentYear = getCurrentYear();
 						}
 
 						li {
-							font-size: (18/16rem);
+							font-size: calc(18 / 16 * 1rem);
 							list-style: none;
-							margin-bottom: (12/16rem);
+							margin-bottom: calc(12 / 16 * 1rem);
 							color: #fff;
 							opacity: 0.9;
 
 							a {
-								line-height: 21/18em;
+								line-height: calc(21 / 18 * 1em);
 								text-decoration: none;
 								color: #fff;
 								transition: color 0.3s;
@@ -162,23 +162,23 @@ const currentYear = getCurrentYear();
 							}
 						}
 						h2 {
-							font-size: (18/16rem);
+							font-size: calc(18 / 16 * 1rem);
 							font-weight: bold;
-							line-height: 21/18em;
+							line-height: calc(21 / 18 * 1em);
 							text-transform: uppercase;
-							margin-bottom: (37/16rem);
+							margin-bottom: calc(37 / 16 * 1rem);
 							color: #fff;
 							position: relative;
 
 							&:before {
 								content: "";
-								width: (97/16rem);
-								height: (2/16rem);
+								width: calc(97 / 16 * 1rem);
+								height: calc(2 / 16 * 1rem);
 								background: var(--primary);
 								opacity: 1;
 								display: block;
 								position: absolute;
-								bottom: (-16/16rem);
+								bottom: calc(-16 / 16 * 1rem);
 								left: 0;
 							}
 						}
@@ -191,24 +191,24 @@ const currentYear = getCurrentYear();
 				}
 
 				.cs-button-solid {
-					width: (250/16rem);
-					height: (53/16rem);
+					width: calc(250 / 16 * 1rem);
+					height: calc(53 / 16 * 1rem);
 					margin: 0;
-					padding-top: (3/16rem);
+					padding-top: calc(3 / 16 * 1rem);
 				}
 			}
 
 			.credit {
-				font-size: (16/16rem);
-				line-height: (36/16rem);
+				font-size: calc(16 / 16 * 1rem);
+				line-height: calc(36 / 16 * 1rem);
 				text-align: center;
 				width: 96%;
 				margin: auto;
-				margin-top: (100/16rem);
+				margin-top: calc(100 / 16 * 1rem);
 				color: #fff;
 
 				a {
-					font-size: (16/16rem);
+					font-size: calc(16 / 16 * 1rem);
 					text-decoration: none;
 					color: var(--primary);
 
@@ -218,7 +218,7 @@ const currentYear = getCurrentYear();
 				}
 
 				.copyright {
-					font-size: (16/16rem);
+					font-size: calc(16 / 16 * 1rem);
 					display: block;
 				}
 			}
@@ -228,10 +228,10 @@ const currentYear = getCurrentYear();
 	/* Small Desktop */
 	@media only screen and (min-width: 64em) {
 		#footer {
-			font-size: ~"min(1.2vw, 1em)";
+			font-size: min(1.2vw, 1em);
 			.container {
 				width: 96%;
-				max-width: (1320/16rem);
+				max-width: calc(1320 / 16 * 1rem);
 				margin: auto;
 				padding: 0;
 				display: flex;
@@ -242,12 +242,12 @@ const currentYear = getCurrentYear();
 
 			.left-section {
 				text-align: left;
-				width: (409/16rem);
+				width: calc(409 / 16 * 1rem);
 				margin: 0;
 
 				.logo {
 					text-align: left;
-					height: (40/16rem);
+					height: calc(40 / 16 * 1rem);
 					margin-left: 0;
 				}
 
@@ -258,12 +258,12 @@ const currentYear = getCurrentYear();
 			}
 
 			.right-section {
-				width: (609/16rem);
+				width: calc(609 / 16 * 1rem);
 				max-width: none;
 				margin: 0;
 				.lists {
 					width: 96%;
-					max-width: (769/16rem);
+					max-width: calc(769 / 16 * 1rem);
 					max-width: initial;
 					margin: 0;
 
@@ -283,12 +283,12 @@ const currentYear = getCurrentYear();
 								&:before {
 									content: "";
 									width: 0%;
-									height: (2/16rem);
+									height: calc(2 / 16 * 1rem);
 									background: var(--primary);
 									opacity: 1;
 									display: block;
 									position: absolute;
-									bottom: (-3/16rem);
+									bottom: calc(-3 / 16 * 1rem);
 									left: 0;
 									transition: width 0.3s;
 								}

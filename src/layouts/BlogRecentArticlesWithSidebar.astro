@@ -61,24 +61,24 @@ const { posts } = Astro.props;
 	</aside>
 </section>
 
-<style lang="less">
+<style lang="scss">
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
 		.blog-link {
-			font-size: (16/16rem);
+			font-size: calc(16 / 16 * 1rem);
 			font-weight: 700;
 			/* 46px - 56px */
 			line-height: clamp(2.875em, 5.5vw, 3.5em);
 			text-align: center;
 			text-decoration: none;
-			min-width: (150/16rem);
+			min-width: calc(150 / 16 * 1rem);
 			margin: auto;
 			/* prevents padding from adding to the width */
 			box-sizing: border-box;
-			padding: 0 (24/16rem);
+			padding: 0 calc(24 / 16 * 1rem);
 			color: var(--headerColor);
 			background-color: var(--primary);
-			border-radius: (4/16rem);
+			border-radius: calc(4 / 16 * 1rem);
 			display: inline-block;
 			position: relative;
 			z-index: 1;
@@ -93,7 +93,7 @@ const { posts } = Astro.props;
 				background: #fff;
 				opacity: 0;
 				border: 1px solid var(--headerColor);
-				border-radius: (4/16rem);
+				border-radius: calc(4 / 16 * 1rem);
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -122,14 +122,14 @@ const { posts } = Astro.props;
 	@media only screen and (min-width: 0em) {
 		.blog-container {
 			width: 94%;
-			max-width: (1120/16em);
+			max-width: calc(1120 / 16 * 1em);
 			margin: auto;
 			padding: clamp(60px, 7vw, 100px) 0;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			row-gap: (50/16em);
+			row-gap: calc(50 / 16 * 1em);
 			position: relative;
 		}
 
@@ -139,7 +139,7 @@ const { posts } = Astro.props;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			row-gap: (50/16em);
+			row-gap: calc(50 / 16 * 1em);
 		}
 	}
 
@@ -148,7 +148,7 @@ const { posts } = Astro.props;
 		.blog-container {
 			flex-direction: row;
 			align-items: flex-start;
-			column-gap: (48/16em);
+			column-gap: calc(48 / 16 * 1em);
 		}
 	}
 
@@ -160,13 +160,13 @@ const { posts } = Astro.props;
 	@media only screen and (min-width: 0em) {
 		.recent-articles {
 			width: 100%;
-			max-width: (795/16em);
+			max-width: calc(795 / 16 * 1em);
 			flex: none;
 
 			.blog-mainImage {
 				width: 100%;
 				height: clamp(200px, 30vw, 400px);
-				border-radius: (8/16em) (8/16em) 0 0;
+				border-radius: calc(8 / 16 * 1em) calc(8 / 16 * 1em) 0 0;
 				display: block;
 				position: relative;
 				overflow: hidden;
@@ -184,12 +184,12 @@ const { posts } = Astro.props;
 			.blog-header {
 				padding: clamp(30px, 5vw, 50px);
 				border: 1px solid #ebebeb;
-				border-radius: 0 0 (8/16em) (8/16em);
+				border-radius: 0 0 calc(8 / 16 * 1em) calc(8 / 16 * 1em);
 			}
 
 			.blog-author-img {
-				width: (32/16em);
-				height: (32/16em);
+				width: calc(32 / 16 * 1em);
+				height: calc(32 / 16 * 1em);
 				border-radius: 50%;
 				display: block;
 				position: relative;
@@ -209,12 +209,12 @@ const { posts } = Astro.props;
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
-				gap: (12/16rem);
+				gap: calc(12 / 16 * 1rem);
 			}
 
 			.blog-author,
 			.blog-date {
-				font-size: (14/16rem);
+				font-size: calc(14 / 16 * 1rem);
 				line-height: 1.5em;
 				color: var(--bodyTextColor);
 			}
@@ -231,32 +231,32 @@ const { posts } = Astro.props;
 				font-size: clamp(20px, 5vw, 32px);
 				font-weight: 700;
 				line-height: 1.4em;
-				margin: (16/16rem) 0;
+				margin: calc(16 / 16 * 1rem) 0;
 				color: var(--headerColor);
 			}
 
 			.blog-desc {
-				font-size: (16/16rem);
+				font-size: calc(16 / 16 * 1rem);
 				line-height: 1.5em;
-				margin: (16/16rem) 0 (32/16rem);
+				margin: calc(16 / 16 * 1rem) 0 calc(32 / 16 * 1rem);
 				color: var(--bodyTextColor);
 			}
 
 			.blog-link {
-				font-size: (16/16rem);
+				font-size: calc(16 / 16 * 1rem);
 				font-weight: 700;
 				/* 46px - 56px */
 				line-height: clamp(2.875em, 5.5vw, 3.5em);
 				text-align: center;
 				text-decoration: none;
-				min-width: (150/16rem);
+				min-width: calc(150 / 16 * 1rem);
 				margin: auto;
 				/* prevents padding from adding to the width */
 				box-sizing: border-box;
-				padding: 0 (24/16rem);
+				padding: 0 calc(24 / 16 * 1rem);
 				color: var(--headerColor);
 				background-color: var(--primary);
-				border-radius: (4/16rem);
+				border-radius: calc(4 / 16 * 1rem);
 				display: inline-block;
 				position: relative;
 				z-index: 1;
@@ -271,7 +271,7 @@ const { posts } = Astro.props;
 					background: #fff;
 					opacity: 0;
 					border: 1px solid var(--headerColor);
-					border-radius: (4/16rem);
+					border-radius: calc(4 / 16 * 1rem);
 					position: absolute;
 					top: 0;
 					left: 0;
@@ -294,7 +294,7 @@ const { posts } = Astro.props;
 	@media only screen and (min-width: 64em) {
 		.recent-articles {
 			.blog-h1 {
-				max-width: (500/16rem);
+				max-width: calc(500 / 16 * 1rem);
 			}
 		}
 	}

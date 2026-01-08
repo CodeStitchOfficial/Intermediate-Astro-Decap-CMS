@@ -23,11 +23,11 @@ import ctaImage from "@assets/images/CTA/cabinets2.jpg";
 	<Picture src={ctaImage} alt="" layout="full-width" formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture" }} />
 </section>
 
-<style lang="less">
+<style lang="scss">
 	/* Mobile */
 	@media only screen and (min-width: 0em) {
 		#cta {
-			padding: (50/16rem) 0;
+			padding: calc(50 / 16 * 1rem) 0;
 			position: relative;
 
 			&:before {
@@ -48,11 +48,11 @@ import ctaImage from "@assets/images/CTA/cabinets2.jpg";
 			}
 
 			.title {
-				font-size: ~"min(9vw, 3rem)";
+				font-size: min(9vw, 3rem);
 				font-weight: 900;
-				line-height: 58/48;
+				line-height: calc(58 / 48);
 				text-align: center;
-				margin-bottom: (36/16rem);
+				margin-bottom: calc(36 / 16 * 1rem);
 				color: #fff;
 				position: relative;
 			}
@@ -60,9 +60,9 @@ import ctaImage from "@assets/images/CTA/cabinets2.jpg";
 			p {
 				text-align: center;
 				width: 96%;
-				max-width: (598/16rem);
+				max-width: calc(598 / 16 * 1rem);
 				margin: auto;
-				margin-bottom: (36/16rem);
+				margin-bottom: calc(36 / 16 * 1rem);
 				color: #fff;
 				opacity: 1;
 			}
@@ -88,14 +88,14 @@ import ctaImage from "@assets/images/CTA/cabinets2.jpg";
 	/* Small Desktop */
 	@media only screen and (min-width: 64em) {
 		#cta {
-			padding: (168/16rem) 0;
+			padding: calc(168 / 16 * 1rem) 0;
 		}
 	}
 
 	/* Large Desktop */
 	@media only screen and (min-width: 1300px) {
 		#cta {
-			margin-top: (100/16rem);
+			margin-top: calc(100 / 16 * 1rem);
 			position: relative;
 			&:before {
 				display: none;
@@ -104,7 +104,7 @@ import ctaImage from "@assets/images/CTA/cabinets2.jpg";
 				content: "";
 				// width: (2000/16rem);
 				width: 100%; /* a fixed width causes overflow on desktop */
-				height: (1108/16rem);
+				height: calc(1108 / 16 * 1rem);
 				background: url("/src/icons/cta-squares.svg");
 				background-position: center;
 				background-size: contain;

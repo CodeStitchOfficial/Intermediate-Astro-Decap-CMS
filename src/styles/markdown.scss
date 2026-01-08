@@ -10,10 +10,10 @@
 	}
 
 	h2 {
-		font-size: (28/16rem);
+		font-size: calc(28 / 16 * 1rem);
 		font-weight: 700;
 		line-height: 1.5em;
-		margin-bottom: (16/16rem);
+		margin-bottom: calc(16 / 16 * 1rem);
 		color: var(--headerColor);
 		&[id] {
 			scroll-margin-top: 8rem; /* adds margin top when scrolling down to a h2 header using a TOC link */
@@ -21,28 +21,28 @@
 	}
 
 	h3 {
-		font-size: (24/16rem);
+		font-size: calc(24 / 16 * 1rem);
 		font-weight: 700;
 		line-height: 1.5em;
-		margin-bottom: (16/16rem);
+		margin-bottom: calc(16 / 16 * 1rem);
 		color: var(--headerColor);
 	}
 
 	h4,
 	h5,
 	h6 {
-		font-size: (20/16rem);
+		font-size: calc(20 / 16 * 1rem);
 		font-weight: 700;
 		line-height: 1.5em;
-		margin-bottom: (16/16rem);
+		margin-bottom: calc(16 / 16 * 1rem);
 		color: var(--headerColor);
 	}
 
 	p {
-		font-size: (16/16rem);
+		font-size: calc(16 / 16 * 1rem);
 		line-height: 1.6em;
 		margin: 0;
-		margin-bottom: (16/16rem);
+		margin-bottom: calc(16 / 16 * 1rem);
 		color: var(--bodyTextColor);
 	}
 
@@ -55,14 +55,14 @@
 	ul,
 	ol {
 		margin: 0;
-		margin: (16/16rem) 0;
-		padding-left: (40/16rem);
+		margin: calc(16 / 16 * 1rem) 0;
+		padding-left: calc(40 / 16 * 1rem);
 
 		li {
-			font-size: (16/16rem);
+			font-size: calc(16 / 16 * 1rem);
 			line-height: 1.6em;
 			list-style: circle;
-			margin-bottom: (16/16rem);
+			margin-bottom: calc(16 / 16 * 1rem);
 			color: var(--bodyTextColor);
 		}
 	}
@@ -70,14 +70,14 @@
 	img {
 		width: 100%;
 		height: auto;
-		margin: (16/16rem) 0;
-		border-radius: (8/16rem);
+		margin: calc(16 / 16 * 1rem) 0;
+		border-radius: calc(8 / 16 * 1rem);
 		display: block;
 	}
 
 	/* code blocks */
 	pre {
-		padding: (16/16rem);
-		margin: (16/16rem) 0;
+		padding: calc(16 / 16 * 1rem);
+		margin: calc(16 / 16 * 1rem) 0;
 	}
 }

@@ -76,7 +76,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 	</section>
 </BaseLayout>
 
-<style lang="less">
+<style lang="scss">
 	/* PAGE-SPECIFIC STYLES FOR THE CONTACT PAGE */
 
 	/*-- -------------------------- -->
@@ -91,7 +91,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 			.cs-container {
 				width: 100%;
 				/* changes to 1280px at desktop */
-				max-width: (800/16rem);
+				max-width: calc(800 / 16 * 1rem);
 				margin: auto;
 			}
 
@@ -107,7 +107,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 			.cs-title {
 				text-align: left;
-				max-width: (800/16rem);
+				max-width: calc(800 / 16 * 1rem);
 			}
 
 			.cs-text {
@@ -120,9 +120,9 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 			}
 
 			#cs-form {
-				margin-bottom: (40/16rem);
+				margin-bottom: calc(40 / 16 * 1rem);
 				label {
-					font-size: (16/16rem);
+					font-size: calc(16 / 16 * 1rem);
 					font-weight: 700;
 					line-height: 1.5em;
 					/* 12px - 20px */
@@ -141,15 +141,15 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 				input,
 				textarea {
-					font-size: (16/16rem);
+					font-size: calc(16 / 16 * 1rem);
 					width: 100%;
-					height: (64/16rem);
-					margin-top: (4/16rem);
+					height: calc(64 / 16 * 1rem);
+					margin-top: calc(4 / 16 * 1rem);
 					/* prevents border & padding from affecting height */
 					box-sizing: border-box;
-					padding-left: (20/16rem);
+					padding-left: calc(20 / 16 * 1rem);
 					border: 1px solid #b4b2c7;
-					border-radius: (8/16rem);
+					border-radius: calc(8 / 16 * 1rem);
 					transition: border 0.3s;
 
 					&:hover {
@@ -159,8 +159,8 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 				textarea {
 					font-family: inherit;
-					min-height: (120/16rem);
-					padding-top: (20/16rem);
+					min-height: calc(120 / 16 * 1rem);
+					padding-top: calc(20 / 16 * 1rem);
 				}
 
 				.cs-button-solid {
@@ -170,11 +170,11 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 			}
 
 			.cs-right-section {
-				height: (320/16rem);
+				height: calc(320 / 16 * 1rem);
 				/* 24px - 40px top & bottom */
 				/* 20px - 40px left & right */
 				padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
-				border-radius: (8/16rem);
+				border-radius: calc(8 / 16 * 1rem);
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-end;
@@ -189,7 +189,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 				font-size: clamp(1rem, 3vw, 1.25rem);
 				font-weight: 700;
 				line-height: 1.2em;
-				margin-bottom: (8/16rem);
+				margin-bottom: calc(8 / 16 * 1rem);
 				color: var(--bodyTextColorWhite);
 				display: block;
 			}
@@ -199,7 +199,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 				font-size: clamp(1rem, 3vw, 1.25rem);
 				line-height: 1.2em;
 				text-decoration: none;
-				margin-bottom: (20/16rem);
+				margin-bottom: calc(20 / 16 * 1rem);
 				color: var(--bodyTextColorWhite);
 				display: block;
 				position: relative;
@@ -214,7 +214,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 					opacity: 1;
 					display: block;
 					position: absolute;
-					bottom: (-2/16rem);
+					bottom: calc(-2 / 16 * 1rem);
 					left: 0;
 					transition: width 0.3s;
 				}
@@ -295,15 +295,15 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 	@media only screen and (min-width: 64em) {
 		#cs-contact {
 			.cs-container {
-				max-width: (1280/16rem);
+				max-width: calc(1280 / 16 * 1rem);
 				display: flex;
 				justify-content: flex-end;
 				align-items: flex-start;
-				gap: (80/16rem);
+				gap: calc(80 / 16 * 1rem);
 			}
 
 			#cs-form {
-				max-width: (630/16rem);
+				max-width: calc(630 / 16 * 1rem);
 				label {
 					width: 100%;
 				}
@@ -311,9 +311,9 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 
 			.cs-right-section {
 				width: 40%;
-				max-width: (542/16rem);
+				max-width: calc(542 / 16 * 1rem);
 				/* changes to 578px at 1300px wide */
-				height: (686/16rem);
+				height: calc(686 / 16 * 1rem);
 				/* prevents flexbox from squishing it */
 				flex: none;
 
@@ -335,10 +335,10 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 	@media only screen and (min-width: 81.25em) {
 		#cs-contact {
 			#cs-form {
-				column-gap: (0/16rem);
+				column-gap: calc(0 / 16 * 1rem);
 				label {
 					width: 48%;
-					max-width: (305/16rem);
+					max-width: calc(305 / 16 * 1rem);
 				}
 
 				.cs-label-message {
@@ -347,7 +347,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 			}
 
 			.cs-right-section {
-				height: (578/16rem);
+				height: calc(578 / 16 * 1rem);
 			}
 		}
 	}

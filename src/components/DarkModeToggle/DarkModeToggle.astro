@@ -35,7 +35,7 @@ import { Icon } from "astro-icon/components";
 	document.addEventListener("astro:after-swap", setToggleListener); // For View Transitions purposes - astro:after-swap ensures that the listener is re-attached after navigating to a new page.
 </script>
 
-<style lang="less">
+<style lang="scss">
 	/*-- -------------------------- -->
 <---      Dark Mode Toggle      -->
 <--- -------------------------- -*/
@@ -58,22 +58,22 @@ import { Icon } from "astro-icon/components";
 		}
 
 		#dark-mode-toggle {
-			width: (48/16rem);
-			height: (48/16rem);
+			width: calc(48 / 16 * 1rem);
+			height: calc(48 / 16 * 1rem);
 			padding: 0;
 			background: transparent;
 			border: none;
 			display: block;
 			position: absolute;
-			top: (10/16rem);
-			right: (70/16rem);
+			top: calc(10 / 16 * 1rem);
+			right: calc(70 / 16 * 1rem);
 			z-index: 1000;
 			overflow: hidden;
 
 			img,
 			svg {
-				width: (20/16rem);
-				height: (20/16rem);
+				width: calc(20 / 16 * 1rem);
+				height: calc(20 / 16 * 1rem);
 				//center image inside button
 				position: absolute;
 				top: 50%;

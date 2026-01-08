@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { formatDate } from "@js/utils";
 import { getBlogPostingSchema } from "@js/blogPostingSchema.js";
-import "@styles/markdown.less";
+import "@styles/markdown.scss";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -93,19 +93,19 @@ const blogPostingSchema = getBlogPostingSchema(
 	<CTA />
 </BaseLayout>
 
-<style lang="less">
+<style lang="scss">
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
 		.blog-container {
 			width: 94%;
-			max-width: (1120/16em);
+			max-width: calc(1120 / 16 * 1em);
 			margin: auto;
 			padding: clamp(60px, 7vw, 100px) 0;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			row-gap: (50/16em);
+			row-gap: calc(50 / 16 * 1em);
 			position: relative;
 		}
 
@@ -115,12 +115,12 @@ const blogPostingSchema = getBlogPostingSchema(
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			row-gap: (50/16em);
+			row-gap: calc(50 / 16 * 1em);
 		}
 
 		.blog-article {
 			width: 100%;
-			max-width: (795/16em);
+			max-width: calc(795 / 16 * 1em);
 			display: block;
 
 			.blog-header {
@@ -130,8 +130,8 @@ const blogPostingSchema = getBlogPostingSchema(
 			.blog-mainImage {
 				width: 100%;
 				height: clamp(200px, 30vw, 400px);
-				margin-bottom: (50/16em);
-				border-radius: (8/16em);
+				margin-bottom: calc(50 / 16 * 1em);
+				border-radius: calc(8 / 16 * 1em);
 				display: block;
 				position: relative;
 				overflow: hidden;
@@ -147,8 +147,8 @@ const blogPostingSchema = getBlogPostingSchema(
 			}
 
 			.blog-author-img {
-				width: (32/16em);
-				height: (32/16em);
+				width: calc(32 / 16 * 1em);
+				height: calc(32 / 16 * 1em);
 				border-radius: 50%;
 				display: block;
 				position: relative;
@@ -168,12 +168,12 @@ const blogPostingSchema = getBlogPostingSchema(
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
-				gap: (12/16rem);
+				gap: calc(12 / 16 * 1rem);
 			}
 
 			.blog-author,
 			.blog-date {
-				font-size: (14/16rem);
+				font-size: calc(14 / 16 * 1rem);
 				line-height: 1.5em;
 				color: var(--bodyTextColor);
 			}
@@ -190,14 +190,14 @@ const blogPostingSchema = getBlogPostingSchema(
 				font-size: clamp(20px, 5vw, 39px);
 				font-weight: 700;
 				line-height: 1.4em;
-				max-width: (550/16rem);
-				margin: (16/16rem) 0;
+				max-width: calc(550 / 16 * 1rem);
+				margin: calc(16 / 16 * 1rem) 0;
 				color: var(--headerColor);
 			}
 
 			#blog-content {
-				margin-top: (16/16em);
-				padding-top: (25/16em);
+				margin-top: calc(16 / 16 * 1em);
+				padding-top: calc(25 / 16 * 1em);
 				border-top: 1px solid #a2a0a0;
 			}
 		}
@@ -208,7 +208,7 @@ const blogPostingSchema = getBlogPostingSchema(
 		.blog-container {
 			flex-direction: row;
 			align-items: flex-start;
-			column-gap: (48/16em);
+			column-gap: calc(48 / 16 * 1em);
 		}
 	}
 

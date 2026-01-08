@@ -112,7 +112,7 @@ import port9 from "@assets/images/projects/port9.jpg";
   </div>
 </section>
 
-<style lang="less">
+<style lang="scss">
   /*-- -------------------------- -->
 <---          Gallery           -->
 <--- -------------------------- -*/
@@ -128,32 +128,32 @@ import port9 from "@assets/images/projects/port9.jpg";
       overflow: hidden;
       .cs-container {
         width: 100%;
-        max-width: (1322/16em);
+        max-width: calc(1322 / 16 * 1em);
         margin: auto;
       }
 
       .cs-topper {
         text-align: center;
-        margin-bottom: (16/16rem);
+        margin-bottom: calc(16 / 16 * 1rem);
       }
 
       .cs-title {
         text-align: center;
-        max-width: (621/16rem);
-        margin-bottom: (40/16rem);
+        max-width: calc(621 / 16 * 1rem);
+        margin-bottom: calc(40 / 16 * 1rem);
       }
 
       .cs-image-group {
         /* used rem so it doesn't scale with the font size of on parent */
-        font-size: ~"min(1.1vw, 1em)";
+        font-size: min(1.1vw, 1em);
         width: 100%;
-        max-width: (1322/16em);
-        margin: 0 auto (60/16rem);
+        max-width: calc(1322 / 16 * 1em);
+        margin: 0 auto calc(60 / 16 * 1rem);
         padding: 0;
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        gap: (30/16em);
+        gap: calc(30 / 16 * 1em);
       }
 
       .cs-row {
@@ -161,7 +161,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        gap: (30/16em);
+        gap: calc(30 / 16 * 1em);
       }
 
       .cs-picture {
@@ -179,52 +179,52 @@ import port9 from "@assets/images/projects/port9.jpg";
 
       .cs-row-1 {
         .cs-picture1 {
-          width: (420/16em);
-          height: (567/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(567 / 16 * 1em);
         }
 
         .cs-picture2 {
-          width: (420/16em);
-          height: (629/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(629 / 16 * 1em);
         }
 
         .cs-picture3 {
-          width: (420/16em);
-          height: (512/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(512 / 16 * 1em);
         }
       }
 
       .cs-row-2 {
         .cs-picture1 {
-          width: (420/16em);
-          height: (492/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(492 / 16 * 1em);
         }
 
         .cs-picture2 {
-          width: (420/16em);
-          height: (517/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(517 / 16 * 1em);
         }
 
         .cs-picture3 {
-          width: (420/16em);
-          height: (629/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(629 / 16 * 1em);
         }
       }
 
       .cs-row-3 {
         .cs-picture1 {
-          width: (420/16em);
-          height: (625/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(625 / 16 * 1em);
         }
 
         .cs-picture2 {
-          width: (420/16em);
-          height: (452/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(452 / 16 * 1em);
         }
 
         .cs-picture3 {
-          width: (420/16em);
-          height: (629/16em);
+          width: calc(420 / 16 * 1em);
+          height: calc(629 / 16 * 1em);
         }
       }
     }

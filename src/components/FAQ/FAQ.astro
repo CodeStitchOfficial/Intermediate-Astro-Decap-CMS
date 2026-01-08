@@ -48,7 +48,7 @@
 	</div>
 </section>
 
-<style lang="less">
+<style lang="scss">
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0rem) {
 		#faq-1741 {
@@ -58,7 +58,7 @@
 			.cs-container {
 				width: 100%;
 				/* changes to 1280px at desktop */
-				max-width: (584/16rem);
+				max-width: calc(584 / 16 * 1rem);
 				margin: 2em auto;
 				display: flex;
 				flex-direction: column;
@@ -79,7 +79,7 @@
 
 			.cs-title {
 				max-width: 15ch;
-				margin: 0 0 (32/16rem);
+				margin: 0 0 calc(32 / 16 * 1rem);
 			}
 
 			.cs-faq-group {
@@ -90,7 +90,7 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				gap: (12/16rem);
+				gap: calc(12 / 16 * 1rem);
 			}
 
 			.cs-faq-item {
@@ -119,7 +119,7 @@
 					.cs-item-text {
 						height: auto;
 						/* 16px - 24px */
-						padding: (16/16rem) clamp(1rem, 2vw, 1.5rem);
+						padding: calc(16 / 16 * 1rem) clamp(1rem, 2vw, 1.5rem);
 						opacity: 1;
 						border: 1px solid #e8e8e8;
 					}
@@ -133,8 +133,8 @@
 				line-height: 1.2em;
 				text-align: left;
 				width: 100%;
-				padding: (16/16rem);
-				padding-left: (52/16rem);
+				padding: calc(16 / 16 * 1rem);
+				padding-left: calc(52 / 16 * 1rem);
 				background-color: transparent;
 				color: var(--headerColor);
 				border: 1px solid #e8e8e8;
@@ -151,14 +151,14 @@
 				&:before {
 					/* left line */
 					content: "";
-					width: (8/16rem);
-					height: (2/16rem);
+					width: calc(8 / 16 * 1rem);
+					height: calc(2 / 16 * 1rem);
 					background-color: var(--headerColor);
 					opacity: 1;
 					display: block;
 					position: absolute;
 					top: 45%;
-					left: (18/16rem);
+					left: calc(18 / 16 * 1rem);
 					transform: rotate(45deg);
 					transition: transform 0.5s;
 					/* animate the transform from the left side of the x axis, and the center of the y */
@@ -168,14 +168,14 @@
 				&:after {
 					/* right line */
 					content: "";
-					width: (8/16rem);
-					height: (2/16rem);
+					width: calc(8 / 16 * 1rem);
+					height: calc(2 / 16 * 1rem);
 					background-color: var(--headerColor);
 					opacity: 1;
 					display: block;
 					position: absolute;
 					top: 45%;
-					left: (21/16rem);
+					left: calc(21 / 16 * 1rem);
 					transform: rotate(-45deg);
 					transition: transform 0.5s;
 					/* animate the transform from the right side of the x axis, and the center of the y */
@@ -204,7 +204,7 @@
 	@media only screen and (min-width: 48rem) {
 		#faq-1741 {
 			.cs-gallery {
-				max-width: (1720/16rem);
+				max-width: calc(1720 / 16 * 1rem);
 			}
 
 			.cs-picture {
@@ -217,7 +217,7 @@
 	@media only screen and (min-width: 64rem) {
 		#faq-1741 {
 			.cs-container {
-				max-width: (1280/16rem);
+				max-width: calc(1280 / 16 * 1rem);
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: stretch;

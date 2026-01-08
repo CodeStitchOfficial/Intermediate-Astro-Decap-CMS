@@ -36,7 +36,7 @@ import { Icon } from 'astro-icon/components';
   </div>
 </section>
 
-<style lang="less">
+<style lang="scss">
   /*-- -------------------------- -->
 <---          Services          -->
 <--- -------------------------- -*/
@@ -45,32 +45,32 @@ import { Icon } from 'astro-icon/components';
   @media only screen and (min-width: 0em) {
     .services {
       width: 90%;
-      max-width: (1320/16em);
+      max-width: calc(1320 / 16 * 1em);
       margin: auto;
-      margin-top: (-167/16em);
-      margin-bottom: (50/16em);
-      padding: (50/16em) (20/16em);
+      margin-top: calc(-167 / 16 * 1em);
+      margin-bottom: calc(50 / 16 * 1em);
+      padding: calc(50 / 16 * 1em) calc(20 / 16 * 1em);
       background: #fff;
       box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
-      border-top: (6/16em) solid var(--primary);
-      border-radius: (5/16em);
+      border-top: calc(6 / 16 * 1em) solid var(--primary);
+      border-radius: calc(5 / 16 * 1em);
       position: relative;
       z-index: 100;
       .card {
         width: 100%;
-        max-width: (357/16em);
+        max-width: calc(357 / 16 * 1em);
         margin: auto;
-        margin-bottom: (50/16em);
+        margin-bottom: calc(50 / 16 * 1em);
         display: block;
         &:last-of-type {
           margin-bottom: 0;
         }
 
         picture {
-          width: (88/16em);
-          height: (88/16em);
+          width: calc(88 / 16 * 1em);
+          height: calc(88 / 16 * 1em);
           margin: auto;
-          margin-bottom: (23/16em);
+          margin-bottom: calc(23 / 16 * 1em);
           background: var(--primary);
           border-radius: 50%;
           display: flex;
@@ -78,20 +78,20 @@ import { Icon } from 'astro-icon/components';
           align-items: center;
 
           img {
-            width: (48/16em);
-            height: (48/16em);
+            width: calc(48 / 16 * 1em);
+            height: calc(48 / 16 * 1em);
           }
         }
         h2 {
-          font-size: (32/16em);
+          font-size: calc(32 / 16 * 1em);
           font-weight: 700;
-          line-height: 27/20em;
+          line-height: calc(27 / 20 * 1em);
           text-align: center;
-          margin-bottom: 13/20em;
+          margin-bottom: calc(13 / 20 * 1em);
           color: #1a1a1a;
         }
         p {
-          line-height: 24/18em;
+          line-height: calc(24 / 18 * 1em);
           text-align: center;
           width: 100%;
           opacity: 0.7;
@@ -103,14 +103,14 @@ import { Icon } from 'astro-icon/components';
   /* Inbetween */
   @media only screen and (min-width: 768px) {
     .services {
-      font-size: ~"min(1.8vw, 1em)";
+      font-size: min(1.8vw, 1em);
       width: 98%;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
 
       .card {
-        max-width: (325/16em);
+        max-width: calc(325 / 16 * 1em);
         margin: 0;
       }
     }
@@ -119,10 +119,10 @@ import { Icon } from 'astro-icon/components';
   /* Large Desktop */
   @media only screen and (min-width: 1300px) {
     .services {
-      padding: (50/16em) (80/16em);
+      padding: calc(50 / 16 * 1em) calc(80 / 16 * 1em);
 
       .card {
-        max-width: (357/16em);
+        max-width: calc(357 / 16 * 1em);
       }
     }
   }

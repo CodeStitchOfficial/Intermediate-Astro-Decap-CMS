@@ -1,6 +1,6 @@
 ---
 // Utils
-import "@styles/sidebar.less";
+import "@styles/sidebar.scss";
 
 interface Heading {
 	depth: number; // The heading level (h1 = 1, h2 = 2, etc)
@@ -32,7 +32,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 		}
 	</ul>
 
-<style lang="less">
+<style lang="scss">
 	.cs-toc-container {
 		border-radius: 0.5em;
 		border: 1px solid #ebebeb;

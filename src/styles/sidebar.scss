@@ -6,38 +6,38 @@
 @media only screen and (min-width: 0em) {
 	.blog-sidebar {
 		width: 100%;
-		max-width: (795/16em);
+		max-width: calc(795 / 16 * 1em);
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		row-gap: (50/16em);
+		row-gap: calc(50 / 16 * 1em);
 	}
 	.blog-sidebar_widget-wrapper {
 		width: 100%;
-		padding: (20/16em) (16/16em);
-		margin-bottom: (30/16rem);
+		padding: calc(20 / 16 * 1em) calc(16 / 16 * 1em);
+		margin-bottom: calc(30 / 16 * 1rem);
 		border: 1px solid #a2a0a0;
-		border-radius: (8/16em);
+		border-radius: calc(8 / 16 * 1em);
 	}
 
 	.blog-sidebar_widget-header {
-		font-size: (20/16em);
+		font-size: calc(20 / 16 * 1em);
 		font-weight: bold;
 		text-align: center;
-		margin-bottom: (16/16rem);
+		margin-bottom: calc(16 / 16 * 1rem);
 		color: var(--headerColor);
 		display: block;
 		position: relative;
 
 		&:after {
 			content: "";
-			width: (50/16rem);
+			width: calc(50 / 16 * 1rem);
 			height: 3px;
-			margin: (16/16rem) auto;
+			margin: calc(16 / 16 * 1rem) auto;
 			background: var(--headerColor);
-			border-radius: (4/16rem);
+			border-radius: calc(4 / 16 * 1rem);
 			display: block;
 			position: relative;
 		}
@@ -46,12 +46,12 @@
 	.blog-sidebar_widget-link {
 		text-decoration: none;
 		width: 100%;
-		padding: (20/16rem) 0;
+		padding: calc(20 / 16 * 1rem) 0;
 		border-bottom: 1px solid #a2a0a0;
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		column-gap: (24/16em);
+		column-gap: calc(24 / 16 * 1em);
 
 		&:nth-of-type(1) {
 			padding-top: 0;
@@ -64,8 +64,8 @@
 	}
 
 	.blog-sidebar_widget-image {
-		width: (60/16em);
-		height: (60/16em);
+		width: calc(60 / 16 * 1em);
+		height: calc(60 / 16 * 1em);
 		border-radius: 50%;
 		display: block;
 		position: relative;
@@ -83,18 +83,18 @@
 	}
 
 	.blog-sidebar_widget-h4 {
-		font-size: (14/16rem);
+		font-size: calc(14 / 16 * 1rem);
 		font-weight: 700;
 		line-height: 1.5em;
 		text-decoration: none;
 		margin: 0;
-		margin-bottom: (4/16rem);
+		margin-bottom: calc(4 / 16 * 1rem);
 		color: var(--headerColor);
 		display: block;
 	}
 
 	.blog-sidebar_widget-date {
-		font-size: (14/16rem);
+		font-size: calc(14 / 16 * 1rem);
 		line-height: 1.5em;
 		color: var(--bodyTextColor);
 		display: block;
@@ -104,18 +104,18 @@
 /* Tablet - 1024px */
 @media only screen and (min-width: 64em) {
 	.blog-sidebar {
-		max-width: (360/16em);
+		max-width: calc(360 / 16 * 1em);
 		position: sticky;
 		top: 10rem; /* magic number to align with the header */
 	}
 
     .blog-sidebar_widget-wrapper {
-		padding: (35/16em) (30/16em);
+		padding: calc(35 / 16 * 1em) calc(30 / 16 * 1em);
 		margin-bottom: 0;
 	}
 
     .blog-sidebar_widget-header {
-        margin-bottom: (30/16rem);
+        margin-bottom: calc(30 / 16 * 1rem);
     }
 }
 

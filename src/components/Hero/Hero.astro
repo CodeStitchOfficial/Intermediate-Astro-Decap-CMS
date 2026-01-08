@@ -34,7 +34,7 @@ const { image } = Astro.props as Props;
 	<Picture src={image.src} alt="new home" width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} priority pictureAttributes={{ class: "cs-picture" }} />
 </section>
 
-<style lang="less">
+<style lang="scss">
 	/*-- -------------------------- -->
 <---           Hero             -->
 <--- -------------------------- -*/
@@ -46,8 +46,8 @@ const { image } = Astro.props as Props;
 			/* Centers button */
 			text-align: center;
 			/* changes on tablet */
-			padding: 0 (16/16rem);
-			padding-bottom: (100/16rem);
+			padding: 0 calc(16 / 16 * 1rem);
+			padding-bottom: calc(100 / 16 * 1rem);
 			position: relative;
 			z-index: 1;
 			/* prevents overflow from the lines extending past the screen width */
@@ -92,7 +92,7 @@ const { image } = Astro.props as Props;
 
 			.cs-container {
 				width: 100%;
-				max-width: (1280/16em);
+				max-width: calc(1280 / 16 * 1em);
 				margin: auto;
 				/* we put the padding top and bottom on the container instead of #Hero so the pseudo element lines go to the top and bottom of the section */
 				/* 144px - 280px - leaving extra space for the navigation */
@@ -131,7 +131,7 @@ const { image } = Astro.props as Props;
 
 			.cs-topper {
 				text-align: center;
-				margin-bottom: (16/16rem);
+				margin-bottom: calc(16 / 16 * 1rem);
 				color: var(--primary);
 			}
 
@@ -157,15 +157,15 @@ const { image } = Astro.props as Props;
 			}
 
 			.cs-button-transparent {
-				font-size: (16/16rem);
+				font-size: calc(16 / 16 * 1rem);
 				font-weight: 700;
 				/* 46px - 56px */
 				line-height: clamp(2.875em, 5.5vw, 3.5em);
 				text-decoration: none;
-				width: (180/16rem);
+				width: calc(180 / 16 * 1rem);
 				/* 46px - 56px */
 				height: clamp(2.875em, 5.5vw, 3.5em);
-				margin: 0 (8/16rem);
+				margin: 0 calc(8 / 16 * 1rem);
 				box-sizing: border-box;
 				padding: 0;
 				color: #fff;
@@ -202,7 +202,7 @@ const { image } = Astro.props as Props;
 				}
 
 				.cs-img {
-					margin-right: (12/16rem);
+					margin-right: calc(12 / 16 * 1rem);
 					display: block;
 				}
 			}
@@ -233,7 +233,7 @@ const { image } = Astro.props as Props;
 			}
 
 			.cs-button-solid {
-				margin-right: (20/16rem);
+				margin-right: calc(20 / 16 * 1rem);
 				margin-bottom: 0;
 			}
 		}

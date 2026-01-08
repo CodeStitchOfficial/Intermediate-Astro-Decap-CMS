@@ -80,7 +80,7 @@ import { Icon } from "astro-icon/components";
 	</div>
 </section>
 
-<style lang="less">
+<style lang="scss">
 	/* PAGE-SPECIFIC STYLES FOR THE REVIEWS PAGE */
 
 	/*-- -------------------------- -->
@@ -91,23 +91,23 @@ import { Icon } from "astro-icon/components";
 	@media only screen and (min-width: 0em) {
 		#reviews {
 			margin: auto;
-			padding-top: (120/16rem);
-			padding-bottom: (50/16rem);
+			padding-top: calc(120 / 16 * 1rem);
+			padding-bottom: calc(50 / 16 * 1rem);
 
 			.container {
 				width: 96%;
-				max-width: (1320/16rem);
+				max-width: calc(1320 / 16 * 1rem);
 			}
 
 			.review {
 				width: 100%;
-				max-width: (410/16rem);
+				max-width: calc(410 / 16 * 1rem);
 				margin: auto;
-				margin-bottom: (100/16rem);
-				padding: (64/16rem) (30/16rem) (18/16rem) (30/16rem);
+				margin-bottom: calc(100 / 16 * 1rem);
+				padding: calc(64 / 16 * 1rem) calc(30 / 16 * 1rem) calc(18 / 16 * 1rem) calc(30 / 16 * 1rem);
 				background: #fff;
 				box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
-				border-radius: (5/16rem);
+				border-radius: calc(5 / 16 * 1rem);
 				display: flex;
 				flex-direction: column;
 				position: relative;
@@ -116,26 +116,26 @@ import { Icon } from "astro-icon/components";
 				}
 
 				.profile {
-					width: (99/16rem);
-					height: (99/16rem);
-					margin-bottom: (16/16rem);
+					width: calc(99 / 16 * 1rem);
+					height: calc(99 / 16 * 1rem);
+					margin-bottom: calc(16 / 16 * 1rem);
 					margin-left: 0;
 					border-radius: 50%;
 					display: block;
 					position: absolute;
-					top: (-51/16rem);
-					left: (30/16rem);
+					top: calc(-51 / 16 * 1rem);
+					left: calc(30 / 16 * 1rem);
 				}
 
 				p {
 					line-height: 1.5em;
 					text-align: left;
-					margin-bottom: (28/16rem);
+					margin-bottom: calc(28 / 16 * 1rem);
 				}
 
 				.star-group {
 					margin-top: auto;
-					padding-top: (16/16rem);
+					padding-top: calc(16 / 16 * 1rem);
 					border-top: 1px solid #e7e7e7;
 					display: flex;
 					justify-content: space-between;
@@ -144,7 +144,7 @@ import { Icon } from "astro-icon/components";
 
 					.name {
 						font-weight: bold;
-						line-height: (24/16rem);
+						line-height: calc(24 / 16 * 1rem);
 						text-align: left;
 						color: #1a1a1a;
 						display: block;
@@ -157,8 +157,8 @@ import { Icon } from "astro-icon/components";
 					}
 
 					img {
-						width: (91/16rem);
-						height: (15/16rem);
+						width: calc(91 / 16 * 1rem);
+						height: calc(15 / 16 * 1rem);
 						margin: 0;
 						display: block;
 					}
@@ -170,24 +170,24 @@ import { Icon } from "astro-icon/components";
 	/* Tablet */
 	@media only screen and (min-width: 48em) {
 		#reviews {
-			padding-top: (150/16rem);
-			padding-bottom: (50/16rem);
+			padding-top: calc(150 / 16 * 1rem);
+			padding-bottom: calc(50 / 16 * 1rem);
 
 			.container {
-				font-size: ~"min(1.4vw, 1em)";
+				font-size: min(1.4vw, 1em);
 				padding: 0;
 				display: flex;
 				justify-content: center;
 				flex-wrap: wrap;
-				column-gap: (30/16rem);
+				column-gap: calc(30 / 16 * 1rem);
 			}
 
 			.review {
 				margin: 0;
-				margin-bottom: (150/16rem);
+				margin-bottom: calc(150 / 16 * 1rem);
 
 				&:last-of-type {
-					margin-bottom: (150/16rem);
+					margin-bottom: calc(150 / 16 * 1rem);
 				}
 			}
 		}

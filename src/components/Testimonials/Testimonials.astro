@@ -48,7 +48,7 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 	</div>
 </section>
 
-<style lang="less">
+<style lang="scss">
 	/*-- -------------------------- -->
 <---          Reviews           -->
 <--- -------------------------- -*/
@@ -62,23 +62,23 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 
 			.cs-container {
 				width: 100%;
-				max-width: (1104/16rem);
+				max-width: calc(1104 / 16 * 1rem);
 				margin: auto;
 			}
 
 			.cs-topper {
 				text-align: center;
-				margin-bottom: (16/16rem);
+				margin-bottom: calc(16 / 16 * 1rem);
 			}
 
 			.cs-title {
 				text-align: center;
-				max-width: (700/16rem);
+				max-width: calc(700 / 16 * 1rem);
 			}
 
 			.cs-text {
 				text-align: center;
-				max-width: (650/16rem);
+				max-width: calc(650 / 16 * 1rem);
 				/* 88px - 104px */
 				margin-bottom: clamp(5.5em, 10.2vw, 6.5em);
 			}
@@ -93,17 +93,17 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 				text-align: left;
 				list-style: none;
 				width: 100%;
-				max-width: (542/16rem);
-				margin: 0 auto (64/16rem);
+				max-width: calc(542 / 16 * 1rem);
+				margin: 0 auto calc(64 / 16 * 1rem);
 				/* Prevents padding from affecting height & width */
 				box-sizing: border-box;
 				/* Padding L & R - 16px - 32px */
-				padding: (60/16rem) clamp(1rem, 3.2vw, 2rem) 0;
+				padding: calc(60 / 16 * 1rem) clamp(1rem, 3.2vw, 2rem) 0;
 				/* 32px - 40px */
 				padding-bottom: clamp(2rem, 5.4vw, 2.5rem);
 				background: #fff;
 				box-shadow: 0px 20px 39px 0px rgba(0, 0, 0, 0.05);
-				border-radius: (4/16rem);
+				border-radius: calc(4 / 16 * 1rem);
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
@@ -116,23 +116,23 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 			}
 
 			.cs-item-img {
-				width: (80/16rem);
-				height: (80/16rem);
+				width: calc(80 / 16 * 1rem);
+				height: calc(80 / 16 * 1rem);
 				position: absolute;
-				top: (-40/16rem);
+				top: calc(-40 / 16 * 1rem);
 			}
 
 			.cs-item-p {
-				font-size: (16/16rem);
+				font-size: calc(16 / 16 * 1rem);
 				line-height: 1.5em;
-				margin: 0 0 (20/16rem);
-				padding-bottom: (20/16rem);
+				margin: 0 0 calc(20 / 16 * 1rem);
+				padding-bottom: calc(20 / 16 * 1rem);
 				color: var(--bodyTextColor);
 				border-bottom: 1px solid #e8e9ec;
 			}
 
 			.cs-reviewer {
-				font-size: (16/16rem);
+				font-size: calc(16 / 16 * 1rem);
 				font-weight: 700;
 				line-height: 1.5em;
 				width: 40%;
@@ -142,15 +142,15 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 			}
 
 			.cs-desc {
-				font-size: (14/16rem);
+				font-size: calc(14 / 16 * 1rem);
 				font-weight: 400;
 				color: var(#353535);
 				display: block;
 			}
 
 			.cs-item-stars {
-				width: (96/16rem);
-				height: (16/16rem);
+				width: calc(96 / 16 * 1rem);
+				height: calc(16 / 16 * 1rem);
 			}
 		}
 	}
@@ -162,7 +162,7 @@ import profile4 from "@assets/images/testimonials/profile-4.png";
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				gap: (16/16rem);
+				gap: calc(16 / 16 * 1rem);
 			}
 
 			.cs-item {

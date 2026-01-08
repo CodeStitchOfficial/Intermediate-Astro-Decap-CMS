@@ -77,7 +77,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 	</div>
 </header>
 
-<style lang="less">
+<style lang="scss">
 	/*-- -------------------------- -->
 <---     Mobile Navigation      -->
 <--- -------------------------- -*/
@@ -96,7 +96,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			width: 100%;
 			/* prevents padding from affecting height and width */
 			box-sizing: border-box;
-			padding: (12/16rem) (16/16rem);
+			padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
 			background-color: #fff;
 			box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 			position: fixed;
@@ -149,7 +149,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-logo {
 				width: 40%;
-				max-width: (146/16rem);
+				max-width: calc(146 / 16 * 1rem);
 				height: 100%;
 				margin: 0 auto 0 0;
 				/* prevents padding from affecting height and width */
@@ -177,7 +177,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin: 0 0 0 auto;
 				background-color: transparent;
 				border: none;
-				border-radius: (4/16rem);
+				border-radius: calc(4 / 16 * 1rem);
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -277,12 +277,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				height: 65vh;
 				margin: 0;
 				/* 28px - 40px */
-				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem) (70/16rem);
+				padding: calc(48 / 16 * 1rem) clamp(1.75rem, 3vw, 2.5rem) calc(32 / 16 * 1rem) calc(70 / 16 * 1rem);
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-start;
 				align-items: flex-end;
-				gap: (20/16rem);
+				gap: calc(20 / 16 * 1rem);
 				overflow: scroll;
 			}
 
@@ -293,7 +293,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				margin-right: 0;
 				opacity: 0;
 				/* transition from these values */
-				transform: translateX(-40/16rem);
+				transform: translateXcalc(-40 / 16 * 1rem);
 				transition:
 					transform 0.6s,
 					opacity 0.9s;
@@ -346,7 +346,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					opacity: 1;
 					display: none;
 					position: absolute;
-					bottom: (-2/16rem);
+					bottom: calc(-2 / 16 * 1rem);
 					left: 0;
 				}
 
@@ -405,8 +405,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				&.cs-active {
 					.cs-drop-ul {
 						height: auto;
-						margin: (12/16rem) 0 0 0;
-						padding: (24/16rem);
+						margin: calc(12 / 16 * 1rem) 0 0 0;
+						padding: calc(24 / 16 * 1rem);
 						opacity: 1;
 						visibility: visible;
 						transform: scale(1);
@@ -428,7 +428,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			}
 
 			.cs-drop-icon {
-				width: (15/16rem);
+				width: calc(15 / 16 * 1rem);
 				height: auto;
 				display: inline-block;
 				color: inherit;
@@ -441,7 +441,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				height: 0;
 				margin: 0;
 				box-sizing: border-box;
-				padding: 0 (24/16rem) 0 (24/16rem);
+				padding: 0 calc(24 / 16 * 1rem) 0 calc(24 / 16 * 1rem);
 				background-color: var(--primary);
 				opacity: 0;
 				display: flex;
@@ -449,7 +449,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				flex-direction: column;
 				justify-content: flex-start;
 				align-items: flex-end;
-				gap: (12/16rem);
+				gap: calc(12 / 16 * 1rem);
 				overflow: hidden;
 				transform: scale(0);
 				transition:
@@ -515,7 +515,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			}
 
 			.cs-drop-icon {
-				width: (15/16rem);
+				width: calc(15 / 16 * 1rem);
 				height: auto;
 				display: inline-block;
 				color: inherit;
@@ -524,7 +524,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			}
 
 			.cs-drop-ul {
-				min-width: (200/16rem);
+				min-width: calc(200 / 16 * 1rem);
 				margin: 0;
 				padding: 0;
 				background-color: #fff;
@@ -547,7 +547,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			}
 
 			.cs-drop-li {
-				font-size: (16/16rem);
+				font-size: calc(16 / 16 * 1rem);
 				text-decoration: none;
 				list-style: none;
 				width: 100%;
@@ -555,7 +555,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				color: var(--bodyTextColor);
 				opacity: 0;
 				display: block;
-				transform: translateY(-10/16rem);
+				transform: translateYcalc(-10 / 16 * 1rem);
 				transition:
 					opacity 0.6s,
 					transform 0.6s;
@@ -603,14 +603,14 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-li-link {
 				&.cs-drop-link {
-					font-size: (16/16rem);
+					font-size: calc(16 / 16 * 1rem);
 					line-height: 1.5em;
 					text-decoration: none;
 					white-space: nowrap;
 					width: 100%;
 					/* prevents padding from affecting height and width */
 					box-sizing: border-box;
-					padding: (12/16rem);
+					padding: calc(12 / 16 * 1rem);
 					color: var(--bodyTextColor);
 					display: block;
 					transition:
@@ -676,7 +676,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			width: 100%;
 			/* prevents padding from affecting height and width */
 			box-sizing: border-box;
-			padding: 0 (16/16rem);
+			padding: 0 calc(16 / 16 * 1rem);
 			background-color: #fff;
 			box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 			position: fixed;
@@ -684,12 +684,12 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-container {
 				width: 100%;
-				max-width: (1280/16rem);
+				max-width: calc(1280 / 16 * 1rem);
 				margin: auto;
 				display: flex;
 				justify-content: flex-end;
 				align-items: center;
-				gap: (24/16rem);
+				gap: calc(24 / 16 * 1rem);
 			}
 
 			.cs-toggle {
@@ -698,8 +698,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-logo {
 				width: 18.4%;
-				max-width: (350/16rem);
-				height: (65/16rem);
+				max-width: calc(350 / 16 * 1rem);
+				height: calc(65 / 16 * 1rem);
 				/* margin-right auto pushes everything away from it to the right */
 				margin: 0 auto 0 0;
 				padding: 0;
@@ -729,7 +729,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 			.cs-li {
 				list-style: none;
-				padding: (32/16rem) (16/16rem);
+				padding: calc(32 / 16 * 1rem) calc(16 / 16 * 1rem);
 				/* prevent flexbox from squishing it */
 				flex: none;
 			}
@@ -764,7 +764,7 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 					opacity: 1;
 					display: block;
 					position: absolute;
-					bottom: (0/16rem);
+					bottom: calc(0 / 16 * 1rem);
 					left: 0;
 					transition: width 0.3s;
 				}

@@ -53,7 +53,7 @@ const { posts } = Astro.props;
 	</div>
 </section>
 
-<style lang="less">
+<style lang="scss">
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0rem) {
 		#blog-1144 {
@@ -64,7 +64,7 @@ const { posts } = Astro.props;
 			.cs-container {
 				width: 100%;
 				/* changes to 1280px at tablet */
-				max-width: (784/16rem);
+				max-width: calc(784 / 16 * 1rem);
 				margin: auto;
 				display: flex;
 				flex-direction: column;
@@ -94,13 +94,13 @@ const { posts } = Astro.props;
 				margin: 0;
 				display: grid;
 				grid-template-columns: repeat(12, 1fr);
-				gap: (20/16rem);
+				gap: calc(20 / 16 * 1rem);
 			}
 
 			.cs-item {
 				text-align: left;
 				list-style: none;
-				border-radius: (16/16rem);
+				border-radius: calc(16 / 16 * 1rem);
 				overflow: hidden;
 				background-color: #f7f7f7;
 				border: 1px solid #e8e8e8;
@@ -127,7 +127,7 @@ const { posts } = Astro.props;
 
 			.cs-picture {
 				width: 100%;
-				height: (240/16rem);
+				height: calc(240 / 16 * 1rem);
 				background-color: #1a1a1a;
 				border-bottom: 4px solid var(--secondary);
 				overflow: hidden;
@@ -152,7 +152,7 @@ const { posts } = Astro.props;
 
 			.cs-flex {
 				height: 100%;
-				padding: (24/16rem);
+				padding: calc(24 / 16 * 1rem);
 				/* prevents padding and border from affecting height and width */
 				box-sizing: border-box;
 				display: flex;
@@ -163,31 +163,31 @@ const { posts } = Astro.props;
 			}
 
 			.cs-date {
-				font-size: (16/16rem);
+				font-size: calc(16 / 16 * 1rem);
 				line-height: 1.2em;
 				font-weight: 700;
 				text-align: inherit;
 				margin: 0;
-				padding: (8/16rem) (16/16rem);
+				padding: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
 				/* prevents padding and border from affecting height and width */
 				box-sizing: border-box;
 				background-color: var(--secondary);
-				border-radius: (8/16rem) (8/16rem) 0 0;
+				border-radius: calc(8 / 16 * 1rem) calc(8 / 16 * 1rem) 0 0;
 				color: #fff;
 				display: inline-block;
 				position: absolute;
-				left: (24/16rem);
+				left: calc(24 / 16 * 1rem);
 				bottom: 100%;
 				z-index: 2;
 			}
 
 			.cs-h3 {
-				font-size: (20/16rem);
+				font-size: calc(20 / 16 * 1rem);
 				text-align: inherit;
 				line-height: 1.2em;
 				font-weight: 700;
 				color: var(--headerColor);
-				margin: 0 0 (12/16rem) 0;
+				margin: 0 0 calc(12 / 16 * 1rem) 0;
 				transition: color 0.3s;
 			}
 
@@ -196,12 +196,12 @@ const { posts } = Astro.props;
 				font-size: clamp(0.875rem, 1.5vw, 1rem);
 				line-height: 1.5em;
 				text-align: inherit;
-				margin: 0 0 (20/16rem);
+				margin: 0 0 calc(20 / 16 * 1rem);
 				color: var(--bodyTextColor);
 			}
 
 			.cs-link {
-				font-size: (16/16rem);
+				font-size: calc(16 / 16 * 1rem);
 				line-height: 1.2em;
 				font-weight: 700;
 				text-decoration: none;
@@ -219,7 +219,7 @@ const { posts } = Astro.props;
 			}
 
 			.cs-arrow {
-				width: (20/16rem);
+				width: calc(20 / 16 * 1rem);
 				height: auto;
 				transition: transform 0.3s;
 			}
@@ -230,7 +230,7 @@ const { posts } = Astro.props;
 	@media only screen and (min-width: 48rem) {
 		#blog-1144 {
 			.cs-container {
-				max-width: (1280/16rem);
+				max-width: calc(1280 / 16 * 1rem);
 			}
 
 			.cs-content {

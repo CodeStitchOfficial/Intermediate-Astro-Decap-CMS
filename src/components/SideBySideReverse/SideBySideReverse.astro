@@ -53,7 +53,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
   </div>
 </section>
 
-<style lang="less">
+<style lang="scss">
   /*-- -------------------------- -->
 <---       Side By Side         -->
 <--- -------------------------- -*/
@@ -65,26 +65,26 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
 
       .cs-container {
         width: 100%;
-        max-width: (1280/16rem);
+        max-width: calc(1280 / 16 * 1rem);
         margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        row-gap: (40/16rem);
+        row-gap: calc(40 / 16 * 1rem);
       }
 
       .cs-left {
         /* scaling the font size with the view width */
-        font-size: ~"min(2.31vw, .7em)";
+        font-size: min(2.31vw, .7em);
         /* using ems so we can use font size to scale the whole section */
-        width: (631/16em);
-        height: (636/16em);
+        width: calc(631 / 16 * 1em);
+        height: calc(636 / 16 * 1em);
         position: relative;
       }
 
       .cs-picture {
-        border-radius: (24/16em);
+        border-radius: calc(24 / 16 * 1em);
         display: block;
         position: absolute;
         /* clips img tag corners */
@@ -101,15 +101,15 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
       }
 
       .cs-picture1 {
-        width: (522/16em);
-        height: (581/16em);
+        width: calc(522 / 16 * 1em);
+        height: calc(581 / 16 * 1em);
         top: 0;
         right: 0;
       }
 
       .cs-picture2 {
-        width: (414/16em);
-        height: (400/16em);
+        width: calc(414 / 16 * 1em);
+        height: calc(400 / 16 * 1em);
         background-color: #fff;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
         /* 6px - 12px */
@@ -119,26 +119,26 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
       }
 
       .cs-right {
-        max-width: (542/16rem);
+        max-width: calc(542 / 16 * 1rem);
         margin: auto;
       }
 
       .cs-topper {
         text-align: left;
-        margin-bottom: (4/16rem);
+        margin-bottom: calc(4 / 16 * 1rem);
       }
 
       .cs-title {
         text-align: left;
-        max-width: (800/16rem);
+        max-width: calc(800 / 16 * 1rem);
       }
 
       .cs-text {
         text-align: left;
-        max-width: (750/16rem);
-        margin-bottom: (16/16rem);
+        max-width: calc(750 / 16 * 1rem);
+        margin-bottom: calc(16 / 16 * 1rem);
         &:last-of-type {
-          margin-bottom: (32/16rem);
+          margin-bottom: calc(32 / 16 * 1rem);
         }
       }
 
@@ -146,7 +146,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         /* 16px - 32px */
         padding: clamp(1rem, 3vw, 2rem);
         background-color: #f7f7f7;
-        border-radius: (16/16rem);
+        border-radius: calc(16 / 16 * 1rem);
         position: relative;
       }
 
@@ -154,22 +154,22 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         /* 14px - 16px */
         font-size: clamp(0.875rem, 1.5vw, 1rem);
         line-height: 1.5em;
-        margin: 0 0 (16/16rem);
+        margin: 0 0 calc(16 / 16 * 1rem);
         color: #353535;
       }
 
       .cs-name {
-        font-size: (16/16rem);
+        font-size: calc(16 / 16 * 1rem);
         font-weight: bold;
         line-height: 1.2em;
         text-transform: uppercase;
-        margin: 0 0 (4/16rem);
+        margin: 0 0 calc(4 / 16 * 1rem);
         color: var(--headerColor);
         display: block;
       }
 
       .cs-job {
-        font-size: (14/16rem);
+        font-size: calc(14 / 16 * 1rem);
         line-height: 1.5em;
         color: #353535;
         display: block;
@@ -182,7 +182,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         position: absolute;
         /* 16px - 32px */
         right: clamp(1rem, 4vw, 2rem);
-        bottom: (0/16rem);
+        bottom: calc(0 / 16 * 1rem);
       }
     }
   }
@@ -193,11 +193,11 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
       .cs-container {
         flex-flow: row;
         justify-content: space-between;
-        gap: (52/16rem);
+        gap: calc(52 / 16 * 1rem);
       }
 
       .cs-left {
-        font-size: ~"min(1.2vw, 1em)";
+        font-size: min(1.2vw, 1em);
         /* sends it to the right */
         order: 2;
         flex: none;
