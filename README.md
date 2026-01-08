@@ -1,7 +1,7 @@
 <h3 align="center">Intermediate Astro kit - Decap CMS</h3>
 
   <p align="center">
-    This intermediate kit includes a pre-configured Astro setup, along with five pages filled with CodeStitch components. Everything is ready to go right from the start, offering a fantastic introduction to the advantages of a Static Site Generator, complete with LESS preprocessing and a blog powered by Decap CMS. This kit also leverages the power of a few Astro tools such as, but not limited to, Content Collections, View Transitions, Astro components, scoped styling and scripting etc.
+    This intermediate kit includes a pre-configured Astro setup, along with five pages filled with CodeStitch components. Everything is ready to go right from the start, offering a fantastic introduction to the advantages of a Static Site Generator, complete with SASS preprocessing and a blog powered by Decap CMS. This kit also leverages the power of a few Astro tools such as, but not limited to, Content Collections, View Transitions, Astro components, scoped styling and scripting etc.
     <br/>
     <br/>
     <a href="https://intermediate-astro-kit-decap-cms.netlify.app" target="_blank">View Live Result</a>
@@ -69,7 +69,7 @@ npm install && npm run dev
 
 - `src/data/client.ts` - Site configuration
 - `src/data/navData.json` - Navigation structure
-- `src/styles/root.less` - Design tokens
+- `src/styles/root.scss` - Design tokens
 - `public/admin/config.yml` - CMS configuration
 
 [Read full documentation below](#gettingStarted) or explore with [CodeTour](#exploringWithCodeTour).
@@ -196,7 +196,7 @@ This kit ships the following packages:
 
 - [Astro Icon](https://www.astroicon.dev/) - Astro Icon is a straightforward icon system for the Astro framework.
 - [Autoprefixer](https://www.npmjs.com/package/autoprefixer) - PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use. It is recommended by Google and used in Twitter and Alibaba.
-- [LESS](https://www.npmjs.com/package/less) - Less makes a few convenient additions to the CSS language, but you can also simply write standard CSS if you wish.
+- [SASS](https://www.npmjs.com/package/sass) - Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
 
 <a name="projectTree"></a>
 
@@ -261,7 +261,7 @@ This kit ships the following packages:
 │   │   ├── projects/
 │   │   └── ...
 │   └── styles/
-│       ├── root.less           # Base styles
+│       ├── root.scss           # Base styles
 │   │   └── ...
 ├── astro.config.mjs
 ├── package.json
@@ -296,7 +296,7 @@ The `src/` folder is where most of your project source code lives. This includes
 - Layouts
 - Astro components
 - UI framework components (React, etc.)
-- Styles (CSS, LESS)
+- Styles (CSS, SASS)
 - Markdown
 
 ##### `src/assets`
@@ -339,7 +339,7 @@ Pages are a special kind of component used to create new pages on your site. A p
 
 ##### `src/styles`
 
-It is a common convention to store your CSS, Less or Sass files in a `src/styles` directory.
+It is a common convention to store your CSS, or Sass files in a `src/styles` directory.
 
 #### `package.json` and `package-lock.json`
 
@@ -493,7 +493,7 @@ If you want to use a different header design from the CodeStitch library, here's
 1. **Browse and select** a header stitch from [codestitch.app](https://codestitch.app/)
 2. **Create a new component** file in `src/components/Header/` (e.g., `CustomHeader.astro`)
 3. **Copy the HTML** from CodeStitch and paste it into your component between the `---` frontmatter and the `<style>` tag
-4. **Copy the LESS/CSS** from CodeStitch and paste it into the component's `<style lang="less">` tag
+4. **Copy the SCSS/CSS** from CodeStitch and paste it into the component's `<style lang="scss">` tag
 5. **Copy the JavaScript** from CodeStitch and paste it into `src/js/nav.js`, wrapped with `document.addEventListener('astro:page-load', () => {})` for View Transitions compatibility
 6. **Update imports and paths:**
    - Replace image paths with Icon components where appropriate
@@ -623,9 +623,9 @@ In the above example, we're checking if the active page slug matches any of the 
 
 #### CSS Variables
 
-Customize site-wide colors, fonts and other properties in `src/styles/root.less`:
+Customize site-wide colors, fonts and other properties in `src/styles/root.sass`:
 
-```less
+```sass
 :root {
 	--primary: #aff425;
 	--primaryLight: #7aa329;
@@ -638,7 +638,7 @@ Customize site-wide colors, fonts and other properties in `src/styles/root.less`
 
 #### Dark Mode
 
-All dark mode styles are consolidated in `src/styles/dark.less` for easy maintenance.
+All dark mode styles are consolidated in `src/styles/dark.scss` for easy maintenance.
 
 Dark mode is managed by DarkModeToggle.astro and persisted in BaseLayout.
 
@@ -651,7 +651,7 @@ Components use scoped `<style>` tags:
   <h1>Welcome</h1>
 </section>
 
-<style lang="less">
+<style lang="scss">
   #hero {
     padding: 4rem 1rem;
     h1 {
