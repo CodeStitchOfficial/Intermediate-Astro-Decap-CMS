@@ -627,12 +627,12 @@ Customize site-wide colors, fonts and other properties in `src/styles/root.less`
 
 ```less
 :root {
-	--primary: #aff425;
-	--primaryLight: #7aa329;
-	--secondary: #ffba43;
-	--bodyTextColor: #4e4b66;
-	--bodyTextColorWhite: #fafbfc;
-	// ... more variables
+  --primary: #aff425;
+  --primaryLight: #7aa329;
+  --secondary: #ffba43;
+  --bodyTextColor: #4e4b66;
+  --bodyTextColorWhite: #fafbfc;
+  // ... more variables
 }
 ```
 
@@ -695,9 +695,9 @@ BaseLayout accepts simple props with sensible defaults from `client.ts`:
 
 ```typescript
 interface Props {
-	title?: string; // Page title (defaults to SITE.title)
-	description?: string; // Meta description (defaults to SITE.description)
-	heroImage?: HeroImage; // Optional social sharing image
+  title?: string; // Page title (defaults to SITE.title)
+  description?: string; // Meta description (defaults to SITE.description)
+  heroImage?: HeroImage; // Optional social sharing image
 }
 ```
 
@@ -774,18 +774,18 @@ For schemas used across multiple pages, create helper functions following the ex
 import { SITE } from "@data/client";
 
 export function getFAQSchema(faqs) {
-	return {
-		"@context": "https://schema.org",
-		"@type": "FAQPage",
-		mainEntity: faqs.map((item) => ({
-			"@type": "Question",
-			name: item.question,
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: item.answer,
-			},
-		})),
-	};
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 }
 ```
 
@@ -931,7 +931,12 @@ const optimizedImage = await getImage({ src: heroImage, format: "webp" });
 In the rendered HTML `<head>`:
 
 ```html
-<link rel="preload" as="image" href="/optimized-hero.webp" fetchpriority="high" />
+<link
+  rel="preload"
+  as="image"
+  href="/optimized-hero.webp"
+  fetchpriority="high"
+/>
 ```
 
 **When to use preloading:**
@@ -1140,14 +1145,14 @@ The sitemap is pre-configured in `astro.config.mjs`. Here's what's included:
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-	site: "https://yourwebsite.com", // Replace with your site URL
-	integrations: [
-		sitemap({
-			filter: (page) => !page.includes("/admin"),
-			changefreq: "weekly",
-			priority: 0.7,
-		}),
-	],
+  site: "https://yourwebsite.com", // Replace with your site URL
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes("/admin"),
+      changefreq: "weekly",
+      priority: 0.7,
+    }),
+  ],
 });
 ```
 
@@ -1167,25 +1172,21 @@ Fore more configuration options, read the [full Astro Sitemap documentation](htt
 Before deploying, ensure you've configured:
 
 1. **Site URLs** - Update in:
-
    - `astro.config.mjs` - `site` property
    - `src/data/client.ts` - `SITE.url`
    - `public/robots.txt` - Sitemap URL
 
 2. **Business Information** - Update `src/data/client.ts`:
-
    - Company name, address, phone
    - Email and opening hours
    - Social media links
 
 3. **Favicons** - Replace default favicons in `public/assets/favicons/`
-
    - Use https://realfavicongenerator.net/
 
 4. **Default Social Image** - Create `public/assets/social.jpg` (1200x600px recommended)
 
 5. **Decap CMS Configuration** - Update `public/admin/config.yml`:
-
    - Repository name
    - Site URL
    - DecapBridge settings
@@ -1228,7 +1229,6 @@ Fill in the 3 input fields:
 - Github repository: it has to be in a `user-or-org/repository-name` format. e.g. `BuckyBuck135/testing-decapbridge`
 - Github access token.
   To create a personal access token in GitHub, follow these steps:
-
   1. Log into your Github account.
   2. Click on your profile picture (top right) (not the repository profile), and click the "Settings" link.
   3. Scroll down and click the "Developer Settings" link.
@@ -1276,7 +1276,11 @@ logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 site_url: https://testing-decapbridge.netlify.app
 ```
 
-2. Push changes to the repo and test the authentication system. As the admin of the site, your login credentials to access the Decap dashboard are the same as your decapbridge.com credentials.
+2. Push changes to the repo and test the authentication system.
+
+   > [!IMPORTANT]
+   > As the admin of the site, your login credentials to access the Decap dashboard are the same as your decapbridge.com credentials.
+
 3. Invite your client from your decapbridge dashboard. This will create a decapbridge collaborator account for them. From there, they will be able to access their Decap dashboard, reset their password etc.
 
 ### Netlify Build Cache Optimization
