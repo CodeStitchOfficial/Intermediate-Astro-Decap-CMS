@@ -12,8 +12,8 @@
 		"remove-demo": "node scripts/remove-demo.js"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.6.0",
-		"astro": "^5.16.2",
+		"@astrojs/sitemap": "^3.7.0",
+		"astro": "^5.16.15",
 		"astro-icon": "^1.1.5",
 		"autoprefixer": "^10.4.22",
 		"less": "^4.4.2"
