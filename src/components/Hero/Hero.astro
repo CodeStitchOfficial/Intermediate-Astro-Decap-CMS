@@ -19,9 +19,8 @@ const { image } = Astro.props as Props;
 <section id="hero">
 	<div class="cs-container">
 		<div class="cs-flex-group">
-			<span class="cs-topper">Intermediate Kit</span>
-			<h1 class="cs-title">Intermediate Astro v5 <br /> Decap CMS</h1>
-			<p class="cs-text">This intermediate kit includes a pre-configured Astro environment, which allows for repeated components, centralized data and greater room to scale as your clients grow. Decap CMS has been integrated to run a blog.</p>
+			<h1 class="cs-title">ROTA 61<br>Trabzon Motosiklet Derneği</h1>
+			<p class="cs-text">İki teker sevdalıları buluşma yeri</p>
 			<a href="/about/" class="cs-button-solid">Explore More</a>
 			<a href="/contact/" class="cs-button-transparent">
 				<Icon name="play" class="cs-img" />
@@ -52,6 +51,8 @@ const { image } = Astro.props as Props;
 			z-index: 1;
 			/* prevents overflow from the lines extending past the screen width */
 			overflow: hidden;
+			height: 115vh;
+			min-height: 800px;
 
 			.cs-picture {
 				/* Background Image */
@@ -69,7 +70,7 @@ const { image } = Astro.props as Props;
 					width: 100%;
 					height: 100%;
 					background: #000;
-					opacity: 0.7;
+					opacity: 0.4;
 					display: block;
 					position: absolute;
 					top: 0;
@@ -100,19 +101,6 @@ const { image } = Astro.props as Props;
 				padding: clamp(9em, 25.95vw, 17.5em) 0;
 				position: relative;
 
-				&:before {
-					/* Left Line */
-					content: "";
-					width: 1px;
-					height: 100%;
-					background: -moz-linear-gradient(top, rgba(250, 251, 252, 0.5) 0%, rgba(250, 251, 252, 0) 100%); /* FF3.6-15 */
-					background: -webkit-linear-gradient(top, rgba(250, 251, 252, 0.5) 0%, rgba(250, 251, 252, 0) 100%); /* Chrome10-25,Safari5.1-6 */
-					opacity: 1;
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
 			}
 
 			.cs-flex-group {
@@ -217,19 +205,6 @@ const { image } = Astro.props as Props;
 
 			.cs-container {
 				padding: clamp(7em, 27.95vw, 17.5em) 0 clamp(9em, 30.95vw, 23.5em) 0;
-				&:after {
-					/* Right Line */
-					content: "";
-					width: 1px;
-					height: 100%;
-					background: -moz-linear-gradient(top, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.5) 100%); /* FF3.6-15 */
-					background: -webkit-linear-gradient(top, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.5) 100%); /* Chrome10-25,Safari5.1-6 */
-					opacity: 1;
-					display: block;
-					position: absolute;
-					top: 0;
-					right: 0;
-				}
 			}
 
 			.cs-button-solid {

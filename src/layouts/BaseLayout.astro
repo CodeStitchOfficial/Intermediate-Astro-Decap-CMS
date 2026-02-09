@@ -12,6 +12,7 @@ import Meta from "@components/Meta/Meta.astro";
 
 // Data
 import { SITE } from "@data/client";
+import StaticHeader from "@components/Header/StaticHeader.astro";
 
 // Create a union type for heroImage
 type HeroImage = GetImageResult | ImageMetadata;
@@ -41,11 +42,11 @@ const { description, title, heroImage } = Astro.props as Props;
 		<!-- Sitewide Scripts -->
 		<script src="@js/nav.js"></script>
 	</head>
-	<body class="dark-mode">
+	<body>
 		<!-- Screen reader skip main nav -->
 		<a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
 
-		<DynamicHeader />
+		<StaticHeader />
 		<main id="main">
 			<slot />
 		</main>
@@ -66,23 +67,22 @@ const { description, title, heroImage } = Astro.props as Props;
 	}
 
 	function setTheme() {
-		// default to the light theme
-		let theme = "light";
+		// default to dark theme
+		let theme = "dark";
 
-		// check localStorage for a saved 'theme' variable. if it's there, the user has visited before, so apply the necessary theme choices
-		if (localStorage.getItem("theme")) {
-			theme = localStorage.getItem("theme");
+		const stored = localStorage.getItem("theme"); // "light" | "dark" | null
+		if (stored === "light" || stored === "dark") {
+			theme = stored;
 		}
-		// if it's not there, check to see if the user has applied dark mode preferences themselves in the browser
-		else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-			theme = "dark";
-		}
+		// optional: if you want system preference to override the default on first visit, uncomment:
+		// else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+		//  theme = "light";
+		// }
 
-		// if there is no preference set, the default of light will be used. apply accordingly
 		theme === "dark" ? enableDarkMode() : disableDarkMode();
 	}
 
 	setTheme();
-
-	document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
+	document.addEventListener("astro:after-swap", setTheme);
 </script>
+

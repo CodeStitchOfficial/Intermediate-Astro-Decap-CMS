@@ -15,8 +15,6 @@
 import { Icon } from "astro-icon/components";
 import { isCurrentPage, getDropdownId } from "@js/utils.js";
 
-// Components
-import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 // Data
 import navData from "@data/navData.json";
@@ -26,7 +24,7 @@ import navData from "@data/navData.json";
 	<div class="cs-container">
 		<!--Nav Logo-->
 		<a href="/" class="cs-logo" aria-label="Return to Rota 61 Home page">
-			<Icon name="logo-black" />
+			<Icon name="logo-white" />
 		</a>
 		<!--Navigation List-->
 		<nav class="cs-nav" aria-label="main navigation">
@@ -79,8 +77,6 @@ import navData from "@data/navData.json";
 			</div>
 		</nav>
 		<a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
-		<!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
-		<DarkModeToggle />
 	</div>
 </header>
 
@@ -786,8 +782,8 @@ import navData from "@data/navData.json";
 				background-color: var(--dark);
 
 				.cs-logo {
-					/* makes it turn white */
-					filter: grayscale(1) brightness(1000%);
+                  width: 100%;
+                  max-width: 120px;
 				}
 
 				.cs-li-link {
