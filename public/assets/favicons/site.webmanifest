@@ -1,6 +1,6 @@
 {
-  "name": "Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
       "src": "/assets/favicons/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#1d1d1d",
+  "background_color": "#1d1d1d",
   "display": "standalone"
 }

@@ -1,6 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="919" height="812"><svg width="919" height="812" viewBox="0 0 919 812" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="0.00012207" width="919" height="812" rx="32" fill="white"></rect>
-<path d="M801.38 32C710.417 32 573.371 198.163 573.371 198.163L459.433 336.676L402.398 406L430.849 440.595L316.911 579.109L208.583 447.541C188.548 423.231 188.548 388.769 208.583 364.459L422.968 103.995C446.877 75.01 425.639 32 387.304 32H117.487C70.3355 32 32.0001 69.2664 32.0001 115.081V696.919C32.0001 742.867 72.7398 780 117.487 780C208.45 780 345.496 613.837 345.496 613.837L459.433 475.324L516.469 406L488.018 371.405L601.956 232.891L710.283 364.459C730.319 388.769 730.319 423.231 710.283 447.541L496.032 708.005C472.123 736.99 493.361 780 531.696 780H801.513C848.665 780 887 742.734 887 696.919V115.081C887 69.1329 846.26 32 801.513 32H801.38Z" fill="#09293E"></path>
-</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="71.13" height="53.81"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="71.13" height="53.81"><svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.13 53.81">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e81938;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g>
+      <path class="cls-1" d="M0,28.08C.05,10.48,8.36,0,21.3,0c10.46,0,17.62,6.73,18.67,15.34h-10.92c-.84-3.66-3.73-5.86-7.75-5.86-6.83,0-10.41,6.34-10.46,16.55h.36c2.35-4.63,7.44-7.39,13.2-7.39,9.28,0,16.14,7.08,16.11,16.9.03,10.66-7.93,18.31-19.59,18.26C10.15,53.76-.03,47.26,0,28.08ZM29.77,35.85c.03-5.19-3.71-9.21-8.82-9.21s-8.95,4.14-8.98,9.23c0,5.11,3.78,9.23,8.9,9.23s8.93-4.02,8.9-9.26Z"></path>
+      <path class="cls-1" d="M71.13,53.09h-11.07V11.23h-.31l-11.99,7.52v-9.82L60.73.72h10.41v52.38Z"></path>
+    </g>
+  </g>
+</svg></svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
 @media (prefers-color-scheme: dark) { :root { filter: none; } }
 </style></svg>
