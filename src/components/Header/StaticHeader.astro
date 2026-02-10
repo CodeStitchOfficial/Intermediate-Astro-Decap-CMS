@@ -48,18 +48,18 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 						<a href="#sbs" class="cs-li-link" data-scrollspy>Hakkımızda</a>
 					</li>
 					<li class="cs-li">
-						<a href="#sbs-r" class="cs-li-link" data-scrollspy>Yönetim</a>
+						<a href="#members" class="cs-li-link" data-scrollspy>Yönetim</a>
 					</li>
 					<li class="cs-li">
 						<a href="#gallery" class="cs-li-link" data-scrollspy>Galeri</a>
 					</li>
 					<li class="cs-li cs-hide-on-desktop">
-						<a href="/contact/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/contact/" }]} aria-current={Astro.url.pathname === "/contact/" ? "page" : undefined}> İletişim </a>
+						<a href="#footer" class="cs-li-link" > İletişim </a>
 					</li>
 				</ul>
 			</div>
 		</nav>
-		<a href="/contact/" class="cs-button-solid cs-nav-button">İletişim</a>
+		<a href="#footer" class="cs-button-solid cs-nav-button" data-scrollspy>İletişim</a>
 		<!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
 		<DarkModeToggle />
 	</div>

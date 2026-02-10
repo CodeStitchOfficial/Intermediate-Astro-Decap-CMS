@@ -16,37 +16,17 @@ const currentYear = getCurrentYear();
 			<a class="logo" href="/" aria-label="Return to [Company Name] Home page">
 				<Icon name="logo-white" width="264" height="78" />
 			</a>
-			<p>Extra content if you need it, if not you can delete this whole p tag. I usually do.</p>
+			<p>İki tekerin ruhunu paylaşanların durağı</p>
+
 		</div>
 		<div class="right-section">
 			<div class="lists">
 				<ul>
 					<li>
-						<h2>Information</h2>
-					</li>
-					{
-						navData.map((entry) => (
-							<li class="cs-li">
-								<a href={entry.url}>{entry.key}</a>
-							</li>
-						))
-					}
-				</ul>
-				<ul>
-					<li>
-						<h2>Services</h2>
-					</li>
-					<li>Service1</li>
-					<li>Service2</li>
-					<li>Service4</li>
-					<li>Service5</li>
-				</ul>
-				<ul>
-					<li>
-						<h2>Contact</h2>
+						<h2>Adres</h2>
 					</li>
 					<li>
-						<a href="/contact/">
+						<a href={BUSINESS.address.mapLink} target="_blank" rel="noopener noreferrer">
 							{BUSINESS.address.lineOne}<br />
 							{BUSINESS.address.lineTwo}<br />
 							{BUSINESS.address.city}
@@ -54,14 +34,46 @@ const currentYear = getCurrentYear();
 							{BUSINESS.address.zip}
 						</a>
 					</li>
+				</ul>
+				<ul>
+					<li>
+						<h2>İletişim</h2>
+					</li>
 					<li>
 						<a href={`tel:${BUSINESS.phoneForTel}`}>
-							T:
+							Tel:
 							{BUSINESS.phoneFormatted}
 						</a>
 					</li>
 					<li>
-						<a href={`mailto:${BUSINESS.email}`}>Click to Email</a>
+						<a href={`mailto:${BUSINESS.email}`}>E-Mail:
+							{BUSINESS.email}
+						</a>
+					</li>
+				</ul>
+
+				<ul>
+					<li>
+						<h2>Bizi takip edin</h2>
+					</li>
+					<li>
+						<div class="cs-social" aria-label="Social media links">
+							{BUSINESS.socials?.facebook && (
+								<a class="cs-social-link" href={BUSINESS.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+									<Icon name="facebook" width="24" height="24" />
+								</a>
+							)}
+							{BUSINESS.socials?.instagram && (
+								<a class="cs-social-link" href={BUSINESS.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+									<Icon name="instagram" width="24" height="24" />
+								</a>
+							)}
+							{BUSINESS.socials?.x && (
+								<a class="cs-social-link" href={BUSINESS.socials.x} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+									<Icon name="x" width="24" height="24" />
+								</a>
+							)}
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -70,7 +82,7 @@ const currentYear = getCurrentYear();
 
 	<div class="credit">
 		<span>Designed and Hand Coded by</span>
-		<a href="/" target="_blank" rel="noopener">Your Company Name</a>
+		<a href="/" target="_blank" rel="noopener">Elma&Co</a>
 		<span class="copyright"> Copyright {currentYear} - Present</span>
 	</div>
 </footer>
@@ -118,6 +130,32 @@ const currentYear = getCurrentYear();
 				width: 96%;
 				max-width: (407/16rem);
 				margin: auto;
+				.cs-social {
+					margin-top: (18/16rem);
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: (12/16rem);
+
+					.cs-social-link {
+						width: (40/16rem);
+						height: (40/16rem);
+						display: inline-flex;
+						align-items: center;
+						justify-content: center;
+						border: 1px solid rgba(255, 255, 255, 0.2);
+						border-radius: (8/16rem);
+						color: #fff;
+						text-decoration: none;
+						transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+
+						&:hover {
+							background-color: rgba(255, 255, 255, 0.08);
+							border-color: rgba(255, 255, 255, 0.35);
+							color: var(--primary);
+						}
+					}
+				}
 				.lists {
 					width: 96%;
 					max-width: (307/16rem);
@@ -172,7 +210,7 @@ const currentYear = getCurrentYear();
 
 							&:before {
 								content: "";
-								width: (97/16rem);
+								width: 100%;
 								height: (2/16rem);
 								background: var(--primary);
 								opacity: 1;
@@ -255,12 +293,17 @@ const currentYear = getCurrentYear();
 					text-align: left;
 					margin-left: 0;
 				}
+
+				.cs-social {
+					justify-content: flex-start;
+				}
 			}
 
 			.right-section {
-				width: (609/16rem);
+				width: 50rem;
 				max-width: none;
 				margin: 0;
+				padding-left: 5rem;
 				.lists {
 					width: 96%;
 					max-width: (769/16rem);
@@ -273,31 +316,6 @@ const currentYear = getCurrentYear();
 
 							li:first-of-type {
 								margin-bottom: 0;
-							}
-						}
-
-						li {
-							a {
-								position: relative;
-
-								&:before {
-									content: "";
-									width: 0%;
-									height: (2/16rem);
-									background: var(--primary);
-									opacity: 1;
-									display: block;
-									position: absolute;
-									bottom: (-3/16rem);
-									left: 0;
-									transition: width 0.3s;
-								}
-
-								&:hover {
-									&:before {
-										width: 100%;
-									}
-								}
 							}
 						}
 					}

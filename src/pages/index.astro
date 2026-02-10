@@ -12,21 +12,21 @@ import Gallery from "@components/Gallery/Gallery.astro";
 import Members from "@components/Members/Members.astro";
 import Testimonials from "@components/Testimonials/Testimonials.astro";
 import FAQ from "@components/FAQ/FAQ.astro";
-import CTASimple from "@components/CTA/CTASimple.astro";
+import MapSection from "@components/MapSection/MapSection.astro";
+import InstagramFeed from "@components/InstagramFeed/InstagramFeed.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Banner (for rendering)
 import heroImage from "@assets/images/hero/rota-61-hero-3.jpg";
 const optimizedHeroImage = await getImage({ src: heroImage, format: "webp" });
 ---
 
-<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" heroImage={optimizedHeroImage}>
+<BaseLayout title="ROTA 61 Trabzon Motosiklet Dernegi" description="ROTA 61 Trabzon Motosiklet Derneği, motosiklet tutkunlarını bir araya getiren bir topluluktur. Amacımız, motosiklet kültürünü yaymak, güvenli sürüşü teşvik etmek ve üyelerimiz arasında dayanışmayı güçlendirmektir. Etkinliklerimiz, turlarımız ve sosyal faaliyetlerimizle, motosiklet severlerin keyifli vakit geçirebileceği bir ortam sunuyoruz." heroImage={optimizedHeroImage}>
 	<Hero image={optimizedHeroImage} />
 	<Services />
 	<SideBySide />
 	<SideBySideReverse />
-	<Gallery />
 	<Members />
-	<Testimonials />
+	<Gallery />
 	<FAQ />
-	<CTASimple />
+	<MapSection />
 </BaseLayout>

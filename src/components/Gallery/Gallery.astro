@@ -5,111 +5,295 @@
 import { Picture } from "astro:assets";
 
 // Images
-import port1 from "@assets/images/projects/port1.jpg";
-import port2 from "@assets/images/projects/port2.jpg";
-import port3 from "@assets/images/projects/port3.jpg";
-import port4 from "@assets/images/projects/port4.jpg";
-import port5 from "@assets/images/projects/port5.jpg";
-import port6 from "@assets/images/projects/port6.jpg";
-import port7 from "@assets/images/projects/port7.jpg";
-import port8 from "@assets/images/projects/port8.jpg";
-import port9 from "@assets/images/projects/port9.jpg";
+import port1 from "@assets/images/projects/rota611.jpg";
+import port2 from "@assets/images/projects/rota618.webp";
+import port3 from "@assets/images/projects/rota616.jpg";
+import port4 from "@assets/images/projects/rota614.webp";
+import port5 from "@assets/images/projects/rota615.jpg";
+import port6 from "@assets/images/projects/rota613.jpg";
+import port7 from "@assets/images/projects/rota617.jpg";
+import port8 from "@assets/images/projects/rota612.jpg";
+import port9 from "@assets/images/projects/rota619.jpg";
 ---
 
 <section id="gallery">
   <div class="cs-container">
-    <span class="cs-topper">Our Portfolio</span>
+    <span class="cs-topper">Geçmiş etkinliklerinden bazı kareler</span>
     <h2 class="cs-title">
-      Et orci volutpat, back up generator installations
+      Galeri
     </h2>
-    <div class="cs-image-group">
+    <div class="cs-image-group" data-gallery-grid>
       <!-- Row 1-->
       <div class="cs-row cs-row-1">
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-        <Picture
-          src={port1}
-          alt="new hallway"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture1" }}
-        />
-        <Picture
-          src={port4}
-          alt="new home construction"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture2" }}
-        />
-        <Picture
-          src={port7}
-          alt="building a new wall"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture3" }}
-        />
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port1}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture1", "data-lightbox-picture": "" }}
+          />
+        </button>
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port4}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture2", "data-lightbox-picture": "" }}
+          />
+        </button>
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port7}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture3", "data-lightbox-picture": "" }}
+          />
+        </button>
       </div>
       <!-- Row 2 -->
       <div class="cs-row cs-row-2">
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-        <Picture
-          src={port2}
-          alt="new kitchen"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture1" }}
-        />
-        <Picture
-          src={port5}
-          alt="apartment addition"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture2" }}
-        />
-        <Picture
-          src={port8}
-          alt="new kitchen cabinets"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture3" }}
-        />
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port2}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture1", "data-lightbox-picture": "" }}
+          />
+        </button>
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port5}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture2", "data-lightbox-picture": "" }}
+          />
+        </button>
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port8}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture3", "data-lightbox-picture": "" }}
+          />
+        </button>
       </div>
       <!-- Row 3 -->
       <div class="cs-row cs-row-3">
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-        <Picture
-          src={port3}
-          alt="new kitchen"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture1" }}
-        />
-        <Picture
-          src={port6}
-          alt="apartment addition"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture2" }}
-        />
-        <Picture
-          src={port9}
-          alt="new kitchen cabinets"
-          width={400}
-          height={560}
-          formats={['avif', 'webp']}
-          pictureAttributes={{ class: "cs-picture cs-picture3" }}
-        />
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port3}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture1", "data-lightbox-picture": "" }}
+          />
+        </button>
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port6}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture2", "data-lightbox-picture": "" }}
+          />
+        </button>
+        <button class="cs-picture-btn" type="button" data-lightbox-trigger data-alt="Rota 61">
+          <Picture
+            src={port9}
+            alt="Rota 61"
+            width={400}
+            height={560}
+            formats={['avif', 'webp']}
+            pictureAttributes={{ class: "cs-picture cs-picture3", "data-lightbox-picture": "" }}
+          />
+        </button>
       </div>
     </div>
-    <a href="/projects/" class="cs-button-solid">View all projects</a>
+
+    <!-- Lightbox modal (single instance) -->
+    <div class="cs-lightbox" data-lightbox hidden>
+      <div class="cs-lightbox__backdrop" data-lightbox-close tabindex="-1"></div>
+      <div
+        class="cs-lightbox__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Image preview"
+        tabindex="-1"
+        data-lightbox-dialog
+      >
+        <button class="cs-lightbox__close" type="button" aria-label="Close" data-lightbox-close>
+          ✕
+        </button>
+
+        <button class="cs-lightbox__nav cs-lightbox__prev" type="button" aria-label="Previous image" data-lightbox-prev>
+          ‹
+        </button>
+        <button class="cs-lightbox__nav cs-lightbox__next" type="button" aria-label="Next image" data-lightbox-next>
+          ›
+        </button>
+
+        <figure class="cs-lightbox__figure">
+          <img class="cs-lightbox__img" alt="" src="" data-lightbox-img />
+          <!-- caption removed -->
+        </figure>
+      </div>
+    </div>
   </div>
+
+  <script is:inline>
+    // Gallery Lightbox (no deps)
+    // Scoped to this #gallery instance.
+    const initGalleryLightbox = () => {
+      const root = document.querySelector("#gallery");
+      if (!root) return;
+
+      const triggers = Array.from(root.querySelectorAll("[data-lightbox-trigger]"));
+      const lightbox = root.querySelector("[data-lightbox]");
+      const dialog = root.querySelector("[data-lightbox-dialog]");
+      const img = root.querySelector("[data-lightbox-img]");
+      // caption removed
+      const closeEls = Array.from(root.querySelectorAll("[data-lightbox-close]"));
+      const prevBtn = root.querySelector("[data-lightbox-prev]");
+      const nextBtn = root.querySelector("[data-lightbox-next]");
+
+      if (!triggers.length || !lightbox || !dialog || !img || !prevBtn || !nextBtn) return;
+
+      let activeIndex = -1;
+      let lastFocused = null;
+
+      const getTriggerImg = (trigger) => trigger.querySelector("img");
+
+      const lockScroll = (locked) => {
+        document.documentElement.classList.toggle("cs-lightbox-open", locked);
+        document.body.classList.toggle("cs-lightbox-open", locked);
+      };
+
+      const setActive = (index) => {
+        if (index < 0) index = triggers.length - 1;
+        if (index >= triggers.length) index = 0;
+        activeIndex = index;
+
+        const trigger = triggers[activeIndex];
+        const triggerImg = getTriggerImg(trigger);
+        const alt = (trigger?.getAttribute("data-alt") || triggerImg?.getAttribute("alt") || "").trim();
+
+        const src = triggerImg?.currentSrc || triggerImg?.src;
+        if (src) img.src = src;
+        img.alt = alt;
+      };
+
+      const getFocusable = () => {
+        const selector =
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        return Array.from(dialog.querySelectorAll(selector));
+      };
+
+      const trapFocus = (e) => {
+        if (e.key !== "Tab") return;
+        const focusable = getFocusable().filter(
+          (el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden")
+        );
+        if (!focusable.length) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+
+        if (e.shiftKey && active === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      };
+
+      const onKeydown = (e) => {
+        if (lightbox.hidden) return;
+
+        if (e.key === "Escape") {
+          e.preventDefault();
+          close();
+          return;
+        }
+
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          setActive(activeIndex - 1);
+          return;
+        }
+
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          setActive(activeIndex + 1);
+          return;
+        }
+
+        trapFocus(e);
+      };
+
+      const open = (index, triggerEl) => {
+        lastFocused = triggerEl || document.activeElement;
+        lightbox.hidden = false;
+        lockScroll(true);
+        setActive(index);
+
+        queueMicrotask(() => dialog.focus());
+        document.addEventListener("keydown", onKeydown);
+      };
+
+      const close = () => {
+        lightbox.hidden = true;
+        lockScroll(false);
+        img.removeAttribute("src");
+        document.removeEventListener("keydown", onKeydown);
+
+        if (lastFocused && typeof lastFocused.focus === "function") {
+          queueMicrotask(() => lastFocused.focus());
+        }
+        lastFocused = null;
+        activeIndex = -1;
+      };
+
+      triggers.forEach((trigger, index) => {
+        trigger.addEventListener("click", () => open(index, trigger));
+      });
+
+      closeEls.forEach((el) => {
+        el.addEventListener("click", () => close());
+      });
+
+      dialog.addEventListener("click", (e) => e.stopPropagation());
+
+      prevBtn.addEventListener("click", () => setActive(activeIndex - 1));
+      nextBtn.addEventListener("click", () => setActive(activeIndex + 1));
+
+      root.dataset.lightboxInit = "true";
+    };
+
+    document.addEventListener("astro:page-load", () => {
+      const root = document.querySelector("#gallery");
+      if (root?.dataset?.lightboxInit === "true") return;
+      initGalleryLightbox();
+    });
+  </script>
 </section>
 
 <style lang="less">
@@ -164,9 +348,24 @@ import port9 from "@assets/images/projects/port9.jpg";
         gap: (30/16em);
       }
 
+      .cs-picture-btn {
+        border: 0;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+        display: block;
+        text-align: inherit;
+
+        &:focus-visible {
+          outline: 3px solid var(--primary);
+          outline-offset: 6px;
+        }
+      }
+
       .cs-picture {
         display: block;
         position: relative;
+        overflow: hidden;
         img {
           width: 100%;
           height: 100%;
@@ -227,6 +426,100 @@ import port9 from "@assets/images/projects/port9.jpg";
           height: (629/16em);
         }
       }
+
+      /* Lightbox */
+      .cs-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        /* Center the dialog */
+        display: grid;
+        place-items: center;
+        padding: (24/16rem);
+      }
+
+      .cs-lightbox[hidden] {
+        display: none;
+      }
+
+      .cs-lightbox__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.84);
+      }
+
+      .cs-lightbox__dialog {
+        position: relative;
+        width: min(1100px, 92vw);
+        max-height: calc(100dvh - 3rem);
+        display: grid;
+        place-items: center;
+        outline: none;
+        z-index: 1;
+      }
+
+      .cs-lightbox__figure {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: 1fr;
+        gap: 0;
+      }
+
+      .cs-lightbox__img {
+        width: 100%;
+        max-height: calc(100dvh - 6rem);
+        object-fit: contain;
+        border-radius: (10/16rem);
+        background: rgba(255, 255, 255, 0.04);
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* caption styles removed */
+
+      .cs-lightbox__close {
+        position: absolute;
+        top: (10/16rem);
+        right: (10/16rem);
+        width: (44/16rem);
+        height: (44/16rem);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        font-size: (22/16rem);
+        cursor: pointer;
+      }
+
+      .cs-lightbox__nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: (44/16rem);
+        height: (44/16rem);
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        font-size: (28/16rem);
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .cs-lightbox__prev {
+        left: (10/16rem);
+      }
+
+      .cs-lightbox__next {
+        right: (10/16rem);
+      }
+    }
+
+    /* Scroll lock when lightbox is open */
+    html.cs-lightbox-open,
+    body.cs-lightbox-open {
+      overflow: hidden;
     }
   }
 

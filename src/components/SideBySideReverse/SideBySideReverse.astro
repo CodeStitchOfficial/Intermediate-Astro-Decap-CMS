@@ -1,56 +1,42 @@
 ---
+import {Icon} from "astro-icon/components";
 // SideBySideReverse component from index.astro (#sbs-r section)
 
 // Utils
-import { Picture } from "astro:assets";
+import {Picture} from "astro:assets";
 
 // Images
-import construction from "@assets/images/services/construction.jpg";
-import cabinets2 from "@assets/images/services/cabinets2.jpg";
+import rota61 from "@assets/images/services/rota-61.jpg";
 ---
 
 <section id="sbs-r">
-  <div class="cs-container">
-    <!-- Left Image Section -->
-    <div class="cs-left">
-      <Picture
-        src={construction}
-        alt="house"
-        width={400}
-        height={560}
-        formats={['avif', 'webp']}
-        pictureAttributes={{ class: "cs-picture cs-picture1" }}
-      />
-      <Picture
-        src={cabinets2}
-        alt="cabinets"
-        width={400}
-        height={560}
-        formats={['avif', 'webp']}
-        pictureAttributes={{ class: "cs-picture cs-picture2" }}
-      />
+    <div class="cs-container">
+        <!-- Left Image Section -->
+        <div class="cs-left">
+            <Picture
+                    src={rota61}
+                    alt="house"
+                    width={400}
+                    height={560}
+                    formats={['avif', 'webp']}
+                    pictureAttributes={{class: "cs-picture cs-picture1"}}
+            />
+        </div>
+        <!-- Right Content Section-->
+        <div class="cs-right">
+            <p class="cs-text">
+                Rota 61 Trabzon Motosiklet Derneği olarak, sadece sürüşler düzenlemekle kalmayıp aynı zamanda trafik
+                kurallarına uygun, çevreye duyarlı ve güvenli sürüşleri teşvik etmekteyiz. Toplum bilincini artırmak ve
+                motosiklet kültürünü olumlu bir şekilde desteklemek için çeşitli sosyal sorumluluk projelerine de katkı
+                sağlamaktayız. Derneğimiz ayrıca Türkiye Ayyıldız Motosiklet federasyonu kurucu üyesidir.
+            </p>
+            <div class="cs-flex-group">
+                <p class="cs-flex-p">Bizimle birlikte Trabzon’un doğal güzelliklerini keşfetmeye, motosiklet tutkusunu yaşamaya ve yeni
+                    dostluklar kurmaya davetlisiniz!</p>
+                <Icon name="quote-white" class="cs-quote-icon"/>
+            </div>
+        </div>
     </div>
-    <!-- Right Content Section-->
-    <div class="cs-right">
-      <span class="cs-topper">SEO Ranking</span>
-      <h2 class="cs-title">Talk about a main service keyword</h2>
-      <p class="cs-text">
-        In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-        officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-        et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-        nonatourean olei aptent taciti sociosqu ad litora torquent per.
-      </p>
-      <p class="cs-text">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur,
-        iure nihil ipsam qui atque commodi id voluptatem nesciunt, quis animi
-        fuga cum doloribus! Eaque laboriosam, unde consectetur iure asperiores
-        ullam. Consequuntur debitis a voluptatibus vitae optio autem explicabo
-        quia neque est quas, in placeat. Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Doloribus modi laudantium voluptatibus
-        rem libero error minus quia eligendi sapiente eos.
-      </p>
-    </div>
-  </div>
 </section>
 
 <style lang="less">
@@ -83,12 +69,20 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         position: relative;
       }
 
+      .cs-flex-p {
+        line-height: 1.5em;
+        margin: 0 0 (16/16rem);
+        color: #353535;
+        font-style: italic;
+        font-size: var(--bodyFontSize);
+      }
+
       .cs-picture {
-        border-radius: (24/16em);
         display: block;
         position: absolute;
         /* clips img tag corners */
         overflow: hidden;
+
         img {
           width: 100%;
           height: 100%;
@@ -101,7 +95,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
       }
 
       .cs-picture1 {
-        width: (522/16em);
+        width: 100%;
         height: (581/16em);
         top: 0;
         right: 0;
@@ -119,7 +113,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
       }
 
       .cs-right {
-        max-width: (542/16rem);
+        max-width: 38rem;
         margin: auto;
       }
 
@@ -137,6 +131,7 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         text-align: left;
         max-width: (750/16rem);
         margin-bottom: (16/16rem);
+
         &:last-of-type {
           margin-bottom: (32/16rem);
         }
@@ -150,13 +145,6 @@ import cabinets2 from "@assets/images/services/cabinets2.jpg";
         position: relative;
       }
 
-      .cs-flex-p {
-        /* 14px - 16px */
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
-        line-height: 1.5em;
-        margin: 0 0 (16/16rem);
-        color: #353535;
-      }
 
       .cs-name {
         font-size: (16/16rem);

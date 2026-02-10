@@ -5,6 +5,7 @@ export function getLocalBusinessSchema(origin) {
 	if (BUSINESS.socials?.facebook) sameAs.push(BUSINESS.socials.facebook);
 	if (BUSINESS.socials?.instagram) sameAs.push(BUSINESS.socials.instagram);
 
+
 	return {
 		"@context": "https://schema.org",
 		"@type": ["LocalBusiness", "WebSite"],

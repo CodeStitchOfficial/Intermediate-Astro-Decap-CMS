@@ -17,7 +17,8 @@
 		"astro": "^5.16.16",
 		"astro-icon": "^1.1.5",
 		"autoprefixer": "^10.4.24",
-		"less": "^4.5.1"
+		"less": "^4.5.1",
+		"sharp": "^0.34.5"
 	},
 	"devDependencies": {
 		"netlify-plugin-cache": "^1.0.3"

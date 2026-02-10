@@ -9,6 +9,9 @@ import { Icon } from "astro-icon/components";
 import { Picture } from "astro:assets";
 import type { GetImageResult } from "astro";
 
+// Data
+import { BUSINESS } from "@data/client";
+
 interface Props {
 	image: GetImageResult; // pre-optimized image from getImage()
 }
@@ -21,11 +24,28 @@ const { image } = Astro.props as Props;
 		<div class="cs-flex-group">
 			<h1 class="cs-title">ROTA 61<br>Trabzon Motosiklet Derneği</h1>
 			<p class="cs-text">İki teker sevdalıları buluşma yeri</p>
+			<div class="cs-social" aria-label="Social media links">
+				{BUSINESS.socials?.facebook && (
+					<a class="cs-social-link" href={BUSINESS.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+						<Icon name="facebook" width="24" height="24" />
+					</a>
+				)}
+				{BUSINESS.socials?.instagram && (
+					<a class="cs-social-link" href={BUSINESS.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+						<Icon name="instagram" width="24" height="24" />
+					</a>
+				)}
+				{(BUSINESS.socials)?.x && (
+					<a class="cs-social-link" href={BUSINESS.socials.x} target="_blank" rel="noopener noreferrer" aria-label="X">
+						<Icon name="x" width="24" height="24" />
+					</a>
+				)}
+			</div>
 		</div>
 	</div>
 
 	<!-- Using the preloaded image from the props -->
-	<Picture src={image.src} alt="new home" width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} priority pictureAttributes={{ class: "cs-picture" }} />
+	<Picture src={image.src} alt="new home" width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} priority={true} pictureAttributes={{ class: "cs-picture" }} />
 </section>
 
 <style lang="less">
@@ -47,7 +67,7 @@ const { image } = Astro.props as Props;
 			/* prevents overflow from the lines extending past the screen width */
 			overflow: hidden;
 			height: 115vh;
-			min-height: 800px;
+			min-height: 900px;
 
 			.cs-picture {
 				/* Background Image */
@@ -187,6 +207,39 @@ const { image } = Astro.props as Props;
 				.cs-img {
 					margin-right: (12/16rem);
 					display: block;
+				}
+			}
+
+			.cs-social {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: (12/16rem);
+			}
+
+			.cs-social-link {
+				width: (40/16rem);
+				height: (40/16rem);
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid rgba(255, 255, 255, 0.61);
+				border-radius: (8/16rem);
+				color: #fff;
+				text-decoration: none;
+				background-color: rgba(0,0,0,0.4);
+				transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+
+				&:hover {
+					background-color: rgba(0,0,0,0.8);
+					border-color: rgba(255, 255, 255, 0.35);
+					color: var(--primary);
+				}
+
+				&:before,
+				&:after {
+					content: none;
+					display: none;
 				}
 			}
 		}

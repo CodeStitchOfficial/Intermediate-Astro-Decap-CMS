@@ -4,7 +4,7 @@ export const SITE = {
 	tagline: "Iki teker sevdalilari bir araya getiriyor",
 	description: "ROTA 61 Trabzon Motosiklet Derneği, motosiklet tutkunlarını bir araya getiren bir topluluktur. Amacımız, motosiklet kültürünü yaymak, güvenli sürüşü teşvik etmek ve üyelerimiz arasında dayanışmayı güçlendirmektir. Etkinliklerimiz, turlarımız ve sosyal faaliyetlerimizle, motosiklet severlerin keyifli vakit geçirebileceği bir ortam sunuyoruz.",
 	url: "http://www.rota61.com/",
-	author: "Elma & Co.",
+	author: "Elma&Co.",
 	locale: "tr",
 };
 
@@ -16,16 +16,17 @@ export const BUSINESS = {
 	phoneFormatted: "0530 561 7061",
 	logo: "/assets/favicons/favicon.svg",
 	address: {
-		lineOne: "2 Nolu Beşirli",
-		lineTwo: "918. Sk. 5B",
-		city: "Ortahisar",
+		lineOne: "Rota 61 Trabzon Motosiklet Derneği",
+		lineTwo: "Namazgah Sk., Yıldızlı",
+		city: "Akçaabat",
 		state: "Trabzon",
 		zip: "61040",
-		mapLink: "https://maps.app.goo.gl/XEoan46842BCa7M59",
+		mapLink: "https://maps.app.goo.gl/xAJRRt7LqUGcyKtq8",
 	},
 	socials: {
 		facebook: "https://www.facebook.com/Trabzonmotosikletdernegi/",
 		instagram: "https://www.instagram.com/rota61tramod/",
+		x: "https://x.com/Rota61tramod",
 	},
 };
 

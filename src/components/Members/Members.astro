@@ -5,7 +5,7 @@ import { BOARD_MEMBERS, BOARD_TITLE } from "../../data/clubMembers";
 <section id="members">
   <div class="cs-container">
     <div class="cs-content">
-      <span class="cs-topper">{BOARD_TITLE}</span>
+      <span class="cs-topper">Yönetim</span>
       <h2 class="cs-title">{BOARD_TITLE}</h2>
     </div>
 
@@ -60,14 +60,22 @@ import { BOARD_MEMBERS, BOARD_TITLE } from "../../data/clubMembers";
         list-style: none;
 
         display: grid;
-        grid-template-columns: 1fr;
         gap: (16/16rem);
+
+        /* default: 1 column on mobile */
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+      }
+
+      /* no special placement on mobile */
+      .cs-item:first-child {
+        grid-column: auto;
+        grid-row: auto;
       }
 
       .cs-item {
         /* Card */
         background-color: #f7f7f7;
-        border-radius: (12/16rem);
         padding: (14/16rem) (16/16rem);
 
         /* Flex row: image LEFT, text RIGHT */
@@ -80,16 +88,14 @@ import { BOARD_MEMBERS, BOARD_TITLE } from "../../data/clubMembers";
         text-align: left;
       }
 
+
       .cs-avatar {
         /* Fixed-size left column */
         flex: 0 0 (110/16rem);
         width: (110/16rem);
         height: (110/16rem);
-
-        border-radius: 0.5em;
         object-fit: cover;
         display: block;
-        border: 2px solid rgba(0, 0, 0, 0.08);
       }
 
       .cs-text {
@@ -138,6 +144,17 @@ import { BOARD_MEMBERS, BOARD_TITLE } from "../../data/clubMembers";
   /* Tablet */
   @media only screen and (min-width: 48em) {
     #members {
+      .cs-list {
+        /* 2 columns on tablet */
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: row;
+        grid-template-rows: none;
+      }
+
+      .cs-item:first-child {
+        grid-column: auto;
+        grid-row: auto;
+      }
 
       .cs-avatar {
         flex-basis: (130/16rem);
@@ -151,8 +168,45 @@ import { BOARD_MEMBERS, BOARD_TITLE } from "../../data/clubMembers";
   @media only screen and (min-width: 64em) {
     #members {
       .cs-list {
+        /* 3 columns, 3 rows */
         grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, auto);
+        grid-auto-flow: row;
       }
+
+      /* 1st member -> column 2, row 1 (standalone) */
+      .cs-item:first-child {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      /* Force items 2-7 into rows 2-3 so row 1 stays empty (besides the first item) */
+      .cs-item:nth-child(2) {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      .cs-item:nth-child(3) {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      .cs-item:nth-child(4) {
+        grid-column: 3;
+        grid-row: 2;
+      }
+      .cs-item:nth-child(5) {
+        grid-column: 1;
+        grid-row: 3;
+      }
+      .cs-item:nth-child(6) {
+        grid-column: 2;
+        grid-row: 3;
+      }
+      .cs-item:nth-child(7) {
+        grid-column: 3;
+        grid-row: 3;
+      }
+
+      /* Any members beyond 7 will flow naturally after the 3x3 grid */
 
       .cs-avatar {
         flex-basis: (140/16rem);
@@ -168,10 +222,6 @@ import { BOARD_MEMBERS, BOARD_TITLE } from "../../data/clubMembers";
       #members {
         .cs-item {
           background-color: var(--accent);
-        }
-
-        .cs-avatar {
-          border-color: rgba(255, 255, 255, 0.25);
         }
 
         .cs-role,
