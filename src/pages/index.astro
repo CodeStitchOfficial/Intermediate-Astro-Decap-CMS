@@ -9,6 +9,7 @@ import Services from "@components/Services/Services.astro";
 import SideBySide from "@components/SideBySide/SideBySide.astro";
 import SideBySideReverse from "@components/SideBySideReverse/SideBySideReverse.astro";
 import Gallery from "@components/Gallery/Gallery.astro";
+import Members from "@components/Members/Members.astro";
 import Testimonials from "@components/Testimonials/Testimonials.astro";
 import FAQ from "@components/FAQ/FAQ.astro";
 import CTASimple from "@components/CTA/CTASimple.astro";
@@ -24,6 +25,7 @@ const optimizedHeroImage = await getImage({ src: heroImage, format: "webp" });
 	<SideBySide />
 	<SideBySideReverse />
 	<Gallery />
+	<Members />
 	<Testimonials />
 	<FAQ />
 	<CTASimple />

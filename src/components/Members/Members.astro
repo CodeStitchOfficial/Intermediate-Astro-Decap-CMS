@@ -1,0 +1,184 @@
+---
+import { BOARD_MEMBERS, BOARD_TITLE } from "../../data/clubMembers";
+---
+
+<section id="members">
+  <div class="cs-container">
+    <div class="cs-content">
+      <span class="cs-topper">{BOARD_TITLE}</span>
+      <h2 class="cs-title">{BOARD_TITLE}</h2>
+    </div>
+
+    <ul class="cs-list" role="list">
+      {BOARD_MEMBERS.map((member) => (
+        <li class="cs-item">
+          <img
+            class="cs-avatar"
+            src={member.image ?? "/assets/images/placeholder.jpg"}
+            alt={`${member.firstName} ${member.lastName} profile photo`}
+            loading="lazy"
+            decoding="async"
+            width="96"
+            height="96"
+          />
+          <div class="cs-text">
+            <h3 class="cs-role">{member.role}</h3>
+            <span class="cs-name">{member.firstName}
+              <br>{member.lastName}
+            </span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style lang="less">
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0em) {
+    #members {
+      padding: var(--sectionPadding);
+
+      .cs-container {
+        width: 100%;
+        max-width: (1280/16rem);
+        margin: auto;
+      }
+
+      .cs-content {
+        margin-bottom: (32/16rem);
+      }
+
+      .cs-topper,
+      .cs-title {
+        text-align: center;
+      }
+
+      .cs-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: (16/16rem);
+      }
+
+      .cs-item {
+        /* Card */
+        background-color: #f7f7f7;
+        border-radius: (12/16rem);
+        padding: (14/16rem) (16/16rem);
+
+        /* Flex row: image LEFT, text RIGHT */
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-end;
+        gap: (24/16rem);
+
+        text-align: left;
+      }
+
+      .cs-avatar {
+        /* Fixed-size left column */
+        flex: 0 0 (110/16rem);
+        width: (110/16rem);
+        height: (110/16rem);
+
+        border-radius: 0.5em;
+        object-fit: cover;
+        display: block;
+        border: 2px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .cs-text {
+        /* Right column */
+        flex: 1 1 auto;
+        min-width: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .cs-role {
+        margin: 0 0 (12/16rem);
+        font-weight: 400;
+        color: var(--headerColor);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: var(--topperFontSize);
+        font-family: Sancreek, serif;
+        line-height: 1.2;
+      }
+
+      .cs-name {
+        display: block;
+        font-weight: 700;
+        color: var(--headerColor);
+        letter-spacing: 0.01em;
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        line-height: 1.15;
+        word-break: break-word;
+      }
+
+      .cs-first-name,
+      .cs-last-name {
+        display: block;
+      }
+
+      .cs-last-name {
+        margin-top: (2/16rem);
+      }
+    }
+  }
+
+  /* Tablet */
+  @media only screen and (min-width: 48em) {
+    #members {
+
+      .cs-avatar {
+        flex-basis: (130/16rem);
+        width: (130/16rem);
+        height: (130/16rem);
+      }
+    }
+  }
+
+  /* Desktop */
+  @media only screen and (min-width: 64em) {
+    #members {
+      .cs-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .cs-avatar {
+        flex-basis: (140/16rem);
+        width: (140/16rem);
+        height: (140/16rem);
+      }
+    }
+  }
+
+  /* Dark Mode */
+  @media only screen and (min-width: 0em) {
+    body.dark-mode {
+      #members {
+        .cs-item {
+          background-color: var(--accent);
+        }
+
+        .cs-avatar {
+          border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .cs-role,
+        .cs-name {
+          color: var(--bodyTextColorWhite);
+        }
+      }
+    }
+  }
+</style>
