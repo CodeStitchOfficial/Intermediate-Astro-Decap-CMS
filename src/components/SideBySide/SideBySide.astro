@@ -6,36 +6,29 @@ import { Icon } from "astro-icon/components";
 import { Picture } from "astro:assets";
 
 // Images
-import cabinets2 from "@assets/images/services/cabinets2.jpg";
-import construction from "@assets/images/services/construction.jpg";
+import rotaService from "@assets/images/services/rota61cortej.jpg";
+import logo from "@assets/images/services/rotalogo.png";
 ---
 
 <section id="sbs">
 	<div class="cs-container">
 		<!-- Left Image Section -->
 		<div class="cs-left">
-			<Picture src={cabinets2} alt="cabinets" width={522} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} priority />
-			<Picture src={construction} alt="house" width={390} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} priority />
+			<Picture src={rotaService} alt="cabinets" width={522} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} priority />
+			<Picture src={logo} alt="house" width={390} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} priority />
 		</div>
 		<!-- Right Content Section-->
 		<div class="cs-right">
-			<span class="cs-topper">About Us</span>
-			<h2 class="cs-title">About Company Title</h2>
+			<span class="cs-topper">Hakkımızda</span>
+			<h2 class="cs-title">Rota 61</h2>
 			<p class="cs-text">
-				In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti
-				sociosqu ad litora torquent per.
+				Rota 61 Trabzon Motosiklet Derneği, Trabzon ve çevresinde motosiklet tutkunlarını bir araya getiren dinamik ve aktif bir topluluktur. 2022 yılı Şubat ayında kurulan derneğimiz, motosiklet kültürünü yaymak, sürücüler arasında dayanışma ve dostluk bağlarını güçlendirmek amacıyla faaliyet göstermektedir.
 			</p>
 			<p class="cs-text">
-				In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti
-				sociosqu ad litora torquent per.
+				Derneğimiz Trabzon’un eşsiz rotalarında keyifli sürüşler düzenlemekte ve motosiklet tutkunlarını bir araya getirerek paylaşımlı deneyimler yaşatmaktadır. Bir çok ulusal festivaller ve organizasyonlara da katılım sağlamaktadır.Her seviyeden sürücüye hitap eden etkinliklerimizle hem tecrübeli motosikletçilerin deneyimlerinden faydalanmayı hem de yeni başlayanlara destek olmayı hedeflemekteyiz.
 			</p>
-			<div class="cs-flex-group">
-				<p class="cs-flex-p">In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.</p>
-				<span class="cs-name">Justin Time</span>
-				<span class="cs-job">CEO-Founder</span>
-				<Icon name="quote-white" class="cs-quote-icon" />
-			</div>
-			<a href="/about/" class="cs-button-solid">More About Us</a>
+			<p class="cs-text">
+				Rota 61 Trabzon Motosiklet Derneği olarak, sadece sürüşler düzenlemekle kalmayıp aynı zamanda trafik kurallarına uygun, çevreye duyarlı ve güvenli sürüşleri teşvik etmekteyiz. Toplum bilincini artırmak ve motosiklet kültürünü olumlu bir şekilde desteklemek için çeşitli sosyal sorumluluk projelerine de katkı sağlamaktayız. Derneğimiz ayrıca Türkiye Ayyıldız Motosiklet federasyonu kurucu üyesidir.			</p>
 		</div>
 	</div>
 </section>
@@ -95,14 +88,15 @@ import construction from "@assets/images/services/construction.jpg";
 			}
 
 			.cs-picture2 {
-				width: (414/16em);
-				height: (400/16em);
+				width: (300/14em);
+				height: (300/14em);
 				background-color: #fff;
 				box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
 				/* 6px - 12px */
-				border: clamp(0.375em, 1.5vw, 0.75em) solid #fff;
+				border: clamp(0.2em, 1vw, 0.4em) solid #fff;
 				right: 0;
 				bottom: 0;
+				border-radius: 100%;
 			}
 
 			.cs-right {
@@ -213,7 +207,7 @@ import construction from "@assets/images/services/construction.jpg";
 				.cs-picture2 {
 					background-color: var(--dark);
 					/* 6px - 12px */
-					border: clamp(0.375em, 1.5vw, 0.75em) solid var(--dark);
+					border: clamp(0.2em, 1vw, 0.4em) solid var(--dark);
 				}
 
 				.cs-topper {

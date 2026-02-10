@@ -14,14 +14,20 @@
 // Utils
 import { Icon } from "astro-icon/components";
 
+// Components
+import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 ---
 
 <header id="cs-navigation">
 	<div class="cs-container">
 		<!--Nav Logo-->
 		<a href="/" class="cs-logo" aria-label="Return to [Company Name] Home page">
-			<Icon name="logo-white" />
-		</a>
+<span class="cs-logo-light" aria-hidden="true">
+		<Icon name="logo-black" />
+	</span>
+			<span class="cs-logo-dark" aria-hidden="true">
+		<Icon name="logo-white" />
+	</span>		</a>
 		<!--Navigation List-->
 		<nav class="cs-nav" aria-label="main navigation">
 			<!--Mobile Nav Toggle-->
@@ -36,40 +42,26 @@ import { Icon } from "astro-icon/components";
 			<div class="cs-ul-wrapper" id="cs-ul-wrapper">
 				<ul id="cs-expanded" class="cs-ul">
 					<li class="cs-li">
-						<a href="/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/" }]} aria-current={Astro.url.pathname === "/" ? "page" : undefined}> Home </a>
+						<a href="#hero" class="cs-li-link" data-scrollspy> Anasayfa </a>
 					</li>
 					<li class="cs-li">
-						<a href="/about/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/about/" }]} aria-current={Astro.url.pathname === "/about/" ? "page" : undefined}> About Us </a>
-					</li>
-					<!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work-->
-					<!-- Note: When copying this dropdown, update the id attribute with an appropriate name (e.g., "services-dropdown-toggle", "products-dropdown-toggle") and ensure the aria-labelledby attribute on the ul matches the button's id -->
-					<li class="cs-li cs-dropdown">
-						<button class:list={["cs-li-link cs-dropdown-toggle", { "cs-active": Astro.url.pathname.includes("/projects/") }]} aria-haspopup="menu" aria-expanded="false" id="projects-dropdown-toggle">
-							Projects
-							<Icon name="mdi--caret" class="cs-drop-icon" />
-						</button>
-						<ul class="cs-drop-ul" aria-labelledby="projects-dropdown-toggle">
-							<li class="cs-drop-li">
-								<a href="/projects/project-1/" class="cs-li-link cs-drop-link" aria-current={Astro.url.pathname === "/projects/project-1/" ? "page" : undefined}>Project 1</a>
-							</li>
-							<li class="cs-drop-li">
-								<a href="/projects/project-2/" class="cs-li-link cs-drop-link" aria-current={Astro.url.pathname === "/projects/project-2/" ? "page" : undefined}>Project 2</a>
-							</li>
-						</ul>
+						<a href="#sbs" class="cs-li-link" data-scrollspy>Hakkımızda</a>
 					</li>
 					<li class="cs-li">
-						<a href="/reviews/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/reviews/" }]} aria-current={Astro.url.pathname === "/reviews/" ? "page" : undefined}> Reviews </a>
+						<a href="#sbs-r" class="cs-li-link" data-scrollspy>Yönetim</a>
 					</li>
 					<li class="cs-li">
-						<a href="/blog/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/blog/" }]} aria-current={Astro.url.pathname === "/blog/" ? "page" : undefined}> Blog </a>
+						<a href="#gallery" class="cs-li-link" data-scrollspy>Galeri</a>
 					</li>
 					<li class="cs-li cs-hide-on-desktop">
-						<a href="/contact/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/contact/" }]} aria-current={Astro.url.pathname === "/contact/" ? "page" : undefined}> Contact </a>
+						<a href="/contact/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/contact/" }]} aria-current={Astro.url.pathname === "/contact/" ? "page" : undefined}> İletişim </a>
 					</li>
 				</ul>
 			</div>
 		</nav>
-		<a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
+		<a href="/contact/" class="cs-button-solid cs-nav-button">İletişim</a>
+		<!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
+		<DarkModeToggle />
 	</div>
 </header>
 
@@ -769,15 +761,28 @@ import { Icon } from "astro-icon/components";
 	}
 
 	/* Dark Mode */
+	#cs-navigation {
+		.cs-logo {
+			width: 100%;
+			max-width: 120px;
+		}
+		.cs-logo-dark { display: none; }
+		.cs-logo-light { display: inline-flex; }
+	}
+
+	/* when dark mode is active, swap */
+	body.dark-mode {
+		#cs-navigation {
+			.cs-logo-light { display: none; }
+			.cs-logo-dark { display: inline-flex; }
+		}
+	}
+
 	@media only screen and (min-width: 64rem) {
 		body.dark-mode {
 			#cs-navigation {
 				background-color: var(--dark);
 
-				.cs-logo {
-					width: 100%;
-					max-width: 120px;
-				}
 
 				.cs-li-link {
 					color: var(--bodyTextColorWhite);

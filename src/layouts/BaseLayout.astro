@@ -55,7 +55,6 @@ const { description, title, heroImage } = Astro.props as Props;
 </html>
 
 <script is:inline>
-	// helper functions to toggle dark mode
 	function enableDarkMode() {
 		document.body.classList.add("dark-mode");
 		localStorage.setItem("theme", "dark");
@@ -74,10 +73,6 @@ const { description, title, heroImage } = Astro.props as Props;
 		if (stored === "light" || stored === "dark") {
 			theme = stored;
 		}
-		// optional: if you want system preference to override the default on first visit, uncomment:
-		// else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-		//  theme = "light";
-		// }
 
 		theme === "dark" ? enableDarkMode() : disableDarkMode();
 	}
@@ -85,4 +80,5 @@ const { description, title, heroImage } = Astro.props as Props;
 	setTheme();
 	document.addEventListener("astro:after-swap", setTheme);
 </script>
+
 

@@ -18,6 +18,7 @@ document.addEventListener("astro:page-load", () => {
 				dropdownMenu: ".cs-drop-ul",
 				navButton: ".cs-nav-button",
 				darkModeToggle: "#dark-mode-toggle",
+				scrollSpyLinks: "#cs-navigation a[data-scrollspy]",
 			},
 			CLASSES: {
 				active: "cs-active",
@@ -38,6 +39,13 @@ document.addEventListener("astro:page-load", () => {
 		// Utilities
 		const isMobile = () => window.matchMedia(`(max-width: ${CONFIG.BREAKPOINTS.MOBILE}px)`).matches;
 
+		const getHeaderOffset = () => {
+			const nav = elements.navigation;
+			if (!nav) return 0;
+			// position: fixed header; use its height as scrollspy offset target
+			return Math.ceil(nav.getBoundingClientRect().height || 0);
+		};
+
 		const toggleAttribute = (element, attribute, value1 = "true", value2 = "false") => {
 			if (!element) return;
 			const current = element.getAttribute(attribute);
@@ -45,6 +53,109 @@ document.addEventListener("astro:page-load", () => {
 		};
 
 		const toggleInert = (element) => element && (element.inert = !element.inert);
+
+		// ScrollSpy (active link for in-page sections)
+		const scrollSpy = (() => {
+			let observer;
+			let observedSections = [];
+
+			const clearActive = () => {
+				if (!elements.navigation) return;
+				elements.navigation
+					.querySelectorAll(CONFIG.SELECTORS.scrollSpyLinks)
+					.forEach((a) => a.classList.remove(CONFIG.CLASSES.active));
+			};
+
+			const setActiveById = (id) => {
+				if (!elements.navigation || !id) return;
+				const link = elements.navigation.querySelector(`a[data-scrollspy][href="#${CSS.escape(id)}"]`);
+				if (!link) return;
+				clearActive();
+				link.classList.add(CONFIG.CLASSES.active);
+			};
+
+			const getIdFromHashLink = (href) => {
+				if (!href) return null;
+				// Support plain '#id' only. Ignore '/', '/contact/', etc.
+				if (!href.startsWith("#")) return null;
+				const id = href.slice(1).trim();
+				return id || null;
+			};
+
+			const init = () => {
+				if (!elements.navigation) return;
+
+				// Tear down previous observer
+				if (observer) observer.disconnect();
+				observer = undefined;
+				observedSections = [];
+
+				const links = Array.from(elements.navigation.querySelectorAll(CONFIG.SELECTORS.scrollSpyLinks));
+				if (!links.length) return;
+
+				const pairs = links
+					.map((link) => ({ link, id: getIdFromHashLink(link.getAttribute("href") || "") }))
+					.filter((x) => !!x.id);
+
+				// Map links to actual sections present on page
+				const sections = pairs
+					.map((p) => document.getElementById(p.id))
+					.filter(Boolean);
+
+				if (!sections.length) return;
+
+				observedSections = sections;
+
+				// If URL already has a hash, set active immediately
+				if (location.hash) {
+					setActiveById(location.hash.slice(1));
+				}
+
+				// Intersection Observer Options
+				// We want a section to become "active" when its top passes under the fixed header and
+				// it occupies the top half of the viewport.
+				const options = {
+					root: null,
+					rootMargin: `-${getHeaderOffset()}px 0px -55% 0px`,
+					threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+				};
+
+				observer = new IntersectionObserver((entries) => {
+					// Pick the most visible intersecting entry
+					const visible = entries
+						.filter((e) => e.isIntersecting)
+						.sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0));
+
+					if (!visible.length) return;
+					const top = visible[0];
+					if (top?.target?.id) setActiveById(top.target.id);
+				}, options);
+
+				observedSections.forEach((section) => observer.observe(section));
+
+				// Keep active state in sync when user clicks a hash link
+				links.forEach((link) => {
+					link.addEventListener(
+						"click",
+						() => {
+							const id = getIdFromHashLink(link.getAttribute("href") || "");
+							if (!id) return;
+							// set immediately for responsiveness; observer will correct if needed
+							setActiveById(id);
+						},
+						{ passive: true }
+					);
+				});
+			};
+
+			const destroy = () => {
+				if (observer) observer.disconnect();
+				observer = undefined;
+				observedSections = [];
+			};
+
+			return { init, destroy };
+		})();
 
 		// Dropdown Management
 		const dropdownManager = {
@@ -242,6 +353,7 @@ document.addEventListener("astro:page-load", () => {
 				// Resize handling
 				window.addEventListener("resize", () => {
 					this.inertState();
+					scrollSpy.init();
 					if (!isMobile() && elements.navigation.classList.contains(CONFIG.CLASSES.active)) {
 						menuManager.toggle();
 					}
@@ -252,5 +364,14 @@ document.addEventListener("astro:page-load", () => {
 		// Initialize navigation system
 		init.inertState();
 		init.eventListeners();
+		scrollSpy.init();
+
+		// Re-init on view transitions swap (new DOM)
+		document.addEventListener("astro:after-swap", () => {
+			// refresh cached nav element reference
+			elements.navigation = document.querySelector(CONFIG.SELECTORS.navigation);
+			elements.menuWrapper = document.querySelector(CONFIG.SELECTORS.menuWrapper);
+			scrollSpy.init();
+		});
 	})();
 });

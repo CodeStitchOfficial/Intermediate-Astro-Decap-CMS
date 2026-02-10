@@ -1,31 +1,31 @@
 // ===== SITE CONSTANTS =====
 export const SITE = {
-	title: "Code Stitch Web Designs",
-	tagline: "Professional Web Design Services",
-	description: "Code Stitch Web Designs offers top-tier web design and development services to meet all your project needs. Start exploring and contact our team for superior quality and reliability.",
-	url: "https://www.yourwebsite.com",
-	author: "Code Stitch Team",
-	locale: "en",
+	title: "ROTA 61 Trabzon Motosiklet Derneği",
+	tagline: "Iki teker sevdalilari bir araya getiriyor",
+	description: "ROTA 61 Trabzon Motosiklet Derneği, motosiklet tutkunlarını bir araya getiren bir topluluktur. Amacımız, motosiklet kültürünü yaymak, güvenli sürüşü teşvik etmek ve üyelerimiz arasında dayanışmayı güçlendirmektir. Etkinliklerimiz, turlarımız ve sosyal faaliyetlerimizle, motosiklet severlerin keyifli vakit geçirebileceği bir ortam sunuyoruz.",
+	url: "http://www.rota61.com/",
+	author: "Elma & Co.",
+	locale: "tr",
 };
 
 // ===== BUSINESS INFO =====
 export const BUSINESS = {
 	name: SITE.title,
-	email: "help@codestitch.app",
-	phoneForTel: "555-779-4407",
-	phoneFormatted: "(555) 779-4407",
+	email: "info@rota61.com",
+	phoneForTel: "0530 561 7061",
+	phoneFormatted: "0530 561 7061",
 	logo: "/assets/favicons/favicon.svg",
 	address: {
-		lineOne: "First Address Line",
-		lineTwo: "Second Address Line",
-		city: "Denver",
-		state: "CO",
-		zip: "80206",
-		mapLink: "https://goo.gl/maps/UAQn4vuGDiwv7DV39",
+		lineOne: "2 Nolu Beşirli",
+		lineTwo: "918. Sk. 5B",
+		city: "Ortahisar",
+		state: "Trabzon",
+		zip: "61040",
+		mapLink: "https://maps.app.goo.gl/XEoan46842BCa7M59",
 	},
 	socials: {
-		facebook: "https://www.facebook.com/",
-		instagram: "https://www.instagram.com/",
+		facebook: "https://www.facebook.com/Trabzonmotosikletdernegi/",
+		instagram: "https://www.instagram.com/rota61tramod/",
 	},
 };
 
@@ -37,6 +37,6 @@ export const SEO = {
 
 // ===== OPEN GRAPH DEFAULTS =====
 export const OG = {
-	locale: "en_US",
+	locale: "tr_TR",
 	image: "/assets/social.jpg", // Default fallback social image located in public/
 };
