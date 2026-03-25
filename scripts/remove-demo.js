@@ -12,12 +12,28 @@ const destinationDir = join("scripts", "deleted");
 
 // Demo page paths
 const demoPagesPath = join("src", "pages");
-const demoPages = ["about.astro", "contact.astro", "reviews.astro", "projects.astro"];
+const demoPages = [
+	"about.astro",
+	"contact.astro",
+	"reviews.astro",
+	"projects.astro",
+];
 const projectsPath = join("src", "pages", "projects");
 
 // Demo component paths
 const componentsPath = join("src", "components");
-const demoComponents = ["Footer", "Hero", "Services", "Gallery", "SideBySide", "SideBySideReverse", "Testimonials", "FAQ", "Reviews", "CTA", "Banner"];
+const demoComponents = [
+	"Hero",
+	"Services",
+	"Gallery",
+	"SideBySide",
+	"SideBySideReverse",
+	"Testimonials",
+	"FAQ",
+	"Reviews",
+	"CTA",
+	"Banner",
+];
 
 // Image paths
 const imagesPath = join("src", "assets", "images");
@@ -25,7 +41,15 @@ const placeholderImage = "placeholder.jpg";
 
 // Icon paths
 const iconsPath = join("src", "icons");
-const demoIcons = ["check.svg", "content-circles.svg", "cta-squares.svg", "service1.svg", "service2.svg", "service3.svg", "stars.svg"];
+const demoIcons = [
+	"check.svg",
+	"content-circles.svg",
+	"cta-squares.svg",
+	"service1.svg",
+	"service2.svg",
+	"service3.svg",
+	"stars.svg",
+];
 
 // Data files
 const navDataPath = join("src", "data", "navData.json");
@@ -47,7 +71,11 @@ async function checkMarkerFile() {
  */
 async function createMarkerFile() {
 	try {
-		await fs.writeFile(markerPath, `Demo content removed on ${new Date().toISOString()}\n`, "utf-8");
+		await fs.writeFile(
+			markerPath,
+			`Demo content removed on ${new Date().toISOString()}\n`,
+			"utf-8",
+		);
 		console.log("Created .demo-removed marker file");
 	} catch (error) {
 		console.error(`Error creating marker file: ${error.message}`);
@@ -230,12 +258,20 @@ async function updateNavData() {
 		const navData = JSON.parse(content);
 
 		// Keep only the Home entry
-		const homeEntry = navData.find((item) => item.key === "Home" || item.url === "/");
+		const homeEntry = navData.find(
+			(item) => item.key === "Home" || item.url === "/",
+		);
 
-		const newNavData = homeEntry ? [homeEntry] : [{ key: "Home", url: "/" }];
+		const newNavData = homeEntry
+			? [homeEntry]
+			: [{ key: "Home", url: "/" }];
 
 		// Write back the updated JSON with proper formatting
-		await fs.writeFile(navDataPath, JSON.stringify(newNavData, null, 2) + "\n", "utf-8");
+		await fs.writeFile(
+			navDataPath,
+			JSON.stringify(newNavData, null, 2) + "\n",
+			"utf-8",
+		);
 		console.log("Updated navData.json (kept only Home entry)");
 	} catch (error) {
 		console.error(`Error updating navData.json: ${error.message}`);
@@ -255,8 +291,14 @@ async function removeComponentUsageFromPages() {
 
 		let content = await fs.readFile(indexPath, "utf-8");
 
-		content = content.replace(/import\s+CTASimple\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g, "");
-		content = content.replace(/import\s+CTAArtDirection\s+from\s+["']@components\/CTA\/CTAArtDirection\.astro["'];?\n?/g, "");
+		content = content.replace(
+			/import\s+CTASimple\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g,
+			"",
+		);
+		content = content.replace(
+			/import\s+CTAArtDirection\s+from\s+["']@components\/CTA\/CTAArtDirection\.astro["'];?\n?/g,
+			"",
+		);
 		content = content.replace(/<CTASimple\s*\/>/g, "");
 		content = content.replace(/<!--\s*<CTAArtDirection\s*\/>\s*-->/g, "");
 
@@ -274,14 +316,19 @@ async function removeComponentUsageFromPages() {
 		await fs.access(blogPostLayoutPath);
 
 		let content = await fs.readFile(blogPostLayoutPath, "utf-8");
-		content = content.replace(/import\s+CTA\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g, "");
+		content = content.replace(
+			/import\s+CTA\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g,
+			"",
+		);
 		content = content.replace(/<CTA\s*\/>/g, "");
 
 		await fs.writeFile(blogPostLayoutPath, content, "utf-8");
 		console.log("Updated BlogPostLayout.astro");
 	} catch (error) {
 		if (error.code !== "ENOENT") {
-			console.error(`Error updating BlogPostLayout.astro: ${error.message}`);
+			console.error(
+				`Error updating BlogPostLayout.astro: ${error.message}`,
+			);
 		}
 	}
 
@@ -291,9 +338,18 @@ async function removeComponentUsageFromPages() {
 		await fs.access(blogIndexPath);
 		let content = await fs.readFile(blogIndexPath, "utf-8");
 
-		content = content.replace(/import\s+Banner\s+from\s+["']@components\/Banner\/Banner\.astro["'];?\n?/g, "");
-		content = content.replace(/import\s+CTA\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g, "");
-		content = content.replace(/<Banner\s+title="Blog"\s+image=\{placeholderOptimizedImage\}\s*\/>/g, "");
+		content = content.replace(
+			/import\s+Banner\s+from\s+["']@components\/Banner\/Banner\.astro["'];?\n?/g,
+			"",
+		);
+		content = content.replace(
+			/import\s+CTA\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g,
+			"",
+		);
+		content = content.replace(
+			/<Banner\s+title="Blog"\s+image=\{placeholderOptimizedImage\}\s*\/>/g,
+			"",
+		);
 		content = content.replace(/<CTA\s*\/>/g, "");
 
 		await fs.writeFile(blogIndexPath, content, "utf-8");
@@ -315,7 +371,10 @@ async function cleanupDemoImports() {
 
 	try {
 		// Create regex patterns for all demo components
-		const importPatterns = demoComponents.map((component) => `import\\s+.*\\s+from\\s+[\"'].*\\/components\\/${component}.*[\"'];?\\n?`);
+		const importPatterns = demoComponents.map(
+			(component) =>
+				`import\\s+.*\\s+from\\s+[\"'].*\\/components\\/${component}.*[\"'];?\\n?`,
+		);
 
 		for (const pattern of importPatterns) {
 			replaceInFiles(srcDir, pattern, "", false);
@@ -457,7 +516,9 @@ async function removeDemoContent() {
 	const alreadyRan = await checkMarkerFile();
 	if (alreadyRan) {
 		console.log("Demo content has already been removed. Skipping.");
-		console.log("Delete .demo-removed marker file to run again (not recommended).");
+		console.log(
+			"Delete .demo-removed marker file to run again (not recommended).",
+		);
 		process.exit(0);
 	}
 
@@ -468,10 +529,13 @@ async function removeDemoContent() {
 
 	// Confirmation prompt
 	const userConfirmed = await new Promise((resolve) => {
-		rl.question("This will remove all demo content and strip the template to bare minimum. Continue? (y/n): ", (answer) => {
-			rl.close();
-			resolve(answer.toLowerCase() === "y");
-		});
+		rl.question(
+			"This will remove all demo content and strip the template to bare minimum. Continue? (y/n): ",
+			(answer) => {
+				rl.close();
+				resolve(answer.toLowerCase() === "y");
+			},
+		);
 	});
 
 	if (!userConfirmed) {
