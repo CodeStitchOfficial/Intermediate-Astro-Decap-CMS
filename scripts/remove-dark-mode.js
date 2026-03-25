@@ -190,11 +190,13 @@ function cleanDarkStyles(relativePath) {
   // 4. Remove #dark-mode-toggle blocks
   content = removeCssBlock(content, '#dark-mode-toggle');
 
-  // 5. Remove .dark utility class blocks
-  content = removeCssBlock(content, '.dark');
+  // 5. Remove nested &.dark blocks FIRST (must run before .dark, or the
+  //    .dark removal regex will match the `.dark` part of `&.dark`, strip
+  //    the block, and leave a dangling `&` with no braces — breaking LESS)
+  content = removeCssBlock(content, '&.dark');
 
-  // 6. Remove nested &.dark blocks (e.g. inside other selectors)
-  content = content.replace(/\n?\s*&\.dark\s*\{[^}]*\}/g, '');
+  // 6. Remove .dark utility class blocks (safe now that &.dark is already gone)
+  content = removeCssBlock(content, '.dark');  
 
   // 7. Remove the standalone body transition only used for dark mode color shift
   content = content.replace(
