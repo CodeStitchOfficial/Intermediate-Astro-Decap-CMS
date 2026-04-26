@@ -21,13 +21,24 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 <header id="cs-navigation">
 	<div class="cs-container">
 		<!--Nav Logo-->
-		<a href="/" class="cs-logo" aria-label="Return to [Company Name] Home page">
+		<a
+			href="/"
+			class="cs-logo"
+			aria-label="Return to [Company Name] Home page"
+		>
 			<Icon name="logo-black" />
 		</a>
 		<!--Navigation List-->
 		<nav class="cs-nav" aria-label="main navigation">
 			<!--Mobile Nav Toggle-->
-			<button class="cs-toggle" id="cs-toggle" aria-expanded="false" aria-controls="cs-ul-wrapper" aria-haspopup="menu" aria-label="mobile menu toggle">
+			<button
+				class="cs-toggle"
+				id="cs-toggle"
+				aria-expanded="false"
+				aria-controls="cs-ul-wrapper"
+				aria-haspopup="menu"
+				aria-label="mobile menu toggle"
+			>
 				<span class="cs-box" aria-hidden="true">
 					<span class="cs-line cs-line1" aria-hidden="true"></span>
 					<span class="cs-line cs-line2" aria-hidden="true"></span>
@@ -38,35 +49,132 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 			<div class="cs-ul-wrapper" id="cs-ul-wrapper">
 				<ul id="cs-expanded" class="cs-ul">
 					<li class="cs-li">
-						<a href="/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/" }]} aria-current={Astro.url.pathname === "/" ? "page" : undefined}> Home </a>
+						<a
+							href="/"
+							class:list={[
+								"cs-li-link",
+								{ "cs-active": Astro.url.pathname === "/" },
+							]}
+							aria-current={Astro.url.pathname === "/"
+								? "page"
+								: undefined}
+						>
+							Home
+						</a>
 					</li>
 					<li class="cs-li">
-						<a href="/about/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/about/" }]} aria-current={Astro.url.pathname === "/about/" ? "page" : undefined}> About Us </a>
+						<a
+							href="/about/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/about/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/about/"
+								? "page"
+								: undefined}
+						>
+							About Us
+						</a>
 					</li>
 					<!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work-->
 					<!-- Note: When copying this dropdown, update the id attribute with an appropriate name (e.g., "services-dropdown-toggle", "products-dropdown-toggle") and ensure the aria-labelledby attribute on the ul matches the button's id -->
 					<li class="cs-li cs-dropdown">
-						<button class:list={["cs-li-link cs-dropdown-toggle", { "cs-active": Astro.url.pathname.includes("/projects/") }]} aria-haspopup="menu" aria-expanded="false" id="projects-dropdown-toggle">
+						<button
+							class:list={[
+								"cs-li-link cs-dropdown-toggle",
+								{
+									"cs-active":
+										Astro.url.pathname.includes(
+											"/projects/",
+										),
+								},
+							]}
+							aria-haspopup="menu"
+							aria-expanded="false"
+							id="projects-dropdown-toggle"
+						>
 							Projects
 							<Icon name="mdi--caret" class="cs-drop-icon" />
 						</button>
-						<ul class="cs-drop-ul" aria-labelledby="projects-dropdown-toggle">
+						<ul
+							class="cs-drop-ul"
+							aria-labelledby="projects-dropdown-toggle"
+						>
 							<li class="cs-drop-li">
-								<a href="/projects/project-1/" class="cs-li-link cs-drop-link" aria-current={Astro.url.pathname === "/projects/project-1/" ? "page" : undefined}>Project 1</a>
+								<a
+									href="/projects/project-1/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/project-1/"
+										? "page"
+										: undefined}>Project 1</a
+								>
 							</li>
 							<li class="cs-drop-li">
-								<a href="/projects/project-2/" class="cs-li-link cs-drop-link" aria-current={Astro.url.pathname === "/projects/project-2/" ? "page" : undefined}>Project 2</a>
+								<a
+									href="/projects/project-2/"
+									class="cs-li-link cs-drop-link"
+									aria-current={Astro.url.pathname ===
+									"/projects/project-2/"
+										? "page"
+										: undefined}>Project 2</a
+								>
 							</li>
 						</ul>
 					</li>
 					<li class="cs-li">
-						<a href="/reviews/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/reviews/" }]} aria-current={Astro.url.pathname === "/reviews/" ? "page" : undefined}> Reviews </a>
+						<a
+							href="/reviews/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/reviews/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/reviews/"
+								? "page"
+								: undefined}
+						>
+							Reviews
+						</a>
 					</li>
 					<li class="cs-li">
-						<a href="/blog/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/blog/" }]} aria-current={Astro.url.pathname === "/blog/" ? "page" : undefined}> Blog </a>
+						<a
+							href="/blog/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/blog/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/blog/"
+								? "page"
+								: undefined}
+						>
+							Blog
+						</a>
 					</li>
 					<li class="cs-li cs-hide-on-desktop">
-						<a href="/contact/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/contact/" }]} aria-current={Astro.url.pathname === "/contact/" ? "page" : undefined}> Contact </a>
+						<a
+							href="/contact/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/contact/",
+								},
+							]}
+							aria-current={Astro.url.pathname === "/contact/"
+								? "page"
+								: undefined}
+						>
+							Contact
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -91,8 +199,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 		}
 
 		#cs-navigation {
-			/* remove the font family so the Stitch inherits the fonts from your global stylesheet */
-			font-family: "Roboto", "Arial", sans-serif;
 			width: 100%;
 			/* prevents padding from affecting height and width */
 			box-sizing: border-box;
@@ -191,7 +297,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 				.cs-line2 {
 					top: 50%;
-					transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
+					transform: translate(-50%, -50%) translateY(0)
+						rotate(-225deg);
 					transform-origin: center;
 				}
 
@@ -277,7 +384,8 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 				height: 65vh;
 				margin: 0;
 				/* 28px - 40px */
-				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem) (70/16rem);
+				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem)
+					(70/16rem);
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-start;
@@ -671,8 +779,6 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 	/* Small Desktop - 1024px */
 	@media only screen and (min-width: 64rem) {
 		#cs-navigation {
-			/* remove the font family so the Stitch inherits the fonts from your global stylesheet */
-			font-family: "Roboto", "Arial", sans-serif;
 			width: 100%;
 			/* prevents padding from affecting height and width */
 			box-sizing: border-box;

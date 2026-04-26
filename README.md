@@ -649,6 +649,35 @@ Customize site-wide colors, fonts and other properties in `src/styles/root.less`
 }
 ```
 
+#### Fonts
+
+This kit comes with Roboto font, and makes use of the Astro Fonts API. No more local font files to handle! You can customize your fonts through the `fonts` arrau in `astro.config.mjs`.
+
+1. Choose a font from [Fontsource](https://fontsource.org/) or any of the built-in providers: https://docs.astro.build/en/reference/font-provider-reference/#built-in-providers
+
+2. Update the name at this `astro.config.mjs` section:
+
+    ```json
+    {
+    	provider: fontProviders.fontsource(),
+    	name: "IBM Plex Mono",
+    },
+    ```
+
+If you want to use a second custom font, add it to the `font` array shown above, and use it in a `<Font />` component in `BaseLayout.astro`. You can now define styles with your font’s cssVariable to apply your custom font.
+
+    ```jsx
+    	<Font cssVariable="--font-secondary" />
+    ```
+
+    ```css
+    .cs-topper {
+    	font-family: var(--font-secondary);
+    }
+    ```
+
+For more information and customization options, refer to [the Astro docs for the Fonts API](https://docs.astro.build/en/guides/fonts/).
+
 #### Dark Mode
 
 All dark mode styles are consolidated in `src/styles/dark.less` for easy maintenance.

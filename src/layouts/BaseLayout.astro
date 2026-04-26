@@ -1,5 +1,6 @@
 ---
 // Utils
+import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import type { GetImageResult } from "astro";
 import "@styles/root.less";
@@ -35,6 +36,9 @@ const { description, title, heroImage } = Astro.props as Props;
 			<slot name="schema" slot="schema" />
 		</Meta>
 
+		<!-- Astro custom Font API -->
+		<Font cssVariable="--font-primary" />
+
 		<!-- If present, preloads the image passed as a prop -->
 		{heroImage && <link rel="preload" href={heroImage.src} as="image" />}
 
@@ -43,7 +47,9 @@ const { description, title, heroImage } = Astro.props as Props;
 	</head>
 	<body>
 		<!-- Screen reader skip main nav -->
-		<a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
+		<a class="skip" aria-label="skip to main content" href="#main"
+			>Click To Skip To Main Content</a
+		>
 
 		<DynamicHeader />
 		<main id="main">
@@ -74,7 +80,10 @@ const { description, title, heroImage } = Astro.props as Props;
 			theme = localStorage.getItem("theme");
 		}
 		// if it's not there, check to see if the user has applied dark mode preferences themselves in the browser
-		else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+		else if (
+			window.matchMedia &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches
+		) {
 			theme = "dark";
 		}
 

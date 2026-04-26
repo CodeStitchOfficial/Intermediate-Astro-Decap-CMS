@@ -25,13 +25,24 @@ import navData from "@data/navData.json";
 <header id="cs-navigation">
 	<div class="cs-container">
 		<!--Nav Logo-->
-		<a href="/" class="cs-logo" aria-label="Return to [Company Name] Home page">
+		<a
+			href="/"
+			class="cs-logo"
+			aria-label="Return to [Company Name] Home page"
+		>
 			<Icon name="logo-black" />
 		</a>
 		<!--Navigation List-->
 		<nav class="cs-nav" aria-label="main navigation">
 			<!--Mobile Nav Toggle-->
-			<button class="cs-toggle" id="cs-toggle" aria-expanded="false" aria-controls="cs-ul-wrapper" aria-haspopup="menu" aria-label="mobile menu toggle">
+			<button
+				class="cs-toggle"
+				id="cs-toggle"
+				aria-expanded="false"
+				aria-controls="cs-ul-wrapper"
+				aria-haspopup="menu"
+				aria-label="mobile menu toggle"
+			>
 				<span class="cs-box" aria-hidden="true">
 					<span class="cs-line cs-line1" aria-hidden="true"></span>
 					<span class="cs-line cs-line2" aria-hidden="true"></span>
@@ -43,26 +54,76 @@ import navData from "@data/navData.json";
 				<ul id="cs-expanded" class="cs-ul">
 					{
 						navData.map((entry) => (
-							<li class:list={["cs-li", { "cs-dropdown": entry.children?.length > 0 }]}>
+							<li
+								class:list={[
+									"cs-li",
+									{
+										"cs-dropdown":
+											entry.children?.length > 0,
+									},
+								]}
+							>
 								{entry.children?.length > 0 ? (
 									// If entry has children in navData.json, create a button and a dropdown icon
-									<button id={getDropdownId(entry.key)} aria-expanded="false" aria-haspopup="menu" class:list={["cs-li-link cs-dropdown-toggle", { "cs-active": Astro.url.pathname.includes(entry.url) }]}>
+									<button
+										id={getDropdownId(entry.key)}
+										aria-expanded="false"
+										aria-haspopup="menu"
+										class:list={[
+											"cs-li-link cs-dropdown-toggle",
+											{
+												"cs-active":
+													Astro.url.pathname.includes(
+														entry.url,
+													),
+											},
+										]}
+									>
 										{entry.key}
-										<Icon name="mdi--caret" class="cs-drop-icon" />
+										<Icon
+											name="mdi--caret"
+											class="cs-drop-icon"
+										/>
 									</button>
 								) : (
 									// If entry does not have children in navData.json, create an anchor
-									<a href={entry.url} class:list={["cs-li-link", { "cs-active": Astro.url.pathname === entry.url }]} aria-current={isCurrentPage(Astro.url.pathname, entry.url)}>
+									<a
+										href={entry.url}
+										class:list={[
+											"cs-li-link",
+											{
+												"cs-active":
+													Astro.url.pathname ===
+													entry.url,
+											},
+										]}
+										aria-current={isCurrentPage(
+											Astro.url.pathname,
+											entry.url,
+										)}
+									>
 										{entry.key}
 									</a>
 								)}
 
 								{entry.children?.length > 0 && (
 									// If entry has children in navData.json, create a drop down menu
-									<ul class="cs-drop-ul" aria-labelledby={getDropdownId(entry.key)}>
+									<ul
+										class="cs-drop-ul"
+										aria-labelledby={getDropdownId(
+											entry.key,
+										)}
+									>
 										{entry.children.map((child) => (
 											<li class="cs-drop-li">
-												<a href={child.url} class="cs-li-link cs-drop-link" aria-current={isCurrentPage(Astro.url.pathname, child.url)}>
+												<a
+													href={child.url}
+													class="cs-li-link cs-drop-link"
+													aria-current={isCurrentPage(
+														Astro.url.pathname,
+														child.url,
+													)}
+												>
 													{child.key}
 												</a>
 											</li>
@@ -73,7 +134,22 @@ import navData from "@data/navData.json";
 						))
 					}
 					<li class="cs-li cs-hide-on-desktop">
-						<a href="/contact/" class:list={["cs-li-link", { "cs-active": Astro.url.pathname === "/contact/" }]} aria-current={isCurrentPage(Astro.url.pathname, "/contact/")}> Contact </a>
+						<a
+							href="/contact/"
+							class:list={[
+								"cs-li-link",
+								{
+									"cs-active":
+										Astro.url.pathname === "/contact/",
+								},
+							]}
+							aria-current={isCurrentPage(
+								Astro.url.pathname,
+								"/contact/",
+							)}
+						>
+							Contact
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -98,8 +174,6 @@ import navData from "@data/navData.json";
 		}
 
 		#cs-navigation {
-			/* remove the font family so the Stitch inherits the fonts from your global stylesheet */
-			font-family: "Roboto", "Arial", sans-serif;
 			width: 100%;
 			/* prevents padding from affecting height and width */
 			box-sizing: border-box;
@@ -198,7 +272,8 @@ import navData from "@data/navData.json";
 
 				.cs-line2 {
 					top: 50%;
-					transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
+					transform: translate(-50%, -50%) translateY(0)
+						rotate(-225deg);
 					transform-origin: center;
 				}
 
@@ -284,7 +359,8 @@ import navData from "@data/navData.json";
 				height: 65vh;
 				margin: 0;
 				/* 28px - 40px */
-				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem) (70/16rem);
+				padding: (48/16rem) clamp(1.75rem, 3vw, 2.5rem) (32/16rem)
+					(70/16rem);
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-start;
@@ -678,8 +754,6 @@ import navData from "@data/navData.json";
 	/* Small Desktop - 1024px */
 	@media only screen and (min-width: 64rem) {
 		#cs-navigation {
-			/* remove the font family so the Stitch inherits the fonts from your global stylesheet */
-			font-family: "Roboto", "Arial", sans-serif;
 			width: 100%;
 			/* prevents padding from affecting height and width */
 			box-sizing: border-box;

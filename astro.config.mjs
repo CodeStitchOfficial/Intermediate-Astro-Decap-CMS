@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 
@@ -15,4 +15,14 @@ export default defineConfig({
 	image: {
 		layout: "constrained",
 	},
+	fonts: [
+		{
+			provider: fontProviders.google(),
+			name: "Roboto",
+			cssVariable: "--font-primary",
+			fallbacks: ["Arial", "sans-serif"],
+			weights: [400, 700, 900],
+			styles: ["normal"],
+		},
+	],
 });
