@@ -1,7 +1,7 @@
 <h3 align="center">Intermediate Astro kit - Decap CMS</h3>
 
   <p align="center">
-    This intermediate kit includes a pre-configured Astro setup, along with five pages filled with CodeStitch components. Everything is ready to go right from the start, offering a fantastic introduction to the advantages of a Static Site Generator, complete with LESS preprocessing and a blog powered by Decap CMS. This kit also leverages the power of a few Astro tools such as, but not limited to, Content Collections, View Transitions, Astro components, scoped styling and scripting etc.
+    This intermediate kit includes a pre-configured Astro v6 setup, along with five pages filled with CodeStitch components. Everything is ready to go right from the start, offering a fantastic introduction to the advantages of a Static Site Generator, complete with LESS preprocessing and a blog powered by Decap CMS. This kit also leverages the power of a few Astro tools such as, but not limited to, Content Collections, View Transitions, Astro components, scoped styling and scripting etc.
     <br/>
     <br/>
     <a href="https://intermediate-astro-kit-decap-cms.netlify.app" target="_blank">View Live Result</a>
@@ -43,7 +43,7 @@
 ## Overview
 
 This intermediate kit includes a pre-configured <a href="https://www.astro.build">Astro</a> environment, which
-allows for repeated components, centralized data and greater room to scale as your clients grow. The kit runs the latest major Astro version, v5. On top of this, a blog has been provided through [Decap CMS](https://decapcms.org/) to allow your clients to manage their content on their own.
+allows for repeated components, centralized data and greater room to scale as your clients grow. The kit runs the latest major Astro version, v6. On top of this, a blog has been provided through [Decap CMS](https://decapcms.org/) to allow your clients to manage their content on their own.
 
 ### TL;DR - Quick Start
 
@@ -194,7 +194,7 @@ Only the vanilla web technologies are _required_ before using this kit, with som
 
 ## Features
 
-- Runs on Astro v5
+- Runs on Astro v6
 - Decap CMS integration with blog
 - SEO-ready with Open Graph, Twitter Cards, and JSON-LD structured data
 - Astro's View Transitions
