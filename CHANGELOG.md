@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.1.0
+
+### Minor changes
+
+- Upgrades Astro to v6. No breaking changes.
+- Uses [Astro Fonts API](https://docs.astro.build/en/guides/fonts/)
+
 ## 3.0.0 - Major Architecture Update
 
 ### Astro Best Practices Implementation
@@ -32,8 +39,8 @@
 
 - Added 8 VS Code tours for onboarding (getting started, component composition, content collections, Decap CMS, deployment, image optimization, navigation)
 - New cleanup scripts for starting fresh:
-  - `npm run remove-decap` - Removes Decap CMS, blog layouts, content collections, and related components
-  - `npm run remove-demo` - Removes demo pages (about, contact, reviews, projects) and demo components
+    - `npm run remove-decap` - Removes Decap CMS, blog layouts, content collections, and related components
+    - `npm run remove-demo` - Removes demo pages (about, contact, reviews, projects) and demo components
 - Added `_template.astro` page for easier scaffolding
 - Better organized frontmatter across pages
 
@@ -100,14 +107,14 @@ See documentation changes in [47df1c0](47df1c02599710c9b669f869166e64633eb0c5d8)
 The blog has received new components and some refactoring.
 
 - Refactored `blog/index.astro`, `blog/[...slug].astro` and `blog.less` to separate concerns, increase readability and reusability.
-  - New layouts in `src/layouts`
-    - BlogPostLayout is used to wrap an individual blog post in `src/blog/[...slug].astro`
-    - `BlogRecentArticles.astro` and `BlogRecentArticlesWithSidebar` are used to wrap recent articles with or without a sidebar widget, and are used in `src/blog/index.astro`
-    - Their respective styles are moved from `blog.less` and now scoped to the layout for increased readability and maintainability
-  - `blog.less` has been removed
-  - `markdown.less` has been created and holds all the styles for markdown content
-  - `sidebar.less` has been created and holds the styles for the sidebar widgets, shared across mutiple components.
-  - New component: TableOfContents.astro. Is used in a sidebar on the individual posts and allows easy navigation within the article.
+    - New layouts in `src/layouts`
+        - BlogPostLayout is used to wrap an individual blog post in `src/blog/[...slug].astro`
+        - `BlogRecentArticles.astro` and `BlogRecentArticlesWithSidebar` are used to wrap recent articles with or without a sidebar widget, and are used in `src/blog/index.astro`
+        - Their respective styles are moved from `blog.less` and now scoped to the layout for increased readability and maintainability
+    - `blog.less` has been removed
+    - `markdown.less` has been created and holds all the styles for markdown content
+    - `sidebar.less` has been created and holds the styles for the sidebar widgets, shared across mutiple components.
+    - New component: TableOfContents.astro. Is used in a sidebar on the individual posts and allows easy navigation within the article.
 - Baselayout now has typed Props and uses an optional preloadedImage prop consumed by: 1. the preload link and 2. the og tags for social sharing.
   For example, the cover image on a blog page passed to Baselayout will be used as the social image
 - Removed getOptimizedImage() from @utils and replaced with getImage() function directly in the page

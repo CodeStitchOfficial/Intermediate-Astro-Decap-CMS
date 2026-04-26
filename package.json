@@ -1,7 +1,7 @@
 {
 	"name": "intermediate-astro-decap-cms-starter-kit",
 	"type": "module",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"scripts": {
 		"astro": "astro dev",
 		"dev": "astro dev",
@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.7.2",
-		"astro": "^5.18.1",
+		"astro": "^6.1.9",
 		"astro-icon": "^1.1.5",
 		"autoprefixer": "^10.4.27",
 		"less": "^4.5.1"

@@ -20,8 +20,13 @@ const { image } = Astro.props as Props;
 	<div class="cs-container">
 		<div class="cs-flex-group">
 			<span class="cs-topper">Intermediate Kit</span>
-			<h1 class="cs-title">Intermediate Astro v5 <br /> Decap CMS</h1>
-			<p class="cs-text">This intermediate kit includes a pre-configured Astro environment, which allows for repeated components, centralized data and greater room to scale as your clients grow. Decap CMS has been integrated to run a blog.</p>
+			<h1 class="cs-title">Intermediate Astro v6 <br /> Decap CMS</h1>
+			<p class="cs-text">
+				This intermediate kit includes a pre-configured Astro
+				environment, which allows for repeated components, centralized
+				data and greater room to scale as your clients grow. Decap CMS
+				has been integrated to run a blog.
+			</p>
 			<a href="/about/" class="cs-button-solid">Explore More</a>
 			<a href="/contact/" class="cs-button-transparent">
 				<Icon name="play" class="cs-img" />
@@ -31,7 +36,15 @@ const { image } = Astro.props as Props;
 	</div>
 
 	<!-- Using the preloaded image from the props -->
-	<Picture src={image.src} alt="new home" width={image.attributes.width} height={image.attributes.height} formats={["avif", "webp"]} priority pictureAttributes={{ class: "cs-picture" }} />
+	<Picture
+		src={image.src}
+		alt="new home"
+		width={image.attributes.width}
+		height={image.attributes.height}
+		formats={["avif", "webp"]}
+		priority
+		pictureAttributes={{ class: "cs-picture" }}
+	/>
 </section>
 
 <style lang="less">
@@ -42,7 +55,6 @@ const { image } = Astro.props as Props;
 	/* Mobile - 360px */
 	@media only screen and (min-width: 0em) {
 		#hero {
-			font-family: "Roboto", "Arial", sans-serif;
 			/* Centers button */
 			text-align: center;
 			/* changes on tablet */
@@ -105,8 +117,16 @@ const { image } = Astro.props as Props;
 					content: "";
 					width: 1px;
 					height: 100%;
-					background: -moz-linear-gradient(top, rgba(250, 251, 252, 0.5) 0%, rgba(250, 251, 252, 0) 100%); /* FF3.6-15 */
-					background: -webkit-linear-gradient(top, rgba(250, 251, 252, 0.5) 0%, rgba(250, 251, 252, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+					background: -moz-linear-gradient(
+						top,
+						rgba(250, 251, 252, 0.5) 0%,
+						rgba(250, 251, 252, 0) 100%
+					); /* FF3.6-15 */
+					background: -webkit-linear-gradient(
+						top,
+						rgba(250, 251, 252, 0.5) 0%,
+						rgba(250, 251, 252, 0) 100%
+					); /* Chrome10-25,Safari5.1-6 */
 					opacity: 1;
 					display: block;
 					position: absolute;
@@ -216,14 +236,23 @@ const { image } = Astro.props as Props;
 			padding: 0 clamp(2em, 5vw, 2.5em);
 
 			.cs-container {
-				padding: clamp(7em, 27.95vw, 17.5em) 0 clamp(9em, 30.95vw, 23.5em) 0;
+				padding: clamp(7em, 27.95vw, 17.5em) 0
+					clamp(9em, 30.95vw, 23.5em) 0;
 				&:after {
 					/* Right Line */
 					content: "";
 					width: 1px;
 					height: 100%;
-					background: -moz-linear-gradient(top, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.5) 100%); /* FF3.6-15 */
-					background: -webkit-linear-gradient(top, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+					background: -moz-linear-gradient(
+						top,
+						rgba(250, 251, 252, 0) 0%,
+						rgba(250, 251, 252, 0.5) 100%
+					); /* FF3.6-15 */
+					background: -webkit-linear-gradient(
+						top,
+						rgba(250, 251, 252, 0) 0%,
+						rgba(250, 251, 252, 0.5) 100%
+					); /* Chrome10-25,Safari5.1-6 */
 					opacity: 1;
 					display: block;
 					position: absolute;
