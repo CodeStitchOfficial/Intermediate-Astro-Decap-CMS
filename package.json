@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.7.2",
-		"astro": "^6.1.9",
+		"astro": "^6.1.10",
 		"astro-icon": "^1.1.5",
 		"autoprefixer": "^10.5.0",
 		"less": "^4.6.4"
