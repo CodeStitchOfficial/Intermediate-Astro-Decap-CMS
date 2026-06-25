@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.0.0 - Astro v7 Upgrade
+
+### Breaking Changes
+
+- Upgrades Astro to v7. See the [Astro v7 migration guide](https://docs.astro.build/en/guides/upgrade-to/v7/) for full details.
+- The Rust compiler is now the only compiler. HTML is validated more strictly — unclosed tags will produce build errors.
+- Default markdown processor changed from remark/rehype to Sätteri. Projects using custom remark/rehype plugins must install `@astrojs/markdown-remark` separately.
+- `compressHTML` default changed from `true` to `'jsx'`. This kit explicitly sets `compressHTML: true` in `astro.config.mjs` to preserve v6 whitespace behaviour.
+
+### Other Changes
+
+- Added `description`, `keywords`, `repository`, and `homepage` fields to `package.json` for the Astro themes directory listing.
+
 ## 3.1.0
 
 ### Minor changes
