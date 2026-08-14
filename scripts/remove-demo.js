@@ -17,7 +17,7 @@ const projectsPath = join("src", "pages", "projects");
 
 // Demo component paths
 const componentsPath = join("src", "components");
-const demoComponents = ["Footer", "Hero", "Services", "Gallery", "SideBySide", "SideBySideReverse", "Testimonials", "FAQ", "Reviews", "CTA", "Banner"];
+const demoComponents = ["Hero", "Services", "Gallery", "SideBySide", "SideBySideReverse", "Testimonials", "FAQ", "Reviews", "CTA", "Banner"];
 
 // Image paths
 const imagesPath = join("src", "assets", "images");
@@ -257,8 +257,8 @@ async function removeComponentUsageFromPages() {
 
 		content = content.replace(/import\s+CTASimple\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g, "");
 		content = content.replace(/import\s+CTAArtDirection\s+from\s+["']@components\/CTA\/CTAArtDirection\.astro["'];?\n?/g, "");
-		content = content.replace(/<CTASimple\s*\/>/g, "");
-		content = content.replace(/<!--\s*<CTAArtDirection\s*\/>\s*-->/g, "");
+		content = content.replace(/^[ \t]*<CTASimple\s*\/>[ \t]*\n?/gm, "");
+		content = content.replace(/^[ \t]*<!--\s*<CTAArtDirection\s*\/>\s*-->[ \t]*\n?/gm, "");
 
 		await fs.writeFile(indexPath, content, "utf-8");
 		console.log("Updated index.astro");
@@ -275,7 +275,7 @@ async function removeComponentUsageFromPages() {
 
 		let content = await fs.readFile(blogPostLayoutPath, "utf-8");
 		content = content.replace(/import\s+CTA\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g, "");
-		content = content.replace(/<CTA\s*\/>/g, "");
+		content = content.replace(/^[ \t]*<CTA\s*\/>[ \t]*\n?/gm, "");
 
 		await fs.writeFile(blogPostLayoutPath, content, "utf-8");
 		console.log("Updated BlogPostLayout.astro");
@@ -293,8 +293,8 @@ async function removeComponentUsageFromPages() {
 
 		content = content.replace(/import\s+Banner\s+from\s+["']@components\/Banner\/Banner\.astro["'];?\n?/g, "");
 		content = content.replace(/import\s+CTA\s+from\s+["']@components\/CTA\/CTASimple\.astro["'];?\n?/g, "");
-		content = content.replace(/<Banner\s+title="Blog"\s+image=\{placeholderOptimizedImage\}\s*\/>/g, "");
-		content = content.replace(/<CTA\s*\/>/g, "");
+		content = content.replace(/^[ \t]*<Banner\s+title="Blog"\s+image=\{placeholderOptimizedImage\}\s*\/>[ \t]*\n?/gm, "");
+		content = content.replace(/^[ \t]*<CTA\s*\/>[ \t]*\n?/gm, "");
 
 		await fs.writeFile(blogIndexPath, content, "utf-8");
 		console.log("Updated blog/index.astro");
