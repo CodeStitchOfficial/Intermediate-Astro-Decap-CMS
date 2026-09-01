@@ -35,7 +35,7 @@
 		"remove-dark-mode": "node scripts/remove-dark-mode.js"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.7.3",
+		"@astrojs/sitemap": "^3.7.4",
 		"astro": "^7.0.9",
 		"astro-icon": "^1.1.5",
 		"autoprefixer": "^10.5.4",
